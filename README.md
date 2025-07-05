@@ -11,9 +11,9 @@ Brain Team 6
 | --- | --- | --- | --- | --- |
 | <img src="project_management/general/devpics/mehmet.png" width="80" height="80"/> | Mehmet Ali BULU | Product Owner | https://github.com/malicup | https://www.linkedin.com/in/mehmet-ali-bulu-3b0869257/ |
 | <img src="project_management/general/devpics/nuran.png" width="80" height="80"/> | Nuran GÜLER | Scrum Master | https://github.com/nrnglr | https://www.linkedin.com/in/nuran-güler-3439a0262/ |
-| <img src="project_management/general/devpics/eyup.png" width="80 height="80"/> | Eyüp KURT | Developer | https://github.com/Eeyupkurtt | https://www.linkedin.com/in/eyupkurt/ |
-| <img src="project_management/general/devpics/ozge.png" width="80 height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
-| <img src="project_management/general/devpics/zeynep.png" width="80 height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
+| <img src="project_management/general/devpics/eyup.png" width="80" height="80"/> | Eyüp KURT | Developer | https://github.com/Eeyupkurtt | https://www.linkedin.com/in/eyupkurt/ |
+| <img src="project_management/general/devpics/ozge.png" width="80" height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
+| <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
 
 # Uygulama İsmi
 
