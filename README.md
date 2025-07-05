@@ -1,79 +1,58 @@
-# YZTA Bootcamp readme dosyası taslak
 
 ******Burada Uygulama ile ilgili bir logo ya da onu çağrıştıran bir görsel***
 
 # Takım İsmi
 
----
-
 Brain Team 6
 
 # Katkıda Bulunanlar
 
----
-
 | Resim | Ad Soyad | Görev | GitHub | Linkedin |
 | --- | --- | --- | --- | --- |
-|  | Mehmet Ali BULU | Product Owner | https://github.com/malicup |  |
-|  | Nuran GÜLER | Scrum Master | https://github.com/nrnglr | [https://www.linkedin.com/in/nuran-güler-3439a0262/](https://www.linkedin.com/in/nuran-g%C3%BCler-3439a0262/) |
-|  | Eyüp KURT | Developer | https://github.com/Eeyupkurtt | https://www.linkedin.com/in/eyupkurt/ |
-|  | Özge Yılmaz | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
-|  | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP |  |
+| <img src="project_management/general/devpics/mehmet.png" width="80" height="80"/> | Mehmet Ali BULU | Product Owner | https://github.com/malicup | https://www.linkedin.com/in/mehmet-ali-bulu-3b0869257/ |
+| <img src="project_management/general/devpics/nuran.png" width="80" height="80"/> | Nuran GÜLER | Scrum Master | https://github.com/nrnglr | https://www.linkedin.com/in/nuran-güler-3439a0262/ |
+| <img src="project_management/general/devpics/eyup.png" width="80 height="80"/> | Eyüp KURT | Developer | https://github.com/Eeyupkurtt | https://www.linkedin.com/in/eyupkurt/ |
+| <img src="project_management/general/devpics/ozge.png" width="80 height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
+| <img src="project_management/general/devpics/zeynep.png" width="80 height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
 
 # Uygulama İsmi
 
----
-
-NeuroLob - SinAPPs
+Synapse
 
 # Uygulama URL
-
----
 
 -URL-
 
 # Uygulama Logosu
 
----
-
 -Logo-
 
 # Uygulama Açıklaması
 
----
+Synapse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir mobil uygulamadır. Her beyin lobuna özel bilişsel görevler atanır. Uygulama, bu lobları çalıştırmak ve geliştirmek amacıyla yapay zekâ tarafından oluşturulmuş sorular ve görevlerle desteklenir. Fikir, MIT Media Lab tarafından gerçekleştirilen "Your Brain on ChatGPT" adlı bilimsel çalışmadan ilham almıştır.
 
-NeuroLob - SinAPPs, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir mobil uygulamadır. Her beyin lobuna özel bilişsel görevler atanır. Uygulama, bu lobları çalıştırmak ve geliştirmek amacıyla yapay zekâ tarafından oluşturulmuş sorular ve görevlerle desteklenir. Fikir, MIT Media Lab tarafından gerçekleştirilen "Your Brain on ChatGPT" adlı bilimsel çalışmadan ilham almıştır.
+# Proje Vizyonu
+
+Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
+
+# Proje Misyonu
+
+Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
 
 # İlham Kaynağı
 
----
+Projemiz, MIT Media Lab tarafından yürütülen **"Your Brain on ChatGPT: Accumulation of Cognitive Debt..."** başlıklı akademik çalışmanın bulgularını temel almaktadır. Bu çalışma, YZ asistanlarının kullanımının kısa vadede bilişsel yükü azaltsa da, uzun vadede ciddi bilişsel maliyetler yarattığını ortaya koymuştur. Biz bu temel sorunu **"Bilişsel Borçlanma"** olarak adlandırıyoruz.
 
-**Makale Adı:** Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task
+### Bilişsel borçlanmanın temel belirtileri ve hedeflediğimiz problemler şunlardır:
 
-**Kuruluş:** MIT Media Lab
+1. **Eleştirel Düşünme ve Problem Çözme Becerilerinde Azalma:** YZ'nin sunduğu hazır, sentezlenmiş ve tekil cevaplar, beynin karmaşık sorunları analiz etme, farklı bakış açılarını değerlendirme, argümanlardaki hataları tespit etme ve özgün çözümler üretme yeteneğini zayıflatır.
+2. **Hafıza Zayıflığı ve Yüzeysel Öğrenme:** Bilgiyi araştırma, anlama ve kendi kelimelerimizle yeniden yapılandırma süreci, bilginin kalıcı hafızaya kaydedilmesini sağlar. YZ bu süreci atlayarak bilgiyi doğrudan sunduğunda, öğrenme ve hatırlama süreçleri yüzeyselleşir. Çalışma, YZ kullananların yazdıkları metinlerden dakikalar sonra bile alıntı yapamadığını göstermiştir.
+3. **Yaratıcılık ve Özgün Düşüncenin Körelmesi:** Çalışmanın EEG verileri, YZ kullanımının beynin yaratıcılıkla ilişkili sinirsel ağlarının daha az aktif olmasına neden olduğunu göstermektedir. YZ'nin genellikle en "olasılıklı" ve tahmin edilebilir çıktıları üretmesi, zamanla kalıpların dışında düşünme (divergent thinking) yeteneğimizi köreltebilir.
+4. **Bağımsız Karar Verme Yeteneğinde Gerileme:** Beynin planlama, organizasyon, izleme ve karar verme gibi yürütücü işlevlerle (executive functions) ilgili bölgeleri, YZ kullanımıyla daha az aktif hale gelir. Bu durum, gelecekte YZ olmadan bir görevi baştan sona planlama ve yönetme konusunda zorluklar yaşanmasına neden olabilir.
 
-### Temel Bulgular:
-
-- LLM (ChatGPT) kullananlar "bilişsel borç" biriktiriyor.
-- Kendi başına çalışan beyinler, EEG verilerine göre daha yoğun bilişsel aktivite gösteriyor.
-- LLM ile çalışanlar daha az hatırlama yapabiliyor ve daha düşük sahiplik hissediyor.
-- Bu durum, uzun vadeli öğrenme ve beyin gelişimi açısından risk oluşturuyor.
-
-Bu sonuçlar, kullanıcının aktif bilişsel katılımının eğitimde ve öğrenmede kritik öneme sahip olduğunu göstermektedir. Bu da bireyin kendi beynini kullanarak kararlar alması ve görevleri bizzat yerine getirmesi gerektiğini vurgular.
-
-# Uygulama Vizyonu
-
----
-
-- Kullanıcılara, kendi bilişsel süreçlerini bilinçli olarak seçme ve geliştirme imkânı sunmak
-- Her seferinde bir beyin lobunu hedef alarak, görev temelli egzersizlerle zihinsel becerileri desteklemek
-- Bireyin kendi bilişsel gücünü keşfetmesini sağlamak
-- Eğitimde yapay zekâ kullanımına eleştirel ve bilinçli bir yaklaşım sunmak
-- Nöroplastisiteyi destekleyen egzersizlerle kullanıcıların zihinsel kapasitesini artırmak
+Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://arxiv.org/pdf/2506.08872v1)
 
 # Hedef Kitle
-
----
 
 - Öğrenciler
 - Eğitimciler, psikologlar ve psikiyatristler
@@ -81,8 +60,6 @@ Bu sonuçlar, kullanıcının aktif bilişsel katılımının eğitimde ve öğr
 - Beyin egzersizi yapmak isteyen bireyler
 
 # Nasıl Çalışır?
-
----
 
 1. **Etkileşimli Arayüz:**
     
@@ -127,40 +104,22 @@ Bu sonuçlar, kullanıcının aktif bilişsel katılımının eğitimde ve öğr
 
 # Teknik Yapı
 
----
-
 | **Katman** | **Teknoloji** |
 | --- | --- |
-| **Arayüz** | React Native (mobil) veya Web (React, Flutter) |
-| **Beyin Haritası** | SVG veya 3D görsel (Three.js, Lottie) |
-| **Yapay Zekâ** | OpenAI API (GPT-4o), kişiselleştirilmiş prompt sistemi |
-| **Veritabanı** | Firebase veya PostgreSQL |
-| **Bilişsel Profilleme** | NLP analizleri, kullanıcı veri analitiği |
+| **Frontend** | HTML5, Tailwind CSS, Vanilla JavaScript, Alpine.js |
+| **Backend** | Python 3.11+, Django 4.x, Django REST Framework |
+| **API/Yapay Zekâ** | Gemini AI API |
+| **Veritabanı** | SQLite 3 |
 
-# Fark Yaratan Özellikler
-
----
-
-- Bilimsel temelli yaklaşım (EEG ve bilişsel araştırmalar referanslı)
-- Kullanıcı kendi gelişimini izleyebilir
-- Loba özel kişiselleştirilmiş yapay zekâ soruları
-- Zihin haritası ile görsel etkileşim
-- Bilişsel egzersiz → Bilinçli karar alma → Öğrenme pekiştirme döngüsü
 
 # Sprint 1
-
----
 
 Süreçte eklenecek…
 
 # Sprint 2
 
----
-
 Süreçte eklenecek…
 
 # Sprint 3
-
----
 
 Süreçte eklenecek…
