@@ -1,5 +1,7 @@
 
-
+<p align="center">
+ <img src="project_management/general/headers/logo.png" width="144" height="585"/> 
+</p>
 
 
 Brain Team 6
@@ -16,7 +18,7 @@ Brain Team 6
 
 # Uygulama İsmi
 
-Synapse
+SynAppse
 
 # Uygulama URL
 
@@ -111,7 +113,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | **Veritabanı** | SQLite 3 |
 
 <p align="center">
- <img src="project_management/general/devpics/sprints.png" width="144" height="585"/> 
+ <img src="project_management/general/headers/sprints.png" width="144" height="585"/> 
 </p>
 
 # Sprint 1
@@ -125,3 +127,7 @@ Süreçte eklenecek…
 # Sprint 3
 
 Süreçte eklenecek…
+
+<p align="center">
+ <img src="project_management/general/headers/github_footer.png" width="144" height="585"/> 
+</p>
