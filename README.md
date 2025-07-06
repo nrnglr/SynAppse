@@ -45,11 +45,11 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-**Vizyon:**  
+### Vizyon  
 Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin gelişim platformu olmak.
 
 
-**Misyon:**  
+### Misyon
 Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve yüksek etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
 
 </details>
@@ -157,8 +157,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
    AI, geçmiş görev verilerini analiz ederek kullanıcıya özel öneriler sunar:  
    > “Bu hafta Parietal lob performansınızda düşüş gözlemlendi. Dikkat egzersizlerine ağırlık vermenizi öneriyoruz.”
 
----
-
 Bu yapı sayesinde **Synappse**, yalnızca bir beyin egzersizi aracı değil; **kişisel, bilimsel ve sürdürülebilir bir zihinsel gelişim platformudur.**
 
 </details>
@@ -173,10 +171,17 @@ Projemiz, MIT Media Lab tarafından yürütülen **"Your Brain on ChatGPT: Accum
 
 ### Bilişsel borçlanmanın temel belirtileri ve hedeflediğimiz problemler şunlardır:
 
-1. **Eleştirel Düşünme ve Problem Çözme Becerilerinde Azalma:** YZ'nin sunduğu hazır, sentezlenmiş ve tekil cevaplar, beynin karmaşık sorunları analiz etme, farklı bakış açılarını değerlendirme, argümanlardaki hataları tespit etme ve özgün çözümler üretme yeteneğini zayıflatır.  
-2. **Hafıza Zayıflığı ve Yüzeysel Öğrenme:** Bilgiyi araştırma, anlama ve kendi kelimelerimizle yeniden yapılandırma süreci, bilginin kalıcı hafızaya kaydedilmesini sağlar. YZ bu süreci atlayarak bilgiyi doğrudan sunduğunda, öğrenme ve hatırlama süreçleri yüzeyselleşir. Çalışma, YZ kullananların yazdıkları metinlerden dakikalar sonra bile alıntı yapamadığını göstermiştir.  
-3. **Yaratıcılık ve Özgün Düşüncenin Körelmesi:** Çalışmanın EEG verileri, YZ kullanımının beynin yaratıcılıkla ilişkili sinirsel ağlarının daha az aktif olmasına neden olduğunu göstermektedir. YZ'nin genellikle en "olasılıklı" ve tahmin edilebilir çıktıları üretmesi, zamanla kalıpların dışında düşünme (divergent thinking) yeteneğimizi köreltebilir.  
-4. **Bağımsız Karar Verme Yeteneğinde Gerileme:** Beynin planlama, organizasyon, izleme ve karar verme gibi yürütücü işlevlerle (executive functions) ilgili bölgeleri, YZ kullanımıyla daha az aktif hale gelir. Bu durum, gelecekte YZ olmadan bir görevi baştan sona planlama ve yönetme konusunda zorluklar yaşanmasına neden olabilir.
+1. **Eleştirel Düşünme ve Problem Çözme Becerilerinde Azalma:**  
+YZ'nin sunduğu hazır, sentezlenmiş ve tekil cevaplar, beynin karmaşık sorunları analiz etme, farklı bakış açılarını değerlendirme, argümanlardaki hataları tespit etme ve özgün çözümler üretme yeteneğini zayıflatır.  
+
+2. **Hafıza Zayıflığı ve Yüzeysel Öğrenme:**  
+Bilgiyi araştırma, anlama ve kendi kelimelerimizle yeniden yapılandırma süreci, bilginin kalıcı hafızaya kaydedilmesini sağlar. YZ bu süreci atlayarak bilgiyi doğrudan sunduğunda, öğrenme ve hatırlama süreçleri yüzeyselleşir. Çalışma, YZ kullananların yazdıkları metinlerden dakikalar sonra bile alıntı yapamadığını göstermiştir.  
+
+3. **Yaratıcılık ve Özgün Düşüncenin Körelmesi:**  
+Çalışmanın EEG verileri, YZ kullanımının beynin yaratıcılıkla ilişkili sinirsel ağlarının daha az aktif olmasına neden olduğunu göstermektedir. YZ'nin genellikle en "olasılıklı" ve tahmin edilebilir çıktıları üretmesi, zamanla kalıpların dışında düşünme (divergent thinking) yeteneğimizi köreltebilir.  
+
+4. **Bağımsız Karar Verme Yeteneğinde Gerileme:**  
+Beynin planlama, organizasyon, izleme ve karar verme gibi yürütücü işlevlerle (executive functions) ilgili bölgeleri, YZ kullanımıyla daha az aktif hale gelir. Bu durum, gelecekte YZ olmadan bir görevi baştan sona planlama ve yönetme konusunda zorluklar yaşanmasına neden olabilir.
 
 Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://arxiv.org/pdf/2506.08872v1)
 
@@ -199,12 +204,12 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 <p align="center">
   <img src="project_management/sprint1_documents/Sprint_Review.jpg" width="644" height="650"/>  
-  <br><strong>Sprint Review</strong>
+  <br><strong>Sprint Board</strong>
 </p>
 
 <p align="center">
   <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="644" height="650"/>  
-  <br><strong>Daily Scrum</strong>
+  <br><strong>Burndown Chart</strong>
 </p>
 
 <p align="center">
@@ -269,30 +274,25 @@ Geliştirme ilerledikçe güncellenecektir.
 </p>
 
 
-# Detaylar
+# Proje Tanıtım Videosu  
+Video ve demo bağlantıları proje tamamlandığında burada paylaşılacaktır.
 
+# Proje Linki  
+Projenin canlı adresi veya kaynak kodu bağlantısı tamamlandığında burada yer alacaktır.
+
+# Kullanılan Teknolojiler  
 <details>
-  <summary><strong>Kullanılan Teknolojiler</strong></summary>
+  <summary><strong>Detayları Görüntüle</strong></summary>
 
-| **Katman** | **Teknoloji** |
-| --- | --- |
-| **Frontend** | HTML5, Tailwind CSS, Vanilla JavaScript, Alpine.js |
-| **Backend** | Python 3.11+, Django 4.x, Django REST Framework |
-| **API/Yapay Zekâ** | Gemini AI API |
-| **Veritabanı** | SQLite 3 |
-...
+| **Katman**        | **Teknoloji**                               |
+|-------------------|--------------------------------------------|
+| **Frontend**      | HTML5, Tailwind CSS, Vanilla JavaScript, Alpine.js |
+| **Backend**       | Python 3.11+, Django 4.x, Django REST Framework    |
+| **API / Yapay Zekâ** | Gemini AI API                               |
+| **Veritabanı**    | SQLite 3                                    |
+
 </details>
 
 
-<details>
-  <summary><strong>Uygulama Video Linki</strong></summary>
- Video ve demo bağlantıları proje tamamlandığında burada paylaşılacaktır.
-</details>
-
-
-<details>
-  <summary><strong>Uygulama URL</strong></summary>
- URL bağlantısı proje tamamlandığında burada paylaşılacaktır.
-</details>
 
 
