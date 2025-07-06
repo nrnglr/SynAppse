@@ -1,8 +1,5 @@
 
 
-<p align="center">
- <img src="project_management/general/devpics/sprints.png" width="300" height="300"/> 
-</p>
 
 
 Brain Team 6
@@ -31,7 +28,7 @@ Synapse
 
 # Uygulama Açıklaması
 
-Synapse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir mobil uygulamadır. Her beyin lobuna özel bilişsel görevler atanır. Uygulama, bu lobları çalıştırmak ve geliştirmek amacıyla yapay zekâ tarafından oluşturulmuş sorular ve görevlerle desteklenir. Fikir, MIT Media Lab tarafından gerçekleştirilen "Your Brain on ChatGPT" adlı bilimsel çalışmadan ilham almıştır.
+Synapse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir uygulamadır. Her beyin lobuna özel bilişsel görevler atanır. Uygulama, bu lobları çalıştırmak ve geliştirmek amacıyla yapay zekâ tarafından oluşturulmuş sorular ve görevlerle desteklenir. Fikir, MIT Media Lab tarafından gerçekleştirilen "Your Brain on ChatGPT" adlı bilimsel çalışmadan ilham almıştır.
 
 # Proje Vizyonu
 
@@ -113,6 +110,9 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | **API/Yapay Zekâ** | Gemini AI API |
 | **Veritabanı** | SQLite 3 |
 
+<p align="center">
+ <img src="project_management/general/devpics/sprints.png" width="144" height="585"/> 
+</p>
 
 # Sprint 1
 
