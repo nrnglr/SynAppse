@@ -286,12 +286,15 @@ Projenin canlı adresi veya kaynak kodu bağlantısı tamamlandığında burada 
 
 | **Katman**        | **Teknoloji**                               |
 |-------------------|--------------------------------------------|
-| **Frontend**      | HTML5, Tailwind CSS, Vanilla JavaScript, Alpine.js |
-| **Backend**       | Python 3.11+, Django 4.x, Django REST Framework    |
-| **API / Yapay Zekâ** | Gemini AI API                               |
-| **Veritabanı**    | SQLite 3                                    |
+| **Frontend**      |  |
+| **Backend**       |  |
+| **API / Yapay Zekâ** |  |
+| **Veritabanı**    |  |
+
+> **Not:** Proje tamamlandığında kullanılan tüm teknolojiler bu bölümde güncellenerek detaylı şekilde listelenecektir.
 
 </details>
+
 
 
 
