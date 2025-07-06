@@ -4,14 +4,10 @@
 </p>
 
 
-
-
-
 # Takım İsmi 
 
 Brain Team 6
 
----
 
 # Katkıda Bulunanlar
 
@@ -23,7 +19,6 @@ Brain Team 6
 | <img src="project_management/general/devpics/ozge.png" width="80" height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
 | <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
 
----
 
 # Uygulama Açıklaması
 
@@ -44,7 +39,6 @@ Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içer
 Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
----
 
 # Vizyon ve Misyon
 
@@ -59,7 +53,6 @@ Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığı
 
 </details>
 
----
 
 # Hedef Kitle
 
@@ -73,7 +66,6 @@ Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığı
 
 </details>
 
----
 
 # Nasıl Çalışır?
 
@@ -111,7 +103,6 @@ Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığı
 
 </details>
 
----
 
 # İlham Kaynağı
 
@@ -131,7 +122,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 </details>
 
----
+
 
 <p align="center">
  <img src="project_management/general/headers/github_sprints.png" width="644" height="650"/> 
@@ -142,9 +133,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <br>
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
-
-
-
 - Sprint Başlangıç Tarihi: 18.06.2025
 - Sprint Bitiş Tarihi: 06.07.2025
 - Sprint Süresi:
@@ -188,7 +176,6 @@ Bir sonraki sprintte:
 • Minimum Viable Product (MVP) için temel yapay zeka egzersiz setini tamamlamak: Her bir zihinsel problem alanı için en az 2 farklı egzersiz tipini çalışır hale getirmek ve kullanıcı geri bildirim mekanizmasının ilk versiyonunu entegre etmek.
 </details>
 
----
 
 # Sprint 2
 
@@ -199,7 +186,6 @@ Süreçte eklenecek…
 
 </details>
 
----
 
 # Sprint 3
 
@@ -209,12 +195,10 @@ Süreçte eklenecek…
     Süreçte eklenecek…
 </details>
 
----
 
 <p align="center">
  <img src="project_management/general/headers/github_footer.png" width="830" height="285"/> 
 </p>
-
 
 
 # Detaylar
@@ -231,18 +215,16 @@ Süreçte eklenecek…
 
 </details>
 
----
 
 <details>
   <summary><strong>Uygulama Video Linki</strong></summary>
     --Video Linki--
 </details>
 
----
 
 <details>
   <summary><strong>Uygulama URL</strong></summary>
     --url--
 </details>
 
----
+
