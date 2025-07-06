@@ -1,7 +1,8 @@
 
-******Burada Uygulama ile ilgili bir logo ya da onu çağrıştıran bir görsel***
+<p align="center">
+  <img src="sprints.png" alt="Sprints Logo" width="300"/>
+</p>
 
-# Takım İsmi
 
 Brain Team 6
 
