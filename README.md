@@ -26,17 +26,17 @@ SynAppse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak
 
 Her lob (frontal, parietal, temporal, oksipital) belirli bir bilişsel yetiyle ilişkilendirilir:
 
-Frontal lob için eleştirel düşünme ve karar verme,
+- Frontal lob için eleştirel düşünme ve karar verme,
 
-Parietal lob için dikkat ve problem çözme,
+- Parietal lob için dikkat ve problem çözme,
 
-Temporal lob için hafıza ve dil,
+- Temporal lob için hafıza ve dil,
 
-Oksipital lob için görsel analiz görevleri sunulur.
+- Oksipital lob için görsel analiz görevleri sunulur.
 
 Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içerikler sabit promptlara değil, sürekli öğrenen bir sisteme dayanır. Böylece kullanıcı, kendi bilişsel kapasitesini keşfederken aynı zamanda onu bilinçli biçimde geliştirme fırsatı bulur.
 
-Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
+SynAppse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
 
@@ -48,7 +48,6 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 **Vizyon:**  
 Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin gelişim platformu olmak.
 
----
 
 **Misyon:**  
 Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve yüksek etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
@@ -67,7 +66,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 - **Neden SynAppse?**  
   Yapay zekâ destekli günlük egzersizlerle kişiye özel zihinsel gelişim sağlar. Eğitim yoğunluğuna rağmen sürdürülebilir kullanım sunar.
 
----
 
 ###  Eğitimciler  
 - **Amacı:** Öğrencilerin bilişsel kapasitesini artırmak ve sınıf içinde aktif düşünme alışkanlığı kazandırmak.  
@@ -75,7 +73,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 - **Neden SynAppse?**  
   Pedagojik uyumlu içeriklerle eğitsel entegrasyona uygundur. Öğrenci ilerlemesini izlemeye olanak tanıyacak geri bildirim sistemleri planlanmaktadır.
 
----
 
 ###  Psikologlar ve Psikiyatristler  
 - **Amacı:** Mental rehabilitasyonu desteklemek, bilişsel performansı gözlemlemek.  
@@ -83,7 +80,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 - **Neden SynAppse?**  
   Klinik uygulamaya uygun, veri takibi yapılabilen ve literatürle uyumlu bir zihinsel gelişim aracıdır.
 
----
 
 ###  Oyunlaştırılmış Öğrenme Ortamı Arayanlar  
 - **Amacı:** Eğlenerek öğrenmek ve zihinsel becerilerini motive edici biçimde geliştirmek.  
@@ -91,7 +87,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 - **Neden SynAppse?**  
   Puanlama, geri bildirim ve gelişim paneliyle zenginleştirilmiş görev tabanlı oyunlaştırma sistemi içerir.
 
----
 
 ###  Bireysel Kullanıcılar (Zihinsel Egzersiz Yapmak İsteyenler)  
 - **Amacı:** Zihinsel canlılığı korumak, bilişsel yaşlanmayı yavaşlatmak, günlük formda kalmak.  
