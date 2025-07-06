@@ -175,7 +175,7 @@ Süreçte eklenecek…
 
 
 <p align="center">
- <img src="project_management/general/headers/github_footer.png" width="544" height="585"/> 
+ <img src="project_management/general/headers/github_footer.png" width="544" height="620"/> 
 </p>
 
 
