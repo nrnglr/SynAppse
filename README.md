@@ -26,9 +26,6 @@ Brain Team 6
 
 
 
-
-
-
 # Uygulama Açıklaması
 
 SynAppse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir web uygulamasıdır. Uygulama, her bir beyin lobuna özel olarak tasarlanmış bilişsel görevlerle kullanıcıya odaklı bir deneyim sunar.
@@ -48,133 +45,13 @@ Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içer
 Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
-
-
-# 🧠 Synapse – Zihinsel Egzersiz Uygulaması
-
-<p align="center">
-  <img src="project_management/general/headers/sprints.png" alt="Sprints Logo" width="300"/>
+<details>
+    <summary><div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Vizyon ve Misyon</h2><a id="user-content-product-features" class="anchor" aria-label="Permalink: Product Features" href="#product-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div></summary>
+  <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Item Rental:</h3><a id="user-content-item-rental" class="anchor" aria-label="Permalink: Item Rental:" href="#item-rental"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+    <p dir="auto">Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak. <br>
+Misyon: Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
 </p>
-
----
-
-<details>
-<summary><strong>🧭 Vizyon</strong></summary>
-
-<br>
-
-Bireylerin zihinsel kapasitelerini artırmalarına, odaklanma becerilerini geliştirmelerine ve nöro-bilişsel farkındalık kazanmalarına yardımcı olacak bilim temelli bir platform sunmak.
-
 </details>
-
-<details>
-<summary><strong>🎯 Misyon</strong></summary>
-
-<br>
-
-Yapay zekâ ve nörobilim verilerini birleştirerek kullanıcıların beyin loblarına özel egzersizler yapabildiği, kişiselleştirilmiş ve oyunlaştırılmış bir öğrenme ortamı sunmak.
-
-</details>
-
-<details>
-<summary><strong>🌟 İlham Kaynağı</strong></summary>
-
-<br>
-
-Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."* başlıklı çalışmadan ilham almıştır.  
-Bu araştırma, yapay zekânın insan düşünme süreçleri üzerindeki etkilerini keşfederek, bizim projemize hem teorik hem pratik yönüyle zemin oluşturmuştur.
-
-</details>
-
-<details>
-<summary><strong>👥 Hedef Kitle</strong></summary>
-
-<br>
-
-- 🎓 Öğrenciler  
-- 🧑‍🏫 Eğitimciler, psikologlar ve psikiyatristler  
-- 🎮 Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar  
-- 🧘‍♀️ Beyin egzersizi yapmak isteyen bireyler
-
-</details>
-
-<details>
-<summary><strong>⚙️ Nasıl Çalışır?</strong></summary>
-
-<br>
-
-- 🧠 **Etkileşimli Arayüz:** Beyin loblarına ayrılmış interaktif bir harita  
-- 🎯 **Lob Seçimi:** Frontal, Parietal, Temporal ve Oksipital loblara özel görevler  
-- ⏱️ **Zaman Takibi ve Odak Ölçümü**  
-- 📚 **Nöro-Bilgilendirme**  
-- 📈 **Geribildirim ve Değerlendirme**  
-- 🧾 **Gelişim Takibi Paneli**  
-- 🤖 **AI Tavsiyeleri**
-
-</details>
-
-<details>
-<summary><strong>🧠 Teknik Yapı</strong></summary>
-
-<br>
-
-- 💻 **Backend:** Django  
-- 🧩 **Frontend:** HTML, CSS, JavaScript  
-- 🤖 **AI Entegrasyonu:** Gemini API  
-- 🗄️ **Veri Tabanı:** Firebase veya PostgreSQL  
-- 📊 **Görselleştirme:** Chart.js, D3.js (veya benzeri)  
-- ☁️ **Barındırma:** GitHub Pages / Vercel / Render
-
-</details>
-
-
-## 📁 Proje Kurulumu
-
-
-git clone [https://github.com/nrnglr/-cognitive-debt.git](https://github.com/nrnglr/SynAppse)
-cd cognitive-debt
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python manage.py runserver
-
-
-<br>
-
-| Katman       | Teknoloji                                     |
-|--------------|-----------------------------------------------|
-| Frontend     | HTML5, Tailwind CSS, Vanilla JS, Alpine.js   |
-| Backend      | Python 3.11+, Django 4.x, Django REST         |
-| API/YZ       | Gemini AI API                                 |
-| Veritabanı   | SQLite 3                                      |
-
-</details>
-
-
-<details>
-<summary><span style="font-size: 22px;"><strong>📆 Sprint Süreçleri</strong></span></summary>
-
-<br>
-
-- **Sprint 1**: Süreçte eklenecek...  
-- **Sprint 2**: Süreçte eklenecek...  
-- **Sprint 3**: Süreçte eklenecek...
-
-</details>
-
-
-<details>
-<summary><span style="font-size: 22px;"><strong>🌐 Uygulama URL</strong></span></summary>
-
-<br>
-
--URL buraya yazılacak-  
-(henüz deploy etmediysen geçici link bırakabilirsin)
-
-</details>
-
-
-
 
 # İlham Kaynağı
 
