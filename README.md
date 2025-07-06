@@ -46,10 +46,10 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
   <summary><strong>Detayları Görüntüle</strong></summary>
 
 **Vizyon:**  
-Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
+Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin gelişim platformu olmak.
 
 **Misyon:**  
-Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve yüksek etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
 
 </details>
 
@@ -59,47 +59,96 @@ Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığı
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-- Öğrenciler  
-- Eğitimciler, psikologlar ve psikiyatristler  
-- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar  
-- Beyin egzersizi yapmak isteyen bireyler  
+- Öğrenciler:
+  Amacı: Dikkat, hafıza, analitik düşünme ve karar verme becerilerini güçlendirmek.
+  İhtiyacı: Odaklanma süresini artıracak ve akademik performansı destekleyecek sistematik beyin egzersizleri.
+  SynAppse Neden Uygun? Günlük kısa egzersizlerle bilişsel kapasiteyi artırırken, yapay zekâ destekli içerikler sayesinde kişiselleştirilmiş zihinsel gelişim deneyimi sunar.
+    
+- Eğitimciler:
+  Amacı: Öğrencilerinin bilişsel gelişimini desteklemek ve sınıf içinde daha aktif, düşünen bireyler yetiştirmek.
+  İhtiyacı: Eleştirel düşünme ve problem çözme becerilerini teşvik edecek dijital araçlar.
+  SynAppse Neden Uygun? Eğitsel entegrasyona uygun, pedagojik temelli zihinsel egzersiz içerikleri sunar. Ayrıca öğretmenlerin öğrenci gelişimini gözlemleyebileceği geri bildirim mekanizmaları planlanmaktadır.
+
+- Psikologlar ve psikiyatristler:
+  Amacı: Bilişsel rehabilitasyon süreçlerine destek olmak veya mental performans takibini güçlendirmek.
+  İhtiyacı: Bilimsel temelli, güvenilir ve düzenli uygulanabilir zihinsel antrenman araçları.
+  SynAppse Neden Uygun? Bilimsel araştırmalara dayanan yapısı ve veri takibi potansiyeliyle klinik kullanıma da uygun bir çerçeve sunar.  
+
+- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar:
+  Amacı: Eğlenerek öğrenmek ve zihinsel becerilerini oyunlaştırılmış şekilde geliştirmek.
+  İhtiyacı: Sıkıcılıktan uzak, motive edici ve interaktif deneyim sunan uygulamalar.
+  SynAppse Neden Uygun? Görev tabanlı egzersiz sistemi, puanlama, geri bildirim ve ilerleme takibi gibi oyunlaştırma unsurları içerir. 
+
+- Beyin egzersizi yapmak isteyen bireyler:
+  Amacı: Zihinsel canlılığını korumak, bilişsel yaşlanmayı yavaşlatmak veya günlük mental formunu artırmak.
+  İhtiyacı: Kolay erişilebilir, düzenli olarak kullanılabilecek, yönlendirmeli beyin antrenmanları.
+  SynAppse Neden Uygun? Mobil ya da masaüstü erişimle günlük rutine entegre edilebilir, hedefe yönelik egzersizlerle pratik bir çözüm sunar.
 
 </details>
 
 
-# Nasıl Çalışır?
+# 🧠 Nasıl Çalışır?
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-1. **Etkileşimli Arayüz:**  
-    Uygulama, loblara ayrılmış bir beyin haritası sunar. Kullanıcı, bu harita üzerinde dilediği lobu seçerek yolculuğuna başlar.
+1. **Etkileşimli Arayüz**  
+   Kullanıcı uygulamaya girdiğinde, zihinsel yetileri temsil eden loblara ayrılmış **interaktif bir beyin haritası** ile karşılaşır. Her lob belirli bir bilişsel alanı temsil eder. Kullanıcı bu harita üzerinden kendi zihinsel yolculuğunu özgürce başlatır.
 
-2. **Lob Seçimi:**  
-    Frontal, Parietal, Temporal veya Oksipital loblardan biri seçilir. Her lob, farklı bilişsel becerileri temsil eder (örneğin frontal: karar verme, temporal: hafıza).
+2. **Lob Seçimi**  
+   Kullanıcı aşağıdaki seçeneklerden bir lob belirleyerek o güne özel egzersizlere başlar:  
+   - **Frontal Lob:** Karar verme ve planlama  
+   - **Parietal Lob:** Dikkat ve uzamsal işlemleme  
+   - **Temporal Lob:** Hafıza ve işitsel algı  
+   - **Oksipital Lob:** Görsel işlemleme  
 
-3. **Yapay Zekâ Destekli Egzersiz:**  
-    Seçilen loba özel olarak oluşturulmuş bilişsel görevler, yapay zekâ tarafından sunulur. Görevler; hafıza, mantık, dikkat, görsel-işitsel işlemleme gibi yetenekleri çalıştırır.
+3. **Yapay Zekâ Destekli Egzersiz**  
+   Seçilen lob doğrultusunda, üretken yapay zekâ tarafından **dinamik olarak üretilmiş görevler** sunulur. Bu görevler aşağıdaki bilişsel alanları hedefler:  
+   - Hafıza  
+   - Mantık  
+   - Dikkat  
+   - Görsel/işitsel işlemleme  
+   - Eleştirel düşünme  
+   Yapay zekâ burada cevap üreten değil, **bilişsel görev tasarlayan** bir araç olarak görev yapar.
 
-4. **Zaman Takibi ve Odak Ölçümü:**  
-    Görev süresince kullanıcının yanıt süresi, dikkat süresi ve tepki hızı izlenir. Bu veriler, bireyin bilişsel performansını daha hassas analiz etmeye yardımcı olur.
+4. **Zaman Takibi ve Odak Ölçümü**  
+   Her görevde aşağıdaki veriler izlenir:  
+   - Tepki süresi  
+   - Dikkat süresi  
+   - Yanıt kalitesi  
+   Bu veriler kullanılarak kullanıcının anlık bilişsel performansı analiz edilir ve gelişimi takip edilir.
 
-5. **Nöro-Bilgilendirme:**  
-    Her görev öncesinde, seçilen lobun işleviyle ilgili kısa bilimsel bilgiler sunulur.  
-    *“Frontal lob planlama ve karar verme süreçlerini yönetir. Bugünkü egzersiziniz bu becerileri hedef alacak.”*
+5. **Nöro-Bilgilendirme**  
+   Görev başlamadan önce, seçilen lobun işlevi hakkında kısa bir bilimsel açıklama sunulur.  
+   > Örneğin: “Frontal lob, planlama ve karar verme süreçlerini yönetir. Bugünkü egzersiziniz bu becerileri hedef alacak.”  
+   Bu yaklaşım, kullanıcıyı yalnızca egzersize değil, **beyniyle olan ilişkisine** de bilinçli şekilde dahil eder.
 
-6. **Geribildirim ve Değerlendirme:**  
-    Görev sonunda yapay zekâ, performansı analiz ederek puanlama ve geri bildirim sunar. Kullanıcı, hangi alanda güçlü olduğunu veya zorlandığını doğrudan görebilir.
+6. **Geribildirim ve Değerlendirme**  
+   Görev sonunda yapay zekâ şu analizleri sağlar:  
+   - Performans puanı  
+   - Güçlü ve gelişime açık alanlar  
+   - Kişiselleştirilmiş egzersiz önerileri  
+   Kullanıcı, hangi alanda ne kadar geliştiğini doğrudan görebilir.
 
-7. **Gelişim Takibi Paneli:**  
-    Kullanıcıya özel gösterge paneli ile lob bazlı gelişim grafiklerle sunulur. Zaman içinde hangi becerilerde nasıl bir ilerleme kaydedildiği takip edilebilir.
+7. **Gelişim Takibi Paneli**  
+   Kullanıcıya özel panelde, **lob bazlı bilişsel performans** zaman içinde grafiklerle görselleştirilir.  
+   > Örneğin: “Parietal lob performansında %18 artış gözlemlendi.”  
+   Böylece kullanıcı kendi bilişsel haritasını adım adım inşa eder.
 
-8. **Günlük Görev / Lob Döngüsü:**  
-    Her gün farklı bir beyin lobuna odaklanacak şekilde görev önerisi yapılır. Bu sistematik yapı, nöroplastisiteyi destekleyen dengeli bir egzersiz planı sunar.
+8. **Günlük Görev & Lob Döngüsü**  
+   Uygulama her gün farklı bir lobu hedef alacak şekilde görev önerir:  
+   - Pazartesi → Frontal  
+   - Salı → Temporal  
+   - Çarşamba → Oksipital  
+   Bu sistem, **nöroplastisiteyi destekleyen dengeli bir zihinsel antrenman** yapısı oluşturur.
 
-9. **Yapay Zekâ Destekli Tavsiyeler:**  
-    AI, geçmiş görev performanslarına göre kullanıcılara kişiselleştirilmiş egzersiz önerilerinde bulunur.  
-    Örnek: *“Bu hafta parietal lob performansınızda düşüş gözlemlendi, odaklanmanızı öneriyoruz.”*
+9. **Yapay Zekâ Destekli Tavsiyeler**  
+   AI, geçmiş görev verilerini analiz ederek kullanıcıya özel öneriler sunar:  
+   > “Bu hafta Parietal lob performansınızda düşüş gözlemlendi. Dikkat egzersizlerine ağırlık vermenizi öneriyoruz.”
+
+---
+
+Bu yapı sayesinde **Synappse**, yalnızca bir beyin egzersizi aracı değil; **kişisel, bilimsel ve sürdürülebilir bir zihinsel gelişim platformudur.**
 
 </details>
 
@@ -124,7 +173,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 
 <p align="center">
- <img src="project_management/general/headers/github_sprints.png" width="644" height="650"/> 
+ <img src="project_management/general/headers/github_sprints.png" width="830" height="285"/> 
 </p>
 
 
@@ -189,7 +238,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-Süreçte eklenecek…
+Geliştirme ilerledikçe güncellenecektir.
 
 </details>
 
@@ -198,8 +247,9 @@ Süreçte eklenecek…
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
+ 
+Geliştirme ilerledikçe güncellenecektir.
 
-    Süreçte eklenecek…
 </details>
 
 
@@ -211,7 +261,7 @@ Süreçte eklenecek…
 # Detaylar
 
 <details>
-  <summary><strong>Detayları Görüntüle</strong></summary>
+  <summary><strong>Kullanılan Teknolojiler</strong></summary>
 
 | **Katman** | **Teknoloji** |
 | --- | --- |
@@ -219,19 +269,19 @@ Süreçte eklenecek…
 | **Backend** | Python 3.11+, Django 4.x, Django REST Framework |
 | **API/Yapay Zekâ** | Gemini AI API |
 | **Veritabanı** | SQLite 3 |
-
+...
 </details>
 
 
 <details>
   <summary><strong>Uygulama Video Linki</strong></summary>
-    --Video Linki--
+ Video ve demo bağlantıları proje tamamlandığında burada paylaşılacaktır.
 </details>
 
 
 <details>
   <summary><strong>Uygulama URL</strong></summary>
-    --url--
+ URL bağlantısı proje tamamlandığında burada paylaşılacaktır.
 </details>
 
 
