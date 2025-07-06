@@ -49,13 +49,6 @@ Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselle�
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
 
-# 🧠 Synapse – Zihinsel Egzersiz Uygulaması
-
-<p align="center">
-  <img src="sprints.png" alt="Sprints Logo" width="300"/>
-</p>
-
----
 
 # 🧠 Synapse – Zihinsel Egzersiz Uygulaması
 
