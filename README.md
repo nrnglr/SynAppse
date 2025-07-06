@@ -197,18 +197,23 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-- Sprint Başlangıç Tarihi: 18.06.2025  
+- Sprint Başlangıç Tarihi: 24.06.2025  
 - Sprint Bitiş Tarihi: 06.07.2025  
 - Sprint Süresi:  
 - Takım: AI Grup 6  
 
 <p align="center">
-  <img src="project_management/sprint1_documents/Sprint_Review.jpg" width="644" height="650"/>  
-  <br><strong>Sprint Board</strong>
+  <img src="project_management/sprint1_documents/Sprint_Board1.jpg" width="644" height="650"/>  
+  <br><strong>Sprint Board 1 </strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint1_documents/Sprint_Board2.jpg" width="644" height="650"/>  
+  <br><strong>Sprint Board (Devamı) </strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint1_documents/Burndown_Chart.jpg" width="644" height="650"/>  
   <br><strong>Burndown Chart</strong>
 </p>
 
@@ -224,23 +229,40 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 ---
 
-### Sprint 1 Retrospektifi
+### Sprint 1 Notları
 
-**Neler iyi gitti?**
+
+- UI tasarımlarında Figma kullanılmasına karar verildi.
+- Proje yönetim aracı olarak Miro kullanılmasına karar verildi.
+- Günlük scrum toplantıları, takımın müsaitlik durumuna göre WhatsApp ve Google Meets üzerinden gerçekleştirildi.
+- Giriş sistemi için E-posta kullanılmasına karar verildi.
+
+**Sprint İçindeki Beklenen Puan Tamamlanması:**
+
+- **Hedeflenen Puan:** *135 Puan*
+
+### Puan Tamamlama Mantığı:
+
+- Toplamda **1000 puanlık** genel hedef belirlendi.
+- **1. Sprint**: Fikir üretimi, planlama ve tasarım odaklı olduğu için **135 puan** hedeflendi ve tamamlandı.  
+- **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.  
+- **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
+
+### Neler iyi gitti?
 
 • Takım içi iletişim güçlüydü: Fikir alışverişleri hızlı ve verimliydi, herkes birbirine destek oldu.  
 • Roller netti, görev dağılımı oturdu: Herkes kendi sorumluluk alanını biliyordu ve bu, işlerin düzenli ilerlemesini sağladı.  
 • Teknik araştırma süreci çok verimli geçti: Django, yapay zeka entegrasyonu ve frontend teknolojileri hakkında önemli bilgiler edindik, bu da sonraki adımlar için sağlam bir temel oluşturdu.
 
-**Neler geliştirilmeli?**
+### Neler geliştirilmeli?
 
 • **Yapay Zeka Egzersizlerinin Kalitesi ve Çeşitliliği:** Belirlenen 4 zihinsel problem ile uyum daha iyi analiz edilmeli.  
-• **Kullanıcı Geri Bildirim Mekanizması:** Geri bildirim toplayacak sistem entegre edilmeli.  
-• **Frontend Kullanıcı Deneyimi (UX):** Mobil uyumluluk ve sezgisel arayüz gözden geçirilmeli.  
-• **Hata Ayıklama ve Test Süreçleri:** AI ile backend etkileşimindeki hatalara karşı sistematik bir test süreci oluşturulmalı.  
-• **Teknik Borç Yönetimi:** Kod tekrarı ve yorumlama eksiklikleri düzenli ele alınmalı.
+• **Kullanıcı Geri Bildirim Mekanizması:** Geri bildirim toplayacak mekanizmalar entegre edilmeli.  
+• **Frontend Kullanıcı Deneyimi (UX):** Web uyumluluk ve sezgisel arayüz gözden geçirilmeli.  
+• **Hata Ayıklama ve Test Süreçleri:** Yapay zekâ ile backend etkileşimleri için sistematik test yapısı kurulmalı.  
+• **Teknik Borç Yönetimi:** Kod tekrarları azaltılmalı, kod açıklamaları ve yorumlar düzenli hâle getirilmeli.
 
-**Bir sonraki sprintte:**
+### Bir sonraki sprintte:
 
 • Zaman yönetimi iyileştirilecek, tahminler daha gerçekçi yapılacak.  
 • MVP için her zihinsel problem alanına ait 2 egzersiz tamamlanacak.  
