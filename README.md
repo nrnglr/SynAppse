@@ -1,7 +1,4 @@
 
-<p align="center">
-  <img src="sprints.png" alt="Sprints Logo" width="300"/>
-</p>
 
 
 Brain Team 6
@@ -26,7 +23,10 @@ Synapse
 
 # Uygulama Logosu
 
--Logo-
+<p align="center">
+ <img src="project_management/general/devpics/sprints.png" width="80" height="80"/> 
+</p>
+
 
 # Uygulama Açıklaması
 
