@@ -116,7 +116,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | **Veritabanı** | SQLite 3 |
 
 <p align="center">
- <img src="project_management/general/headers/sprints.png" width="144" height="585"/> 
+ <img src="project_management/general/headers/sprints.png" width="544" height="585"/> 
 </p>
 
 # Sprint 1
@@ -132,7 +132,7 @@ Süreçte eklenecek…
 Süreçte eklenecek…
 
 <p align="center">
- <img src="project_management/general/headers/github_footer.png" width="144" height="585"/> 
+ <img src="project_management/general/headers/github_footer.png" width="544" height="585"/> 
 </p>
 
 # Uygulama URL
