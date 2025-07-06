@@ -11,7 +11,7 @@
 
 Brain Team 6
 
-
+---
 
 # Katkıda Bulunanlar
 
@@ -23,7 +23,7 @@ Brain Team 6
 | <img src="project_management/general/devpics/ozge.png" width="80" height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
 | <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
 
-
+---
 
 # Uygulama Açıklaması
 
@@ -44,6 +44,7 @@ Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içer
 Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
+---
 
 # Vizyon ve Misyon
 
@@ -57,6 +58,8 @@ Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığı
 Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
 
 </details>
+
+---
 
 # Hedef Kitle
 
@@ -131,37 +134,40 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ---
 
 <p align="center">
- <img src="project_management/general/headers/sprints.png" width="644" height="650"/> 
+ <img src="project_management/general/headers/github_sprints.png" width="644" height="650"/> 
 </p>
 
-# Sprint 1
 
+# Sprint 1
+<br>
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
 
 
-
-Sprint Notları
-
-Sprint Başlangıç Tarihi: 18.06.2025
-Sprint Bitiş Tarihi: 06.07.2025
-Sprint Süresi:
-Takım: AI Grup 6
+- Sprint Başlangıç Tarihi: 18.06.2025
+- Sprint Bitiş Tarihi: 06.07.2025
+- Sprint Süresi:
+- Takım: AI Grup 6
 
 
----MİRODAKİ GÖRSEL---
+<p align="center">
+ <img src="project_management/sprint1_documents/Sprint_Review.jpg" width="644" height="650"/> 
+</p>
 
 <p align="center">
  <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="644" height="650"/> 
 </p>
 
---LOG IN, HOMEPAGE GÖRSELLERİ—
+<p align="center">
+ <img src="project_management/sprint1_documents/Home_Page.jpg" width="644" height="650"/> 
+</p>
+
+<p align="center">
+ <img src="project_management/sprint1_documents/Login_Page.jpg" width="644" height="650"/> 
+</p>
 
  
-
- 
-
 Sprint 1 Retrospektifi
 
 Neler iyi gitti?
@@ -180,10 +186,6 @@ Bir sonraki sprintte:
 
 • Zaman yönetimine daha dikkat: Özellikle yapay zeka prompt mühendisliği ve frontend arayüz geliştirmeleri için tahmini süreleri daha gerçekçi belirleyip, günlük ilerlemeyi daha sık takip ederek olası sapmaları erken fark etmek.
 • Minimum Viable Product (MVP) için temel yapay zeka egzersiz setini tamamlamak: Her bir zihinsel problem alanı için en az 2 farklı egzersiz tipini çalışır hale getirmek ve kullanıcı geri bildirim mekanizmasının ilk versiyonunu entegre etmek.
-
-
-
-
 </details>
 
 ---
@@ -204,17 +206,18 @@ Süreçte eklenecek…
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-Süreçte eklenecek…
-
+    Süreçte eklenecek…
 </details>
 
 ---
 
 <p align="center">
- <img src="project_management/general/headers/github_footer.png" width="544" height="650"/> 
+ <img src="project_management/general/headers/github_footer.png" width="830" height="285"/> 
 </p>
 
-# Teknik Yapı
+
+
+# Detaylar
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
@@ -232,16 +235,14 @@ Süreçte eklenecek…
 
 <details>
   <summary><strong>Uygulama Video Linki</strong></summary>
-
---Video Linki--
-
+    --Video Linki--
 </details>
 
 ---
 
 <details>
   <summary><strong>Uygulama URL</strong></summary>
-
---url--
-
+    --url--
 </details>
+
+---
