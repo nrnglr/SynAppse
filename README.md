@@ -50,7 +50,7 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 
 
 <details>
-  <summary><span style="font-size: 20px;"><strong> Vizyon Ve Misyon</strong></span></summary>
+  <summary><span style="font-size: 50px;"><strong> Vizyon Ve Misyon</strong></span></summary>
 
 Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
 
