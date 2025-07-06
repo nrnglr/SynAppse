@@ -138,9 +138,50 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
+
+
+
+
+Sprint Notları
+
+Sprint Başlangıç Tarihi: 18.06.2025
+Sprint Bitiş Tarihi: 06.07.2025
+Sprint Süresi:
+Takım: AI Grup 6
+
+
+---MİRODAKİ GÖRSEL---
+
 <p align="center">
  <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="644" height="650"/> 
 </p>
+
+--LOG IN, HOMEPAGE GÖRSELLERİ—
+
+ 
+
+ 
+
+Sprint 1 Retrospektifi
+
+Neler iyi gitti?
+
+• Takım içi iletişim güçlüydü: Fikir alışverişleri hızlı ve verimliydi, herkes birbirine destek oldu.
+• Roller netti, görev dağılımı oturdu: Herkes kendi sorumluluk alanını biliyordu ve bu, işlerin düzenli ilerlemesini sağladı.
+• Teknik araştırma süreci çok verimli geçti: Django, yapay zeka entegrasyonu ve frontend teknolojileri hakkında önemli bilgiler edindik, bu da sonraki adımlar için sağlam bir temel oluşturdu.
+Neler geliştirilmeli?
+
+• Yapay Zeka Egzersizlerinin Kalitesi ve Çeşitliliği: Oluşturulan "günün egzersizi" içeriklerinin, belirlenen 4 zihinsel problem (eleştirel düşünme, hafıza, yaratıcılık, bağımsız karar verme) ile ne kadar uyumlu olduğunu daha iyi değerlendirmeliyiz. Belki bazı egzersizler beklenen etkiyi yaratmadı veya yeterince çeşitli değildi. Prompt mühendisliği konusunda daha fazla deneme yapabiliriz.
+• Kullanıcı Geri Bildirim Mekanizması: Egzersizler hakkında kullanıcı geri bildirimlerini (örneğin, egzersizin zorluğu, faydası, anlaşılırlığı) toplayacak basit bir sistem henüz entegre edilmedi. Bu, egzersizleri iyileştirmek için kritik.
+• Frontend Kullanıcı Deneyimi (UX): HTML/CSS tarafında, özellikle mobil uyumluluk ve arayüzün akıcılığı konusunda bazı küçük pürüzler olabilir. Kullanıcıların egzersizlere kolayca eriştiğinden ve arayüzün sezgisel olduğundan emin olmalıyız.
+• Hata Ayıklama ve Test Süreçleri: Özellikle yapay zeka entegrasyonu ve Django backend'i arasındaki etkileşimlerde ortaya çıkan hataları daha hızlı tespit etmek ve çözmek için standart bir hata ayıklama ve test stratejisi geliştirmeliyiz.
+• Teknik Borç Yönetimi: Hızlı ilerlerken farkında olmadan biriken küçük teknik borçlar (örneğin, kod tekrarı, yetersiz yorumlama) olabilir. Bunları düzenli olarak gözden geçirip ele almak, gelecekteki geliştirmeleri kolaylaştıracaktır.
+Bir sonraki sprintte:
+
+• Zaman yönetimine daha dikkat: Özellikle yapay zeka prompt mühendisliği ve frontend arayüz geliştirmeleri için tahmini süreleri daha gerçekçi belirleyip, günlük ilerlemeyi daha sık takip ederek olası sapmaları erken fark etmek.
+• Minimum Viable Product (MVP) için temel yapay zeka egzersiz setini tamamlamak: Her bir zihinsel problem alanı için en az 2 farklı egzersiz tipini çalışır hale getirmek ve kullanıcı geri bildirim mekanizmasının ilk versiyonunu entegre etmek.
+
+
 
 
 </details>
