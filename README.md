@@ -49,58 +49,100 @@ Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselle�
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
 
-## 🎯 Vizyon ve Misyon
+# 🧠 Synapse – Zihinsel Egzersiz Uygulaması
+
+<p align="center">
+  <img src="sprints.png" alt="Sprints Logo" width="300"/>
+</p>
+
+---
+
+## 🧭 Vizyon ve Misyon
 
 <details>
-<summary>detayları görmek için tıkla</summary>
-
-şirketimizin vizyonu şudur budur...
-
-</details>
-
+<summary><strong>🎯 Detayları görmek için tıkla</strong></summary>
 
 <br>
 
-**İlham Kaynağı**
+**Vizyonumuz:**  
+Bireylerin zihinsel kapasitelerini artırmalarına, odaklanma becerilerini geliştirmelerine ve nöro-bilişsel farkındalık kazanmalarına yardımcı olacak bilim temelli bir platform sunmak.  
 
-Projemiz, MIT Media Lab tarafından yürütülen "Your Brain on ChatGPT..." başlıklı çalışmadan ilham almıştır...
-
-(Buraya senin tüm metnin gelecek şekilde içerik yapıştırılır.)
+**Misyonumuz:**  
+Yapay zekâ ve nörobilim verilerini birleştirerek kullanıcıların beyin loblarına özel egzersizler yapabildiği, kişiselleştirilmiş ve oyunlaştırılmış bir öğrenme ortamı sunmak.
 
 </details>
 
+---
+
+## 🌟 İlham Kaynağı
+
+Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."* başlıklı çalışmadan ilham almıştır. Bu araştırma, yapay zekânın insan düşünme süreçleri üzerindeki etkilerini keşfederek, bizim projemize hem teorik hem pratik yönüyle zemin oluşturmuştur.
+
+---
+
+## 👥 Hedef Kitle
 
 <details>
-<summary><span style="font-size: 22px;"><strong>👥 Hedef Kitle</strong></span></summary>
+<summary><strong>Kimler için tasarlandı?</strong></summary>
 
 <br>
 
-- Öğrenciler  
-- Eğitimciler, psikologlar ve psikiyatristler  
-- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar  
-- Beyin egzersizi yapmak isteyen bireyler
+- 🎓 Öğrenciler  
+- 🧑‍🏫 Eğitimciler, psikologlar ve psikiyatristler  
+- 🎮 Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar  
+- 🧘‍♀️ Beyin egzersizi yapmak isteyen bireyler
 
 </details>
 
+---
+
+## ⚙️ Nasıl Çalışır?
 
 <details>
-<summary><span style="font-size: 220px;"><strong>⚙️ Nasıl Çalışır?</strong></span></summary>
+<summary><strong>Uygulamanın işleyişine genel bakış</strong></summary>
 
 <br>
 
-**Etkileşimli Arayüz**: Loblara ayrılmış bir beyin haritası...  
-**Lob Seçimi**: Frontal, Parietal, Temporal, Oksipital...  
-**Zaman Takibi ve Odak Ölçümü**...  
-**Nöro-Bilgilendirme**...  
-**Geribildirim ve Değerlendirme**...  
-**Gelişim Takibi Paneli**...  
-**Yapay Zekâ Destekli Tavsiyeler**...
+- 🧠 **Etkileşimli Arayüz:** Beyin loblarına ayrılmış interaktif bir harita.  
+- 🎯 **Lob Seçimi:** Frontal, Parietal, Temporal ve Oksipital loblara özel görevler.  
+- ⏱️ **Zaman Takibi ve Odak Ölçümü:** Görev süresi ve dikkat ölçümü.  
+- 📚 **Nöro-Bilgilendirme:** Bilimsel içeriklerle kullanıcıyı bilgilendirme.  
+- 📈 **Geribildirim ve Değerlendirme:** Yapay zekâ ile analiz ve öneriler.  
+- 🧾 **Gelişim Takibi Paneli:** Kullanıcının ilerlemesini zamanla izleme.  
+- 🤖 **AI Tavsiyeleri:** Gelişimi destekleyici kişiselleştirilmiş öneriler.
 
 </details>
 
+---
+
+## 🧠 Teknik Yapı
 
 <details>
-<summary><span style="font-size: 22px;"><strong>🧠 Teknik Yapı</strong></span></summary>
+<summary><strong>Projenin teknolojik altyapısı</strong></summary>
+
+<br>
+
+- 💻 **Backend:** Django  
+- 🧩 **Frontend:** HTML, CSS, JavaScript  
+- 🤖 **AI Entegrasyonu:** Gemini API  
+- 🗄️ **Veri Tabanı:** Firebase veya PostgreSQL  
+- 📊 **Görselleştirme:** Chart.js, D3.js (veya benzeri)  
+- ☁️ **Barındırma:** GitHub Pages / Vercel / Render
+
+</details>
+
+---
+
+## 📁 Proje Kurulumu
+
+```bash
+git clone https://github.com/nrnglr/-cognitive-debt.git
+cd cognitive-debt
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python manage.py runserver
+
 
 <br>
 
