@@ -49,13 +49,85 @@ Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselle�
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
 
-<details>
-  <summary><span style="font-size: 50px;"><strong> Vizyon Ve Misyon</strong></span></summary>
+<details open>
+<summary><span style="font-size: 22px;"><strong>🎯 Vizyon ve Misyon</strong></span></summary>
 
-Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+<br>
+
+**İlham Kaynağı**
+
+Projemiz, MIT Media Lab tarafından yürütülen "Your Brain on ChatGPT..." başlıklı çalışmadan ilham almıştır...
+
+(Buraya senin tüm metnin gelecek şekilde içerik yapıştırılır.)
 
 </details>
 
+
+<details>
+<summary><span style="font-size: 22px;"><strong>👥 Hedef Kitle</strong></span></summary>
+
+<br>
+
+- Öğrenciler  
+- Eğitimciler, psikologlar ve psikiyatristler  
+- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar  
+- Beyin egzersizi yapmak isteyen bireyler
+
+</details>
+
+
+<details>
+<summary><span style="font-size: 22px;"><strong>⚙️ Nasıl Çalışır?</strong></span></summary>
+
+<br>
+
+**Etkileşimli Arayüz**: Loblara ayrılmış bir beyin haritası...  
+**Lob Seçimi**: Frontal, Parietal, Temporal, Oksipital...  
+**Zaman Takibi ve Odak Ölçümü**...  
+**Nöro-Bilgilendirme**...  
+**Geribildirim ve Değerlendirme**...  
+**Gelişim Takibi Paneli**...  
+**Yapay Zekâ Destekli Tavsiyeler**...
+
+</details>
+
+
+<details>
+<summary><span style="font-size: 22px;"><strong>🧠 Teknik Yapı</strong></span></summary>
+
+<br>
+
+| Katman       | Teknoloji                                     |
+|--------------|-----------------------------------------------|
+| Frontend     | HTML5, Tailwind CSS, Vanilla JS, Alpine.js   |
+| Backend      | Python 3.11+, Django 4.x, Django REST         |
+| API/YZ       | Gemini AI API                                 |
+| Veritabanı   | SQLite 3                                      |
+
+</details>
+
+
+<details>
+<summary><span style="font-size: 22px;"><strong>📆 Sprint Süreçleri</strong></span></summary>
+
+<br>
+
+- **Sprint 1**: Süreçte eklenecek...  
+- **Sprint 2**: Süreçte eklenecek...  
+- **Sprint 3**: Süreçte eklenecek...
+
+</details>
+
+
+<details>
+<summary><span style="font-size: 22px;"><strong>🌐 Uygulama URL</strong></span></summary>
+
+<br>
+
+-URL buraya yazılacak-  
+(henüz deploy etmediysen geçici link bırakabilirsin)
+
+</details>
 
 
 
