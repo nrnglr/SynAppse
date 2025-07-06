@@ -11,6 +11,8 @@
 
 Brain Team 6
 
+
+
 # Katkıda Bulunanlar
 
 | Resim | Ad Soyad | Görev | GitHub | Linkedin |
@@ -22,7 +24,6 @@ Brain Team 6
 | <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
 
 
-# Uygulama Logosu
 
 
 
@@ -48,9 +49,15 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 Misyon: Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
 
 
+
+
 # İlham Kaynağı
 
 Projemiz, MIT Media Lab tarafından yürütülen **"Your Brain on ChatGPT: Accumulation of Cognitive Debt..."** başlıklı akademik çalışmanın bulgularını temel almaktadır. Bu çalışma, YZ asistanlarının kullanımının kısa vadede bilişsel yükü azaltsa da, uzun vadede ciddi bilişsel maliyetler yarattığını ortaya koymuştur. Biz bu temel sorunu **"Bilişsel Borçlanma"** olarak adlandırıyoruz.
+
+
+
+
 
 ### Bilişsel borçlanmanın temel belirtileri ve hedeflediğimiz problemler şunlardır:
 
@@ -61,12 +68,21 @@ Projemiz, MIT Media Lab tarafından yürütülen **"Your Brain on ChatGPT: Accum
 
 Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://arxiv.org/pdf/2506.08872v1)
 
+
+
+
+
 # Hedef Kitle
 
 - Öğrenciler
 - Eğitimciler, psikologlar ve psikiyatristler
 - Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar
 - Beyin egzersizi yapmak isteyen bireyler
+
+
+
+
+
 
 # Nasıl Çalışır?
 
@@ -111,6 +127,9 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
     Örnek: *“Bu hafta parietal lob performansınızda düşüş gözlemlendi, odaklanmanızı öneriyoruz.”*
     
 
+
+
+
 # Teknik Yapı
 
 | **Katman** | **Teknoloji** |
@@ -120,17 +139,29 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | **API/Yapay Zekâ** | Gemini AI API |
 | **Veritabanı** | SQLite 3 |
 
+
+
 <p align="center">
  <img src="project_management/general/headers/sprints.png" width="644" height="585"/> 
 </p>
+
+
+
+
+
 
 # Sprint 1
 
 Süreçte eklenecek…
 
+
+
 # Sprint 2
 
 Süreçte eklenecek…
+
+
+
 
 # Sprint 3
 
