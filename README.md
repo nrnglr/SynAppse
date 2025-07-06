@@ -48,7 +48,13 @@ Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içer
 Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
-Misyon: Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+
+<details>
+  <summary>Misyon</summary>
+
+Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+
+</details>
 
 
 
