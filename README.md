@@ -77,7 +77,7 @@ Projemiz, MIT Media Lab tarafından yürütülen "Your Brain on ChatGPT..." baş
 
 
 <details>
-<summary><span style="font-size: 22px;"><strong>⚙️ Nasıl Çalışır?</strong></span></summary>
+<summary><span style="font-size: 220px;"><strong>⚙️ Nasıl Çalışır?</strong></span></summary>
 
 <br>
 
