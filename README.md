@@ -16,13 +16,6 @@ Brain Team 6
 | <img src="project_management/general/devpics/ozge.png" width="80" height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
 | <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
 
-# Uygulama İsmi
-
-SynAppse
-
-# Uygulama URL
-
--URL-
 
 # Uygulama Logosu
 
@@ -30,15 +23,25 @@ SynAppse
 
 # Uygulama Açıklaması
 
-Synapse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir uygulamadır. Her beyin lobuna özel bilişsel görevler atanır. Uygulama, bu lobları çalıştırmak ve geliştirmek amacıyla yapay zekâ tarafından oluşturulmuş sorular ve görevlerle desteklenir. Fikir, MIT Media Lab tarafından gerçekleştirilen "Your Brain on ChatGPT" adlı bilimsel çalışmadan ilham almıştır.
+SynAppse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir web uygulamasıdır. Uygulama, her bir beyin lobuna özel olarak tasarlanmış bilişsel görevlerle kullanıcıya odaklı bir deneyim sunar.
 
-# Proje Vizyonu
+Her lob (frontal, parietal, temporal, oksipital) belirli bir bilişsel yetiyle ilişkilendirilir:
 
-Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
+Frontal lob için eleştirel düşünme ve karar verme,
 
-# Proje Misyonu
+Parietal lob için dikkat ve problem çözme,
 
-Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+Temporal lob için hafıza ve dil,
+
+Oksipital lob için görsel analiz görevleri sunulur.
+
+Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içerikler sabit promptlara değil, sürekli öğrenen bir sisteme dayanır. Böylece kullanıcı, kendi bilişsel kapasitesini keşfederken aynı zamanda onu bilinçli biçimde geliştirme fırsatı bulur.
+
+Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
+Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
+
+Misyon: Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+
 
 # İlham Kaynağı
 
@@ -131,3 +134,7 @@ Süreçte eklenecek…
 <p align="center">
  <img src="project_management/general/headers/github_footer.png" width="144" height="585"/> 
 </p>
+
+# Uygulama URL
+
+-URL-
