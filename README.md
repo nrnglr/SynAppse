@@ -49,8 +49,15 @@ Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselle�
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
 
+## 🎯 Vizyon ve Misyon
+
 <details>
-<summary><strong>## 🎯 Vizyon ve Misyon</strong></summary>
+<summary>detayları görmek için tıkla</summary>
+
+şirketimizin vizyonu şudur budur...
+
+</details>
+
 
 <br>
 
