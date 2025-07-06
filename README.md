@@ -53,7 +53,7 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 # 🧠 Synapse – Zihinsel Egzersiz Uygulaması
 
 <p align="center">
-  <img src="sprints.png" alt="Sprints Logo" width="300"/>
+  <img src="project_management/general/headers/sprints.png" alt="Sprints Logo" width="300"/>
 </p>
 
 ---
