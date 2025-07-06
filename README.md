@@ -7,6 +7,7 @@
 
 
 
+
 # Takım İsmi 
 
 Brain Team 6
@@ -22,6 +23,7 @@ Brain Team 6
 | <img src="project_management/general/devpics/eyup.png" width="80" height="80"/> | Eyüp KURT | Developer | https://github.com/Eeyupkurtt | https://www.linkedin.com/in/eyupkurt/ |
 | <img src="project_management/general/devpics/ozge.png" width="80" height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
 | <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
+
 
 
 
@@ -51,6 +53,7 @@ Misyon: Üretken yapay zeka araçlarının yaygın kullanımının getirdiği po
 
 
 
+
 # İlham Kaynağı
 
 Projemiz, MIT Media Lab tarafından yürütülen **"Your Brain on ChatGPT: Accumulation of Cognitive Debt..."** başlıklı akademik çalışmanın bulgularını temel almaktadır. Bu çalışma, YZ asistanlarının kullanımının kısa vadede bilişsel yükü azaltsa da, uzun vadede ciddi bilişsel maliyetler yarattığını ortaya koymuştur. Biz bu temel sorunu **"Bilişsel Borçlanma"** olarak adlandırıyoruz.
@@ -72,12 +75,14 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 
 
+
 # Hedef Kitle
 
 - Öğrenciler
 - Eğitimciler, psikologlar ve psikiyatristler
 - Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar
 - Beyin egzersizi yapmak isteyen bireyler
+
 
 
 
@@ -130,6 +135,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 
 
+
 # Teknik Yapı
 
 | **Katman** | **Teknoloji** |
@@ -162,14 +168,17 @@ Süreçte eklenecek…
 
 
 
-
 # Sprint 3
 
 Süreçte eklenecek…
 
+
+
 <p align="center">
  <img src="project_management/general/headers/github_footer.png" width="544" height="585"/> 
 </p>
+
+
 
 # Uygulama URL
 
