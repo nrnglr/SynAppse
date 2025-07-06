@@ -135,7 +135,7 @@ Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."
 
 ## 📁 Proje Kurulumu
 
-```bash
+
 git clone https://github.com/nrnglr/-cognitive-debt.git
 cd cognitive-debt
 python -m venv .venv
