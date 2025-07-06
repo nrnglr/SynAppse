@@ -7,7 +7,6 @@
 
 
 
-
 # Takım İsmi 
 
 Brain Team 6
@@ -45,97 +44,137 @@ Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içer
 Synapse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
 Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
 
+
+# Vizyon ve Misyon
+
 <details>
-    <summary><div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Vizyon ve Misyon</h2><a id="user-content-product-features" class="anchor" aria-label="Permalink: Product Features" href="#product-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div></summary>
-  <div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Item Rental:</h3><a id="user-content-item-rental" class="anchor" aria-label="Permalink: Item Rental:" href="#item-rental"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
-    <p dir="auto">Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak. <br>
-Misyon: Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
-</p>
+  <summary><strong>Detayları Görüntüle</strong></summary>
+
+**Vizyon:**  
+Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
+
+**Misyon:**  
+Üretken yapay zeka araçlarının yaygın kullanımının getirdiği potansiyel bilişsel zayıflıkları ("Bilişsel Borçlanma"), hedeflenmiş, bilimsel temelli ve etkileşimi yüksek günlük zihinsel antrenmanlarla gidermek.
+
 </details>
+
+# Hedef Kitle
+
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
+
+- Öğrenciler  
+- Eğitimciler, psikologlar ve psikiyatristler  
+- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar  
+- Beyin egzersizi yapmak isteyen bireyler  
+
+</details>
+
+---
+
+# Nasıl Çalışır?
+
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
+
+1. **Etkileşimli Arayüz:**  
+    Uygulama, loblara ayrılmış bir beyin haritası sunar. Kullanıcı, bu harita üzerinde dilediği lobu seçerek yolculuğuna başlar.
+
+2. **Lob Seçimi:**  
+    Frontal, Parietal, Temporal veya Oksipital loblardan biri seçilir. Her lob, farklı bilişsel becerileri temsil eder (örneğin frontal: karar verme, temporal: hafıza).
+
+3. **Yapay Zekâ Destekli Egzersiz:**  
+    Seçilen loba özel olarak oluşturulmuş bilişsel görevler, yapay zekâ tarafından sunulur. Görevler; hafıza, mantık, dikkat, görsel-işitsel işlemleme gibi yetenekleri çalıştırır.
+
+4. **Zaman Takibi ve Odak Ölçümü:**  
+    Görev süresince kullanıcının yanıt süresi, dikkat süresi ve tepki hızı izlenir. Bu veriler, bireyin bilişsel performansını daha hassas analiz etmeye yardımcı olur.
+
+5. **Nöro-Bilgilendirme:**  
+    Her görev öncesinde, seçilen lobun işleviyle ilgili kısa bilimsel bilgiler sunulur.  
+    *“Frontal lob planlama ve karar verme süreçlerini yönetir. Bugünkü egzersiziniz bu becerileri hedef alacak.”*
+
+6. **Geribildirim ve Değerlendirme:**  
+    Görev sonunda yapay zekâ, performansı analiz ederek puanlama ve geri bildirim sunar. Kullanıcı, hangi alanda güçlü olduğunu veya zorlandığını doğrudan görebilir.
+
+7. **Gelişim Takibi Paneli:**  
+    Kullanıcıya özel gösterge paneli ile lob bazlı gelişim grafiklerle sunulur. Zaman içinde hangi becerilerde nasıl bir ilerleme kaydedildiği takip edilebilir.
+
+8. **Günlük Görev / Lob Döngüsü:**  
+    Her gün farklı bir beyin lobuna odaklanacak şekilde görev önerisi yapılır. Bu sistematik yapı, nöroplastisiteyi destekleyen dengeli bir egzersiz planı sunar.
+
+9. **Yapay Zekâ Destekli Tavsiyeler:**  
+    AI, geçmiş görev performanslarına göre kullanıcılara kişiselleştirilmiş egzersiz önerilerinde bulunur.  
+    Örnek: *“Bu hafta parietal lob performansınızda düşüş gözlemlendi, odaklanmanızı öneriyoruz.”*
+
+</details>
+
+---
 
 # İlham Kaynağı
 
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
+
 Projemiz, MIT Media Lab tarafından yürütülen **"Your Brain on ChatGPT: Accumulation of Cognitive Debt..."** başlıklı akademik çalışmanın bulgularını temel almaktadır. Bu çalışma, YZ asistanlarının kullanımının kısa vadede bilişsel yükü azaltsa da, uzun vadede ciddi bilişsel maliyetler yarattığını ortaya koymuştur. Biz bu temel sorunu **"Bilişsel Borçlanma"** olarak adlandırıyoruz.
-
-
-
-
 
 ### Bilişsel borçlanmanın temel belirtileri ve hedeflediğimiz problemler şunlardır:
 
-1. **Eleştirel Düşünme ve Problem Çözme Becerilerinde Azalma:** YZ'nin sunduğu hazır, sentezlenmiş ve tekil cevaplar, beynin karmaşık sorunları analiz etme, farklı bakış açılarını değerlendirme, argümanlardaki hataları tespit etme ve özgün çözümler üretme yeteneğini zayıflatır.
-2. **Hafıza Zayıflığı ve Yüzeysel Öğrenme:** Bilgiyi araştırma, anlama ve kendi kelimelerimizle yeniden yapılandırma süreci, bilginin kalıcı hafızaya kaydedilmesini sağlar. YZ bu süreci atlayarak bilgiyi doğrudan sunduğunda, öğrenme ve hatırlama süreçleri yüzeyselleşir. Çalışma, YZ kullananların yazdıkları metinlerden dakikalar sonra bile alıntı yapamadığını göstermiştir.
-3. **Yaratıcılık ve Özgün Düşüncenin Körelmesi:** Çalışmanın EEG verileri, YZ kullanımının beynin yaratıcılıkla ilişkili sinirsel ağlarının daha az aktif olmasına neden olduğunu göstermektedir. YZ'nin genellikle en "olasılıklı" ve tahmin edilebilir çıktıları üretmesi, zamanla kalıpların dışında düşünme (divergent thinking) yeteneğimizi köreltebilir.
+1. **Eleştirel Düşünme ve Problem Çözme Becerilerinde Azalma:** YZ'nin sunduğu hazır, sentezlenmiş ve tekil cevaplar, beynin karmaşık sorunları analiz etme, farklı bakış açılarını değerlendirme, argümanlardaki hataları tespit etme ve özgün çözümler üretme yeteneğini zayıflatır.  
+2. **Hafıza Zayıflığı ve Yüzeysel Öğrenme:** Bilgiyi araştırma, anlama ve kendi kelimelerimizle yeniden yapılandırma süreci, bilginin kalıcı hafızaya kaydedilmesini sağlar. YZ bu süreci atlayarak bilgiyi doğrudan sunduğunda, öğrenme ve hatırlama süreçleri yüzeyselleşir. Çalışma, YZ kullananların yazdıkları metinlerden dakikalar sonra bile alıntı yapamadığını göstermiştir.  
+3. **Yaratıcılık ve Özgün Düşüncenin Körelmesi:** Çalışmanın EEG verileri, YZ kullanımının beynin yaratıcılıkla ilişkili sinirsel ağlarının daha az aktif olmasına neden olduğunu göstermektedir. YZ'nin genellikle en "olasılıklı" ve tahmin edilebilir çıktıları üretmesi, zamanla kalıpların dışında düşünme (divergent thinking) yeteneğimizi köreltebilir.  
 4. **Bağımsız Karar Verme Yeteneğinde Gerileme:** Beynin planlama, organizasyon, izleme ve karar verme gibi yürütücü işlevlerle (executive functions) ilgili bölgeleri, YZ kullanımıyla daha az aktif hale gelir. Bu durum, gelecekte YZ olmadan bir görevi baştan sona planlama ve yönetme konusunda zorluklar yaşanmasına neden olabilir.
 
 Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://arxiv.org/pdf/2506.08872v1)
 
+</details>
 
+---
 
+<p align="center">
+ <img src="project_management/general/headers/sprints.png" width="644" height="650"/> 
+</p>
 
+# Sprint 1
 
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
 
-# Hedef Kitle
+Süreçte eklenecek…
 
-- Öğrenciler
-- Eğitimciler, psikologlar ve psikiyatristler
-- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar
-- Beyin egzersizi yapmak isteyen bireyler
+</details>
 
+---
 
+# Sprint 2
 
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
 
+Süreçte eklenecek…
 
+</details>
 
+---
 
-# Nasıl Çalışır?
+# Sprint 3
 
-1. **Etkileşimli Arayüz:**
-    
-    Uygulama, loblara ayrılmış bir beyin haritası sunar. Kullanıcı, bu harita üzerinde dilediği lobu seçerek yolculuğuna başlar.
-    
-2. **Lob Seçimi:**
-    
-    Frontal, Parietal, Temporal veya Oksipital loblardan biri seçilir. Her lob, farklı bilişsel becerileri temsil eder (örneğin frontal: karar verme, temporal: hafıza).
-    
-3. **Yapay Zekâ Destekli Egzersiz:**
-    
-    Seçilen loba özel olarak oluşturulmuş bilişsel görevler, yapay zekâ tarafından sunulur. Görevler; hafıza, mantık, dikkat, görsel-işitsel işlemleme gibi yetenekleri çalıştırır.
-    
-4. **Zaman Takibi ve Odak Ölçümü:**
-    
-    Görev süresince kullanıcının yanıt süresi, dikkat süresi ve tepki hızı izlenir. Bu veriler, bireyin bilişsel performansını daha hassas analiz etmeye yardımcı olur.
-    
-5. **Nöro-Bilgilendirme:**
-    
-    Her görev öncesinde, seçilen lobun işleviyle ilgili kısa bilimsel bilgiler sunulur. Örneğin:
-    
-    *“Frontal lob planlama ve karar verme süreçlerini yönetir. Bugünkü egzersiziniz bu becerileri hedef alacak.”*
-    
-6. **Geribildirim ve Değerlendirme:**
-    
-    Görev sonunda yapay zekâ, performansı analiz ederek puanlama ve geri bildirim sunar. Kullanıcı, hangi alanda güçlü olduğunu veya zorlandığını doğrudan görebilir.
-    
-7. **Gelişim Takibi Paneli:**
-    
-    Kullanıcıya özel gösterge paneli ile lob bazlı gelişim grafiklerle sunulur. Zaman içinde hangi becerilerde nasıl bir ilerleme kaydedildiği takip edilebilir.
-    
-8. **Günlük Görev / Lob Döngüsü:**
-    
-    Her gün farklı bir beyin lobuna odaklanacak şekilde görev önerisi yapılır. Bu sistematik yapı, nöroplastisiteyi destekleyen dengeli bir egzersiz planı sunar.
-    
-9. **Yapay Zekâ Destekli Tavsiyeler:**
-    
-    AI, geçmiş görev performanslarına göre kullanıcılara kişiselleştirilmiş egzersiz önerilerinde bulunur.
-    
-    Örnek: *“Bu hafta parietal lob performansınızda düşüş gözlemlendi, odaklanmanızı öneriyoruz.”*
-    
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
 
+Süreçte eklenecek…
 
+</details>
 
+---
 
+<p align="center">
+ <img src="project_management/general/headers/github_footer.png" width="544" height="650"/> 
+</p>
 
 # Teknik Yapı
+
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
 
 | **Katman** | **Teknoloji** |
 | --- | --- |
@@ -144,41 +183,22 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | **API/Yapay Zekâ** | Gemini AI API |
 | **Veritabanı** | SQLite 3 |
 
+</details>
 
+---
 
-<p align="center">
- <img src="project_management/general/headers/sprints.png" width="644" height="650"/> 
-</p>
+<details>
+  <summary><strong>Uygulama Video Linki</strong></summary>
 
+--Video Linki--
 
+</details>
 
+---
 
+<details>
+  <summary><strong>Uygulama URL</strong></summary>
 
+--url--
 
-# Sprint 1
-
-Süreçte eklenecek…
-
-
-
-# Sprint 2
-
-Süreçte eklenecek…
-
-
-
-# Sprint 3
-
-Süreçte eklenecek…
-
-
-
-<p align="center">
- <img src="project_management/general/headers/github_footer.png" width="544" height="650"/> 
-</p>
-
-
-
-# Uygulama URL
-
--URL-
+</details>
