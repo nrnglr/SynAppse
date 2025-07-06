@@ -48,46 +48,62 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 **Vizyon:**  
 Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin gelişim platformu olmak.
 
+---
+
 **Misyon:**  
 Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve yüksek etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
 
 </details>
 
 
-# Hedef Kitle
+##  Hedef Kitle
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-- Öğrenciler:
-  Amacı: Dikkat, hafıza, analitik düşünme ve karar verme becerilerini güçlendirmek.
-  İhtiyacı: Odaklanma süresini artıracak ve akademik performansı destekleyecek sistematik beyin egzersizleri.
-  SynAppse Neden Uygun? Günlük kısa egzersizlerle bilişsel kapasiteyi artırırken, yapay zekâ destekli içerikler sayesinde kişiselleştirilmiş zihinsel gelişim deneyimi sunar.
-    
-- Eğitimciler:
-  Amacı: Öğrencilerinin bilişsel gelişimini desteklemek ve sınıf içinde daha aktif, düşünen bireyler yetiştirmek.
-  İhtiyacı: Eleştirel düşünme ve problem çözme becerilerini teşvik edecek dijital araçlar.
-  SynAppse Neden Uygun? Eğitsel entegrasyona uygun, pedagojik temelli zihinsel egzersiz içerikleri sunar. Ayrıca öğretmenlerin öğrenci gelişimini gözlemleyebileceği geri bildirim mekanizmaları planlanmaktadır.
+###  Öğrenciler  
+- **Amacı:** Dikkat, hafıza, analitik düşünme ve karar verme becerilerini güçlendirmek.  
+- **İhtiyacı:** Odaklanmayı artıracak, kısa sürede uygulanabilir ve akademik başarıyı destekleyecek bilişsel egzersizler.  
+- **Neden SynAppse?**  
+  Yapay zekâ destekli günlük egzersizlerle kişiye özel zihinsel gelişim sağlar. Eğitim yoğunluğuna rağmen sürdürülebilir kullanım sunar.
 
-- Psikologlar ve psikiyatristler:
-  Amacı: Bilişsel rehabilitasyon süreçlerine destek olmak veya mental performans takibini güçlendirmek.
-  İhtiyacı: Bilimsel temelli, güvenilir ve düzenli uygulanabilir zihinsel antrenman araçları.
-  SynAppse Neden Uygun? Bilimsel araştırmalara dayanan yapısı ve veri takibi potansiyeliyle klinik kullanıma da uygun bir çerçeve sunar.  
+---
 
-- Oyunlaştırılmış öğrenme ortamı arayan kullanıcılar:
-  Amacı: Eğlenerek öğrenmek ve zihinsel becerilerini oyunlaştırılmış şekilde geliştirmek.
-  İhtiyacı: Sıkıcılıktan uzak, motive edici ve interaktif deneyim sunan uygulamalar.
-  SynAppse Neden Uygun? Görev tabanlı egzersiz sistemi, puanlama, geri bildirim ve ilerleme takibi gibi oyunlaştırma unsurları içerir. 
+###  Eğitimciler  
+- **Amacı:** Öğrencilerin bilişsel kapasitesini artırmak ve sınıf içinde aktif düşünme alışkanlığı kazandırmak.  
+- **İhtiyacı:** Eleştirel düşünme ve problem çözme becerilerini teşvik eden dijital araçlar.  
+- **Neden SynAppse?**  
+  Pedagojik uyumlu içeriklerle eğitsel entegrasyona uygundur. Öğrenci ilerlemesini izlemeye olanak tanıyacak geri bildirim sistemleri planlanmaktadır.
 
-- Beyin egzersizi yapmak isteyen bireyler:
-  Amacı: Zihinsel canlılığını korumak, bilişsel yaşlanmayı yavaşlatmak veya günlük mental formunu artırmak.
-  İhtiyacı: Kolay erişilebilir, düzenli olarak kullanılabilecek, yönlendirmeli beyin antrenmanları.
-  SynAppse Neden Uygun? Mobil ya da masaüstü erişimle günlük rutine entegre edilebilir, hedefe yönelik egzersizlerle pratik bir çözüm sunar.
+---
+
+###  Psikologlar ve Psikiyatristler  
+- **Amacı:** Mental rehabilitasyonu desteklemek, bilişsel performansı gözlemlemek.  
+- **İhtiyacı:** Bilimsel tabanlı, güvenilir, düzenli ve veriye dayalı zihinsel egzersizler.  
+- **Neden SynAppse?**  
+  Klinik uygulamaya uygun, veri takibi yapılabilen ve literatürle uyumlu bir zihinsel gelişim aracıdır.
+
+---
+
+###  Oyunlaştırılmış Öğrenme Ortamı Arayanlar  
+- **Amacı:** Eğlenerek öğrenmek ve zihinsel becerilerini motive edici biçimde geliştirmek.  
+- **İhtiyacı:** Sıkıcılıktan uzak, interaktif ve ilerlemesi takip edilebilen bir deneyim.  
+- **Neden SynAppse?**  
+  Puanlama, geri bildirim ve gelişim paneliyle zenginleştirilmiş görev tabanlı oyunlaştırma sistemi içerir.
+
+---
+
+###  Bireysel Kullanıcılar (Zihinsel Egzersiz Yapmak İsteyenler)  
+- **Amacı:** Zihinsel canlılığı korumak, bilişsel yaşlanmayı yavaşlatmak, günlük formda kalmak.  
+- **İhtiyacı:** Pratik, erişilebilir ve yönlendirici beyin egzersizleri.  
+- **Neden SynAppse?**  
+  Mobil ve web erişimiyle günlük rutine kolayca entegre olur. Kişiselleştirilmiş egzersizlerle sürdürülebilir bilişsel gelişim sunar.
 
 </details>
 
 
-# 🧠 Nasıl Çalışır?
+
+#  Nasıl Çalışır?
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
