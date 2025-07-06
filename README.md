@@ -57,33 +57,44 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
 
 ---
 
-## 🧭 Vizyon ve Misyon
+# 🧠 Synapse – Zihinsel Egzersiz Uygulaması
+
+<p align="center">
+  <img src="sprints.png" alt="Sprints Logo" width="300"/>
+</p>
+
+---
 
 <details>
-<summary><strong>🎯 Detayları görmek için tıkla</strong></summary>
+<summary><strong>🧭 Vizyon</strong></summary>
 
 <br>
 
-**Vizyonumuz:**  
-Bireylerin zihinsel kapasitelerini artırmalarına, odaklanma becerilerini geliştirmelerine ve nöro-bilişsel farkındalık kazanmalarına yardımcı olacak bilim temelli bir platform sunmak.  
+Bireylerin zihinsel kapasitelerini artırmalarına, odaklanma becerilerini geliştirmelerine ve nöro-bilişsel farkındalık kazanmalarına yardımcı olacak bilim temelli bir platform sunmak.
 
-**Misyonumuz:**  
+</details>
+
+<details>
+<summary><strong>🎯 Misyon</strong></summary>
+
+<br>
+
 Yapay zekâ ve nörobilim verilerini birleştirerek kullanıcıların beyin loblarına özel egzersizler yapabildiği, kişiselleştirilmiş ve oyunlaştırılmış bir öğrenme ortamı sunmak.
 
 </details>
 
----
+<details>
+<summary><strong>🌟 İlham Kaynağı</strong></summary>
 
-## 🌟 İlham Kaynağı
+<br>
 
-Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."* başlıklı çalışmadan ilham almıştır. Bu araştırma, yapay zekânın insan düşünme süreçleri üzerindeki etkilerini keşfederek, bizim projemize hem teorik hem pratik yönüyle zemin oluşturmuştur.
+Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."* başlıklı çalışmadan ilham almıştır.  
+Bu araştırma, yapay zekânın insan düşünme süreçleri üzerindeki etkilerini keşfederek, bizim projemize hem teorik hem pratik yönüyle zemin oluşturmuştur.
 
----
-
-## 👥 Hedef Kitle
+</details>
 
 <details>
-<summary><strong>Kimler için tasarlandı?</strong></summary>
+<summary><strong>👥 Hedef Kitle</strong></summary>
 
 <br>
 
@@ -94,31 +105,23 @@ Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."
 
 </details>
 
----
-
-## ⚙️ Nasıl Çalışır?
-
 <details>
-<summary><strong>Uygulamanın işleyişine genel bakış</strong></summary>
+<summary><strong>⚙️ Nasıl Çalışır?</strong></summary>
 
 <br>
 
-- 🧠 **Etkileşimli Arayüz:** Beyin loblarına ayrılmış interaktif bir harita.  
-- 🎯 **Lob Seçimi:** Frontal, Parietal, Temporal ve Oksipital loblara özel görevler.  
-- ⏱️ **Zaman Takibi ve Odak Ölçümü:** Görev süresi ve dikkat ölçümü.  
-- 📚 **Nöro-Bilgilendirme:** Bilimsel içeriklerle kullanıcıyı bilgilendirme.  
-- 📈 **Geribildirim ve Değerlendirme:** Yapay zekâ ile analiz ve öneriler.  
-- 🧾 **Gelişim Takibi Paneli:** Kullanıcının ilerlemesini zamanla izleme.  
-- 🤖 **AI Tavsiyeleri:** Gelişimi destekleyici kişiselleştirilmiş öneriler.
+- 🧠 **Etkileşimli Arayüz:** Beyin loblarına ayrılmış interaktif bir harita  
+- 🎯 **Lob Seçimi:** Frontal, Parietal, Temporal ve Oksipital loblara özel görevler  
+- ⏱️ **Zaman Takibi ve Odak Ölçümü**  
+- 📚 **Nöro-Bilgilendirme**  
+- 📈 **Geribildirim ve Değerlendirme**  
+- 🧾 **Gelişim Takibi Paneli**  
+- 🤖 **AI Tavsiyeleri**
 
 </details>
 
----
-
-## 🧠 Teknik Yapı
-
 <details>
-<summary><strong>Projenin teknolojik altyapısı</strong></summary>
+<summary><strong>🧠 Teknik Yapı</strong></summary>
 
 <br>
 
@@ -131,12 +134,11 @@ Projemiz, **MIT Media Lab** tarafından yürütülen *"Your Brain on ChatGPT..."
 
 </details>
 
----
 
 ## 📁 Proje Kurulumu
 
 
-git clone https://github.com/nrnglr/-cognitive-debt.git
+git clone [https://github.com/nrnglr/-cognitive-debt.git](https://github.com/nrnglr/SynAppse)
 cd cognitive-debt
 python -m venv .venv
 source .venv/bin/activate
