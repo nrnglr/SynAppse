@@ -1,6 +1,6 @@
 
 <p align="center">
- <img src="project_management/general/headers/logo.png" width="544" height="585"/> 
+ <img src="project_management/general/headers/logo.png" width="544" height="500"/> 
 </p>
 
 
