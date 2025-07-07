@@ -197,9 +197,11 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
+### Sprint Review
+
 - Sprint Başlangıç Tarihi: 24.06.2025  
 - Sprint Bitiş Tarihi: 06.07.2025  
-- Sprint Süresi:  
+- Sprint Süresi: 14 Gün 
 - Takım: AI Grup 6  
 
 <p align="center">
@@ -227,9 +229,21 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
   <br><strong>Login Page</strong>
 </p>
 
----
+### Daily Scrum Notları
+<p align="center">
+  <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="644" height="650"/>  
+  <br><strong>Daily Scrum</strong>
+</p>
 
-### Sprint 1 Notları
+<p align="center">
+  <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="650"/>  
+  <br><strong>WhatsApp Chat</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint1_documents/WhatsApp_Chat2.jpg" width="644" height="650"/>  
+  <br><strong>WhatsApp Chat</strong>
+</p>
 
 
 - UI tasarımlarında Figma kullanılmasına karar verildi.
@@ -241,20 +255,24 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 - **Hedeflenen Puan:** *135 Puan*
 
-### Puan Tamamlama Mantığı:
+**Puan Tamamlama Mantığı:**
 
 - Toplamda **1000 puanlık** genel hedef belirlendi.
 - **1. Sprint**: Fikir üretimi, planlama ve tasarım odaklı olduğu için **135 puan** hedeflendi ve tamamlandı.  
 - **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.  
 - **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
 
-### Neler iyi gitti?
+---
+
+### Sprint Retrospektive
+
+**Neler iyi gitti?**
 
 • Takım içi iletişim güçlüydü: Fikir alışverişleri hızlı ve verimliydi, herkes birbirine destek oldu.  
 • Roller netti, görev dağılımı oturdu: Herkes kendi sorumluluk alanını biliyordu ve bu, işlerin düzenli ilerlemesini sağladı.  
 • Teknik araştırma süreci çok verimli geçti: Django, yapay zeka entegrasyonu ve frontend teknolojileri hakkında önemli bilgiler edindik, bu da sonraki adımlar için sağlam bir temel oluşturdu.
 
-### Neler geliştirilmeli?
+**Neler geliştirilmeli?**
 
 • **Yapay Zeka Egzersizlerinin Kalitesi ve Çeşitliliği:** Belirlenen 4 zihinsel problem ile uyum daha iyi analiz edilmeli.  
 • **Kullanıcı Geri Bildirim Mekanizması:** Geri bildirim toplayacak mekanizmalar entegre edilmeli.  
@@ -262,7 +280,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 • **Hata Ayıklama ve Test Süreçleri:** Yapay zekâ ile backend etkileşimleri için sistematik test yapısı kurulmalı.  
 • **Teknik Borç Yönetimi:** Kod tekrarları azaltılmalı, kod açıklamaları ve yorumlar düzenli hâle getirilmeli.
 
-### Bir sonraki sprintte:
+**Bir sonraki sprintte:**
 
 • Zaman yönetimi iyileştirilecek, tahminler daha gerçekçi yapılacak.  
 • MVP için her zihinsel problem alanına ait 2 egzersiz tamamlanacak.  
