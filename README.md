@@ -197,12 +197,29 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-### Sprint Review
-
+### Sprint Bilgileri
 - Sprint Başlangıç Tarihi: 24.06.2025  
 - Sprint Bitiş Tarihi: 06.07.2025  
-- Sprint Süresi: 14 Gün 
+- Sprint Süresi: 13 Gün 
 - Takım: AI Grup 6  
+
+---
+
+### Sprint Review
+
+**Sprint İçindeki Beklenen Puan Tamamlanması:**
+
+- **Hedeflenen Puan:** *135 Puan*
+
+**Puan Tamamlama Mantığı:**
+
+- Toplamda **1000 puanlık** genel hedef belirlendi.
+- **1. Sprint**: Fikir üretimi, planlama ve tasarım odaklı olduğu için **135 puan** hedeflendi ve tamamlandı.  
+- **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.  
+- **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
+
+
+### Sprint 1 Görselleri
 
 <p align="center">
   <img src="project_management/sprint1_documents/Sprint_Board1.jpg" width="644" height="650"/>  
@@ -229,20 +246,39 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
   <br><strong>Login Page</strong>
 </p>
 
+---
+
 ### Daily Scrum Notları
 
-<p align="center">
-  <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="800" height="530"/>  
-  <br><strong>Daily Scrum</strong>
-</p>
+**Sprint 1 Günlük İş Takibi**
+
+| Gün | Tarih       | Yapılan İşler                                                   | Tamamlanan Görev(ler)                                               | Puan |
+|-----|-------------|------------------------------------------------------------------|----------------------------------------------------------------------|------|
+| 1   | 24.06.2025  | Sprint başlatıldı, proje konsepti oluşturuldu                   | Proje konsepti belirleme                                            | 15   |
+| 2   | 25.06.2025  | Ana fikir netleştirildi, problem tanımı yazıldı                 | Proje fikrinin oluşturulması                                        | 15   |
+| 3   | 26.06.2025  | Rol dağılımları yapıldı, görev paylaşımı netleşti               | Takım içi görev ve rol dağılımı                                     | 15   |
+| 4   | 27.06.2025  | Uygulama özelleştirildi, teknik araştırmalara başlandı          | Uygulama fikrinin özelleştirilmesi + Teknik araştırma (kısmen)     | 10   |
+| 5   | 28.06.2025  | Teknik araştırma tamamlandı                                     | Teknik araştırmaların tamamı                                       | 10   |
+| 6   | 29.06.2025  | Logo çizildi, GitHub yapısı oluşturuldu                         | Logo tasarımı + README & GitHub yapısı                             | 10   |
+| 7   | 30.06.2025  | Dokümantasyon taslağı hazırlandı                                | Taslak dokümantasyon                                               | 10   |
+| 8   | 01.07.2025  | Backend API bağlantısı taslaklandı                              | API bağlantısı backend taslakları                                  | 5    |
+| 9   | 02.07.2025  | Login sayfası Figma’da tasarlandı                               | Login sayfası tasarımı                                             | 5    |
+| 10  | 03.07.2025  | Header tasarımı tamamlandı                                      | Web sayfası header tasarımı                                        | 5    |
+| 11  | 04.07.2025  | Burndown chart çizildi, sprint dokümantasyonu yapıldı           | Chart + Sprint 1 dökümanı                                          | 10   |
+| 12  | 05.07.2025  | Landing page tasarımı başlatıldı                                | Landing page tasarımına başlanması                                 | 5    |
+| 13  | 06.07.2025  | Feature listesi çıkarıldı, sprint sonlandırıldı                 | Feature listesi (in progress)                                      | 5    |
+
+**Toplam Puan:** 135
+
+**Daily Scrum
 
 <p align="center">
-  <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="530"/>  
+  <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="650"/>  
   <br><strong>WhatsApp Chat</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint1_documents/WhatsApp_Chat2.jpg" width="644" height="530"/>  
+  <img src="project_management/sprint1_documents/WhatsApp_Chat2.jpg" width="644" height="650"/>  
   <br><strong>WhatsApp Chat</strong>
 </p>
 
@@ -251,17 +287,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 - Proje yönetim aracı olarak Miro kullanılmasına karar verildi.
 - Günlük scrum toplantıları, takımın müsaitlik durumuna göre WhatsApp ve Google Meets üzerinden gerçekleştirildi.
 - Giriş sistemi için E-posta kullanılmasına karar verildi.
-
-**Sprint İçindeki Beklenen Puan Tamamlanması:**
-
-- **Hedeflenen Puan:** *135 Puan*
-
-**Puan Tamamlama Mantığı:**
-
-- Toplamda **1000 puanlık** genel hedef belirlendi.
-- **1. Sprint**: Fikir üretimi, planlama ve tasarım odaklı olduğu için **135 puan** hedeflendi ve tamamlandı.  
-- **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.  
-- **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
 
 ---
 
@@ -335,8 +360,3 @@ Projenin canlı adresi veya kaynak kodu bağlantısı tamamlandığında burada 
 > **Not:** Proje tamamlandığında kullanılan tüm teknolojiler bu bölümde güncellenerek detaylı şekilde listelenecektir.
 
 </details>
-
-
-
-
-
