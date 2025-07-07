@@ -232,12 +232,17 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ### Daily Scrum Notları
 
 <p align="center">
-  <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint1_documents/Daily_Scrum.jpg" width="800" height="530"/>  
+  <br><strong>Daily Scrum</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="530"/>  
   <br><strong>WhatsApp Chat</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint1_documents/WhatsApp_Chat2.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint1_documents/WhatsApp_Chat2.jpg" width="644" height="530"/>  
   <br><strong>WhatsApp Chat</strong>
 </p>
 
