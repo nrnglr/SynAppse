@@ -219,7 +219,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 - **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
 
 
-### Sprint 1 Görselleri
+### Sprint Review Görselleri
 
 <p align="center">
   <img src="project_management/sprint1_documents/Sprint_Board1.jpg" width="644" height="650"/>  
@@ -248,7 +248,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 ---
 
-### Daily Scrum Notları
+### Daily Scrum
 
 **Sprint 1 Günlük İş Takibi**
 
@@ -269,8 +269,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | 13  | 06.07.2025  | Feature listesi çıkarıldı, sprint sonlandırıldı                 | Feature listesi (in progress)                                      | 5    |
 
 **Toplam Puan:** 135
-
-**Daily Scrum**
 
 <p align="center">
   <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="650"/>  
