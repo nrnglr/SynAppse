@@ -270,7 +270,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 **Toplam Puan:** 135
 
-**Daily Scrum
+**Daily Scrum**
 
 <p align="center">
   <img src="project_management/sprint1_documents/WhatsApp_Chat1.jpg" width="644" height="650"/>  
