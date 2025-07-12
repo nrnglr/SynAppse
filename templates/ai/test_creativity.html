@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaratıcılık Egzersizleri</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 2em; }
+        .container { max-width: 900px; margin: auto; }
+        h1, h2 { color: #2c3e50; }
+        .controls, .filters { background-color: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2em; }
+        button { background-color: #3498db; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; }
+        button:hover:not(:disabled) { background-color: #2980b9; }
+        button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+        .btn-filter { background-color: #95a5a6; }
+        .btn-filter.active { background-color: #2c3e50; }
+        #exercise-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1em; }
+        .exercise-card { background-color: #fff; padding: 1em; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-left: 5px solid; }
+        .exercise-card.easy { border-color: #2ecc71; }
+        .exercise-card.medium { border-color: #f1c40f; }
+        .exercise-card.hard { border-color: #e74c3c; }
+        .exercise-card h3 { margin-top: 0; }
+        .loader { text-align: center; padding: 2em; font-size: 1.2em; display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Yaratıcılık Egzersizleri Test Paneli</h1>
+
+        <div class="controls">
+            <h2>Yeni Egzersiz Üret</h2>
+            <p>Zorluk seviyesi seçip yeni bir egzersiz üretin. Egzersiz Supabase'e kaydedilecek ve aşağıdaki listede görünecektir.</p>
+            <select id="difficulty-select" style="padding: 8px; border-radius: 5px;">
+                <option value="easy">Kolay</option>
+                <option value="medium">Orta</option>
+                <option value="hard">Zor</option>
+            </select>
+            <button id="create-exercise-btn">Üret ve Kaydet</button>
+        </div>
+
+        <div class="filters">
+            <h2>Kaydedilmiş Egzersizler</h2>
+            <button class="btn-filter active" data-difficulty="all">Tümü</button>
+            <button class="btn-filter" data-difficulty="easy">Kolay</button>
+            <button class="btn-filter" data-difficulty="medium">Orta</button>
+            <button class="btn-filter" data-difficulty="hard">Zor</button>
+        </div>
+        
+        <div id="loader">Yükleniyor...</div>
+        <div id="exercise-list"></div>
+        <div id="error-message" style="color: red; margin-top: 1em;"></div>
+
+    </div>
+
+    <script>
+        const createBtn = document.getElementById('create-exercise-btn');
+        const difficultySelect = document.getElementById('difficulty-select');
+        const exerciseList = document.getElementById('exercise-list');
+        const loader = document.getElementById('loader');
+        const errorMessage = document.getElementById('error-message');
+        const filterButtons = document.querySelectorAll('.btn-filter');
+
+        // Django'nun CSRF token'ını almak için cookie'den okuma fonksiyonu
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+
+        const showLoader = (show) => {
+            loader.style.display = show ? 'block' : 'none';
+        };
+
+        const displayError = (message) => {
+            errorMessage.textContent = message;
+        }
+
+        const fetchAndDisplayExercises = async (difficulty = null) => {
+            showLoader(true);
+            displayError('');
+            exerciseList.innerHTML = '';
+
+            let url = `/api/creativity/exercises/`;
+            if (difficulty) {
+                url += `?difficulty=${difficulty}`;
+            }
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const exercises = await response.json();
+                
+                if (exercises.length === 0) {
+                    exerciseList.innerHTML = '<p>Gösterilecek egzersiz bulunamadı.</p>';
+                } else {
+                    exercises.forEach(ex => {
+                        const card = document.createElement('div');
+                        card.className = `exercise-card ${ex.difficulty}`;
+                        card.innerHTML = `
+                            <h3>${ex.title}</h3>
+                            <p>${ex.content}</p>
+                            <small>Kategori: ${ex.category}</small><br>
+                            <small>Zorluk: ${ex.difficulty}</small>
+                        `;
+                        exerciseList.appendChild(card);
+                    });
+                }
+            } catch (error) {
+                displayError(`Egzersizler yüklenirken bir hata oluştu: ${error.message}`);
+            } finally {
+                showLoader(false);
+            }
+        };
+
+        createBtn.addEventListener('click', async () => {
+            const selectedDifficulty = difficultySelect.value;
+            showLoader(true);
+            displayError('');
+            createBtn.disabled = true;
+
+            try {
+                const response = await fetch(`/api/creativity/create/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    },
+                    body: JSON.stringify({ difficulty: selectedDifficulty })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error || 'Bilinmeyen bir hata oluştu.');
+                }
+                
+                // Başarılı oluşturmadan sonra listeyi yenile
+                await fetchAndDisplayExercises();
+
+            } catch (error) {
+                displayError(`Egzersiz oluşturulurken bir hata oluştu: ${error.message}`);
+            } finally {
+                showLoader(false);
+                createBtn.disabled = false;
+            }
+        });
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const difficulty = button.dataset.difficulty === 'all' ? null : button.dataset.difficulty;
+                fetchAndDisplayExercises(difficulty);
+            });
+        });
+
+        // Sayfa ilk yüklendiğinde tüm egzersizleri getir
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAndDisplayExercises();
+        });
+    </script>
+</body>
+</html> 
