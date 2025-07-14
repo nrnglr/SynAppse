@@ -27,6 +27,13 @@
             border-radius: 4px;
             margin-bottom: 1em;
         }
+        
+        #exercise-list-memory {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+            gap: 1em !important;
+        }
+
         .loader { text-align: center; padding: 2em; font-size: 1.2em; display: none; }
     </style>
 </head>
@@ -59,6 +66,45 @@
         <div id="error-message" style="color: red; margin-top: 1em;"></div>
 
     </div>
+
+    <div class="container">
+        <h1>Hafıza Egzersizleri Test Paneli</h1>
+        <div class="controls">
+            <h2>Yeni Hafıza Egzersizi Üret</h2>
+            <p>Zorluk seviyesi seçip yeni bir hafıza egzersizi üretin. Supabase'e kaydedilecek ve aşağıdaki listede görünecektir.</p>
+            <select id="difficulty-select-memory" style="padding: 8px; border-radius: 5px;">
+                <option value="easy">Kolay</option>
+                <option value="medium">Orta</option>
+                <option value="hard">Zor</option>
+            </select>
+            <button id="create-memory-exercise-btn">Üret ve Kaydet</button>
+        </div>
+
+        <div class="filters">
+            <h2>Kaydedilmiş Hafıza Egzersizleri</h2>
+            <button class="btn-filter-memory active" data-difficulty="all">Tümü</button>
+            <button class="btn-filter-memory" data-difficulty="easy">Kolay</button>
+            <button class="btn-filter-memory" data-difficulty="medium">Orta</button>
+            <button class="btn-filter-memory" data-difficulty="hard">Zor</button>
+        </div>
+
+        <div id="loader-memory" class="loader">Yükleniyor...</div>
+        <div id="memory-word-display" style="text-align: center; font-size: 2em; margin: 1em 0;"></div>
+        <div id="exercise-list-memory"></div>
+        <div id="error-message-memory" style="color: red; margin-top: 1em;"></div>
+    </div>
+    <div id="memory-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:white; padding:2em; border-radius:10px; max-width:400px; text-align:center; font-size:1.2em; color:#333; position: relative;">
+            <button id="close-modal-btn" style="position:absolute; top:10px; right:10px; background:#e74c3c; border:none; color:white; padding:5px 10px; border-radius:5px; cursor:pointer; font-weight:bold;">X</button>
+            <div id="modal-word-display" style="font-size:1.8em; margin-bottom:1em;"></div>
+            <div style="margin-bottom:1em;">
+                Yukarıdaki kelimeleri sırayla ekranda göreceksin. Her kelime için, bir önceki kelimeyle bağlantılı anlamlı bir cümle kur. En sonda AI sana başka örnek cümleler gösterecek.
+            </div>
+            <div id="modal-exercise-info" style="font-size: 0.9em; color: #555;"></div>
+        </div>
+    </div>
+
+</body>
 
     <script>
         const createBtn = document.getElementById('create-exercise-btn');
@@ -185,5 +231,175 @@
             fetchAndDisplayExercises();
         });
     </script>
+
+
+    <script>
+    const memoryCreateBtn = document.getElementById('create-memory-exercise-btn');
+    const memoryDifficultySelect = document.getElementById('difficulty-select-memory');
+    const memoryExerciseList = document.getElementById('exercise-list-memory');
+    const memoryLoader = document.getElementById('loader-memory');
+    const memoryErrorMessage = document.getElementById('error-message-memory');
+    const memoryFilterButtons = document.querySelectorAll('.btn-filter-memory');
+
+    // Loader göster/gizle
+    const showMemoryLoader = (show) => {
+        memoryLoader.style.display = show ? 'block' : 'none';
+    };
+
+    // Hata mesajı göster
+    const displayMemoryError = (message) => {
+        memoryErrorMessage.textContent = message;
+    };
+
+    // Kelimeleri sırayla göster (global scope'ta tanımlı)
+    let wordInterval; // interval ID
+
+    const showWordsSequentially = (exercise) => {
+        const modal = document.getElementById('memory-modal');
+        const displayEl = document.getElementById('modal-word-display');
+        const infoEl = document.getElementById('modal-exercise-info');
+
+        modal.style.display = 'flex';
+        displayEl.textContent = '';
+        infoEl.textContent = '';
+
+        const { raw_words } = exercise.metadata;
+        const category = exercise.category || 'Belirtilmemiş';
+        const difficulty = exercise.difficulty || 'Belirtilmemiş';
+
+        infoEl.innerHTML = `
+            <strong>Kategori:</strong> ${category} <br>
+            <strong>Zorluk:</strong> ${difficulty}
+        `;
+
+        let index = 0;
+        if (wordInterval) clearInterval(wordInterval);
+
+        // İlk kelimeyi hemen göster
+        displayEl.textContent = raw_words[index];
+        index++;
+
+        wordInterval = setInterval(() => {
+            if (index >= raw_words.length) {
+                clearInterval(wordInterval);
+                modal.style.display = 'none';
+                displayEl.textContent = '';
+                infoEl.textContent = '';
+                return;
+            }
+            displayEl.textContent = raw_words[index];
+            index++;
+        }, 2000);
+    };
+
+    // Modal kapatma butonu
+    document.getElementById('close-modal-btn').addEventListener('click', () => {
+        const modal = document.getElementById('memory-modal');
+        if (wordInterval) clearInterval(wordInterval);
+        modal.style.display = 'none';
+    });
+
+
+
+    //Hafıza egzersizlerini getir ve listele
+    const fetchAndDisplayMemoryExercises = async (difficulty = null) => {
+        showMemoryLoader(true);
+        displayMemoryError('');
+        memoryExerciseList.innerHTML = '';
+
+        let url = `/api/memory/exercises/`;
+        if (difficulty) {
+            url += `?difficulty=${difficulty}`;
+        }
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const exercises = await response.json();
+
+            if (exercises.length === 0) {
+                memoryExerciseList.innerHTML = '<p>Gösterilecek hafıza egzersizi bulunamadı.</p>';
+            } else {
+                exercises.forEach(ex => {
+                    const card = document.createElement('div');
+                    card.className = `exercise-card ${ex.difficulty}`;
+
+                    const imageUrl = ex.metadata && ex.metadata.image_url ? ex.metadata.image_url : '';
+                    const imageElement = imageUrl ? `<img src="${imageUrl}" alt="${ex.title}">` : '';
+
+                    card.innerHTML = `
+                        ${imageElement}
+                        <h3>${ex.title}</h3>
+                        <p>${ex.content}</p>
+                        <small>Kategori: ${ex.category}</small><br>
+                        <small>Zorluk: ${ex.difficulty}</small>
+                    `;
+                    memoryExerciseList.appendChild(card);
+                });
+            }
+        } catch (error) {
+            displayMemoryError(`Egzersizler yüklenirken bir hata oluştu: ${error.message}`);
+        } finally {
+            showMemoryLoader(false);
+        }
+    };
+
+    //Yeni hafıza egzersizi oluştur
+    memoryCreateBtn.addEventListener('click', async () => {
+        const selectedDifficulty = memoryDifficultySelect.value;
+        showMemoryLoader(true);
+        displayMemoryError('');
+        memoryCreateBtn.disabled = true;
+
+        try {
+            const response = await fetch(`/api/memory/create/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ difficulty: selectedDifficulty })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.error || 'Bilinmeyen bir hata oluştu.');
+            }
+
+            const newExercise = await response.json();
+
+            // Yeni egzersizden gelen kelimeleri sırayla göster, tüm exercise objesini gönderiyoruz
+            if (newExercise && newExercise.metadata && newExercise.metadata.raw_words) {
+                showWordsSequentially(newExercise);
+            }
+
+            await fetchAndDisplayMemoryExercises();
+        } catch (error) {
+            displayMemoryError(`Egzersiz oluşturulurken bir hata oluştu: ${error.message}`);
+        } finally {
+            showMemoryLoader(false);
+            memoryCreateBtn.disabled = false;
+        }
+    });
+
+
+    memoryFilterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            memoryFilterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const difficulty = button.dataset.difficulty === 'all' ? null : button.dataset.difficulty;
+            fetchAndDisplayMemoryExercises(difficulty);
+        });
+    });
+
+    //Sayfa ilk açıldığında egzersizleri getir
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchAndDisplayMemoryExercises();
+    });
+</script>
 </body>
 </html> 

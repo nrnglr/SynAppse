@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.views.generic import TemplateView
+from django.shortcuts import render
 
 def home(request):
-    return HttpResponse("Synappse Ana Sayfa")
+    return render(request, 'ai/test_creativity.html')
 
 urlpatterns = [
     path('', home),

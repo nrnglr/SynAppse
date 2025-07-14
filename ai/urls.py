@@ -4,6 +4,10 @@ from .views import (
     ListCreativityExercisesView,
     CreativityTestPageView
 )
+from .views import (
+    CreateMemoryExerciseView, 
+    ListMemoryExercisesView
+)
 
 app_name = 'ai'
 
@@ -16,4 +20,7 @@ urlpatterns = [
 
     # API endpoint: Mevcut yaratıcılık egzersizlerini Supabase'den listeler
     path('creativity/exercises/', ListCreativityExercisesView.as_view(), name='list-creativity-exercises'),
+
+    path('memory/create/', CreateMemoryExerciseView.as_view(), name='create-memory-exercise'),
+    path('memory/exercises/', ListMemoryExercisesView.as_view(), name='list-memory-exercises'),
 ]
