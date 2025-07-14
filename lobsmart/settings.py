@@ -13,10 +13,12 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Supabase client initialization
 url: str = os.environ.get("SUPABASE_URL")
-key: str = os.environ.get("SUPABASE_KEY")
+# Public (anon) key yerine service_role anahtarını kullanıyoruz.
+# Bu, sunucu tarafı işlemler için gereklidir ve RLS'i bypass eder.
+key: str = os.environ.get("SUPABASE_SERVICE_KEY")
 
 if not url or not key:
-    raise Exception("Supabase credentials are not set in the .env file.")
+    raise Exception("Supabase credentials (URL and SERVICE_KEY) are not set in the .env file.")
 
 supabase: Client = create_client(url, key)
 

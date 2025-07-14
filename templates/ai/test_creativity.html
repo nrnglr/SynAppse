@@ -20,6 +20,13 @@
         .exercise-card.medium { border-color: #f1c40f; }
         .exercise-card.hard { border-color: #e74c3c; }
         .exercise-card h3 { margin-top: 0; }
+        .exercise-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1em;
+        }
         .loader { text-align: center; padding: 2em; font-size: 1.2em; display: none; }
     </style>
 </head>
@@ -109,7 +116,13 @@
                     exercises.forEach(ex => {
                         const card = document.createElement('div');
                         card.className = `exercise-card ${ex.difficulty}`;
+                        
+                        // Resim URL'si varsa, bir resim etiketi oluştur
+                        const imageUrl = ex.metadata && ex.metadata.image_url ? ex.metadata.image_url : '';
+                        const imageElement = imageUrl ? `<img src="${imageUrl}" alt="${ex.title}">` : '';
+
                         card.innerHTML = `
+                            ${imageElement}
                             <h3>${ex.title}</h3>
                             <p>${ex.content}</p>
                             <small>Kategori: ${ex.category}</small><br>

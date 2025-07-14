@@ -2,9 +2,11 @@ import os
 import logging
 import google.generativeai as genai
 from lobsmart.settings import supabase
+from ai.huggingface.service import generate_image_from_text
+from ai.supabase.service import upload_image_to_supabase
 from lobs.frontal import (
     CREATIVITY_EXERCISE_PROMPT,
-    MEDIUM_CHARACTER_PROMPT,
+    SHORT_CHARACTER_PROMPT,  # Eski prompt yerine yenisini kullanıyoruz
     HARD_SETTING_PROMPT
 )
 
@@ -52,12 +54,38 @@ class GeminiService:
 
             character = None
             setting = None
+            image_url = None # Değişkeni başlangıçta tanımla
 
-            # 2. Orta seviye için karakter üret
+            # 2. Orta ve Zor seviyeler için karakter üret VE resim oluştur
             if difficulty in ['medium', 'hard']:
-                character = self.generate_text(MEDIUM_CHARACTER_PROMPT)
+                character = self.generate_text(SHORT_CHARACTER_PROMPT)
                 if not character:
                     logger.warning("Gemini'den karakter üretilemedi.")
+                else:
+                    # Karakter başarıyla üretildiyse, bunu resim prompt'u olarak kullan
+                    try:
+                        image_prompt = (
+                            f"A high-resolution, photorealistic image of '{character}'. "
+                            "The image must look like a professional photograph taken with a DSLR camera, "
+                            "featuring realistic lighting, textures, and a shallow depth of field (bokeh). "
+                            "The subject should be the clear focus. "
+                            "IMPORTANT: The image must be a photograph, not a drawing, illustration, or 3D render. "
+                            "Absolutely no text, letters, or numbers should be visible in the image."
+                        )
+                        
+                        generated_image = generate_image_from_text(prompt=image_prompt)
+
+                        if generated_image:
+                            image_url = upload_image_to_supabase(image=generated_image, bucket_name="exercise-images")
+                            if image_url:
+                                logger.info(f"Resim başarıyla Supabase'e yüklendi: {image_url}")
+                            else:
+                                logger.error("Resim Supabase'e yüklenemedi.")
+                        else:
+                            logger.error("Hugging Face'den resim üretilemedi.")
+                    except Exception as img_exc:
+                        logger.error(f"Resim üretme/yükleme sürecinde hata: {img_exc}", exc_info=True)
+
 
             # 3. Zor seviye için mekan üret
             if difficulty == 'hard':
@@ -76,15 +104,13 @@ class GeminiService:
             content_parts.append("Bu öğeleri kullanarak kısa bir hikaye yazın.")
             content = " ".join(content_parts)
 
-            image_url = f"https://via.placeholder.com/500x300.png?text={word1}+{word2}"
-
             exercise_data = {
                 "title": title,
                 "content": content,
                 "difficulty": difficulty,
                 "category": "creativity",
                 "metadata": {
-                    "image_url": image_url,
+                    "image_url": image_url or f"https://via.placeholder.com/500x300.png?text=Image+Not+Generated", # Resim yoksa placeholder kullan
                     "raw_words": words,
                     "raw_character": character,
                     "raw_setting": setting

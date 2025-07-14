@@ -51,3 +51,22 @@ Yolun ortasında unutulmuş bir benzin istasyonu
 Tavana kadar kitaplarla dolu, terkedilmiş bir tren vagonu
 Camdan bir köprünün altındaki bulut denizi
 """
+
+# Bu prompt GeminiService'de MEDIUM_CHARACTER_PROMPT yerine kullanılacak.
+# Yeni isteklere göre güncellenmiş karakter prompt'u.
+SHORT_CHARACTER_PROMPT = """
+GÖREV: SADECE BİR (1) TANE, benzersiz ve görsel olarak oluşturması kolay ANLAMLI bir karakter konsepti oluştur.
+
+KISITLAMALAR:
+1.  KONSEPT 3-4 KELİME OLMALIDIR.
+2.  ÇIKTI SADECE KARAKTER KONSEPTİNİ İÇERMELİDİR. Ekstra metin, açıklama, selamlama veya liste KESİNLİKLE OLMAMALIDIR.
+3.  KONSEPT KOLAYCA GÖRSELLEŞTİRİLEBİLMELİDİR. Beklenmedik unsurları birleştir.
+
+GEÇERLİ ÇIKTI ÖRNEKLERİ (Senin çıktın bunlardan sadece BİR tanesi gibi olmalı):
+- At süren astronot
+- Gözlüklü dedektif kedi
+- Kılıçlı samuray kurbağa
+- Kütüphanece robot
+
+Çıktın, yalnızca karakter konseptini içeren tek bir satır olmalıdır.
+"""
