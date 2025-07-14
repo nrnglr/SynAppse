@@ -4,6 +4,7 @@ from rest_framework import status
 from django.views.generic import TemplateView
 from .gemini.service import GeminiService
 from lobsmart.settings import supabase
+from .models import MemoryExercise
 import logging
 
 logger = logging.getLogger(__name__)
@@ -72,5 +73,50 @@ class ListCreativityExercisesView(APIView):
             logger.error(f"Egzersizler listelenirken hata: {e}", exc_info=True)
             return Response(
                 {"error": "Egzersizler alınırken bir sunucu hatası oluştu."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class CreateMemoryExerciseView(APIView):
+    def post(self, request):
+        difficulty = request.data.get('difficulty', 'easy')
+        if difficulty not in ['easy', 'medium', 'hard']:
+            return Response(
+                {"error": "Geçersiz zorluk seviyesi. 'easy', 'medium' veya 'hard' olmalı."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        try:
+            gemini_service = GeminiService()
+            saved_exercise = gemini_service.generate_and_save_memory_exercise(difficulty=difficulty)
+            if not saved_exercise:
+                return Response({"error": "Egzersiz üretilemedi."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            # Supabase'e kayıt işlemi burada olmalı (gemini_service metodunda yapılmış olabilir)
+            return Response(saved_exercise, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            logger.error(f"Hafıza egzersizi oluşturulurken hata: {e}", exc_info=True)
+            return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class ListMemoryExercisesView(APIView):
+    def get(self, request):
+        try:
+            difficulty = request.query_params.get('difficulty')
+
+            query = supabase.table('exercises').select('*').eq('category', 'memory')
+
+            if difficulty and difficulty in ['easy', 'medium', 'hard']:
+                query = query.eq('difficulty', difficulty)
+
+            response = query.order('created_at', desc=True).execute()
+
+            if not response.data:
+                return Response([], status=status.HTTP_200_OK)
+
+            return Response(response.data, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            logger.error(f"Hafıza egzersizleri listelenirken hata: {e}", exc_info=True)
+            return Response(
+                {"error": "Egzersizler alınırken sunucu hatası oluştu."},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )

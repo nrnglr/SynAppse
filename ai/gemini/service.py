@@ -10,6 +10,12 @@ from lobs.frontal import (
     HARD_SETTING_PROMPT
 )
 
+from lobs.temporal import (
+    MEMORY_EASY_EXERCISE_PROMPT,
+    MEMORY_MEDIUM_EXERCISE_PROMPT,
+    MEMORY_HARD_EXERCISE_PROMPT,
+)
+
 logger = logging.getLogger(__name__)
 
 class GeminiService:
@@ -132,4 +138,54 @@ class GeminiService:
 
         except Exception as e:
             logger.error(f"[generate_and_save_creative_exercise Error]: {e}", exc_info=True)
+            return None
+
+    def generate_and_save_memory_exercise(self, difficulty: str = 'easy') -> dict:
+        try:
+            # Prompt'ı seç
+            if difficulty == 'easy':
+                prompt = MEMORY_EASY_EXERCISE_PROMPT
+            elif difficulty == 'medium':
+                prompt = MEMORY_MEDIUM_EXERCISE_PROMPT
+            elif difficulty == 'hard':
+                prompt = MEMORY_HARD_EXERCISE_PROMPT
+            else:
+                raise ValueError("Geçersiz zorluk seviyesi!")
+
+            # AI'dan kelimeleri al
+            generated_text = self.generate_text(prompt)
+            words = [word.strip() for word in generated_text.split(',') if word.strip()]
+            if not words or len(words) < 3:
+                logger.error("Memory egzersizi için yeterli kelime üretilemedi.")
+                return None
+
+            title = f"Hafıza Egzersizi ({difficulty.title()}): {', '.join(words)}"
+            content = (
+                "Yukarıdaki kelimeleri sırayla ekranda göreceksin. "
+                "Her kelime için, bir önceki kelimeyle bağlantılı anlamlı bir cümle kur. "
+                "En sonda AI sana başka örnek cümleler gösterecek.\n\n"
+                f"Kelimeler: {', '.join(words)}"
+            )
+
+            exercise_data = {
+                "title": title,
+                "content": content,
+                "difficulty": difficulty,
+                "category": "memory",
+                "metadata": {
+                    "raw_words": words
+                }
+            }
+
+            response = supabase.table('exercises').insert(exercise_data).execute()
+            if not response.data:
+                logger.error(f"Supabase'e hafıza egzersizi eklenemedi.")
+                return None
+
+            saved_exercise = response.data[0]
+            logger.info(f"Yeni hafıza egzersizi eklendi: ID {saved_exercise.get('id')}")
+            return saved_exercise
+
+        except Exception as e:
+            logger.error(f"[generate_and_save_memory_exercise Error]: {e}", exc_info=True)
             return None
