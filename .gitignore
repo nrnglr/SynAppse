@@ -1,4 +1,16 @@
+# Environments
 .env
-venv/
+
+# Django
 __pycache__/
-db.sqlite3
+*.py[cod]
+*$py.class
+
+# Database
+*.sqlite3
+
+# Static files
+/static/
+
+# Media files
+/media/
