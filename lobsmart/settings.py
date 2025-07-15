@@ -1,11 +1,30 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from supabase import create_client, Client
 
 load_dotenv()
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+
+
+# Supabase client initialization
+url: str = os.environ.get("SUPABASE_URL")
+# Public (anon) key yerine service_role anahtarını kullanıyoruz.
+# Bu, sunucu tarafı işlemler için gereklidir ve RLS'i bypass eder.
+key: str = os.environ.get("SUPABASE_SERVICE_KEY")
+
+if not url or not key:
+    raise Exception("Supabase credentials (URL and SERVICE_KEY) are not set in the .env file.")
+
+supabase: Client = create_client(url, key)
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     raise Exception("SECRET_KEY environment variable not set!")
@@ -45,7 +64,7 @@ ROOT_URLCONF = 'lobsmart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

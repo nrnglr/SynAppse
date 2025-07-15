@@ -1,16 +1,26 @@
 from django.urls import path
-from .views import ExerciseGenerateView, ExerciseSubmitView
+from .views import (
+    CreateCreativityExerciseView,
+    ListCreativityExercisesView,
+    CreativityTestPageView
+)
+from .views import (
+    CreateMemoryExerciseView, 
+    ListMemoryExercisesView
+)
+
+app_name = 'ai'
 
 urlpatterns = [
-    # Egzersiz oluşturma endpointleri
-    path('critical/', ExerciseGenerateView.as_view(), {'exercise_type': 'critical'}, name='exercise-critical'),
-    path('memory/', ExerciseGenerateView.as_view(), {'exercise_type': 'memory'}, name='exercise-memory'),
-    path('creativity/', ExerciseGenerateView.as_view(), {'exercise_type': 'creativity'}, name='exercise-creativity'),
-    path('strategy/', ExerciseGenerateView.as_view(), {'exercise_type': 'strategy'}, name='exercise-strategy'),
-    
-    # Submit endpointleri
-    path('critical/submit/', ExerciseSubmitView.as_view(), {'exercise_type': 'critical'}, name='submit-critical'),
-    path('memory/submit/', ExerciseSubmitView.as_view(), {'exercise_type': 'memory'}, name='submit-memory'),
-    path('creativity/submit/', ExerciseSubmitView.as_view(), {'exercise_type': 'creativity'}, name='submit-creativity'),
-    path('strategy/submit/', ExerciseSubmitView.as_view(), {'exercise_type': 'strategy'}, name='submit-strategy'),
+    # Yaratıcılık egzersizlerini test etmek (oluşturmak ve listelemek) için kullanılan sayfa
+    path('creativity/test/', CreativityTestPageView.as_view(), name='creativity-test-page'),
+
+    # API endpoint: Yeni bir yaratıcılık egzersizi oluşturur (ve Supabase'e kaydeder)
+    path('creativity/create/', CreateCreativityExerciseView.as_view(), name='create-creativity-exercise'),
+
+    # API endpoint: Mevcut yaratıcılık egzersizlerini Supabase'den listeler
+    path('creativity/exercises/', ListCreativityExercisesView.as_view(), name='list-creativity-exercises'),
+
+    path('memory/create/', CreateMemoryExerciseView.as_view(), name='create-memory-exercise'),
+    path('memory/exercises/', ListMemoryExercisesView.as_view(), name='list-memory-exercises'),
 ]

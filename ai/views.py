@@ -1,51 +1,122 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .gemini.client import (
-    generate_critical_exercise,
-    generate_memory_exercise,
-    generate_creativity_exercise,
-    generate_strategy_exercise
-)
-from django.conf import settings
+from django.views.generic import TemplateView
+from .gemini.service import GeminiService
+from lobsmart.settings import supabase
+from .models import MemoryExercise
 import logging
 
 logger = logging.getLogger(__name__)
 
-class ExerciseGenerateView(APIView):
-    def get(self, request, exercise_type=None):
-        generators = {
-            "critical": generate_critical_exercise,
-            "memory": generate_memory_exercise,
-            "creativity": generate_creativity_exercise,
-            "strategy": generate_strategy_exercise
-        }
+class CreativityTestPageView(TemplateView):
+    """
+    Yaratıcılık egzersizlerini oluşturmak ve listelemek için kullanılan test sayfasını render eder.
+    """
+    template_name = "ai/test_creativity.html"
 
-        if exercise_type not in generators:
-            return Response({"error": "Geçersiz egzersiz tipi"}, status=status.HTTP_400_BAD_REQUEST)
-
+class CreateCreativityExerciseView(APIView):
+    """
+    API'dan yeni bir yaratıcılık egzersizi üretir ve Supabase'e kaydeder.
+    İstek gövdesinde 'difficulty' parametresini bekler: 'easy', 'medium', 'hard'.
+    """
+    def post(self, request):
+        difficulty = request.data.get('difficulty', 'easy')
+        if difficulty not in ['easy', 'medium', 'hard']:
+            return Response(
+                {"error": "Geçersiz zorluk seviyesi. 'easy', 'medium' veya 'hard' olmalı."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
         try:
-            content = generators[exercise_type]()
-            return Response({
-                "type": exercise_type,
-                "exercise": content
-            })
+            gemini_service = GeminiService()
+            # Bu fonksiyon artık veriyi üretip Supabase'e kaydediyor ve sonucu dönüyor.
+            saved_exercise = gemini_service.generate_and_save_creative_exercise(difficulty=difficulty)
+
+            if not saved_exercise:
+                return Response(
+                    {"error": "Yapay zekadan egzersiz verisi alınamadı veya kaydedilemedi."},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
+                )
+            
+            return Response(saved_exercise, status=status.HTTP_201_CREATED)
+
         except Exception as e:
-            logger.error(f"Hata: {str(e)}", exc_info=True)
-            if settings.DEBUG:
-                return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            else:
-                return Response({"error": "Sunucu hatası"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            logger.error(f"Creativity exercise oluşturulurken hata: {e}", exc_info=True)
+            return Response(
+                {"error": "Egzersiz oluşturulurken beklenmedik bir sunucu hatası oluştu."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
-class ExerciseSubmitView(APIView):
-    def post(self, request, exercise_type=None):
-        answer = request.data.get("answer")
-        if not answer:
-            return Response({"error": "Cevap gönderilmedi"}, status=status.HTTP_400_BAD_REQUEST)
+class ListCreativityExercisesView(APIView):
+    """
+    Supabase veritabanından yaratıcılık egzersizlerini listeler.
+    Query parametresi olarak 'difficulty' kabul eder (örn: /api/ai/creativity/exercises/?difficulty=easy).
+    """
+    def get(self, request):
+        try:
+            difficulty = request.query_params.get('difficulty')
+            
+            query = supabase.table('exercises').select('*').eq('category', 'creativity')
+            
+            if difficulty and difficulty in ['easy', 'medium', 'hard']:
+                query = query.eq('difficulty', difficulty)
 
-        # İleride doğrulama, puanlama vb. eklenecek
-        return Response({
-            "status": "Cevap başarıyla alındı.",
-            "type": exercise_type,
-            "answer": answer
-        })
+            response = query.order('created_at', desc=True).execute()
+
+            if not response.data:
+                return Response([], status=status.HTTP_200_OK)
+
+            return Response(response.data, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            logger.error(f"Egzersizler listelenirken hata: {e}", exc_info=True)
+            return Response(
+                {"error": "Egzersizler alınırken bir sunucu hatası oluştu."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class CreateMemoryExerciseView(APIView):
+    def post(self, request):
+        difficulty = request.data.get('difficulty', 'easy')
+        if difficulty not in ['easy', 'medium', 'hard']:
+            return Response(
+                {"error": "Geçersiz zorluk seviyesi. 'easy', 'medium' veya 'hard' olmalı."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        try:
+            gemini_service = GeminiService()
+            saved_exercise = gemini_service.generate_and_save_memory_exercise(difficulty=difficulty)
+            if not saved_exercise:
+                return Response({"error": "Egzersiz üretilemedi."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            # Supabase'e kayıt işlemi burada olmalı (gemini_service metodunda yapılmış olabilir)
+            return Response(saved_exercise, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            logger.error(f"Hafıza egzersizi oluşturulurken hata: {e}", exc_info=True)
+            return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class ListMemoryExercisesView(APIView):
+    def get(self, request):
+        try:
+            difficulty = request.query_params.get('difficulty')
+
+            query = supabase.table('exercises').select('*').eq('category', 'memory')
+
+            if difficulty and difficulty in ['easy', 'medium', 'hard']:
+                query = query.eq('difficulty', difficulty)
+
+            response = query.order('created_at', desc=True).execute()
+
+            if not response.data:
+                return Response([], status=status.HTTP_200_OK)
+
+            return Response(response.data, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            logger.error(f"Hafıza egzersizleri listelenirken hata: {e}", exc_info=True)
+            return Response(
+                {"error": "Egzersizler alınırken sunucu hatası oluştu."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
