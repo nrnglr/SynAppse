@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="tr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SynAppse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              main: '#1ABC9C',
+              second: '#104743',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+  </head>
+  <body class="h-full text-white font-sans bg-cover bg-center relative">
+    <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
+    <div class="w-full h-screen flex items-center justify-center relative z-10">
+      <div class="hidden md:block w-1/2 h-full bg-cover bg-center rounded-r-3xl"></div>
+      <div class="w-full md:w-1/2 flex items-center justify-center px-6 sm:px-10">
+        <div class="w-full max-w-md p-6">
+          <h1 class="text-4xl font-bold mb-2 text-center">Hoş Geldiniz</h1>
+          <p class="text-sm text-center text-gray-300 mb-6">Beyninizı keşfe çıkın!</p>
+          <form class="space-y-4">
+            <input
+              type="email"
+              placeholder="Email"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+            />
+            <input
+              type="password"
+              placeholder="Şifre"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+            />
+            <div class="text-right">
+              <a href="#" class="text-sm text-main hover:underline">Şifreni mi unuttun?</a>
+            </div>
+            <button type="submit" class="w-full bg-main text-white hover:bg-second py-2 rounded-md font-semibold hover:bg-opacity-90 transition">
+              Giriş Yap
+            </button>
+          </form>
+          <p class="mt-6 text-center text-sm">
+            Hesabınız yok mu? <a href="#" class="text-main hover:underline">Şimdi kaydolun!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

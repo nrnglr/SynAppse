@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SynAppse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+        extend: {
+            colors: {
+            main: '#1ABC9C',
+            second: '#104743',
+            },
+            fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            },
+        },
+        },
+    }
+    </script>
+  </head>
+<body class="bg-gradient-to-br from-[#082624] to-[#04060A] text-white font-sans">
+    <div class="pointer-events-none fixed top-0 left-0 w-72 h-72 bg-main rounded-full blur-3xl opacity-20 -z-10"></div>
+    <div class="pointer-events-none fixed bottom-0 right-0 w-72 h-72 bg-main rounded-full blur-3xl opacity-20 -z-10"></div>
+    <header class="w-full py-6 border-b border-gray-800">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <img src="{% static 'img/logo.svg' %}" alt="Logo" class="w-64">
+        <nav class="hidden md:flex gap-6 text-lg text-gray-300">
+          <a class="hover:text-main" href="{% url 'ai:index' %}">Ana Sayfa</a>
+          <a class="hover:text-main" href="">Neden SynAppse?</a>
+          <a class="hover:text-main" href="">Egzersizler</a>
+          <a class="hover:text-main" href="">Beyin Sağlığı</a>
+          <a class="hover:text-main" href="">İletişim</a>
+          <a class="hover:text-main" href="">SSS</a>
+        </nav>
+        <a href="#" class="bg-main hover:bg-second hover:text-white text-black px-4 py-2 rounded-full text-sm font-semibold inline-block text-center">Giriş Yap</a>
+      </div>
+    </header>
