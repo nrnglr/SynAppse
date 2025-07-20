@@ -343,7 +343,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/Home_Page2.jpeg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/Home_Page2.jpeg" width="644" height="750"/>  
   <br><strong>Home Page</strong>
 </p>
 
