@@ -341,7 +341,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
   <br><strong>Sprint Board 2.2 </strong>
 </p>
 
-
 <p align="center">
   <img src="project_management/sprint2_documents/Burndown_Chart2.jpeg" width="644" height="650"/>  
   <br><strong>Burndown Chart</strong>
