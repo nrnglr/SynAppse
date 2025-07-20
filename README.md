@@ -344,32 +344,32 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 <p align="center">
   <img src="project_management/sprint2_documents/Home_Page2.jpeg" width="644" height="750"/>  
-  <br><strong>Home Page</strong>
+  <br><strong>Landing Page</strong>
 </p>
 
 <p align="center">
   <img src="project_management/sprint2_documents/demo1.gif" width="644" height="650"/>  
-  <br><strong>Home Page</strong>
+  <br><strong>Landing Page GIF</strong>
 </p>
 
 <p align="center">
   <img src="project_management/sprint2_documents/demo2.gif" width="644" height="650"/>  
-  <br><strong>Home Page</strong>
+  <br><strong>Egzersiz Seçim Sayfası</strong>
 </p>
 
 <p align="center">
   <img src="project_management/sprint2_documents/Temporal_Lob.jpeg" width="644" height="650"/>  
-  <br><strong>Bakend lob çalışma mantığı</strong>
+  <br><strong>Yaratıcılık Egzerzisi Demo</strong>
 </p>
 
 <p align="center">
   <img src="project_management/sprint2_documents/Temporal_Lob2.jpeg" width="644" height="650"/>  
-  <br><strong>Bakend lob çalışma mantığı</strong>
+  <br><strong>Yaratıcılık Egzersizi Paneli demo</strong>
 </p>
 
 <p align="center">
   <img src="project_management/sprint2_documents/Lob_cıkt.jpeg" width="644" height="650"/>  
-  <br><strong>Bakend lob çalışma mantığı</strong>
+  <br><strong>Egzersiz Sonrası AI Feedback Demo</strong>
 </p>
 
 <p align="center">
@@ -398,6 +398,27 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 | 14  | 20.07.2025  | Sprint 2 raporu ve dokümantasyonu hazırlandı                    | Sprint kapanışı + raporlama                                       | 10   |
 
 **Toplam Puan:** 400
+
+### Sprint Retrospektive
+
+**Neler iyi gitti?**
+
+• Planlanan her gün Google Meet'de buluşuldu, asla aksama olmadı.  
+• Takım üyelerinin meşguliyetlerine göre görev dağılımı iyi yapıldı, herkes görevini yerine getirdi.
+• Proje geliştirme aşamasında kullanılan teknolojileri daha önce kullanmayan takım arkadaşlarının öğrenme süreci iyi geçti, hızlı bir şekilde adapte oldular.
+
+**Neler geliştirilmeli?**
+
+• **Yapay Zeka'dan Alınan Geri Dönüşler:** Promptlar üzerine daha fazla düşünülmeli ve iyi bir fine tuning yapılmalı.  
+• **Geliştirme Hızı:** Sprint 3'e girerken geliştirme hızı en üst seviyeye çıkarılmalı.  
+• **Geliştirme Planlaması** Projenin kalan geliştirme kısımları iyi bir şekilde adımlara bölünmeli ve planlanmalı.   
+• **Teknik Borç Yönetimi:** Kod satırları düzenlemeli ve clean code prosedürlerinin uygulandığından emin olunmalı.
+
+**Bir sonraki sprintte:**
+
+• Ekip görevlendirilmesi çok net yapılacak.  
+• Lob isimlendirilmesinden vazgeçilip, egzersiz isimlendirilmesine geçilecek.  
+• Yapay zekadan alınan yanıtların iyileştirilmesi için detaylı araştırmalar yapılacak.
 
 
 </details>
