@@ -6,6 +6,8 @@ from .gemini.service import GeminiService
 from lobsmart.settings import supabase
 from .models import MemoryExercise
 import logging
+import json
+from postgrest.exceptions import APIError
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +16,12 @@ class CreativityTestPageView(TemplateView):
     Yaratıcılık egzersizlerini oluşturmak ve listelemek için kullanılan test sayfasını render eder.
     """
     template_name = "ai/test_creativity.html"
+
+class MemoryTestPageView(TemplateView):
+    """
+    Hafıza egzersizlerini oluşturmak ve listelemek için kullanılan test sayfasını render eder.
+    """
+    template_name = "ai/test_memory.html"
 
 class CreateCreativityExerciseView(APIView):
     """
@@ -77,6 +85,68 @@ class ListCreativityExercisesView(APIView):
             )
 
 
+class CompleteCreativityExerciseView(APIView):
+    """
+    Bir yaratıcılık egzersizini tamamlar ve kullanıcının yazdığı hikayeyi kaydeder.
+    """
+    def post(self, request, exercise_id, *args, **kwargs):
+        """
+        Kullanıcının gönderdiği hikayeyi alır, (eğer egzersiz seviyesi uygunsa) AI'dan geri bildirim üretir,
+        hem hikayeyi hem de geri bildirimi veritabanına kaydeder ve sonucu döndürür.
+        """
+        user_story = request.data.get('user_story')
+        if not user_story:
+            return Response({"error": "Lütfen hikayenizi girin."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            # 1. İlgili egzersizin mevcut verilerini veritabanından al.
+            get_response = supabase.table('exercises').select('metadata').eq('id', exercise_id).single().execute()
+            current_metadata = get_response.data.get('metadata', {})
+            
+            character = current_metadata.get('raw_character')
+            words = current_metadata.get('raw_words')
+
+            # Anahtar kelimeler olmadan işlem yapamayız.
+            if not words:
+                return Response({"error": "Egzersize ait anahtar kelimeler bulunamadı."}, status=status.HTTP_404_NOT_FOUND)
+
+            # 2. Geri bildirim üretme adımını başlat.
+            ai_feedback = None
+            # SADECE 'character' mevcutsa (yani Orta/Zor seviye egzersizlerde) AI'dan feedback iste.
+            if character:
+                gemini_service = GeminiService()
+                ai_feedback = gemini_service.generate_feedback_for_story(
+                    character=character,
+                    words=words,
+                    user_story=user_story
+                )
+            
+            # 3. Veritabanına kaydedilecek yeni metadata'yı hazırla.
+            current_metadata['user_story'] = user_story
+            if ai_feedback:
+                current_metadata['ai_feedback'] = ai_feedback
+            
+            # 4. Veritabanını tek bir işlemle güncelle.
+            supabase.table('exercises').update({
+                'metadata': current_metadata,
+                'is_completed': True
+            }).eq('id', exercise_id).execute()
+
+            # 5. Başarılı sonucu ve üretilen geri bildirimi (varsa) arayüze gönder.
+            return Response({
+                "success": "Hikayeniz başarıyla kaydedildi.",
+                "feedback": ai_feedback  # Karakter yoksa (Kolay seviye) bu değer None olacaktır.
+            }, status=status.HTTP_200_OK)
+
+        except APIError as e:
+            logger.error(f"Supabase Hatası (Yaratıcılık ID: {exercise_id}): {e.message}")
+            return Response({"error": f"Veritabanı Hatası: {str(e.message)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            logger.error(f"Yaratıcılık Egzersizi Tamamlama Hatası (ID: {exercise_id}): {e}", exc_info=True)
+            return Response({"error": "Sunucuda beklenmedik bir hata oluştu."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
 class CreateMemoryExerciseView(APIView):
     def post(self, request):
         difficulty = request.data.get('difficulty', 'easy')
@@ -98,25 +168,71 @@ class CreateMemoryExerciseView(APIView):
             return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class ListMemoryExercisesView(APIView):
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
+        difficulty = request.query_params.get('difficulty', None)
+        
         try:
-            difficulty = request.query_params.get('difficulty')
-
             query = supabase.table('exercises').select('*').eq('category', 'memory')
-
-            if difficulty and difficulty in ['easy', 'medium', 'hard']:
+            if difficulty:
                 query = query.eq('difficulty', difficulty)
-
+            
             response = query.order('created_at', desc=True).execute()
-
-            if not response.data:
-                return Response([], status=status.HTTP_200_OK)
 
             return Response(response.data, status=status.HTTP_200_OK)
 
+        except APIError as e:
+            logger.error(f"Supabase API Error: {e.message}")
+            return Response({"error": "Veritabanından egzersizler alınamadı."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         except Exception as e:
             logger.error(f"Hafıza egzersizleri listelenirken hata: {e}", exc_info=True)
-            return Response(
-                {"error": "Egzersizler alınırken sunucu hatası oluştu."},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class CompleteMemoryExerciseView(APIView):
+    """
+    Bir hafıza egzersizini tamamlar ve kullanıcının yazdığı paragrafı kaydeder.
+    """
+    def post(self, request, exercise_id, *args, **kwargs):
+        try:
+            user_paragraph = request.data.get('user_paragraph')
+            if not user_paragraph:
+                return Response({"error": "Kullanıcı paragrafı eksik."}, status=status.HTTP_400_BAD_REQUEST)
+
+            # 1. Egzersizin kelimelerini al
+            get_response = supabase.table('exercises').select('metadata').eq('id', exercise_id).single().execute()
+            current_metadata = get_response.data.get('metadata', {})
+            exercise_words = current_metadata.get('raw_words')
+
+            if not exercise_words:
+                return Response({"error": "Egzersiz kelimeleri bulunamadı."}, status=status.HTTP_404_NOT_FOUND)
+
+            # 2. Gemini'den geri bildirim üret
+            gemini_service = GeminiService()
+            ai_feedback = gemini_service.generate_feedback_for_paragraph(
+                words=exercise_words,
+                user_paragraph=user_paragraph
             )
+            
+            # 3. Hem kullanıcı cevabını hem de AI geri bildirimini metadata'ya ekle
+            current_metadata['user_paragraph'] = user_paragraph
+            current_metadata['ai_feedback'] = ai_feedback
+            
+            # 4. Kaydı tek seferde güncelle
+            supabase.table('exercises').update({
+                'metadata': current_metadata,
+                'is_completed': True
+            }).eq('id', exercise_id).execute()
+
+            # 5. Üretilen geri bildirimi arayüze gönder
+            return Response({
+                "success": "Egzersiz başarıyla tamamlandı.",
+                "feedback": ai_feedback
+            }, status=status.HTTP_200_OK)
+
+        except APIError as e:
+            logger.error(f"Supabase API Hatası: {e.message}")
+            error_detail = str(e.message)
+            return Response({"error": f"Veritabanı Hatası: {error_detail}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as e:
+            logger.error(f"Egzersiz tamamlama hatası: {e}", exc_info=True)
+            return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
