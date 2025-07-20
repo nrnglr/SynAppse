@@ -108,10 +108,10 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 
 2. **Lob Seçimi**  
    Kullanıcı aşağıdaki seçeneklerden bir lob belirleyerek o güne özel egzersizlere başlar:  
-   - **Frontal Lob:** Karar verme ve planlama  
-   - **Parietal Lob:** Dikkat ve uzamsal işlemleme  
-   - **Temporal Lob:** Hafıza ve işitsel algı  
-   - **Oksipital Lob:** Görsel işlemleme  
+   - **Frontal Lob:** Eleştirel düşünme ve karar verme  
+   - **Parietal Lob:** Dikkat ve problem çözme  
+   - **Temporal Lob:** Hafıza ve dil  
+   - **Oksipital Lob:** Görsel analiz görevleri  
 
 3. **Yapay Zekâ Destekli Egzersiz**  
    Seçilen lob doğrultusunda, üretken yapay zekâ tarafından **dinamik olarak üretilmiş görevler** sunulur. Bu görevler aşağıdaki bilişsel alanları hedefler:  
@@ -318,7 +318,114 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-Geliştirme ilerledikçe güncellenecektir.
+### Sprint 2 Bilgileri
+- Sprint Başlangıç Tarihi: 08.07.2025  
+- Sprint Bitiş Tarihi: 20.07.2025  
+- Sprint Süresi: 12 Gün 
+- Takım: Brain Team 6
+
+  Puan Tamamlama Mantığı:
+  **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.
+
+  
+
+### Sprint 2 Review Görselleri
+
+<p align="center">
+  <img src="project_management/sprint2_documents/sprint2_Board-1.jpeg" width="644" height="650"/>  
+  <br><strong>Sprint Board 2.1 </strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/sprint2_Board-2.jpeg" width="644" height="650"/>  
+  <br><strong>Sprint Board 2.2 </strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Burndown_Chart2.jpeg" width="644" height="650"/>  
+  <br><strong>Burndown Chart</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Home_Page2.jpeg" width="644" height="750"/>  
+  <br><strong>Landing Page</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/demo1.gif" width="644" height="650"/>  
+  <br><strong>Landing Page GIF</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/demo2.gif" width="644" height="650"/>  
+  <br><strong>Egzersiz Seçim Sayfası</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Temporal_Lob.jpeg" width="644" height="650"/>  
+  <br><strong>Yaratıcılık Egzerzisi Demo</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Temporal_Lob2.jpeg" width="644" height="650"/>  
+  <br><strong>Yaratıcılık Egzersizi Paneli demo</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Lob_cıkt.jpeg" width="644" height="650"/>  
+  <br><strong>Egzersiz Sonrası AI Feedback Demo</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/WhatsApp_chat3.jpeg" width="644" height="650"/>  
+  <br><strong>Yapılan Görüşmeler</strong>
+</p>
+---
+
+**Sprint 2 Günlük İş Takibi**
+
+| Gün | Tarih       | Yapılan İşler                                                   | Tamamlanan Görev(ler)                                               | Puan |
+|-----|-------------|------------------------------------------------------------------|----------------------------------------------------------------------|------|
+| 1   | 07.07.2025  | Landing page Figma tasarımına başlandı ve ilk taslaklar oluşturuldu | -                                                                   | 10   |
+| 2   | 08.07.2025  | Tasarım ilerletildi, landing page frontend kodlamasına geçildi  | -                                                                   | 20   |
+| 3   | 09.07.2025  | Landing page kodlama devam etti, egzersiz sayfası tasarımı başlatıldı | -                                                               | 20   |
+| 4   | 10.07.2025  | Egzersiz sayfası tasarımı tamamlandı, kodlamaya geçildi         | Landing page tasarımı + kodlama                                    | 30   |
+| 5   | 11.07.2025  | Egzersiz sayfası kodlaması yapıldı, login/sign up sayfaları tasarlandı | Egzersiz sayfası tasarımı + kodlama                           | 30   |
+| 6   | 12.07.2025  | Login/sign up frontend kodlama ve Django bağlantısı sağlandı    | Login & Sign up kodlama + backend bağlantısı                       | 30   |
+| 7   | 13.07.2025  | AI destekli lob simülasyonu başlatıldı, temel işlevler oluşturuldu | AI destekli lob simülasyon taslağı                               | 30   |
+| 8   | 14.07.2025  | AI destekli lob soruları backend'e bağlandı ve test edildi      | Backend bağlantısı + test                                          | 40   |
+| 9   | 15.07.2025  | Frontal lob testleri yapıldı, GitHub branch yapısı kuruldu      | Frontal lob testi + GitHub branch yapısı                          | 40   |
+| 10  | 16.07.2025  | Yapay zeka modeli araştırması yapıldı, frontal lob geliştirildi | Proje uyumluluğu araştırması + frontal lob geliştirme             | 40   |
+| 11  | 17.07.2025  | Oksipital ve parietal loblar geliştirildi                       | Oksipital + parietal lob                                          | 40   |
+| 12  | 18.07.2025  | Temporal lob geliştirildi, son testler yapıldı                  | Temporal lob                                                       | 30   |
+| 13  | 19.07.2025  | Son kontroller ve eksik işler tamamlandı                        | Kalan küçük görevler                                              | 30   |
+| 14  | 20.07.2025  | Sprint 2 raporu ve dokümantasyonu hazırlandı                    | Sprint kapanışı + raporlama                                       | 10   |
+
+**Toplam Puan:** 400
+
+### Sprint Retrospektive
+
+**Neler iyi gitti?**
+
+• Planlanan her gün Google Meet'de buluşuldu, asla aksama olmadı.  
+• Takım üyelerinin meşguliyetlerine göre görev dağılımı iyi yapıldı, herkes görevini yerine getirdi.
+• Proje geliştirme aşamasında kullanılan teknolojileri daha önce kullanmayan takım arkadaşlarının öğrenme süreci iyi geçti, hızlı bir şekilde adapte oldular.
+
+**Neler geliştirilmeli?**
+
+• **Yapay Zeka'dan Alınan Geri Dönüşler:** Promptlar üzerine daha fazla düşünülmeli ve iyi bir fine tuning yapılmalı.  
+• **Geliştirme Hızı:** Sprint 3'e girerken geliştirme hızı en üst seviyeye çıkarılmalı.  
+• **Geliştirme Planlaması** Projenin kalan geliştirme kısımları iyi bir şekilde adımlara bölünmeli ve planlanmalı.   
+• **Teknik Borç Yönetimi:** Kod satırları düzenlemeli ve clean code prosedürlerinin uygulandığından emin olunmalı.
+
+**Bir sonraki sprintte:**
+
+• Ekip görevlendirilmesi çok net yapılacak.  
+• Lob isimlendirilmesinden vazgeçilip, egzersiz isimlendirilmesine geçilecek.  
+• Yapay zekadan alınan yanıtların iyileştirilmesi için detaylı araştırmalar yapılacak.
+• Backend ve Frontend birleştirilecek.
+
+
 
 </details>
 
