@@ -419,6 +419,8 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 • Ekip görevlendirilmesi çok net yapılacak.  
 • Lob isimlendirilmesinden vazgeçilip, egzersiz isimlendirilmesine geçilecek.  
 • Yapay zekadan alınan yanıtların iyileştirilmesi için detaylı araştırmalar yapılacak.
+• Backend ve Frontend birleştirilecek.
+
 
 
 </details>
