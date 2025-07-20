@@ -108,10 +108,10 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 
 2. **Lob Seçimi**  
    Kullanıcı aşağıdaki seçeneklerden bir lob belirleyerek o güne özel egzersizlere başlar:  
-   - **Frontal Lob:** Karar verme ve planlama  
-   - **Parietal Lob:** Dikkat ve uzamsal işlemleme  
-   - **Temporal Lob:** Hafıza ve işitsel algı  
-   - **Oksipital Lob:** Görsel işlemleme  
+   - **Frontal Lob:** Eleştirel düşünme ve karar verme  
+   - **Parietal Lob:** Dikkat ve problem çözme  
+   - **Temporal Lob:** Hafıza ve dil  
+   - **Oksipital Lob:** Görsel analiz görevleri  
 
 3. **Yapay Zekâ Destekli Egzersiz**  
    Seçilen lob doğrultusunda, üretken yapay zekâ tarafından **dinamik olarak üretilmiş görevler** sunulur. Bu görevler aşağıdaki bilişsel alanları hedefler:  
@@ -322,7 +322,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 - Sprint Başlangıç Tarihi: 08.07.2025  
 - Sprint Bitiş Tarihi: 20.07.2025  
 - Sprint Süresi: 12 Gün 
-- Takım: AI Grup 6
+- Takım: Brain Team 6
 
   Puan Tamamlama Mantığı:
   **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.
@@ -332,8 +332,13 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ### Sprint 2 Review Görselleri
 
 <p align="center">
-  <img src="project_management/sprint2_documents/sprint2_Board.jpeg" width="644" height="650"/>  
-  <br><strong>Sprint Board 2 </strong>
+  <img src="project_management/sprint2_documents/sprint2_Board-1.jpeg" width="644" height="650"/>  
+  <br><strong>Sprint Board 2.1 </strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/sprint2_Board-2.jpeg" width="644" height="650"/>  
+  <br><strong>Sprint Board 2.2 </strong>
 </p>
 
 
