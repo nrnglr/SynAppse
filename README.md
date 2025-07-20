@@ -332,7 +332,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ### Sprint 2 Review Görselleri
 
 <p align="center">
-  <img src="project_management/sprint2_documents/sprint2_Board1.jpeg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/sprint2_Board.jpeg" width="644" height="650"/>  
   <br><strong>Sprint Board 2 </strong>
 </p>
 
