@@ -332,48 +332,48 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ### Sprint 2 Review Görselleri
 
 <p align="center">
-  <img src="project_management/sprint2_documents/sprint2_Board1.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/sprint2_Board1.jpeg" width="644" height="650"/>  
   <br><strong>Sprint Board 2 </strong>
 </p>
 
 
 <p align="center">
-  <img src="project_management/sprint2_documents/Burndown_Chart2.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/Burndown_Chart2.jpeg" width="644" height="650"/>  
   <br><strong>Burndown Chart</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/Home_Page2.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/Home_Page2.jpeg" width="644" height="650"/>  
   <br><strong>Home Page</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/demo1.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/demo1.gif" width="644" height="650"/>  
   <br><strong>Home Page</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/demo2.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/demo2.gif" width="644" height="650"/>  
   <br><strong>Home Page</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/Temporal_Lob.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/Temporal_Lob.jpeg" width="644" height="650"/>  
   <br><strong>Bakend lob çalışma mantığı</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/Temporal_Lob2.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/Temporal_Lob2.jpeg" width="644" height="650"/>  
   <br><strong>Bakend lob çalışma mantığı</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/Lob_cıkt.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/Lob_cıkt.jpeg" width="644" height="650"/>  
   <br><strong>Bakend lob çalışma mantığı</strong>
 </p>
 
 <p align="center">
-  <img src="project_management/sprint2_documents/WhatsApp_chat3.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint2_documents/WhatsApp_chat3.jpeg" width="644" height="650"/>  
   <br><strong>Yapılan Görüşmeler</strong>
 </p>
 ---
