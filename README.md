@@ -318,7 +318,87 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-Geliştirme ilerledikçe güncellenecektir.
+### Sprint 2 Bilgileri
+- Sprint Başlangıç Tarihi: 08.07.2025  
+- Sprint Bitiş Tarihi: 20.07.2025  
+- Sprint Süresi: 12 Gün 
+- Takım: AI Grup 6
+
+  Puan Tamamlama Mantığı:
+  **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.
+
+  
+
+### Sprint 2 Review Görselleri
+
+<p align="center">
+  <img src="project_management/sprint2_documents/sprint2_Board1.jpg" width="644" height="650"/>  
+  <br><strong>Sprint Board 2 </strong>
+</p>
+
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Burndown_Chart2.jpg" width="644" height="650"/>  
+  <br><strong>Burndown Chart</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Home_Page2.jpg" width="644" height="650"/>  
+  <br><strong>Home Page</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/demo1.jpg" width="644" height="650"/>  
+  <br><strong>Home Page</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/demo2.jpg" width="644" height="650"/>  
+  <br><strong>Home Page</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Temporal_Lob.jpg" width="644" height="650"/>  
+  <br><strong>Bakend lob çalışma mantığı</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Temporal_Lob2.jpg" width="644" height="650"/>  
+  <br><strong>Bakend lob çalışma mantığı</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/Lob_cıkt.jpg" width="644" height="650"/>  
+  <br><strong>Bakend lob çalışma mantığı</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint2_documents/WhatsApp_chat3.jpg" width="644" height="650"/>  
+  <br><strong>Yapılan Görüşmeler</strong>
+</p>
+---
+
+**Sprint 2 Günlük İş Takibi**
+
+| Gün | Tarih       | Yapılan İşler                                                   | Tamamlanan Görev(ler)                                               | Puan |
+|-----|-------------|------------------------------------------------------------------|----------------------------------------------------------------------|------|
+| 1   | 07.07.2025  | Landing page Figma tasarımına başlandı ve ilk taslaklar oluşturuldu | -                                                                   | 10   |
+| 2   | 08.07.2025  | Tasarım ilerletildi, landing page frontend kodlamasına geçildi  | -                                                                   | 20   |
+| 3   | 09.07.2025  | Landing page kodlama devam etti, egzersiz sayfası tasarımı başlatıldı | -                                                               | 20   |
+| 4   | 10.07.2025  | Egzersiz sayfası tasarımı tamamlandı, kodlamaya geçildi         | Landing page tasarımı + kodlama                                    | 30   |
+| 5   | 11.07.2025  | Egzersiz sayfası kodlaması yapıldı, login/sign up sayfaları tasarlandı | Egzersiz sayfası tasarımı + kodlama                           | 30   |
+| 6   | 12.07.2025  | Login/sign up frontend kodlama ve Django bağlantısı sağlandı    | Login & Sign up kodlama + backend bağlantısı                       | 30   |
+| 7   | 13.07.2025  | AI destekli lob simülasyonu başlatıldı, temel işlevler oluşturuldu | AI destekli lob simülasyon taslağı                               | 30   |
+| 8   | 14.07.2025  | AI destekli lob soruları backend'e bağlandı ve test edildi      | Backend bağlantısı + test                                          | 40   |
+| 9   | 15.07.2025  | Frontal lob testleri yapıldı, GitHub branch yapısı kuruldu      | Frontal lob testi + GitHub branch yapısı                          | 40   |
+| 10  | 16.07.2025  | Yapay zeka modeli araştırması yapıldı, frontal lob geliştirildi | Proje uyumluluğu araştırması + frontal lob geliştirme             | 40   |
+| 11  | 17.07.2025  | Oksipital ve parietal loblar geliştirildi                       | Oksipital + parietal lob                                          | 40   |
+| 12  | 18.07.2025  | Temporal lob geliştirildi, son testler yapıldı                  | Temporal lob                                                       | 30   |
+| 13  | 19.07.2025  | Son kontroller ve eksik işler tamamlandı                        | Kalan küçük görevler                                              | 30   |
+| 14  | 20.07.2025  | Sprint 2 raporu ve dokümantasyonu hazırlandı                    | Sprint kapanışı + raporlama                                       | 10   |
+
+**Toplam Puan:** 400
+
 
 </details>
 
