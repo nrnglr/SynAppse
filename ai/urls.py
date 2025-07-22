@@ -1,4 +1,5 @@
 from django.urls import path
+from . import views
 from .views import (
     CreativityTestPageView,
     MemoryTestPageView,
@@ -16,6 +17,13 @@ urlpatterns = [
     # Ana Egzersiz Sayfaları
     path('creativity/', CreativityTestPageView.as_view(), name='creativity-test-page'),
     path('memory/', MemoryTestPageView.as_view(), name='memory-test-page'),
+
+    # Yardımcı Sayfalar
+    path('', views.index, name='index'),
+    path('exercise/', views.exercise_view, name='exercise'),
+    #path('signup/', signup_view, name='signup'),  
+    #path('login/', login_view, name='login'),  
+    #path('logout/', logout_view, name='logout'),  
 
     # Yaratıcılık API Endpoints
     path('api/creativity/create/', CreateCreativityExerciseView.as_view(), name='create-creativity-exercise'),

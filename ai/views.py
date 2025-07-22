@@ -9,8 +9,16 @@ from .ai_feedback import get_creativity_feedback, get_memory_feedback
 import logging
 import json
 from postgrest.exceptions import APIError
+from django.shortcuts import render, redirect   
 
 logger = logging.getLogger(__name__)
+
+# Yardımcı Sayfalar
+def index(request):
+    return render(request, 'index.html')  
+
+def exercise_view(request):
+    return render(request, 'exercise.html')
 
 class CreativityTestPageView(TemplateView):
     """
