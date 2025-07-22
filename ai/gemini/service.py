@@ -5,15 +5,11 @@ import google.generativeai as genai
 from lobsmart.settings import supabase
 from ai.huggingface.service import generate_image_from_text
 from ai.supabase.service import upload_image_to_supabase
-from lobs.frontal import (
-    CREATIVE_EXERCISE_GENERATOR_PROMPT,
-    CREATIVE_FEEDBACK_PROMPT,
-)
+from lobs.frontal import CREATIVE_EXERCISE_GENERATOR_PROMPT
 from lobs.temporal import (
     MEMORY_EASY_EXERCISE_PROMPT,
     MEMORY_MEDIUM_EXERCISE_PROMPT,
     MEMORY_HARD_EXERCISE_PROMPT,
-    MEMORY_FEEDBACK_PROMPT,
 )
 
 logger = logging.getLogger(__name__)
@@ -65,10 +61,17 @@ class GeminiService:
             # 5. Gelen veriyi güvenli bir şekilde doğrula ve işle
             metadata = exercise_data.get("metadata", {})
             words = metadata.get("words", [])
-            
-            if len(words) < 2:
-                logger.error(f"AI'dan gelen yanıtta yaratıcılık egzersizi için yeterli 'words' bulunamadı. Gelen veri: {exercise_data}")
+            character = metadata.get("character")
+
+            # --- Kalite Kontrol ---
+            if not words or len(words) < 2:
+                logger.error(f"AI'dan gelen yanıtta egzersiz için yeterli 'words' bulunamadı. Gelen veri: {exercise_data}")
                 return None
+            
+            if difficulty in ['medium', 'hard'] and not character:
+                logger.error(f"'{difficulty}' seviyesi için zorunlu olan 'character' alanı AI tarafından üretilmedi. Gelen veri: {exercise_data}")
+                return None
+            # --- Kalite Kontrol Sonu ---
 
             # 6. Resim üret (eğer 'medium' veya 'hard' ise)
             image_url = None
@@ -110,44 +113,11 @@ class GeminiService:
             logger.error(f"[generate_and_save_creative_exercise Error]: {e}", exc_info=True)
             return None
 
-    def generate_feedback_for_story(self, metadata: dict, user_story: str) -> str:
-        try:
-            # Metadata'yı string'e dönüştürerek prompt'a ekle
-            metadata_str = json.dumps(metadata, ensure_ascii=False, indent=2)
-            
-            prompt = CREATIVE_FEEDBACK_PROMPT.replace("[METADATA]", metadata_str)
-            prompt = prompt.replace("[USER_STORY]", user_story)
-            
-            feedback = self.generate_text(prompt, temperature=0.8)
-            
-            if not feedback or feedback == "AI yanıtı üretilemedi.":
-                logger.warning("Gemini'den yaratıcılık geri bildirimi üretilemedi.")
-                return "Değerlendirme alınamadı."
-            
-            return feedback
-        except Exception as e:
-            logger.error(f"[generate_feedback_for_story Error]: {e}", exc_info=True)
-            return "Geri bildirim üretilirken bir hata oluştu."
-
-    def generate_feedback_for_paragraph(self, words: list, user_paragraph: str) -> str:
-        """
-        Verilen kelimeler ve kullanıcı paragrafı için Gemini'den yapıcı geri bildirim alır.
-        """
-        try:
-            prompt = MEMORY_FEEDBACK_PROMPT.replace("[KELİMELER]", ", ".join(words))
-            prompt = prompt.replace("[KULLANICI_PARAGRAFI]", user_paragraph)
-            
-            feedback = self.generate_text(prompt, temperature=0.8)
-            
-            if not feedback:
-                logger.warning("Gemini'den geri bildirim üretilemedi.")
-                return "Değerlendirme alınamadı."
-            
-            return feedback
-
-        except Exception as e:
-            logger.error(f"[generate_feedback_for_paragraph Error]: {e}", exc_info=True)
-            return "Geri bildirim üretilirken bir hata oluştu."
+    def generate_feedback_for_story(self, character: str, words: list, user_story: str) -> str:
+        # This method is now deprecated and will be removed.
+        # The logic has been moved to ai.ai_feedback.get_creativity_feedback
+        logger.warning("generate_feedback_for_story is deprecated. Use ai_feedback.get_creativity_feedback instead.")
+        return None
 
     def generate_and_save_memory_exercise(self, difficulty: str = 'easy') -> dict:
         try:
@@ -198,3 +168,9 @@ class GeminiService:
         except Exception as e:
             logger.error(f"[generate_and_save_memory_exercise Error]: {e}", exc_info=True)
             return None
+
+    def generate_feedback_for_paragraph(self, words: list, user_paragraph: str) -> str:
+        # This method is now deprecated and will be removed.
+        # The logic has been moved to ai.ai_feedback.get_memory_feedback
+        logger.warning("generate_feedback_for_paragraph is deprecated. Use ai_feedback.get_memory_feedback instead.")
+        return None

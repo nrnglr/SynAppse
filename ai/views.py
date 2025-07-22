@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from .gemini.service import GeminiService
 from lobsmart.settings import supabase
 from .models import MemoryExercise
+from .ai_feedback import get_creativity_feedback, get_memory_feedback
 import logging
 import json
 from postgrest.exceptions import APIError
@@ -103,23 +104,22 @@ class CompleteCreativityExerciseView(APIView):
             get_response = supabase.table('exercises').select('metadata').eq('id', exercise_id).single().execute()
             current_metadata = get_response.data.get('metadata', {})
             
-            character = current_metadata.get('raw_character')
-            words = current_metadata.get('raw_words')
+            character = current_metadata.get('character') # 'raw_character' yerine 'character' kullanılıyor
+            words = current_metadata.get('words')
+
+            logger.info(f"Geri bildirim için alınan veriler - Karakter: {character}, Kelimeler: {words}")
 
             # Anahtar kelimeler olmadan işlem yapamayız.
             if not words:
                 return Response({"error": "Egzersize ait anahtar kelimeler bulunamadı."}, status=status.HTTP_404_NOT_FOUND)
 
             # 2. Geri bildirim üretme adımını başlat.
-            ai_feedback = None
-            # SADECE 'character' mevcutsa (yani Orta/Zor seviye egzersizlerde) AI'dan feedback iste.
-            if character:
-                gemini_service = GeminiService()
-                ai_feedback = gemini_service.generate_feedback_for_story(
-                    character=character,
-                    words=words,
-                    user_story=user_story
-                )
+            # 'character' None olsa bile fonksiyon çağrılacak.
+            ai_feedback = get_creativity_feedback(
+                words=words,
+                user_story=user_story,
+                character=character  # Bu None olabilir ve sorun değil
+            )
             
             # 3. Veritabanına kaydedilecek yeni metadata'yı hazırla.
             current_metadata['user_story'] = user_story
@@ -206,9 +206,8 @@ class CompleteMemoryExerciseView(APIView):
             if not exercise_words:
                 return Response({"error": "Egzersiz kelimeleri bulunamadı."}, status=status.HTTP_404_NOT_FOUND)
 
-            # 2. Gemini'den geri bildirim üret
-            gemini_service = GeminiService()
-            ai_feedback = gemini_service.generate_feedback_for_paragraph(
+            # 2. Gemini'den geri bildirim üret (Yeni merkezi fonksiyonu kullanarak)
+            ai_feedback = get_memory_feedback(
                 words=exercise_words,
                 user_paragraph=user_paragraph
             )
