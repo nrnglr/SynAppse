@@ -236,7 +236,7 @@
                 if (result.feedback) {
                     openFeedbackModal(result.feedback);
                 } else {
-                    alert("Hikaye kaydedildi ancak geri bildirim alınamadı.");
+                    alert("Hikayeniz başarıyla kaydedildi!\n\n(Not: Geri bildirim sadece 'Orta' ve 'Zor' seviye egzersizler için üretilmektedir.)");
                 }
 
             } catch (error) {
@@ -296,6 +296,9 @@
                 
                 const newExercise = await response.json();
                 if(newExercise) {
+                    // Önce yeni egzersizi modal'da direkt aç
+                    openCreativityModal(newExercise);
+                    // Ardından arka plandaki listeyi güncelle
                     fetchAndDisplayExercises(document.querySelector('.btn-filter.active').dataset.difficulty);
                 } else {
                     throw new Error('Yapay zekadan egzersiz verisi alınamadı veya kaydedilemedi.');
