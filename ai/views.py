@@ -26,6 +26,9 @@ def brain_view(request):
 def sss_view(request):
     return render(request, 'sss.html')
 
+def profile_view(request):
+    return render(request, 'profile.html')
+
 class CreativityTestPageView(TemplateView):
     """
     Yaratıcılık egzersizlerini oluşturmak ve listelemek için kullanılan test sayfasını render eder.

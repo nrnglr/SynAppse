@@ -1,0 +1,144 @@
+{% load static %}
+{% include 'components/navbar.html' %}
+
+<section class="mx-auto max-w-7xl py-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <!-- Sol kısım -->
+  <div class="lg:col-span-1 flex flex-col gap-8">
+    <!-- Avatar ve isim -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6 flex flex-col items-center relative">
+      <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-main">
+        <img src="/path/to/avatar.jpg" alt="Kullanıcı Avatarı" class="w-full h-full object-cover">
+        <!-- Edit ikon -->
+        <button class="absolute bottom-2 right-2 bg-main p-2 rounded-full hover:bg-main/80 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-black">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828H9v-2.828z" />
+          </svg>
+        </button>
+      </div>
+      <h2 class="text-4xl font-bold my-8 leading-normal tracking-[0.8px] text-white">İzlem Kurt</h2>
+    </div>
+
+    <!-- Rozet ve streak -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6 flex flex-col items-center">
+      <h3 class="text-3xl font-semibold mb-4 leading-normal tracking-[0.8px] text-white">Başarılar</h3>
+      <p class="font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+        Toplam 5 rozet kazandın ve 32 günlük streak yakaladın.
+      </p>
+      <div class="flex gap-3 mt-4">
+        <img src="/path/to/badge1.png" class="w-10 h-10" alt="Rozet">
+        <img src="/path/to/badge2.png" class="w-10 h-10" alt="Rozet">
+      </div>
+    </div>
+  </div>
+
+  <!-- Sağ kısım -->
+  <div class="lg:col-span-2 flex flex-col gap-8">
+    <!-- Kullanıcı bilgileri -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <h3 class="text-3xl font-semibold mb-8 leading-normal tracking-[0.8px] text-white">Kullanıcı Bilgileri</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-extralight text-gray-300 text-md tracking-[0.8px]">
+        <p><span class="font-semibold text-white">Ad Soyad:</span> İzlem Kurt</p>
+        <p><span class="font-semibold text-white">Email:</span> izlem@mail.com</p>
+        <p><span class="font-semibold text-white">Ülke:</span> Türkiye</p>
+        <p><span class="font-semibold text-white">Yaş:</span> 23</p>
+        <p><span class="font-semibold text-white">Cinsiyet:</span> Kadın</p>
+        <p><span class="font-semibold text-white">Şifre:</span> ********</p>
+      </div>
+      <div class="flex items-end justify-end pt-2">
+        <button class="bg-black-20 border-main border px-4 py-2 rounded-full hover:bg-second">Düzenle</button>
+      </div>
+      
+    </div>
+
+    <!-- Egzersiz geçmişi -->
+<div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+  <h3 class="text-3xl font-semibold mb-4 leading-normal tracking-[0.8px] text-white">Egzersiz Geçmişi</h3>
+
+  <!-- Tab butonları -->
+  <div class="flex flex-wrap gap-4 my-8">
+    <button data-target="hafiza"
+      class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition active">
+      Hafıza
+    </button>
+    <button data-target="yaraticilik"
+      class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
+      Yaratıcılık
+    </button>
+    <button data-target="elestirel"
+      class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
+      Eleştirel Düşünme
+    </button>
+    <button data-target="stratejik"
+      class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
+      Stratejik Düşünme
+    </button>
+  </div>
+
+  <!-- Tab içerikleri -->
+  <div id="hafiza" class="tab-content font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+    <p class="mb-2">Toplam <span class="text-white font-semibold">24</span> hafıza egzersizi çözdün.</p>
+    <p>Bu egzersizler, kısa süreli belleğini güçlendirdi ve bilgileri hızlı hatırlama yeteneğini artırdı.</p>
+  </div>
+
+  <div id="yaraticilik" class="tab-content hidden font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+    <p class="mb-2">Toplam <span class="text-white font-semibold">12</span> yaratıcılık egzersizi çözdün.</p>
+    <p>Farklı bakış açıları geliştirdin, problem çözmede özgün fikirler üretebilir hale geldin.</p>
+  </div>
+
+  <div id="elestirel" class="tab-content hidden font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+    <p class="mb-2">Toplam <span class="text-white font-semibold">18</span> eleştirel düşünme egzersizi çözdün.</p>
+    <p>Olaylara daha mantıklı ve sorgulayıcı yaklaşabiliyorsun, analiz gücün belirgin şekilde gelişti.</p>
+  </div>
+
+  <div id="stratejik" class="tab-content hidden font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+    <p class="mb-2">Toplam <span class="text-white font-semibold">9</span> stratejik düşünme egzersizi çözdün.</p>
+    <p>Hedef belirleme ve plan yapma becerin güçlendi, daha sistematik kararlar verebiliyorsun.</p>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // aktif butonu değiştir
+      tabs.forEach(t => t.classList.remove('active', 'bg-main/20'));
+      tab.classList.add('active', 'bg-main/20');
+
+      // içerikleri değiştir
+      const target = tab.getAttribute('data-target');
+      contents.forEach(c => {
+        if (c.id === target) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include 'components/footer.html' %}
+  </body>
+</html>
+
