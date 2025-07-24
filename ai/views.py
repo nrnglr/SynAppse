@@ -20,6 +20,12 @@ def index(request):
 def exercise_view(request):
     return render(request, 'exercise.html')
 
+def brain_view(request):
+    return render(request, 'brain.html')
+
+def sss_view(request):
+    return render(request, 'sss.html')
+
 class CreativityTestPageView(TemplateView):
     """
     Yaratıcılık egzersizlerini oluşturmak ve listelemek için kullanılan test sayfasını render eder.

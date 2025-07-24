@@ -21,6 +21,8 @@ urlpatterns = [
     # Yardımcı Sayfalar
     path('', views.index, name='index'),
     path('exercise/', views.exercise_view, name='exercise'),
+    path('brain/', views.brain_view, name='brain'),
+    path('sss/', views.sss_view, name='sss'),
     #path('signup/', signup_view, name='signup'),  
     #path('login/', login_view, name='login'),  
     #path('logout/', logout_view, name='logout'),  
