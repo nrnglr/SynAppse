@@ -1,10 +1,24 @@
+"""
+SynAppse URL Configuration
+Brain Exercise Platform - Main URL routing
+"""
+
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
 
-urlpatterns = [    
+urlpatterns = [
+    # Admin interface
     path('admin/', admin.site.urls),
+    
+    # Main app (homepage, basic pages)
     path('', include('ai.urls')),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    
+    # Exercise modules
+    path('exercises/', include('exercises.urls')),
+    
+    # User management
+    path('users/', include('users.urls')),
+    
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
