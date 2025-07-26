@@ -27,17 +27,54 @@
 <body class="bg-gradient-to-br from-[#082624] to-[#04060A] text-white font-sans">
     <div class="pointer-events-none fixed top-0 left-0 w-72 h-72 bg-main rounded-full blur-3xl opacity-20 -z-10"></div>
     <div class="pointer-events-none fixed bottom-0 right-0 w-72 h-72 bg-main rounded-full blur-3xl opacity-20 -z-10"></div>
-    <header class="w-full py-6 border-b border-gray-800">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <img src="{% static 'img/logo.svg' %}" alt="Logo" class="w-64">
-        <nav class="hidden md:flex gap-6 text-lg text-gray-300">
-          <a class="hover:text-main" href="{% url 'ai:index' %}">Ana Sayfa</a>
-          <a class="hover:text-main" href="">Neden SynAppse?</a>
-          <a class="hover:text-main" href="">Egzersizler</a>
-          <a class="hover:text-main" href="">Beyin Sağlığı</a>
-          <a class="hover:text-main" href="">İletişim</a>
-          <a class="hover:text-main" href="">SSS</a>
-        </nav>
-        <a href="#" class="bg-main hover:bg-second hover:text-white text-black px-4 py-2 rounded-full text-sm font-semibold inline-block text-center">Giriş Yap</a>
-      </div>
-    </header>
+  <header class="w-full py-6 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4">
+      <!-- logo -->
+      <img src="{% static 'img/logo.svg' %}" alt="Logo" class="w-48">
+
+      <!-- masaüstü menü -->
+      <nav class="hidden md:flex gap-6 text-lg text-gray-300">
+        <a class="hover:text-main" href="{% url 'ai:index' %}">Ana Sayfa</a>
+        <a class="hover:text-main" href="">Neden Synappse?</a>
+        <a class="hover:text-main" href="">Egzersizler</a>
+        <a class="hover:text-main" href="{% url 'ai:brain' %}">Beyin Sağlığı</a>
+        <a class="hover:text-main" href="">İletişim</a>
+        <a class="hover:text-main" href="{% url 'ai:sss' %}">SSS</a>
+      </nav>
+
+      <!-- giriş butonu masaüstü -->
+      <a href="#" class="hidden md:inline-block bg-main hover:bg-second hover:text-white text-black px-4 py-2 rounded-full text-sm font-semibold">
+        Giriş Yap
+      </a>
+
+      <!-- hamburger butonu -->
+      <button id="menu-toggle" class="md:hidden text-gray-300 focus:outline-none">
+        <!-- ikon -->
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- mobil menü -->
+    <div id="mobile-menu" class="hidden flex flex-col text-gray-300 text-center space-y-4 py-6 md:hidden border-t border-gray-800">
+        <a class="hover:text-main" href="{% url 'ai:index' %}">Ana Sayfa</a>
+        <a class="hover:text-main" href="">Neden Synappse?</a>
+        <a class="hover:text-main" href="">Egzersizler</a>
+        <a class="hover:text-main" href="{% url 'ai:brain' %}">Beyin Sağlığı</a>
+        <a class="hover:text-main" href="">İletişim</a>
+        <a class="hover:text-main" href="{% url 'ai:sss' %}">SSS</a>
+      <a href="#" class="bg-main hover:bg-second hover:text-white text-black px-4 py-2 rounded-full text-sm font-semibold mx-auto w-max">
+        Giriş Yap
+      </a>
+    </div>
+  </header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle')
+  const mobileMenu = document.getElementById('mobile-menu')
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden')
+  })
+</script>
