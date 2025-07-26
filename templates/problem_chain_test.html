@@ -1,0 +1,320 @@
+{% load static %}
+{% include 'components/navbar.html' %}
+
+<!-- CSRF Token for JavaScript -->
+{% csrf_token %}
+
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-8">
+        <h2 class="text-4xl font-bold mb-4 tracking-[2px]">Problem Chain Test</h2>
+        <p class="text-gray-300 text-lg">Basit test arayüzü</p>
+    </div>
+
+    <!-- Test Interface -->
+    <div class="bg-second/20 rounded-lg p-8 border border-second/30">
+        
+        <!-- Controls -->
+        <div class="mb-6 flex gap-4 items-center">
+            <label class="text-white font-semibold">Zorluk:</label>
+            <select id="difficulty" class="bg-second/40 text-white px-4 py-2 rounded-lg border border-second/50 focus:border-main focus:outline-none">
+                <option value="easy">Kolay</option>
+                <option value="medium" selected>Orta</option>
+                <option value="hard">Zor</option>
+            </select>
+            <button id="startBtn" class="bg-main text-black px-6 py-2 rounded-lg font-semibold hover:bg-second hover:text-white transition">
+                Başla
+            </button>
+            <button id="resetBtn" class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition" disabled>
+                Sıfırla
+            </button>
+        </div>
+
+        <!-- Status -->
+        <div id="status" class="mb-6 p-3 rounded-lg bg-gray-700/30 text-center text-gray-300">
+            Başlamak için "Başla" butonuna tıklayın
+        </div>
+
+        <!-- Main Interface - Side by side layout like in the image -->
+        <div class="grid grid-cols-2 gap-6">
+            
+            <!-- Left Side - AI Problem -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-main">AI</h3>
+                <div class="border border-second/50 rounded-lg p-1">
+                    <textarea 
+                        id="aiArea" 
+                        class="w-full h-64 bg-second/20 text-white p-4 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-main/50 border-0" 
+                        placeholder="AI problemi burada görünecek..."
+                        readonly>
+                    </textarea>
+                </div>
+            </div>
+
+            <!-- Right Side - User Solution -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-main">Kullanıcı</h3>
+                <div class="border border-second/50 rounded-lg p-1">
+                    <textarea 
+                        id="userArea" 
+                        class="w-full h-64 bg-second/20 text-white p-4 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-main/50 border-0" 
+                        placeholder="Çözümünüzü buraya yazın..."
+                        disabled>
+                    </textarea>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button id="submitBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Gönder
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Session Info -->
+        <div class="mt-8 p-4 bg-gray-800/30 rounded-lg">
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="text-gray-400">Session ID</div>
+                    <div id="sessionId" class="text-main font-mono text-sm">-</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Problem Sayısı</div>
+                    <div id="problemCount" class="text-main font-semibold">0</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Durum</div>
+                    <div id="sessionStatus" class="text-main font-semibold">Beklemede</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Log -->
+        <div class="mt-6">
+            <h4 class="text-lg font-semibold mb-3 text-main">API Yanıtları</h4>
+            <div id="responseLog" class="bg-gray-900/50 rounded-lg p-4 h-32 overflow-y-auto text-sm text-gray-300 font-mono">
+                <div class="text-gray-500">API yanıtları burada görünecek...</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+class ProblemChainTest {
+    constructor() {
+        this.sessionId = null;
+        this.currentProblem = null;
+        this.isActive = false;
+        this.problemCount = 0;
+        
+        this.initElements();
+        this.bindEvents();
+    }
+    
+    initElements() {
+        this.startBtn = document.getElementById('startBtn');
+        this.resetBtn = document.getElementById('resetBtn');
+        this.submitBtn = document.getElementById('submitBtn');
+        this.difficultySelect = document.getElementById('difficulty');
+        this.aiArea = document.getElementById('aiArea');
+        this.userArea = document.getElementById('userArea');
+        this.status = document.getElementById('status');
+        this.sessionIdDisplay = document.getElementById('sessionId');
+        this.problemCountDisplay = document.getElementById('problemCount');
+        this.sessionStatusDisplay = document.getElementById('sessionStatus');
+        this.responseLog = document.getElementById('responseLog');
+    }
+    
+    bindEvents() {
+        this.startBtn.addEventListener('click', () => this.startSession());
+        this.resetBtn.addEventListener('click', () => this.resetSession());
+        this.submitBtn.addEventListener('click', () => this.submitSolution());
+        
+        this.userArea.addEventListener('input', () => {
+            this.submitBtn.disabled = !this.userArea.value.trim() || !this.isActive;
+        });
+    }
+    
+    async startSession() {
+        const difficulty = this.difficultySelect.value;
+        this.setStatus('Session başlatılıyor...', 'info');
+        
+        try {
+            const response = await fetch('/exercises/problem-chain/start/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.getCSRFToken()
+                },
+                body: JSON.stringify({ difficulty })
+            });
+            
+            const data = await response.json();
+            this.logResponse('POST /start/', data);
+            
+            if (response.ok) {
+                this.sessionId = data.session_id;
+                this.currentProblem = data.problem;
+                this.isActive = true;
+                this.problemCount = data.round || 1; // Use API round number
+                
+                this.updateUI();
+                this.setStatus(`Session başlatıldı! Problem ${this.problemCount} yüklendi.`, 'success');
+            } else {
+                this.setStatus(`Hata: ${data.error || 'Bilinmeyen hata'}`, 'error');
+            }
+        } catch (error) {
+            this.setStatus(`Bağlantı hatası: ${error.message}`, 'error');
+            this.logResponse('POST /start/', { error: error.message });
+        }
+    }
+    
+    async submitSolution() {
+        if (!this.isActive || !this.userArea.value.trim()) return;
+        
+        const solution = this.userArea.value.trim();
+        this.setStatus('Çözüm gönderiliyor...', 'info');
+        this.submitBtn.disabled = true;
+        
+        try {
+            // Check if this is the last problem (5th problem)
+            const isLastProblem = this.problemCount >= 5;
+            const endpoint = isLastProblem ? '/exercises/problem-chain/complete/' : '/exercises/problem-chain/next/';
+            
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.getCSRFToken()
+                },
+                body: JSON.stringify({ 
+                    session_id: this.sessionId,
+                    solution 
+                })
+            });
+            
+            const data = await response.json();
+            this.logResponse(`POST ${endpoint}`, data);
+            
+            if (response.ok) {
+                if (data.completed || isLastProblem) {
+                    this.completeSession(data);
+                } else {
+                    this.continueSession(data);
+                }
+            } else {
+                this.setStatus(`Hata: ${data.error || 'Bilinmeyen hata'}`, 'error');
+                this.submitBtn.disabled = false;
+            }
+        } catch (error) {
+            this.setStatus(`Bağlantı hatası: ${error.message}`, 'error');
+            this.logResponse(`POST /submit/ (${error.message})`, { error: error.message });
+            this.submitBtn.disabled = false;
+        }
+    }
+    
+    continueSession(data) {
+        // API returns 'problem', not 'next_problem'
+        this.currentProblem = data.problem;
+        this.problemCount = data.round || this.problemCount + 1; // Use API round or increment
+        this.userArea.value = '';
+        this.updateUI();
+        this.setStatus(`Problem ${this.problemCount} yüklendi!`, 'success');
+        this.submitBtn.disabled = false;
+    }
+    
+    completeSession(data) {
+        this.isActive = false;
+        this.userArea.disabled = true;
+        this.updateUI();
+        this.setStatus(`Session tamamlandı! Skor: ${data.final_score || 'N/A'}`, 'success');
+    }
+    
+    resetSession() {
+        this.sessionId = null;
+        this.currentProblem = null;
+        this.isActive = false;
+        this.problemCount = 0;
+        
+        this.aiArea.value = '';
+        this.userArea.value = '';
+        this.userArea.disabled = true;
+        
+        this.updateUI();
+        this.setStatus('Başlamak için "Başla" butonuna tıklayın', 'info');
+        this.responseLog.innerHTML = '<div class="text-gray-500">API yanıtları burada görünecek...</div>';
+    }
+    
+    updateUI() {
+        // Update problem display
+        this.aiArea.value = this.currentProblem || '';
+        
+        // Update session info
+        this.sessionIdDisplay.textContent = this.sessionId || '-';
+        this.problemCountDisplay.textContent = this.problemCount;
+        this.sessionStatusDisplay.textContent = this.isActive ? 'Aktif' : 'Beklemede';
+        
+        // Update button states
+        this.startBtn.disabled = this.isActive;
+        this.resetBtn.disabled = !this.sessionId;
+        this.userArea.disabled = !this.isActive;
+        this.submitBtn.disabled = !this.isActive || !this.userArea.value.trim();
+    }
+    
+    setStatus(message, type = 'info') {
+        this.status.textContent = message;
+        this.status.className = 'mb-6 p-3 rounded-lg text-center';
+        
+        switch (type) {
+            case 'success':
+                this.status.className += ' bg-green-700/30 text-green-300';
+                break;
+            case 'error':
+                this.status.className += ' bg-red-700/30 text-red-300';
+                break;
+            default:
+                this.status.className += ' bg-gray-700/30 text-gray-300';
+        }
+    }
+    
+    logResponse(endpoint, data) {
+        const timestamp = new Date().toLocaleTimeString();
+        const logEntry = `[${timestamp}] ${endpoint}\n${JSON.stringify(data, null, 2)}\n\n`;
+        
+        this.responseLog.innerHTML += `<div class="mb-2 pb-2 border-b border-gray-700/50">
+            <div class="text-main">[${timestamp}] ${endpoint}</div>
+            <pre class="text-xs text-gray-400 mt-1">${JSON.stringify(data, null, 2)}</pre>
+        </div>`;
+        
+        this.responseLog.scrollTop = this.responseLog.scrollHeight;
+    }
+    
+    getCSRFToken() {
+        // First try to get from the meta tag
+        const metaToken = document.querySelector('[name=csrfmiddlewaretoken]');
+        if (metaToken) {
+            return metaToken.value;
+        }
+        
+        // Fallback to cookies
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+            if (name === 'csrftoken') {
+                return value;
+            }
+        }
+        
+        console.error('CSRF token not found!');
+        return '';
+    }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new ProblemChainTest();
+});
+</script>
+
+</body>
+</html>

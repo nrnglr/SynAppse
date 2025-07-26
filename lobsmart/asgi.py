@@ -1,5 +1,5 @@
 """
-ASGI config for lobsmart project.
+ASGI config for SynAppse Brain Exercise Platform.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

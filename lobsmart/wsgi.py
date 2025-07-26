@@ -1,5 +1,5 @@
 """
-WSGI config for lobsmart project.
+WSGI config for SynAppse Brain Exercise Platform.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

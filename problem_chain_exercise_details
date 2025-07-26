@@ -1,0 +1,116 @@
+Problem Chain Exercise - Detaylı Açıklama
+Ne Yapıyor Bu Egzersiz?
+Kullanıcının yaratıcı problem çözme becerisini geliştiren interaktif bir egzersiz. AI bir absürd problem verir, kullanıcı çözüm önerir, AI o çözümden kaynaklanan yeni bir problem yaratır. 5 tur boyunca devam eder.
+Akış Şeması:
+1. Kullanıcı zorluk seçer (kolay/orta/zor)
+2. AI ilk absürd problemi üretir
+3. Kullanıcı çözüm yazar
+4. AI çözümden yeni problem türetir
+5. 5 tur tekrar eder
+6. AI final değerlendirmesi yapar
+Teknik Çalışma Mantığı:
+Backend Akışı:
+
+START Endpoint: Session oluştur, Gemini'den ilk problem al, DB'ye kaydet
+NEXT Endpoint: Kullanıcı çözümünü al, Gemini'ye gönder, yeni problem üret, session güncelle
+COMPLETE Endpoint: Son çözümü al, tüm süreci değerlendir, puanlama yap
+
+Session Yönetimi:
+pythonsession['problem_chain_id'] = 'uuid'
+# Database'de:
+ProblemChainSession:
+- problems: ["İlk problem", "İkinci problem", ...]
+- solutions: ["İlk çözüm", "İkinci çözüm", ...]
+- current_round: 3
+Gemini AI Integration:
+python# İlk problem için prompt:
+"Türkçe absürd bir problem üret. Zorluk: {difficulty}. 
+Günlük yaşamda imkansız ama yaratıcı çözüm gerektiren durum."
+
+# Sonraki problemler için:
+"Kullanıcı şu çözümü önerdi: '{solution}'. 
+Bu çözümden kaynaklanan yeni bir problem yaratıp zincirlemeye devam et."
+
+# Final değerlendirme:
+"5 turda verilen problemler: {problems}
+Kullanıcı çözümleri: {solutions}
+Yaratıcılık ve pratiklik puanı ver, genel feedback yaz."
+API Endpoints Detayı:
+POST /api/problem-chain/start/
+jsonRequest: {"difficulty": "medium"}
+Response: {
+    "session_id": "uuid",
+    "round": 1,
+    "total_rounds": 5,
+    "problem": "Köpekler konuşmaya başladı ama sadece şarkı sözleriyle...",
+    "is_completed": false
+}
+POST /api/problem-chain/next/
+jsonRequest: {"solution": "Köpekler için müzik okulları açarız..."}
+Response: {
+    "round": 2,
+    "problem": "Ama şimdi köpekler sürekli opera söylemeye başladı, insanlar uyuyamıyor...",
+    "is_completed": false
+}
+POST /api/problem-chain/complete/
+jsonRequest: {"solution": "Gece sessizlik saatleri koyarız..."}
+Response: {
+    "is_completed": true,
+    "final_feedback": "5 turda harika yaratıcılık gösterdin!",
+    "scores": {
+        "creativity": 4,
+        "practicality": 3,
+        "total": 7
+    },
+    "all_problems": [...],
+    "all_solutions": [...]
+}
+Zorluk Seviyeleri:
+
+Kolay: Basit günlük problemler, mantıklı çözümler kabul
+Orta: Absürd problemler, yaratıcı çözümler istenir
+Zor: Çok karmaşık zincirlemeler, çözüm yan etki yaratmalı
+
+
+
+Teknik Detay Cevapları:
+1. Session Yönetimi:
+
+Veritabanında sakla - ProblemChainSession modeli kullan, Django session sadece session_id tut
+Timeout: 1 saat - Yarım kalan egzersizler 1 saat sonra silinsin
+Anonim kullanım: EVET - Kullanıcı giriş yapmadan oynayabilir, session_id ile takip et
+
+2. Gemini API Optimizasyonu:
+
+Tüm geçmişi gönder - Context için önemli, max 5 tur zaten
+Retry: EVET - 3 deneme, başarısızsa generic fallback problem ver
+Cevap kontrolü: Basit - Sadece boş mu diye kontrol et, format parsing yapma
+
+3. Veritabanı Yapısı:
+
+ProblemChainSession yeterli - Ayrı Round modeli gereksiz
+Ek alanlar:
+pythonuser = ForeignKey(User, null=True, blank=True)  # anonim için null
+completion_time = IntegerField(null=True)  # saniye cinsinden
+ip_address = GenericIPAddressField()  # spam kontrolü için
+
+
+4. Hata Yönetimi:
+
+Gemini fail: Önceden hazır generic problemler listesi kullan
+Boş çözüm: Frontend'de kontrol et, backend'de error message döndür
+Network timeout: 30 saniye timeout, retry sonrası fallback
+
+5. Puanlama Sistemi:
+
+Parse etme - Gemini'den JSON response bekle, parsing başarısızsa default skorlar (3,3)
+Saklama: HAYIR - Şimdilik kullanıcı profili yok, sadece session'da tut
+Leaderboard: HAYIR - İleride eklenebilir
+
+6. Performance:
+
+Concurrent limit: YOK - Şimdilik limitleme yapma
+Cache: HAYIR - Her response unique olmalı, cache gereksiz
+
+Bu cevaplara göre kod yaz. Basit tut, over-engineering yapma. 
+Önce çalışan sistem, sonra optimizasyon.RetryClaude can make mistakes. Please double-check responses.

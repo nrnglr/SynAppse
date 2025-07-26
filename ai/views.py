@@ -1,24 +1,14 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from django.views.generic import TemplateView
-from .gemini.service import GeminiService
-from lobsmart.settings import supabase
-from .models import MemoryExercise
-from .ai_feedback import get_creativity_feedback, get_memory_feedback
-import logging
-import json
-from postgrest.exceptions import APIError
-from django.shortcuts import render, redirect   
+from django.shortcuts import render
 
-logger = logging.getLogger(__name__)
-
-# Yardımcı Sayfalar
+# Main pages
 def index(request):
-    return render(request, 'index.html')  
+    """Main landing page"""
+    return render(request, 'index.html')
 
 def exercise_view(request):
+    """Exercise selection page"""
     return render(request, 'exercise.html')
+
 
 def brain_view(request):
     return render(request, 'brain.html')
@@ -252,3 +242,7 @@ class CompleteMemoryExerciseView(APIView):
         except Exception as e:
             logger.error(f"Egzersiz tamamlama hatası: {e}", exc_info=True)
             return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+def problem_chain_test(request):
+    """Problem Chain test page"""
+    return render(request, 'problem_chain_test.html')
