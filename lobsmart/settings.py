@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # Local apps
     'ai',
     'exercises',
+    'exercises.memory',
+    'exercises.word_bridge',
+    'exercises.problem_chain',
     'users',
 ]
 

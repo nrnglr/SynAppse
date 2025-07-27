@@ -1,0 +1,732 @@
+{% load static %}
+{% include 'components/navbar.html' %}
+
+<!-- CSRF Token for JavaScript -->
+{% csrf_token %}
+
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-8">
+        <h2 class="text-4xl font-bold mb-4 tracking-[2px]">Kelime Köprüsü</h2>
+        <p class="text-gray-300 text-lg">İki alakasız kelime arasında mantıklı bağlantılar kurun</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="bg-second/20 rounded-lg p-8 border border-second/30">
+        
+        <!-- Step 1: Difficulty Selection -->
+        <div id="difficultyStep" class="step-container">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-main mb-4">Zorluk Seviyesi Seçin</h3>
+                <p class="text-gray-300">Size uygun bir zorluk seviyesi seçin</p>
+            </div>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <div class="difficulty-card" data-difficulty="easy">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                        <div class="text-3xl mb-3">🟢</div>
+                        <h4 class="text-xl font-semibold text-white mb-2">KOLAY</h4>
+                        <p class="text-gray-400 text-sm mb-3">Somut, günlük kelimeler</p>
+                        <div class="text-main font-semibold">Süre sınırı yok</div>
+                    </div>
+                </div>
+                
+                <div class="difficulty-card" data-difficulty="medium">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                        <div class="text-3xl mb-3">🟡</div>
+                        <h4 class="text-xl font-semibold text-white mb-2">ORTA</h4>
+                        <p class="text-gray-400 text-sm mb-3">Karışık kategoriler</p>
+                        <div class="text-main font-semibold">120 saniye</div>
+                    </div>
+                </div>
+                
+                <div class="difficulty-card" data-difficulty="hard">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                        <div class="text-3xl mb-3">🔴</div>
+                        <h4 class="text-xl font-semibold text-white mb-2">ZOR</h4>
+                        <p class="text-gray-400 text-sm mb-3">Soyut kavramlar</p>
+                        <div class="text-main font-semibold">60 saniye</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button id="startBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Başla
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Start Word Selection -->
+        <div id="startWordStep" class="step-container hidden">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-main mb-4">🎯 Hedef Kelime</h3>
+                <div id="targetWord" class="text-4xl font-bold text-white mb-6">-</div>
+                <p class="text-gray-300 mb-8">Hangi kelimeyle başlamak istiyorsunuz?</p>
+            </div>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <button class="start-option bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center min-w-[150px]" data-word="">
+                    <div class="text-2xl font-semibold text-white">A</div>
+                    <div class="option-word text-lg mt-2">-</div>
+                </button>
+                
+                <button class="start-option bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center min-w-[150px]" data-word="">
+                    <div class="text-2xl font-semibold text-white">B</div>
+                    <div class="option-word text-lg mt-2">-</div>
+                </button>
+                
+                <button class="start-option bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center min-w-[150px]" data-word="">
+                    <div class="text-2xl font-semibold text-white">C</div>
+                    <div class="option-word text-lg mt-2">-</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Exercise Interface -->
+        <div id="exerciseStep" class="step-container hidden">
+            <!-- Timer and Progress -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center gap-4">
+                    <div id="timer" class="text-2xl font-bold text-main hidden">
+                        ⏱️ <span id="timeRemaining">--</span>s
+                    </div>
+                    <div class="text-gray-400">
+                        Adım: <span id="currentStep" class="text-main font-semibold">0</span>/6
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button id="hintBtn" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition text-sm">
+                        💡 Hint İste (<span id="hintsRemaining">3</span>)
+                    </button>
+                    <button id="finishBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm">
+                        ✅ Egzersizi Bitir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Word Chain Display -->
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-main mb-4 text-center">Kelime Zinciri</h3>
+                <div id="wordChain" class="flex flex-wrap items-center justify-center gap-2 mb-4">
+                    <div class="word-box bg-main text-black px-4 py-2 rounded-lg font-semibold" id="startWordDisplay">-</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400" id="step1">?</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400" id="step2">?</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400" id="step3">?</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400" id="step4">?</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400" id="step5">?</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400" id="step6">?</div>
+                    <div class="arrow text-main text-2xl">→</div>
+                    <div class="word-box bg-green-600 text-white px-4 py-2 rounded-lg font-semibold" id="targetWordDisplay">-</div>
+                </div>
+            </div>
+
+            <!-- Word Input -->
+            <div class="text-center mb-6">
+                <div class="max-w-md mx-auto">
+                    <label class="block text-lg font-semibold text-white mb-3" id="inputLabel">
+                        1. Kelimeyi girin:
+                    </label>
+                    <div class="flex gap-3">
+                        <input 
+                            type="text" 
+                            id="wordInput" 
+                            class="flex-1 bg-second/40 text-white px-4 py-3 rounded-lg border border-second/50 focus:border-main focus:outline-none text-center text-lg"
+                            placeholder="Kelimeyi yazın..."
+                        >
+                        <button id="submitWordBtn" class="bg-main text-black px-6 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition">
+                            Gönder
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hint Display -->
+            <div id="hintDisplay" class="hidden mb-6 p-4 bg-yellow-600/20 border border-yellow-600/30 rounded-lg text-center">
+                <div class="text-yellow-400 font-semibold mb-2">💡 Hint <span id="hintLevel">1</span></div>
+                <div id="hintText" class="text-white"></div>
+            </div>
+        </div>
+
+        <!-- Step 4: Results -->
+        <div id="resultsStep" class="step-container hidden">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-main mb-4">🏆 Sonuçlar</h3>
+                <div id="completionMessage" class="text-lg text-gray-300 mb-6">Egzersiz tamamlandı!</div>
+            </div>
+
+            <!-- User Solution -->
+            <div class="mb-8">
+                <h4 class="text-xl font-semibold text-white mb-4 text-center">✨ Çözümünüz</h4>
+                <div id="userSolution" class="flex flex-wrap items-center justify-center gap-2 mb-4">
+                    <!-- Dinamik olarak doldurulacak -->
+                </div>
+            </div>
+
+            <!-- Scores -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                    <div class="text-2xl font-bold text-main" id="logicScore">-</div>
+                    <div class="text-gray-400 text-sm">Mantıklılık</div>
+                </div>
+                <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                    <div class="text-2xl font-bold text-main" id="creativityScore">-</div>
+                    <div class="text-gray-400 text-sm">Yaratıcılık</div>
+                </div>
+                <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                    <div class="text-2xl font-bold text-main" id="efficiencyScore">-</div>
+                    <div class="text-gray-400 text-sm">Verimlilik</div>
+                </div>
+                <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                    <div class="text-2xl font-bold text-main" id="overallScore">-</div>
+                    <div class="text-gray-400 text-sm">Genel Başarı</div>
+                </div>
+            </div>
+
+            <!-- AI Evaluation -->
+            <div class="mb-8 p-4 bg-second/20 rounded-lg border border-second/30">
+                <h5 class="text-lg font-semibold text-main mb-3">🤖 AI Değerlendirmesi</h5>
+                <div id="aiEvaluation" class="text-gray-300"></div>
+            </div>
+
+            <!-- Alternative Solutions -->
+            <div class="mb-8">
+                <h5 class="text-lg font-semibold text-main mb-4 text-center">🔄 Alternatif Çözümler</h5>
+                <div id="alternativeSolutions" class="space-y-3">
+                    <!-- Dinamik olarak doldurulacak -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center">
+                <button id="newGameBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition mr-4">
+                    🎮 Tekrar Oyna
+                </button>
+                <button id="backToMenuBtn" class="bg-gray-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-700 transition">
+                    📈 Ana Menü
+                </button>
+            </div>
+        </div>
+
+        <!-- Session Info -->
+        <div class="mt-8 p-4 bg-gray-800/30 rounded-lg">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+                <div>
+                    <div class="text-gray-400">Session ID</div>
+                    <div id="sessionId" class="text-main font-mono">-</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Zorluk</div>
+                    <div id="difficultyDisplay" class="text-white">-</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Durum</div>
+                    <div id="statusDisplay" class="text-white">Başlangıç</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Kullanılan Hint</div>
+                    <div id="hintsUsedDisplay" class="text-white">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'components/footer.html' %}
+
+<script>
+// Word Bridge JavaScript Logic
+class WordBridge {
+    constructor() {
+        this.sessionId = null;
+        this.selectedDifficulty = null;
+        this.targetWord = null;
+        this.startWordOptions = [];
+        this.selectedStartWord = null;
+        this.currentStep = 0;
+        this.submittedWords = [];
+        this.hintsUsed = [];
+        this.timeLimit = null;
+        this.timer = null;
+        this.timeRemaining = 0;
+        
+        this.initializeEventListeners();
+    }
+
+    initializeEventListeners() {
+        // Difficulty selection
+        document.querySelectorAll('.difficulty-card').forEach(card => {
+            card.addEventListener('click', () => this.selectDifficulty(card));
+        });
+
+        // Start button
+        document.getElementById('startBtn').addEventListener('click', () => this.startExercise());
+
+        // Start word options
+        document.querySelectorAll('.start-option').forEach(option => {
+            option.addEventListener('click', () => this.selectStartWord(option));
+        });
+
+        // Word submission
+        document.getElementById('submitWordBtn').addEventListener('click', () => this.submitWord());
+        document.getElementById('wordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.submitWord();
+        });
+
+        // Hint button
+        document.getElementById('hintBtn').addEventListener('click', () => this.requestHint());
+
+        // Finish button
+        document.getElementById('finishBtn').addEventListener('click', () => this.finishExercise());
+
+        // New game button
+        document.getElementById('newGameBtn').addEventListener('click', () => this.resetGame());
+
+        // Back to menu button
+        document.getElementById('backToMenuBtn').addEventListener('click', () => {
+            window.location.href = '/';
+        });
+    }
+
+    selectDifficulty(selectedCard) {
+        // Remove selection from all cards
+        document.querySelectorAll('.difficulty-card div').forEach(div => {
+            div.classList.remove('border-main', 'bg-main/10');
+        });
+
+        // Add selection to clicked card
+        const cardDiv = selectedCard.querySelector('div');
+        cardDiv.classList.add('border-main', 'bg-main/10');
+
+        // Store selected difficulty
+        this.selectedDifficulty = selectedCard.dataset.difficulty;
+        
+        // Enable start button
+        document.getElementById('startBtn').disabled = false;
+        
+        // Update display
+        document.getElementById('difficultyDisplay').textContent = this.getDifficultyText(this.selectedDifficulty);
+    }
+
+    getDifficultyText(difficulty) {
+        const texts = {
+            'easy': 'Kolay',
+            'medium': 'Orta', 
+            'hard': 'Zor'
+        };
+        return texts[difficulty] || difficulty;
+    }
+
+    async startExercise() {
+        try {
+            document.getElementById('statusDisplay').textContent = 'Başlatılıyor...';
+            
+            const response = await fetch('/exercises/word-bridge/start/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    difficulty: this.selectedDifficulty
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.sessionId = data.session_id;
+                this.targetWord = data.target_word;
+                this.startWordOptions = data.start_options;
+                this.timeLimit = data.time_limit;
+                
+                // Update UI
+                document.getElementById('sessionId').textContent = this.sessionId.substring(0, 8) + '...';
+                document.getElementById('targetWord').textContent = this.targetWord;
+                document.getElementById('targetWordDisplay').textContent = this.targetWord;
+                
+                // Show start word options
+                const options = document.querySelectorAll('.start-option');
+                this.startWordOptions.forEach((word, index) => {
+                    options[index].dataset.word = word;
+                    options[index].querySelector('.option-word').textContent = word;
+                });
+
+                // Switch to start word selection step
+                this.showStep('startWordStep');
+                document.getElementById('statusDisplay').textContent = 'Başlangıç kelimesi seçin';
+            } else {
+                alert('Hata: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error starting exercise:', error);
+            alert('Egzersiz başlatılırken hata oluştu');
+        }
+    }
+
+    async selectStartWord(selectedOption) {
+        const selectedWord = selectedOption.dataset.word;
+        
+        try {
+            const response = await fetch('/exercises/word-bridge/select-start/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    selected_word: selectedWord
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.selectedStartWord = selectedWord;
+                
+                // Update UI
+                document.getElementById('startWordDisplay').textContent = selectedWord;
+                
+                // Start timer if needed
+                if (this.timeLimit) {
+                    this.startTimer();
+                }
+                
+                // Switch to exercise step
+                this.showStep('exerciseStep');
+                document.getElementById('statusDisplay').textContent = 'Kelime girişi';
+                
+                // Focus on input
+                document.getElementById('wordInput').focus();
+            } else {
+                alert('Hata: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error selecting start word:', error);
+            alert('Başlangıç kelimesi seçilirken hata oluştu');
+        }
+    }
+
+    startTimer() {
+        if (!this.timeLimit) return;
+        
+        this.timeRemaining = this.timeLimit;
+        document.getElementById('timer').classList.remove('hidden');
+        
+        this.timer = setInterval(() => {
+            this.timeRemaining--;
+            document.getElementById('timeRemaining').textContent = this.timeRemaining;
+            
+            // Color coding for urgency
+            const timerElement = document.getElementById('timer');
+            if (this.timeRemaining <= 10) {
+                timerElement.classList.add('text-red-500');
+            } else if (this.timeRemaining <= 30) {
+                timerElement.classList.add('text-yellow-500');
+            }
+            
+            if (this.timeRemaining <= 0) {
+                clearInterval(this.timer);
+                this.finishExercise(true); // Auto-finish on timeout
+            }
+        }, 1000);
+    }
+
+    async submitWord() {
+        const word = document.getElementById('wordInput').value.trim();
+        
+        if (!word) {
+            alert('Lütfen bir kelime girin');
+            return;
+        }
+
+        try {
+            const response = await fetch('/exercises/word-bridge/submit-word/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    word: word
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.submittedWords = data.submitted_words;
+                this.currentStep = data.current_step;
+                
+                // Update word chain display
+                this.updateWordChain();
+                
+                // Clear input and update label
+                document.getElementById('wordInput').value = '';
+                this.updateInputLabel();
+                
+                // Update step counter
+                document.getElementById('currentStep').textContent = this.currentStep;
+                
+                // Check if max words reached
+                if (!data.can_submit_more) {
+                    this.finishExercise();
+                }
+            } else {
+                alert('Hata: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error submitting word:', error);
+            alert('Kelime gönderilirken hata oluştu');
+        }
+    }
+
+    updateWordChain() {
+        this.submittedWords.forEach((word, index) => {
+            const stepElement = document.getElementById(`step${index + 1}`);
+            if (stepElement) {
+                stepElement.textContent = word;
+                stepElement.classList.remove('bg-second/40', 'text-gray-400');
+                stepElement.classList.add('bg-blue-600', 'text-white');
+            }
+        });
+    }
+
+    updateInputLabel() {
+        const nextStep = this.currentStep + 1;
+        document.getElementById('inputLabel').textContent = `${nextStep}. Kelimeyi girin:`;
+    }
+
+    async requestHint() {
+        if (this.hintsUsed.length >= 3) {
+            alert('Tüm hintleri kullandınız');
+            return;
+        }
+
+        const nextHintLevel = this.hintsUsed.length + 1;
+
+        try {
+            const response = await fetch('/exercises/word-bridge/get-hint/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    hint_level: nextHintLevel
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.hintsUsed = data.hints_used;
+                
+                // Show hint
+                document.getElementById('hintLevel').textContent = data.hint_level;
+                document.getElementById('hintText').textContent = data.hint_text;
+                document.getElementById('hintDisplay').classList.remove('hidden');
+                
+                // Update hint button
+                const hintsRemaining = 3 - this.hintsUsed.length;
+                document.getElementById('hintsRemaining').textContent = hintsRemaining;
+                document.getElementById('hintsUsedDisplay').textContent = this.hintsUsed.length;
+                
+                if (hintsRemaining === 0) {
+                    document.getElementById('hintBtn').disabled = true;
+                    document.getElementById('hintBtn').textContent = '💡 Hint Yok';
+                }
+            } else {
+                alert('Hata: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error requesting hint:', error);
+            alert('Hint alınırken hata oluştu');
+        }
+    }
+
+    async finishExercise(isTimeout = false) {
+        // Stop timer
+        if (this.timer) {
+            clearInterval(this.timer);
+        }
+
+        try {
+            const response = await fetch('/exercises/word-bridge/complete/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.showResults(data, isTimeout);
+            } else {
+                alert('Hata: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error finishing exercise:', error);
+            alert('Egzersiz tamamlanırken hata oluştu');
+        }
+    }
+
+    showResults(data, isTimeout = false) {
+        // Update completion message
+        const message = isTimeout ? 
+            'Süre doldu! Egzersiz otomatik olarak tamamlandı.' : 
+            'Egzersiz başarıyla tamamlandı!';
+        document.getElementById('completionMessage').textContent = message;
+
+        // Show user solution
+        this.displayUserSolution(data.user_solution);
+
+        // Show scores
+        const scores = data.scores;
+        document.getElementById('logicScore').textContent = scores.logic + '/10';
+        document.getElementById('creativityScore').textContent = scores.creativity + '/10';
+        document.getElementById('efficiencyScore').textContent = scores.efficiency + '/10';
+        document.getElementById('overallScore').textContent = scores.overall + '/10';
+
+        // Show AI evaluation
+        document.getElementById('aiEvaluation').textContent = data.evaluation;
+
+        // Show alternative solutions
+        this.displayAlternativeSolutions(data.alternative_solutions);
+
+        // Switch to results step
+        this.showStep('resultsStep');
+        document.getElementById('statusDisplay').textContent = 'Tamamlandı';
+    }
+
+    displayUserSolution(solution) {
+        const container = document.getElementById('userSolution');
+        container.innerHTML = '';
+
+        solution.forEach((word, index) => {
+            if (index > 0) {
+                const arrow = document.createElement('div');
+                arrow.className = 'text-main text-2xl';
+                arrow.textContent = '→';
+                container.appendChild(arrow);
+            }
+
+            const wordBox = document.createElement('div');
+            wordBox.className = index === 0 || index === solution.length - 1 ? 
+                'word-box bg-main text-black px-4 py-2 rounded-lg font-semibold' :
+                'word-box bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold';
+            wordBox.textContent = word;
+            container.appendChild(wordBox);
+        });
+    }
+
+    displayAlternativeSolutions(alternatives) {
+        const container = document.getElementById('alternativeSolutions');
+        container.innerHTML = '';
+
+        alternatives.forEach((alt, index) => {
+            const altDiv = document.createElement('div');
+            altDiv.className = 'bg-second/20 rounded-lg p-4 border border-second/30';
+
+            const theme = document.createElement('div');
+            theme.className = 'text-main font-semibold mb-2';
+            theme.textContent = `${index + 1}. ${alt.theme}`;
+
+            const path = document.createElement('div');
+            path.className = 'text-white mb-2';
+            path.textContent = alt.path.join(' → ');
+
+            const description = document.createElement('div');
+            description.className = 'text-gray-400 text-sm';
+            description.textContent = alt.description;
+
+            altDiv.appendChild(theme);
+            altDiv.appendChild(path);
+            altDiv.appendChild(description);
+            container.appendChild(altDiv);
+        });
+    }
+
+    showStep(stepId) {
+        // Hide all steps
+        document.querySelectorAll('.step-container').forEach(step => {
+            step.classList.add('hidden');
+        });
+
+        // Show target step
+        document.getElementById(stepId).classList.remove('hidden');
+    }
+
+    resetGame() {
+        // Reset all variables
+        this.sessionId = null;
+        this.selectedDifficulty = null;
+        this.targetWord = null;
+        this.startWordOptions = [];
+        this.selectedStartWord = null;
+        this.currentStep = 0;
+        this.submittedWords = [];
+        this.hintsUsed = [];
+        this.timeLimit = null;
+        
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
+
+        // Reset UI
+        document.getElementById('startBtn').disabled = true;
+        document.getElementById('hintBtn').disabled = false;
+        document.getElementById('hintBtn').textContent = '💡 Hint İste (3)';
+        document.getElementById('hintsRemaining').textContent = '3';
+        document.getElementById('wordInput').value = '';
+        document.getElementById('hintDisplay').classList.add('hidden');
+        document.getElementById('timer').classList.add('hidden');
+
+        // Reset displays
+        document.getElementById('sessionId').textContent = '-';
+        document.getElementById('difficultyDisplay').textContent = '-';
+        document.getElementById('statusDisplay').textContent = 'Başlangıç';
+        document.getElementById('hintsUsedDisplay').textContent = '0';
+        document.getElementById('currentStep').textContent = '0';
+
+        // Reset difficulty selection
+        document.querySelectorAll('.difficulty-card div').forEach(div => {
+            div.classList.remove('border-main', 'bg-main/10');
+        });
+
+        // Reset word chain
+        for (let i = 1; i <= 6; i++) {
+            const stepElement = document.getElementById(`step${i}`);
+            if (stepElement) {
+                stepElement.textContent = '?';
+                stepElement.className = 'word-box bg-second/40 border border-second/50 px-4 py-2 rounded-lg text-gray-400';
+            }
+        }
+
+        // Show first step
+        this.showStep('difficultyStep');
+    }
+}
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    new WordBridge();
+});
+</script>
+
+</body>
+</html>
