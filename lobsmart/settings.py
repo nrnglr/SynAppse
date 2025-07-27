@@ -71,6 +71,9 @@ TEMPLATES = [
         },
     },
 ]
+SUPABASE_URL = "https://your-project-id.supabase.co"
+SUPABASE_KEY = "your-anon-key"  # genelde 'public' key olur
+
 
 WSGI_APPLICATION = 'lobsmart.wsgi.application'
 

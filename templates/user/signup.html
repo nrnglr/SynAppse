@@ -23,6 +23,9 @@
         },
       }
     </script>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm" type="module"></script>
   </head>
   <body class="h-full text-white font-sans bg-cover bg-center relative" style="background-image: url('loginbgright.png')">
     <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
@@ -32,38 +35,92 @@
         <div class="w-full max-w-md p-6">
           <h1 class="text-4xl font-bold mb-2 text-center">Kayıt Olun</h1>
           <p class="text-sm text-center text-gray-300 mb-6">Beyninizı keşfe çıkın!</p>
-            <form class="space-y-4">
+          <form id="signup-form" class="space-y-4">
             <input
-                type="text"
-                placeholder="İsim - Soyisim"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              type="text"
+              id="fullName"
+              placeholder="İsim - Soyisim"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
             <input
-                type="email"
-                placeholder="Email"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              type="email"
+              id="email"
+              placeholder="Email"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
             <input
-                type="nickname"
-                placeholder="Kullanıcı Adı"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              type="text"
+              id="username"
+              placeholder="Kullanıcı Adı"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
             />
             <input
-                type="password"
-                placeholder="Şifre"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              type="password"
+              id="password"
+              placeholder="Şifre"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
             <input
-                type="password"
-                placeholder="Şifre Tekrar"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              type="password"
+              id="passwordConfirm"
+              placeholder="Şifre Tekrar"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
             <button type="submit" class="w-full bg-main text-white hover:bg-second py-2 rounded-md font-semibold hover:bg-opacity-90 transition">
-                Kayıt Ol
+              Kayıt Ol
             </button>
-            </form>
+          </form>
         </div>
       </div>
     </div>
+
+    <!-- Supabase Kayıt Scripti -->
+    <script type="module">
+      import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+      const supabaseUrl = 'https://enromkgseckujzrwmmjp.supabase.co'
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVucm9ta2dzZWNrdWp6cndtbWpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1MTIyMjUsImV4cCI6MjA2ODA4ODIyNX0.sjVQSczSs1bLE0QLgMyuWQFycACr2hh3rfyJar1P-0M'
+      const supabase = createClient(supabaseUrl, supabaseKey)
+
+      const form = document.getElementById('signup-form')
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const fullName = document.getElementById('fullName').value
+        const email = document.getElementById('email').value
+        const username = document.getElementById('username').value
+        const password = document.getElementById('password').value
+        const passwordConfirm = document.getElementById('passwordConfirm').value
+
+        if (password !== passwordConfirm) {
+          alert("Şifreler eşleşmiyor!")
+          return
+        }
+
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: fullName,
+              username: username,
+            }
+          }
+        })
+
+        if (error) {
+          alert("Hata: " + error.message)
+        } else {
+          alert("Kayıt başarılı! Lütfen e-posta kutunuzu kontrol edin.")
+          window.location.href = '/login/'  // Kayıt sonrası login sayfasına yönlendir
+        }
+      })
+    </script>
   </body>
 </html>
+
