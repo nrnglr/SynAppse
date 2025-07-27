@@ -55,7 +55,39 @@
               id="username"
               placeholder="Kullanıcı Adı"
               class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
+            <select
+              id="country"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main text-white"
+              required
+            >
+              <option value="" class="bg-gray-800">Ülke Seçin</option>
+              <option value="Türkiye" class="bg-gray-800">Türkiye</option>
+              <option value="ABD" class="bg-gray-800">ABD</option>
+              <option value="Almanya" class="bg-gray-800">Almanya</option>
+              <option value="Fransa" class="bg-gray-800">Fransa</option>
+              <option value="İngiltere" class="bg-gray-800">İngiltere</option>
+            </select>
+            <input
+              type="number"
+              id="age"
+              placeholder="Yaş"
+              min="13"
+              max="100"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
+            />
+            <select
+              id="gender"
+              class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main text-white"
+              required
+            >
+              <option value="" class="bg-gray-800">Cinsiyet Seçin</option>
+              <option value="Kadın" class="bg-gray-800">Kadın</option>
+              <option value="Erkek" class="bg-gray-800">Erkek</option>
+              <option value="Diğer" class="bg-gray-800">Diğer</option>
+            </select>
             <input
               type="password"
               id="password"
@@ -74,6 +106,9 @@
               Kayıt Ol
             </button>
           </form>
+          <p class="mt-6 text-center text-sm">
+            Zaten hesabınız var mı? <a href="/login/" class="text-main hover:underline">Giriş yapın!</a>
+          </p>
         </div>
       </div>
     </div>
@@ -94,6 +129,9 @@
         const fullName = document.getElementById('fullName').value
         const email = document.getElementById('email').value
         const username = document.getElementById('username').value
+        const country = document.getElementById('country').value
+        const age = document.getElementById('age').value
+        const gender = document.getElementById('gender').value
         const password = document.getElementById('password').value
         const passwordConfirm = document.getElementById('passwordConfirm').value
 
@@ -102,6 +140,7 @@
           return
         }
 
+        // Supabase Auth ile kullanıcı kayıt et
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
@@ -109,6 +148,9 @@
             data: {
               full_name: fullName,
               username: username,
+              country: country,
+              age: age,
+              gender: gender
             }
           }
         })
@@ -123,4 +165,3 @@
     </script>
   </body>
 </html>
-

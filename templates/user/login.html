@@ -35,7 +35,7 @@
         <div class="w-full max-w-md p-6">
           <h1 class="text-4xl font-bold mb-2 text-center">Hoş Geldiniz</h1>
           <p class="text-sm text-center text-gray-300 mb-6">Beyninizı keşfe çıkın!</p>
-          <form class="space-y-4">
+          <form id="login-form" class="space-y-4">
             <input
               type="email"
               id="email"
@@ -72,7 +72,7 @@
       const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVucm9ta2dzZWNrdWp6cndtbWpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1MTIyMjUsImV4cCI6MjA2ODA4ODIyNX0.sjVQSczSs1bLE0QLgMyuWQFycACr2hh3rfyJar1P-0M'
       const supabase = createClient(supabaseUrl, supabaseKey)
 
-      const form = document.querySelector('form')
+      const form = document.getElementById('login-form')
       const emailInput = document.getElementById('email')
       const passwordInput = document.getElementById('password')
 
@@ -90,7 +90,9 @@
         if (error) {
           alert('Hata: ' + error.message)
         } else {
-      
+          // Kullanıcı bilgilerini localStorage'a kaydet (profile sayfasında kullanmak için)
+          localStorage.setItem('user_session', JSON.stringify(data.user))
+          alert('Giriş başarılı!')
           window.location.href = '/profile/'  // Giriş sonrası yönlendirme
         }
       })
