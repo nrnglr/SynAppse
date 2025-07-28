@@ -23,6 +23,9 @@
         },
       }
     </script>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm" type="module"></script>
   </head>
   <body class="h-full text-white font-sans bg-cover bg-center relative">
     <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
@@ -32,16 +35,20 @@
         <div class="w-full max-w-md p-6">
           <h1 class="text-4xl font-bold mb-2 text-center">Hoş Geldiniz</h1>
           <p class="text-sm text-center text-gray-300 mb-6">Beyninizı keşfe çıkın!</p>
-          <form class="space-y-4">
+          <form id="login-form" class="space-y-4">
             <input
               type="email"
+              id="email"
               placeholder="Email"
               class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
             <input
               type="password"
+              id="password"
               placeholder="Şifre"
               class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
+              required
             />
             <div class="text-right">
               <a href="#" class="text-sm text-main hover:underline">Şifreni mi unuttun?</a>
@@ -51,10 +58,44 @@
             </button>
           </form>
           <p class="mt-6 text-center text-sm">
-            Hesabınız yok mu? <a href="#" class="text-main hover:underline">Şimdi kaydolun!</a>
+            Hesabınız yok mu? <a href="/signup/" class="text-main hover:underline">Şimdi kaydolun!</a>
           </p>
         </div>
       </div>
     </div>
+
+    <!-- Supabase Giriş Scripti -->
+    <script type="module">
+      import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+      const supabaseUrl = 'https://enromkgseckujzrwmmjp.supabase.co'
+      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVucm9ta2dzZWNrdWp6cndtbWpwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI1MTIyMjUsImV4cCI6MjA2ODA4ODIyNX0.sjVQSczSs1bLE0QLgMyuWQFycACr2hh3rfyJar1P-0M'
+      const supabase = createClient(supabaseUrl, supabaseKey)
+
+      const form = document.getElementById('login-form')
+      const emailInput = document.getElementById('email')
+      const passwordInput = document.getElementById('password')
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const email = emailInput.value
+        const password = passwordInput.value
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        })
+
+        if (error) {
+          alert('Hata: ' + error.message)
+        } else {
+          // Kullanıcı bilgilerini localStorage'a kaydet (profile sayfasında kullanmak için)
+          localStorage.setItem('user_session', JSON.stringify(data.user))
+          alert('Giriş başarılı!')
+          window.location.href = '/profile/'  // Giriş sonrası yönlendirme
+        }
+      })
+    </script>
   </body>
 </html>
