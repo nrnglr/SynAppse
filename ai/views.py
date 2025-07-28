@@ -47,6 +47,15 @@ def problem_chain_test(request):
     return render(request, 'problem_chain_test.html')
 
 
+def word_bridge_test(request):
+    """Word Bridge test page"""
+    return render(request, 'word_bridge_test.html')
+
+def memory_test(request):
+    """Memory exercise test page"""
+    return render(request, 'memory_test.html')
+
+
 # --- Class-based Template views ---
 
 class CreativityTestPageView(TemplateView):
@@ -366,3 +375,4 @@ class CompleteMemoryExerciseView(APIView):
         except Exception as e:
             logger.error(f"Memory tamamlanırken hata: {e}", exc_info=True)
             return Response({"error": "Sunucu hatası."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

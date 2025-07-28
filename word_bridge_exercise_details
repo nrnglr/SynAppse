@@ -1,0 +1,104 @@
+KELIME KÖPRÜSÜ EGZERSİZİ
+Bu egzersizde iki alakasız kelime arasında mantıklı bağlantılar kurarak hafızanızı ve yaratıcı düşünce gücünüzü geliştireceksiniz.
+Size bir hedef kelime ve üç farklı başlangıç kelimesi seçeneği sunulacak. Seçtiğiniz başlangıç kelimesinden hedef kelimeye ulaşmak için ara kelimeler bulmanız gerekiyor. Her ara kelime, bir önceki ve bir sonraki kelimeyle anlamlı bir bağlantı kurmalı
+
+KELIME KÖPRÜSÜ EGZERSİZİ - DETAYLI MEKANİZMA TRANSKRİPTİ
+
+BAŞLANGIÇ AŞAMASI
+1.1 Zorluk Seçimi
+Kullanıcı zorluk seviyesi seçer (Kolay/Orta/Zor)
+
+1.2 Kelime Hazırlama (Gemini API)
+API Görevi 1:
+
+Hedef kelime üretimi (1 adet)
+Başlangıç kelime seçenekleri (3 adet)
+Zorluk seviyesine göre kelime kategorileri:
+
+Kolay: Somut, günlük kelimeler
+Orta: Karışık kategoriler (somut+soyut)
+Zor: Soyut kavramlar, uzak çağrışımlar
+
+1.3 Kullanıcı Arayüzü
+🎯 HEDEF KELİME: "TSUNAMI"
+
+Hangi kelimeyle başlamak istiyorsuniz?
+[ A ] Kalem [ B ] Güneş [ C ] Mutluluk
+2. EGZERSİZ AŞAMASI
+2.1 Gemini API Çözüm Hazırlama
+API Görevi 2: (Kullanıcı seçiminden sonra)
+
+Seçilen başlangıç kelimesi + hedef kelime için çözüm yolu oluştur
+Örnek: "Kalem → Yazı → Gazete → Haber → Afet → Tsunami"
+
+2.2 Hint Sistemi Hazırlama
+API Görevi 3: Çözüm yoluna göre 3 seviyeli hint hazırla:
+Hint 1 (En Az Bilgi):
+
+Genel kategori ipucu
+Örnek: "Bu yolculukta iletişim araçları önemli rol oynuyor"
+
+Hint 2 (Orta Bilgi):
+
+Bir ara kelime kategorisi
+Örnek: "Yazılı medya araçlarını düşünmelisiniz"
+
+Hint 3 (En Çok Bilgi):
+
+Doğrudan bir ara kelimeye yakın ipucu
+Örnek: "Felaketleri haber yapan şeyler..."
+
+2.3 Kullanıcı Etkileşimi
+KALEM → [?] → [?] → [?] → TSUNAMI
+
+Kelimelerinizi yazın:
+□ 1. Adım: ________________
+□ 2. Adım: ________________
+□ 3. Adım: ________________
+
+💡 Hint İste ✅ Çözümü Gönder
+3. DEĞERLENDİRME AŞAMASI
+3.1 Gemini API Skorlama
+API Görevi 4: Kullanıcı çözümünü analiz et:
+Değerlendirme Kriterleri:
+
+Mantıklılık (1-10): Her adım önceki/sonrakiyle mantıklı bağlantılı mı?
+Yaratıcılık (1-10): Beklenmedik ama mantıklı bağlantılar var mı?
+Verimlilik (1-10): En kısa yoldan ulaştı mı?
+Genel Başarı (1-10): Toplam performans
+
+3.2 Alternatif Yollar
+API Görevi 5: Diğer olası çözümleri göster:
+
+En az 2-3 farklı çözüm yolu
+Her yolun kısa açıklaması
+
+3.3 Sonuç Ekranı
+🏆 SONUÇ RAPORU
+
+📊 SKORLARINIZ:
+
+Mantıklılık: 8/10
+Yaratıcılık: 9/10
+Verimlilik: 6/10
+Genel Başarı: 8/10
+✨ ÇÖZÜMÜNÜZ:
+Kalem → Öğrenci → Okul → Deprem Tatbikatı → Tsunami
+
+🔄 ALTERNATİF YOLLAR:
+
+Kalem → Yazı → Gazete → Haber → Tsunami
+Kalem → Çizim → Harita → Japonya → Tsunami
+Kalem → Kırtasiye → Plastik → Okyanus → Tsunami
+
+
+Teknik sorularına cevap:
+
+Kullanıcı en fazla 6 kelime girebilecek her zorluk modunda. istiyorsa bundan daha az girebilir. Henüz template tasarımını yapmayacağız ilk adımlarda fakat sana bahsedeyim ona göre backendi hazırla. Kullanıcı her girdiği kelimeyi submit edeceği bir butonu olacak. Her submitten sonra diğer kelime istenecek 6.kelimeyi submit olduğunda tamamlanmış sayılacak. Eğer erken bitirmek isterse yazdığı son kelimenin son bağlayıcı kelimesi olduğuna karar verdiğinde egzersizi bitir işlevi gören bir buton ile tüm cevabını vermiş olacak. Orta ve zor modlarda süre kısıtlaması olacak. Orta 120 saniye ve zor 60 saniyede bitirilmeli şeklinde.
+
+
+3 hint olacak ve kullanıcı her bir hinti kullandığında skorundan yarım puan düşecek.
+
+Kullanıcı her kelime submit ettiğinde sadece cevapla birleştirilmek için hazırda bekleyen gibi bir sistem olacak en sonda tüm submitleri birleştirme mantığında olacak bunu sen düşünerek en mantıklı ve karmaşık olmayan şekilde çözebilirsin.
+
+Kullanıcı deneme hakkı diye bir şey yok submit ederse o kelimeye bir daha dönemeyecek sonraki kelimeyi yazması gerekecek.

@@ -26,6 +26,13 @@ urlpatterns = [
     # Yardımcı Sayfalar
     path('', views.index, name='index'),
     path('exercise/', views.exercise_view, name='exercise'),
+
+    
+    # Test pages
+    path('test/problem-chain/', views.problem_chain_test, name='problem_chain_test'),
+    path('test/word-bridge/', views.word_bridge_test, name='word_bridge_test'),
+    path('test/memory/', views.memory_test, name='memory_test'),
+
     path('brain/', views.brain_view, name='brain'),
     path('sss/', views.sss_view, name='sss'),
     path('profile/', views.profile_view, name='profile'),
@@ -48,4 +55,4 @@ urlpatterns = [
     path('api/signup/', SignupView.as_view(), name='api-signup'), 
     path('api/logout/', LogoutView.as_view(), name='api-logout'),
      path('api/profile/', ProfileView.as_view(), name='api-profile'),
-]
+
