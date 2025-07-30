@@ -33,11 +33,59 @@
         <nav class="hidden md:flex gap-6 text-lg text-gray-300">
           <a class="hover:text-main" href="{% url 'ai:index' %}">Ana Sayfa</a>
           <a class="hover:text-main" href="">Neden SynAppse?</a>
-          <a class="hover:text-main" href="">Egzersizler</a>
+          <a class="hover:text-main" href="{% url 'ai:exercise' %}">Egzersizler</a>
           <a class="hover:text-main" href="">Beyin Sağlığı</a>
           <a class="hover:text-main" href="">İletişim</a>
           <a class="hover:text-main" href="">SSS</a>
         </nav>
-        <a href="#" class="bg-main hover:bg-second hover:text-white text-black px-4 py-2 rounded-full text-sm font-semibold inline-block text-center">Giriş Yap</a>
+        
+        <!-- User Menu -->
+        <div class="flex items-center space-x-4">
+          {% if user.is_authenticated %}
+            <!-- Authenticated User Menu -->
+            <div class="relative group">
+              <button class="flex items-center space-x-2 text-gray-300 hover:text-main transition-colors">
+                <img src="{{ user.userprofile.get_avatar_url }}" alt="Avatar" class="w-8 h-8 rounded-full border-2 border-main">
+                <span class="hidden sm:block">{{ user.first_name|default:user.username }}</span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              
+              <!-- Dropdown Menu -->
+              <div class="absolute right-0 mt-2 w-48 bg-gray-900 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="py-2">
+                  <a href="{% url 'users:profile' %}" class="block px-4 py-2 text-gray-300 hover:bg-gray-800 hover:text-main transition-colors">
+                    <span class="flex items-center space-x-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                      </svg>
+                      <span>Profilim</span>
+                    </span>
+                  </a>
+                  <div class="border-t border-gray-800 my-1"></div>
+                  <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-red-400 hover:bg-gray-800 transition-colors">
+                    <span class="flex items-center space-x-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                      </svg>
+                      <span>Çıkış Yap</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <!-- Guest User Menu -->
+            <div class="flex items-center space-x-3">
+              <a href="{% url 'users:login' %}" class="text-gray-300 hover:text-main transition-colors">
+                Giriş Yap
+              </a>
+              <a href="{% url 'users:register' %}" class="bg-main hover:bg-second hover:text-white text-black px-4 py-2 rounded-full text-sm font-semibold transition-colors">
+                Kayıt Ol
+              </a>
+            </div>
+          {% endif %}
+        </div>
       </div>
     </header>

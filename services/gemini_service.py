@@ -17,8 +17,8 @@ class GeminiService:
             raise ValueError("GEMINI_API_KEY environment variable is not set!")
         
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel(model_name="gemini-1.5-flash-latest")
-    
+        self.model = genai.GenerativeModel(model_name="gemini-2.5-flash-lite")
+
     def generate_content(self, prompt: str, temperature: float = 0.9, max_retries: int = 3) -> str:
         """
         Generate content using Gemini API with retry mechanism
@@ -62,12 +62,23 @@ class GeminiService:
                 json_str = response_text[start_idx:end_idx]
                 parsed = json.loads(json_str)
                 
-                # Validate required fields
+                # Validate required fields and ensure they are integers
                 if 'creativity_score' in parsed and 'practicality_score' in parsed and 'feedback' in parsed:
+                    creativity_score = parsed['creativity_score']
+                    practicality_score = parsed['practicality_score']
+                    
+                    # Convert to int and ensure they are in valid range (1-5)
+                    try:
+                        creativity_score = max(1, min(5, int(creativity_score)))
+                        practicality_score = max(1, min(5, int(practicality_score)))
+                    except (ValueError, TypeError):
+                        creativity_score = 3
+                        practicality_score = 3
+                    
                     return {
-                        'creativity_score': int(parsed['creativity_score']),
-                        'practicality_score': int(parsed['practicality_score']),
-                        'feedback': parsed['feedback']
+                        'creativity_score': creativity_score,
+                        'practicality_score': practicality_score,
+                        'feedback': str(parsed['feedback'])
                     }
             
             # Fallback parsing failed
@@ -84,4 +95,33 @@ class GeminiService:
                 'creativity_score': 3,
                 'practicality_score': 3,
                 'feedback': 'Egzersizi tamamladınız! Problem çözme becerinizi geliştirmeye devam edin.'
+            }
+
+    def parse_json_response(self, response_text: str) -> dict:
+        """
+        Parse Gemini JSON response for Word Bridge exercise
+        """
+        try:
+            # Clean the response text
+            clean_text = response_text.strip()
+            
+            # Try to find JSON in the response
+            start_idx = clean_text.find('{')
+            end_idx = clean_text.rfind('}') + 1
+            
+            if start_idx != -1 and end_idx > start_idx:
+                json_str = clean_text[start_idx:end_idx]
+                return json.loads(json_str)
+            
+            # If no JSON found, try parsing the whole response
+            return json.loads(clean_text)
+            
+        except (json.JSONDecodeError, ValueError) as e:
+            logger.error(f"Error parsing JSON response: {e}")
+            logger.error(f"Response text: {response_text}")
+            
+            # Return a default structure based on common Word Bridge responses
+            return {
+                'error': 'JSON parsing failed',
+                'raw_response': response_text
             }

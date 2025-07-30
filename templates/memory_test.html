@@ -1,0 +1,982 @@
+{% load static %}
+{% include 'components/navbar.html' %}
+
+<!-- CSRF Token for JavaScript -->
+{% csrf_token %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-8">
+        <h2 class="text-4xl font-bold mb-4 tracking-[2px]">Hafıza ve Sentez</h2>
+        <p class="text-gray-300 text-lg">Metni okuyun, hatırlayın ve kendi cümlelerinizle ifade edin</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="bg-second/20 rounded-lg p-8 border border-second/30">
+        
+        <!-- Step 1: Difficulty + Topic Selection -->
+        <div id="difficultyStep" class="step-container">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-main mb-4">Zorluk Seviyesi Seçin</h3>
+                <p class="text-gray-300">Size uygun bir zorluk seviyesi seçin</p>
+            </div>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <div class="difficulty-card" data-difficulty="easy">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                        <div class="text-3xl mb-3">🟢</div>
+                        <h4 class="text-xl font-semibold text-white mb-2">KOLAY</h4>
+                        <p class="text-gray-400 text-sm">Ortaokul-Lise seviyesi</p>
+                    </div>
+                </div>
+                
+                <div class="difficulty-card" data-difficulty="medium">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                        <div class="text-3xl mb-3">🟡</div>
+                        <h4 class="text-xl font-semibold text-white mb-2">ORTA</h4>
+                        <p class="text-gray-400 text-sm">Üniversite seviyesi</p>
+                    </div>
+                </div>
+                
+                <div class="difficulty-card" data-difficulty="hard">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                        <div class="text-3xl mb-3">🔴</div>
+                        <h4 class="text-xl font-semibold text-white mb-2">ZOR</h4>
+                        <p class="text-gray-400 text-sm">Lisansüstü seviyesi</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Auto-advance after difficulty selection -->
+        </div>
+
+        <!-- Step 2: Topic Selection -->
+        <div id="topicStep" class="step-container hidden">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-main mb-4">🎯 Bugünkü Konular</h3>
+                <p class="text-gray-300">Hangi alanda öğrenmek istiyorsunuz?</p>
+            </div>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <div class="topic-card" data-topic-id="A">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center min-w-[200px]">
+                        <div class="text-2xl font-bold text-main mb-2">[ A ]</div>
+                        <h4 class="text-lg font-semibold text-white topic-name">Yükleniyor...</h4>
+                    </div>
+                </div>
+                
+                <div class="topic-card" data-topic-id="B">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center min-w-[200px]">
+                        <div class="text-2xl font-bold text-main mb-2">[ B ]</div>
+                        <h4 class="text-lg font-semibold text-white topic-name">Yükleniyor...</h4>
+                    </div>
+                </div>
+                
+                <div class="topic-card" data-topic-id="C">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center min-w-[200px]">
+                        <div class="text-2xl font-bold text-main mb-2">[ C ]</div>
+                        <h4 class="text-lg font-semibold text-white topic-name">Yükleniyor...</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button id="generateTextBtn" disabled class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed">
+                    📖 Metni Oluştur
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Reading Phase (60 seconds) -->
+        <div id="readingStep" class="step-container hidden">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-main mb-4">📖 Okuma Zamanı</h3>
+                <p class="text-gray-300">Metni dikkatli okuyun. <span class="text-main font-semibold">60 saniye</span> sonra kaybolacak!</p>
+            </div>
+
+            <!-- Timer -->
+            <div class="text-center mb-6">
+                <div id="readingTimer" class="text-6xl font-bold text-main mb-2">
+                    <span id="timeRemaining">60</span>
+                </div>
+                <div class="text-gray-400">saniye kaldı</div>
+                <button id="finishReadingBtn" class="mt-4 bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition">
+                    ⏩ Erken Bitir
+                </button>
+            </div>
+
+            <!-- Reading Text Container -->
+            <div id="textContainer" class="bg-gray-800/50 rounded-lg p-8 border border-gray-600/50">
+                <div class="text-center mb-4">
+                    <span class="text-main font-semibold text-lg">Konu: </span>
+                    <span id="selectedTopicDisplay" class="text-white font-semibold text-lg">-</span>
+                </div>
+                
+                <div id="readingText" class="text-white leading-relaxed text-lg">
+                    Metin yükleniyor...
+                </div>
+                
+                <div class="text-center mt-6 text-gray-400 text-sm">
+                    <span id="wordCount">0</span> kelime
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Recall + Q&A Phase -->
+        <div id="recallStep" class="step-container hidden">
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold text-main mb-4">💭 Hafızanızdan Geri Çağırın</h3>
+                <p class="text-gray-300">Metin kayboldu! Şimdi hatırladıklarınızı yazın ve soru sorun</p>
+            </div>
+
+            <!-- Recall Section -->
+            <div class="mb-8">
+                <label class="block text-white font-semibold mb-3">
+                    📝 Bu metinden anlayıp öğrendiğiniz şey ne?
+                </label>
+                <textarea 
+                    id="userRecall" 
+                    placeholder="Metinden anlayıp öğrendiğiniz şeyi kendi cümlelerinizle yazın..."
+                    class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
+                    rows="4"
+                ></textarea>
+            </div>
+
+            <!-- Keywords Section -->
+            <div class="mb-8">
+                <label class="block text-white font-semibold mb-3">
+                    🔑 3 anahtar kelime:
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input 
+                        id="keyword1" 
+                        type="text" 
+                        placeholder="1. anahtar kelime"
+                        class="p-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
+                    >
+                    <input 
+                        id="keyword2" 
+                        type="text" 
+                        placeholder="2. anahtar kelime"
+                        class="p-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
+                    >
+                    <input 
+                        id="keyword3" 
+                        type="text" 
+                        placeholder="3. anahtar kelime"
+                        class="p-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
+                    >
+                </div>
+            </div>
+
+            <!-- Q&A Section (Replaces Synthesis) -->
+            <div class="mb-8">
+                <label class="block text-white font-semibold mb-3">
+                    ❓ Soru Sor
+                </label>
+                <div class="bg-second/20 rounded-lg p-6 border border-second/30">
+                    <h4 class="text-lg font-semibold text-main mb-4">Metinle İlgili Soru</h4>
+                    <p class="text-gray-300 mb-4">Okuduğunuz metinle ilgili bir soru sorun. AI sizin sorunuzun metinle ilgili olup olmadığını kontrol edecek ve ilgili ise cevap verecek.</p>
+                    
+                    <div class="mb-4">
+                        <textarea 
+                            id="questionText" 
+                            placeholder="Metinle ilgili sorunuzu yazın..."
+                            class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button 
+                            id="askQuestionBtn" 
+                            class="bg-main text-black px-6 py-2 rounded-lg font-semibold hover:bg-second hover:text-white transition"
+                        >
+                            🤔 Soru Sor
+                        </button>
+                    </div>
+                    
+                    <!-- Q&A Result Display -->
+                    <div id="qaResult" class="mt-4" style="display: none;">
+                        <div class="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
+                            <h5 class="text-main font-semibold mb-2">AI Cevabı:</h5>
+                            <div id="aiAnswerDisplay" class="text-white text-sm leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button id="submitResponsesBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition">
+                    🚀 Cevapları Değerlendir
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 5: Results -->
+        <div id="resultsStep" class="step-container hidden">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-main mb-4">🏆 Günlük Performans</h3>
+                <div id="completionMessage" class="text-lg text-gray-300 mb-6">Değerlendirme tamamlandı!</div>
+            </div>
+
+            <!-- Comparison Section -->
+            <div class="mb-8">
+                <h4 class="text-xl font-semibold text-main mb-4 text-center">🔍 Karşılaştırma</h4>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Original Text -->
+                    <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-600/50">
+                        <h5 class="text-lg font-semibold text-gray-300 mb-3">Orijinal Metin:</h5>
+                        <div id="originalTextDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
+                    </div>
+                    
+                    <!-- User Response -->
+                    <div class="bg-blue-900/30 rounded-lg p-6 border border-blue-600/50">
+                        <h5 class="text-lg font-semibold text-blue-300 mb-3">Sizin Çıkarımınız:</h5>
+                        <div id="userRecallDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
+                        <h6 class="text-md font-semibold text-blue-300 mb-2">Anahtar Kelimeler:</h6>
+                        <div id="userKeywordsDisplay" class="flex flex-wrap gap-2 mb-4">
+                            <!-- Dynamic keywords -->
+                        </div>
+                        <h6 class="text-md font-semibold text-blue-300 mb-2">Sorduğunuz Soru:</h6>
+                        <div id="userQuestionDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
+                        <h6 class="text-md font-semibold text-blue-300 mb-2">AI Cevabı:</h6>
+                        <div id="userAnswerDisplay" class="text-white text-sm leading-relaxed">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scores -->
+            <div class="mb-8">
+                <h4 class="text-xl font-semibold text-main mb-4 text-center">📊 Skorlarınız</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                        <div class="text-3xl font-bold text-main mb-2" id="recallScore">-</div>
+                        <div class="text-gray-400 text-sm">Geri Çağırma</div>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+                            <div id="recallProgress" class="bg-main h-2 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                        <div class="text-3xl font-bold text-main mb-2" id="keywordsScore">-</div>
+                        <div class="text-gray-400 text-sm">Anahtar Kelime</div>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+                            <div id="keywordsProgress" class="bg-main h-2 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
+                        <div class="text-3xl font-bold text-main mb-2" id="overallScore">-</div>
+                        <div class="text-gray-400 text-sm">Genel Öğrenme</div>
+                        <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+                            <div id="overallProgress" class="bg-main h-2 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Feedback -->
+            <div class="mb-8 p-6 bg-second/20 rounded-lg border border-second/30">
+                <h5 class="text-lg font-semibold text-main mb-3">💡 Geri Bildirim</h5>
+                <div id="aiFeedback" class="text-gray-300 leading-relaxed"></div>
+            </div>
+
+            <!-- Alternative Keywords -->
+            <div class="mb-8">
+                <h5 class="text-lg font-semibold text-main mb-4 text-center">🔄 Alternatif Anahtar Kelimeler</h5>
+                <div id="alternativeKeywords" class="flex flex-wrap justify-center gap-2">
+                    <!-- Dynamic alternatives -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center">
+                <button id="newExerciseBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition mr-4">
+                    🎮 Tekrar Dene
+                </button>
+                <button id="backToMenuBtn" class="bg-gray-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-700 transition">
+                    📈 Ana Menü
+                </button>
+            </div>
+        </div>
+
+        <!-- Session Info -->
+        <div class="mt-8 p-4 bg-gray-800/30 rounded-lg">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+                <div>
+                    <div class="text-gray-400">Session ID</div>
+                    <div id="sessionId" class="text-main font-mono">-</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Zorluk</div>
+                    <div id="difficultyDisplay" class="text-white">-</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Durum</div>
+                    <div id="statusDisplay" class="text-white">Başlangıç</div>
+                </div>
+                <div>
+                    <div class="text-gray-400">Okuma Süresi</div>
+                    <div id="readingTimeDisplay" class="text-white">0 saniye</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'components/footer.html' %}
+
+<script>
+console.log('Script tag loaded!');
+
+// Memory Exercise JavaScript Logic
+class MemoryExercise {
+    constructor() {
+        console.log('MemoryExercise constructor called');
+        this.sessionId = null;
+        this.selectedDifficulty = null;
+        this.selectedTopicId = null;
+        this.selectedTopicName = null;
+        this.topicOptions = [];
+        this.originalText = '';
+        this.textKeywords = [];
+        this.readingTimer = null;
+        this.readingTimeRemaining = 60;
+        this.readingStartTime = null;
+        this.actualReadingTime = 0;
+        
+        // Get CSRF token
+        this.csrfToken = this.getCSRFToken();
+        console.log('CSRF Token:', this.csrfToken);
+        
+        this.initializeEventListeners();
+    }
+
+    getCSRFToken() {
+        // Try multiple methods to get CSRF token
+        const csrfInput = document.querySelector('[name=csrfmiddlewaretoken]');
+        if (csrfInput) {
+            return csrfInput.value;
+        }
+        
+        const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+        if (csrfMeta) {
+            return csrfMeta.getAttribute('content');
+        }
+        
+        // Fallback: try to get from cookie
+        const cookieValue = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('csrftoken='))
+            ?.split('=')[1];
+        
+        return cookieValue || '';
+    }
+
+    formatText(text) {
+        // Convert **text** to <strong>text</strong> for bold formatting
+        // Also handle other markdown-like formatting
+        if (!text) return '';
+        
+        return text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // **bold** -> <strong>bold</strong>
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')              // *italic* -> <em>italic</em>
+            .replace(/\n/g, '<br>')                            // newlines -> <br>
+            .replace(/_{2}(.*?)_{2}/g, '<u>$1</u>');          // __underline__ -> <u>underline</u>
+    }
+
+    initializeEventListeners() {
+        console.log('Initializing event listeners...');
+        
+        // Difficulty selection
+        const difficultyCards = document.querySelectorAll('.difficulty-card');
+        console.log('Found difficulty cards:', difficultyCards.length);
+        difficultyCards.forEach(card => {
+            console.log('Adding click listener to difficulty card:', card.dataset.difficulty);
+            card.addEventListener('click', (e) => {
+                console.log('Difficulty card clicked:', card.dataset.difficulty);
+                this.selectDifficulty(card);
+            });
+        });
+
+        // Topic selection
+        document.querySelectorAll('.topic-card').forEach(card => {
+            card.addEventListener('click', () => this.selectTopic(card));
+        });
+
+        // Generate text button
+        document.getElementById('generateTextBtn').addEventListener('click', () => this.generateText());
+
+        // Finish reading early
+        document.getElementById('finishReadingBtn').addEventListener('click', () => this.finishReading());
+
+        // Submit responses
+        document.getElementById('submitResponsesBtn').addEventListener('click', () => this.submitResponses());
+        
+        // Ask question button
+        const askQuestionBtn = document.getElementById('askQuestionBtn');
+        if (askQuestionBtn) {
+            askQuestionBtn.addEventListener('click', () => this.askQuestion());
+        }
+
+        // New exercise button
+        document.getElementById('newExerciseBtn').addEventListener('click', () => this.resetExercise());
+
+        // Back to menu button
+        document.getElementById('backToMenuBtn').addEventListener('click', () => {
+            window.location.href = '/';
+        });
+        
+        console.log('Event listeners initialized successfully');
+    }
+
+    selectDifficulty(selectedCard) {
+        console.log('selectDifficulty called with:', selectedCard.dataset.difficulty);
+        
+        // Remove selection from all cards
+        document.querySelectorAll('.difficulty-card div').forEach(div => {
+            div.classList.remove('border-main', 'bg-main/10');
+        });
+
+        // Add selection to clicked card
+        const cardDiv = selectedCard.querySelector('div');
+        if (cardDiv) {
+            cardDiv.classList.add('border-main', 'bg-main/10');
+            console.log('Visual selection added to card');
+        } else {
+            console.error('Could not find card div element');
+        }
+
+        // Store selected difficulty
+        this.selectedDifficulty = selectedCard.dataset.difficulty;
+        console.log('Selected difficulty stored:', this.selectedDifficulty);
+        
+        // Update display
+        const difficultyDisplay = document.getElementById('difficultyDisplay');
+        if (difficultyDisplay) {
+            difficultyDisplay.textContent = this.getDifficultyText(this.selectedDifficulty);
+            console.log('Difficulty display updated');
+        }
+        
+        // Immediately generate topics and switch to topic selection
+        this.generateTopics();
+    }
+
+    getDifficultyText(difficulty) {
+        const texts = {
+            'easy': 'Kolay',
+            'medium': 'Orta', 
+            'hard': 'Zor'
+        };
+        return texts[difficulty] || difficulty;
+    }
+
+    async generateTopics() {
+        try {
+            document.getElementById('statusDisplay').textContent = 'Konular üretiliyor...';
+            
+            const response = await fetch('/exercises/memory/start/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                body: JSON.stringify({
+                    difficulty: this.selectedDifficulty
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                this.sessionId = data.session_id;
+                this.topicOptions = data.topic_options;
+                
+                // Update UI
+                document.getElementById('sessionId').textContent = this.sessionId.substring(0, 8) + '...';
+                
+                // Show topic options
+                this.displayTopicOptions();
+                
+                // Switch to topic selection step
+                this.showStep('topicStep');
+                document.getElementById('statusDisplay').textContent = 'Konu seçin';
+            } else {
+                alert('Hata: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error generating topics:', error);
+            alert('Konular üretilirken hata oluştu');
+        }
+    }
+
+    displayTopicOptions() {
+        this.topicOptions.forEach((topic, index) => {
+            const card = document.querySelector(`[data-topic-id="${topic.id}"]`);
+            if (card) {
+                const nameElement = card.querySelector('.topic-name');
+                nameElement.textContent = topic.name;
+            }
+        });
+    }
+
+    selectTopic(selectedCard) {
+        // Remove selection from all cards
+        document.querySelectorAll('.topic-card div').forEach(div => {
+            div.classList.remove('border-main', 'bg-main/10');
+        });
+
+        // Add selection to clicked card
+        const cardDiv = selectedCard.querySelector('div');
+        cardDiv.classList.add('border-main', 'bg-main/10');
+
+        // Store selected topic
+        this.selectedTopicId = selectedCard.dataset.topicId;
+        
+        // Find topic name
+        const selectedTopic = this.topicOptions.find(t => t.id === this.selectedTopicId);
+        this.selectedTopicName = selectedTopic ? selectedTopic.name : '';
+        
+        // Enable generate button
+        document.getElementById('generateTextBtn').disabled = false;
+    }
+
+    async generateText() {
+        try {
+            document.getElementById('statusDisplay').textContent = 'Metin üretiliyor...';
+            
+            // First, switch to reading step to make elements visible
+            this.showStep('readingStep');
+            
+            const response = await fetch('/exercises/memory/generate/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    topic_id: this.selectedTopicId
+                })
+            });
+
+            const data = await response.json();
+            
+            console.log('Generate response:', response.status, data); // Debug log
+            
+            if (response.ok) {
+                if (data.text && data.keywords) {
+                    this.originalText = data.text;
+                    this.textKeywords = data.keywords;
+                    
+                    // Update UI elements (now they should be visible)
+                    const selectedTopicElement = document.getElementById('selectedTopicDisplay');
+                    const readingTextElement = document.getElementById('readingText');
+                    const wordCountElement = document.getElementById('wordCount');
+                    
+                    if (selectedTopicElement) selectedTopicElement.textContent = this.selectedTopicName;
+                    if (readingTextElement) readingTextElement.innerHTML = this.formatText(this.originalText);
+                    if (wordCountElement) wordCountElement.textContent = data.word_count || this.originalText.split(' ').length;
+                    
+                    // Start timer
+                    this.startReadingTimer();
+                    document.getElementById('statusDisplay').textContent = 'Okuma zamanı';
+                } else {
+                    console.error('Invalid response data:', data);
+                    alert('Hata: Metin verisi eksik - ' + JSON.stringify(data));
+                }
+            } else {
+                console.error('Generate error:', data);
+                alert('Hata: ' + (data.error || 'Metin üretilemedi'));
+            }
+        } catch (error) {
+            console.error('Error generating text:', error);
+            alert('Metin üretilirken hata oluştu: ' + error.message);
+        }
+    }
+
+    startReadingTimer() {
+        this.readingStartTime = Date.now();
+        this.readingTimeRemaining = 60;
+        
+        this.readingTimer = setInterval(() => {
+            this.readingTimeRemaining--;
+            document.getElementById('timeRemaining').textContent = this.readingTimeRemaining;
+            
+            // Color coding for urgency
+            const timerElement = document.getElementById('readingTimer');
+            if (this.readingTimeRemaining <= 10) {
+                timerElement.classList.add('text-red-500');
+                timerElement.classList.remove('text-main', 'text-yellow-500');
+            } else if (this.readingTimeRemaining <= 30) {
+                timerElement.classList.add('text-yellow-500');
+                timerElement.classList.remove('text-main', 'text-red-500');
+            }
+            
+            if (this.readingTimeRemaining <= 0) {
+                this.finishReading();
+            }
+        }, 1000);
+    }
+
+    finishReading() {
+        // Stop timer
+        if (this.readingTimer) {
+            clearInterval(this.readingTimer);
+        }
+
+        // Calculate actual reading time
+        if (this.readingStartTime) {
+            this.actualReadingTime = Math.floor((Date.now() - this.readingStartTime) / 1000);
+        }
+
+        // Update reading time display
+        document.getElementById('readingTimeDisplay').textContent = this.actualReadingTime + ' saniye';
+
+        // Remove the text from DOM (critical for memory exercise!)
+        document.getElementById('textContainer').innerHTML = '<div class="text-center text-gray-400 text-lg">Metin kayboldu! Şimdi hatırladıklarınızı yazın.</div>';
+
+        // Switch to recall step
+        this.showStep('recallStep');
+        document.getElementById('statusDisplay').textContent = 'Geri çağırma zamanı';
+
+        // Focus on first input
+        document.getElementById('userRecall').focus();
+    }
+
+    async submitResponses() {
+        // Get user responses
+        const userRecall = document.getElementById('userRecall').value.trim();
+        const userKeywords = [
+            document.getElementById('keyword1').value.trim(),
+            document.getElementById('keyword2').value.trim(),
+            document.getElementById('keyword3').value.trim()
+        ].filter(k => k.length > 0);
+
+        // Validate inputs
+        if (!userRecall) {
+            alert('Lütfen geri çağırma bölümünü doldurun');
+            return;
+        }
+
+        try {
+            document.getElementById('statusDisplay').textContent = 'Cevaplar kaydediliyor...';
+
+            // First, submit responses
+            const submitResponse = await fetch('/exercises/memory/submit/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    user_recall: userRecall,
+                    user_keywords: userKeywords,
+                    reading_time: this.actualReadingTime
+                })
+            });
+
+            if (submitResponse.ok) {
+                // Then, complete and get evaluation
+                document.getElementById('statusDisplay').textContent = 'Değerlendiriliyor...';
+                
+                const completeResponse = await fetch('/exercises/memory/complete/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': this.csrfToken
+                    },
+                    body: JSON.stringify({
+                        session_id: this.sessionId
+                    })
+                });
+
+                const evaluationData = await completeResponse.json();
+                
+                console.log('Complete response status:', completeResponse.status);
+                console.log('Evaluation data:', evaluationData);
+                
+                if (completeResponse.ok) {
+                    this.showResults(evaluationData);
+                } else {
+                    console.error('Complete response error:', evaluationData);
+                    alert('Değerlendirme hatası: ' + (evaluationData.error || 'Bilinmeyen hata'));
+                }
+            } else {
+                const submitData = await submitResponse.json();
+                alert('Cevap gönderme hatası: ' + submitData.error);
+            }
+        } catch (error) {
+            console.error('Error submitting responses:', error);
+            alert('Cevaplar gönderilirken hata oluştu');
+        }
+    }
+
+    showResults(data) {
+        console.log('Results data:', data); // Debug log
+        
+        // Defensive checks for data structure
+        if (!data || !data.evaluation) {
+            console.error('Invalid evaluation data:', data);
+            alert('Değerlendirme verisi geçersiz');
+            return;
+        }
+        
+        const evaluation = data.evaluation;
+        const scores = evaluation.scores || {};
+        const comparison = evaluation.comparison || {};
+
+        // Show comparison with fallbacks
+        const originalTextEl = document.getElementById('originalTextDisplay');
+        const userRecallEl = document.getElementById('userRecallDisplay');
+        const userQuestionEl = document.getElementById('userQuestionDisplay');
+        const userAnswerEl = document.getElementById('userAnswerDisplay');
+        
+        if (originalTextEl) originalTextEl.innerHTML = this.formatText(comparison.original_text || 'Metin bulunamadı');
+        if (userRecallEl) userRecallEl.textContent = comparison.user_recall || 'Cevap bulunamadı';
+        if (userQuestionEl) userQuestionEl.textContent = comparison.user_question || 'Soru sorulmadı';
+        if (userAnswerEl) userAnswerEl.textContent = comparison.ai_answer || 'Cevap bulunamadı';
+
+        // Show keywords with fallbacks
+        this.displayKeywords('userKeywordsDisplay', comparison.user_keywords || [], 'bg-blue-600');
+
+        // Show scores with animated progress bars (with fallbacks) - no synthesis score
+        this.animateScore('recallScore', 'recallProgress', scores.recall || 0);
+        this.animateScore('keywordsScore', 'keywordsProgress', scores.keywords || 0);
+        this.animateScore('overallScore', 'overallProgress', scores.overall || 0);
+
+        // Show feedback
+        const feedbackEl = document.getElementById('aiFeedback');
+        if (feedbackEl) feedbackEl.innerHTML = this.formatText(evaluation.feedback || 'Geri bildirim bulunamadı');
+
+        // Show alternative keywords
+        if (evaluation.alternative_keywords && evaluation.alternative_keywords.length > 0) {
+            this.displayKeywords('alternativeKeywords', evaluation.alternative_keywords, 'bg-green-600');
+        }
+
+        // Switch to results step
+        this.showStep('resultsStep');
+        document.getElementById('statusDisplay').textContent = 'Tamamlandı';
+    }
+
+    displayKeywords(containerId, keywords, bgClass) {
+        const container = document.getElementById(containerId);
+        if (!container) {
+            console.error('Container not found:', containerId);
+            return;
+        }
+        
+        container.innerHTML = '';
+
+        // Check if keywords is valid array
+        if (!Array.isArray(keywords)) {
+            console.warn('Keywords is not an array:', keywords);
+            return;
+        }
+
+        keywords.forEach(keyword => {
+            if (keyword && typeof keyword === 'string') {
+                const span = document.createElement('span');
+                span.className = `px-3 py-1 ${bgClass} text-white rounded-full text-sm`;
+                span.textContent = keyword;
+                container.appendChild(span);
+            }
+        });
+    }
+
+    animateScore(scoreId, progressId, score) {
+        // Validate score
+        const numericScore = typeof score === 'number' ? score : 0;
+        
+        // Animate score number
+        const scoreElement = document.getElementById(scoreId);
+        if (!scoreElement) {
+            console.error('Score element not found:', scoreId);
+            return;
+        }
+        
+        let currentScore = 0;
+        const increment = numericScore / 20; // 20 steps
+        
+        const scoreInterval = setInterval(() => {
+            currentScore += increment;
+            if (currentScore >= numericScore) {
+                currentScore = numericScore;
+                clearInterval(scoreInterval);
+            }
+            scoreElement.textContent = Math.round(currentScore) + '/10';
+        }, 50);
+
+        // Animate progress bar
+        setTimeout(() => {
+            const progressElement = document.getElementById(progressId);
+            if (progressElement) {
+                progressElement.style.width = (numericScore * 10) + '%';
+            } else {
+                console.error('Progress element not found:', progressId);
+            }
+        }, 500);
+    }
+
+    showStep(stepId) {
+        // Hide all steps
+        document.querySelectorAll('.step-container').forEach(step => {
+            step.classList.add('hidden');
+        });
+
+        // Show target step
+        document.getElementById(stepId).classList.remove('hidden');
+    }
+
+    resetExercise() {
+        // Reset all properties
+        this.sessionId = null;
+        this.selectedDifficulty = null;
+        this.selectedTopicId = null;
+        this.selectedTopicName = null;
+        this.topicOptions = [];
+        this.originalText = '';
+        this.textKeywords = [];
+        this.actualReadingTime = 0;
+
+        // Stop any running timer
+        if (this.readingTimer) {
+            clearInterval(this.readingTimer);
+        }
+
+        // Reset UI
+        document.getElementById('difficultyDisplay').textContent = '-';
+        document.getElementById('statusDisplay').textContent = 'Başlangıç';
+        document.getElementById('sessionId').textContent = '-';
+        document.getElementById('readingTimeDisplay').textContent = '0 saniye';
+
+        // Clear selections
+        document.querySelectorAll('.difficulty-card div, .topic-card div').forEach(div => {
+            div.classList.remove('border-main', 'bg-main/10');
+        });
+
+        // Reset buttons
+        document.getElementById('generateTextBtn').disabled = true;
+
+        // Clear inputs
+        document.getElementById('userRecall').value = '';
+        document.getElementById('keyword1').value = '';
+        document.getElementById('keyword2').value = '';
+        document.getElementById('keyword3').value = '';
+        document.getElementById('questionText').value = '';
+
+        // Reset timer display
+        document.getElementById('timeRemaining').textContent = '60';
+        document.getElementById('readingTimer').classList.remove('text-red-500', 'text-yellow-500');
+        document.getElementById('readingTimer').classList.add('text-main');
+
+        // Hide Q&A result
+        document.getElementById('qaResult').style.display = 'none';
+
+        // Show first step
+        this.showStep('difficultyStep');
+    }
+    
+    async askQuestion() {
+        const questionText = document.getElementById('questionText').value.trim();
+        
+        if (!questionText) {
+            alert('Lütfen bir soru yazın');
+            return;
+        }
+        
+        if (!this.sessionId) {
+            alert('Oturum bulunamadı');
+            return;
+        }
+        
+        try {
+            const askBtn = document.getElementById('askQuestionBtn');
+            askBtn.disabled = true;
+            askBtn.textContent = 'Soru Değerlendiriliyor...';
+            
+            const response = await fetch('/exercises/memory/question/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    question: questionText
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Show Q&A result
+                document.getElementById('qaResult').style.display = 'block';
+                document.getElementById('aiAnswerDisplay').textContent = data.ai_answer;
+                
+                // Update button based on relevance
+                if (data.question_relevant) {
+                    askBtn.textContent = '✅ Soru Cevaplandı';
+                    askBtn.classList.remove('bg-main');
+                    askBtn.classList.add('bg-green-600');
+                } else {
+                    askBtn.textContent = '❌ Soru İlgisiz';
+                    askBtn.classList.remove('bg-main');
+                    askBtn.classList.add('bg-red-600');
+                }
+            } else {
+                alert(data.error || 'Soru işlenirken hata oluştu');
+                askBtn.disabled = false;
+                askBtn.textContent = '🤔 Soru Sor';
+            }
+            
+        } catch (error) {
+            console.error('Question error:', error);
+            alert('Soru gönderilirken hata oluştu');
+            const askBtn = document.getElementById('askQuestionBtn');
+            askBtn.disabled = false;
+            askBtn.textContent = '🤔 Soru Sor';
+        }
+    }
+}
+
+// Initialize the exercise when page loads
+window.addEventListener('load', function() {
+    console.log('Window loaded - initializing MemoryExercise');
+    window.memoryExercise = new MemoryExercise();
+});
+</script>
+
+<style>
+.step-container {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.difficulty-card:hover div,
+.topic-card:hover div {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+#readingTimer {
+    transition: color 0.3s ease;
+}
+
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .flex.justify-center.gap-6 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .difficulty-card,
+    .topic-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+</style>

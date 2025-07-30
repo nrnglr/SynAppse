@@ -3,76 +3,103 @@
 # İlk problem üretme prompt'ları
 PROBLEM_CHAIN_START_PROMPTS = {
     'easy': """
-Sen bir yaratıcı problem üreticisin. Kolay seviyede, günlük yaşamda karşılaşılabilecek ama biraz tuhaf bir problem üret.
+Sen bir yaratıcı problem üreticisin. KOLAY seviyede bir problem oluştur.
 
-Kurallar:
-- Türkçe olmalı
-- Günlük yaşamda olabilecek ama biraz absürd olmalı
-- Çözülebilir olmalı
+ZORUNLU KURALLAR:
+- Problem günlük yaşamda karşılaşılabilecek SOMUT bir soruna yol açmalı
+- İnsanlar "Bu sorunu nasıl çözerim?" diye düşünmeli
+- Çözülebilir ve mantıklı olmalı
 - 1-2 cümle uzunluğunda
-- Sadece problemi yaz, başka hiçbir şey ekleme
+- Türkçe olmalı
+- Sadece problemi yaz, açıklama yapma
 
-Örnek: "Komşunun kedisi her gece sizin balkonunuza gelip opera söylüyor ve kimse uyuyamıyor."
+PROBLEM YAPISI: [Tuhaf durum] + [Bu durumun yarattığı somut rahatsızlık/zorluk]
 
-Şimdi benzer tarzda yeni bir problem üret:
+DOĞRU ÖRNEKLER:
+- "Apartman asansörü bozuldu ve tamirci 2 hafta sonra geliyor. 8. katta yaşayan yaşlı komşular alışveriş yapamıyor."
+- "Komşunun kedisi her gece balkonunuza gelip opera söylüyor, kimse uyuyamıyor."
+
+YANLIŠ ÖRNEKLER (YAPMA):
+- "Kediler uçmaya başladı" (Ne sorunu var ki?)
+- "Zaman durdu" (Çok fantastik)
+
+Şimdi benzer mantıkta yeni problem üret:
 """,
 
     'medium': """
-Sen bir yaratıcı problem üreticisin. Orta seviyede, absürd ama mantıklı çözüm gerektiren bir problem üret.
+Sen bir yaratıcı problem üreticisin. ORTA seviyede bir problem oluştur.
 
-Kurallar:
-- Türkçe olmalı
-- Absürd ama mantıklı çözüm bulunabilir olmalı
-- Yaratıcı düşünce gerektirmeli
+ZORUNLU KURALLAR:
+- Durum biraz absürd olabilir AMA mutlaka SOMUT bir soruna yol açmalı
+- İnsanlar gerçekten rahatsız olmalı ve çözüm aramalı
+- Yaratıcı düşünce gerektirmeli ama mantıklı çözümü olmalı
 - 1-2 cümle uzunluğunda
-- Sadece problemi yaz, başka hiçbir şey ekleme
+- Türkçe olmalı
+- Sadece problemi yaz, açıklama yapma
 
-Örnek: "Şehirdeki tüm köpekler aniden konuşmaya başladı ama sadece şarkı sözleriyle iletişim kurabiliyorlar."
+PROBLEM YAPISI: [Absürd ama mümkün durum] + [Bu durumun yarattığı ciddi rahatsızlık]
 
-Şimdi benzer tarzda yeni bir problem üret:
+DOĞRU ÖRNEKLER:
+- "Şehirdeki tüm köpekler sadece gece 2-5 saatleri arasında havlıyor. Her gece aynı saatte başlıyor, kimse uyuyamıyor."
+- "Köpekler konuşmaya başladı ama sürekli sahiplerini eleştiriyor, insanlar evlerinde rahat edemiyor."
+
+YANLIŞ ÖRNEKLER (YAPMA):
+- "Köpekler konuşuyor" (Sorun ne?)
+- "Herkes mavi rengi unuttu" (Çok absürd, somut sorun yok)
+
+Şimdi benzer mantıkta yeni problem üret:
 """,
 
     'hard': """
-Sen bir yaratıcı problem üreticisin. Zor seviyede, çok karmaşık ve çözümü yan etkiler yaratacak bir problem üret.
+Sen bir yaratıcı problem üreticisin. ZOR seviyede bir problem oluştur.
 
-Kurallar:
+ZORUNLU KURALLAR:
+- Çok absürd ve karmaşık durum OLUR ama MUTLAKA ciddi, somut sorunlara yol açmalı
+- İnsanların hayatını ciddi şekilde zorlaştırmalı
+- Çözümü başka problemlere yol açabilecek kadar karmaşık olmalı
+- 2-3 cümle uzunluğunda olabilir
 - Türkçe olmalı
-- Çok absürd ve karmaşık olmalı
-- Çözümü başka problemlere yol açmalı
-- Yaratıcılık sınırlarını zorlayıcı
-- 2-3 cümle uzunluğunda
-- Sadece problemi yaz, başka hiçbir şey ekleme
+- Sadece problemi yaz, açıklama yapma
 
-Örnek: "Dünyadaki tüm renkler kayboldu ve her şey gri tonlarında, ama insanlar hala renk görmek istiyor. Ayrıca bu durum bitkilerin fotosentez yapamamasına neden oluyor."
+PROBLEM YAPISI: [Çok tuhaf/karmaşık durum] + [Bu durumun yarattığı çoklu ciddi sorunlar]
 
-Şimdi benzer tarzda yeni bir problem üret:
+DOĞRU ÖRNEKLER:
+- "Dünyadaki tüm saatler rastgele hızlarda işlemeye başladı. Kimse randevularına yetişemiyor, uçaklar kaçırılıyor, toplum düzeni bozuluyor."
+- "Tüm insanlar günde sadece 3 saat uyuyor ama 21 saat uyanık kalmak zorunda. İş saatleri, sosyal hayat, ekonomi tamamen altüst oldu."
+
+YANLIŞ ÖRNEKLER (YAPMA):
+- "Uzaylılar geldi" (Çok fantastik)
+- "Büyü var artık" (Mantıksız)
+
+Şimdi benzer mantıkta yeni problem üret:
 """
 }
 
 # Sonraki problem üretme prompt'ı
 PROBLEM_CHAIN_NEXT_PROMPT = """
-Sen bir yaratıcı problem zinciri oluşturucususun. Kullanıcının önerdiği çözümden kaynaklanan yeni bir problem yaratman gerekiyor.
+Sen bir yaratıcı problem zinciri uzmanısın. Kullanıcının çözümünden doğan YENİ bir problem yaratacaksın.
 
 Önceki Durum:
 Problem: "{previous_problem}"
 Kullanıcının Çözümü: "{user_solution}"
 
 Görevin:
-Bu çözümden doğacak yeni bir problemi düşün ve yaz. Çözümün yan etkisi veya beklenmedik sonucu olabilir.
+Bu çözümün yan etkisi, beklenmedik sonucu veya yol açtığı yeni sorunu yaz.
 
-Kurallar:
+ZORUNLU KURALLAR:
+- Önceki çözümle MANTIKLI bağlantısı olmalı
+- Yeni çözüm gerektiren SOMUT bir sorun yaratmalı
+- "Ama şimdi..." veya "Ancak..." diye başlayabilirsin
+- 1-2 cümle uzunluğunda
 - Türkçe olmalı
-- Önceki çözümle mantıklı bağlantısı olmalı
-- Yeni yaratıcı çözüm gerektirmeli
-- 1-3 cümle uzunluğunda
 - Sadece yeni problemi yaz, başka hiçbir şey ekleme
 
-Örnek Zincir:
-Problem: "Köpekler konuşmaya başladı"
-Çözüm: "Köpek çevirmenleri yetiştiririz"
-Yeni Problem: "Ama şimdi köpekler sürekli insan dedikodularını yapıyor ve gizlilik kalmadı"
+MANTIK ÖRNEĞİ:
+Problem: "Köpekler havlıyor, kimse uyuyamıyor"
+Çözüm: "Köpeklere uyku ilacı veririz"
+Yeni Problem: "Ama şimdi köpekler gündüz de uyuyor, hırsızlık olayları arttı çünkü köpekler evleri koruyamıyor"
 
-Şimdi verilen çözümden yeni problemi üret:
+Şimdi verilen çözümden mantıklı yeni problem üret:
 """
 
 # Final değerlendirme prompt'ı
@@ -82,43 +109,43 @@ Sen bir yaratıcı problem çözme uzmanısın. Kullanıcının 5 turda gösterd
 Problem-Çözüm Zinciri:
 {problem_solution_history}
 
-Görevin:
-1. Yaratıcılık skorunu ver (1-5): Çözümlerin ne kadar yaratıcı ve özgün olduğunu değerlendir
-2. Pratiklik skorunu ver (1-5): Çözümlerin ne kadar uygulanabilir olduğunu değerlendir  
-3. Genel feedback yaz: Kullanıcının güçlü yönlerini ve gelişim alanlarını belirt
+DEĞERLENDİRME KRİTERLERİ:
+1. YARATICILIK (1-5): Çözümler ne kadar özgün ve beklenmedik?
+2. PRATİKLİK (1-5): Çözümler gerçek hayatta uygulanabilir mi?
+3. TUTARLILIK: Çözümler problemi gerçekten çözüyor mu?
 
-Çıktı formatı (kesinlikle bu format):
+ZORUNLU ÇIKTI FORMATI (kesinlikle bu format, başka hiçbir şey yazma):
 {{
     "creativity_score": 4,
     "practicality_score": 3,
-    "feedback": "5 turda harika yaratıcılık gösterdin! Özellikle 3. turda önerdiğin çözüm çok özgündü. Pratiklik açısından biraz daha gerçekçi yaklaşımlar deneyebilirsin."
+    "feedback": "5 turda güzel yaratıcılık gösterdin! 3. turda önerdiğin çözüm çok özgündü. Pratiklik açısından biraz daha gerçekçi yaklaşımlar deneyebilirsin. Genel olarak problemlerin mantığını iyi kavradın."
 }}
 
-Şimdi değerlendir:
+Şimdi bu formatta değerlendir:
 """
 
 # Fallback problemler (Gemini başarısız olursa)
 FALLBACK_PROBLEMS = {
     'easy': [
-        "Elevator sürekli yanlış kata çıkıyor ve bina yöneticisi durumu çözemedi.",
-        "Komşunun papağanı sabah 5'te haber spikeri taklidi yaparak herkesi uyandırıyor.",
-        "Otobüs durağında her gün aynı saatte gizemli bir adam dans ediyor ve kimse nedenini bilmiyor.",
-        "Ofisteki kahve makinesi sadece çay yapıyor ama kimse nasıl düzelteceğini bilmiyor.",
-        "Parkta beslenmeye gelen kediler sadece lüks mamayı yiyor, normal mama kabul etmiyor."
+        "Apartman asansörü sürekli yanlış kata çıkıyor ve bina yöneticisi durumu çözemedi. Sakinler geç kalıyor ve yoruluyor.",
+        "Komşunun papağanı her sabah 5'te haber spikeri taklidi yaparak tüm mahalleyi uyandırıyor.",
+        "Otobüs durağında her gün aynı saatte gizemli bir adam dans ediyor ve insanlar durağı kullanmaya çekiniyor.",
+        "Ofisteki kahve makinesi bozuldu ve sadece çay yapıyor, çalışanlar kafein eksikliğinden verimli çalışamıyor.",
+        "Parkta beslenmeye gelen kediler sadece lüks mamayı yiyor, besleyen yaşlıların bütçesi tükendi."
     ],
     'medium': [
-        "Şehirdeki tüm semaforer aynı anda kırmızı yanıp sönmeye başladı ve trafik durdu.",
-        "İnsanlar birden sadece ters yürüyebilir hale geldi, ileri doğru yürüyemiyorlar.",
-        "Telefon konuşmaları sadece şarkı söyleyerek yapılabiliyor, normal konuşma imkansız.",
-        "Tüm kediler aynı anda köpek gibi havlamaya başladı ve köpekler miyavlamaya başladı.",
-        "Şehirdeki tüm saatler farklı hızlarda çalışıyor, kimse doğru zamanı bilmiyor."
+        "Şehirdeki tüm semaforer aynı anda sürekli kırmızı yanıp sönmeye başladı ve trafik tamamen durdu.",
+        "İnsanlar birden sadece geriye doğru yürüyebilir hale geldi, ileri yürüyemiyorlar ve işe gidemiyorlar.",
+        "Telefon konuşmaları sadece şarkı söyleyerek yapılabiliyor, acil durumlar ve iş görüşmeleri imkansız hale geldi.",
+        "Tüm kediler köpek gibi havlamaya, köpekler miyavlamaya başladı ve sahipleri evcil hayvanlarını tanıyamıyor.",
+        "Şehirdeki tüm saatler farklı hızlarda çalışıyor, kimse randevularına yetişemiyor ve kaos var."
     ],
     'hard': [
-        "Dünyada sadece Salı günü var oldu, diğer günler tamamen kayboldu ve zaman döngüsü bozuldu.",
-        "İnsanlar uyurken bilinçaltlarının düşüncelerini yüksek sesle konuşur hale geldi ve mahremiyetin sonu.",
-        "Yerçekimi rastgele 2 saatte bir yön değiştiriyor ve insanlar tavana, duvarlara yapışıyor.",
-        "Düşünceler görünür hale geldi, herkesin kafasında düşündükleri hologram olarak beliriyor.",
-        "Zaman geriye doğru akmaya başladı ama sadece Perşembe günleri, diğer günler normal."
+        "Dünyada sadece Salı günü var oldu, diğer günler kayboldu ve zaman döngüsü bozuldu. İnsanlar aynı günü tekrar yaşamaya mahkum.",
+        "İnsanlar uyurken düşüncelerini yüksek sesle konuşur hale geldi. Gizlilik kalmadı, evlilikler ve arkadaşlıklar çöküyor.",
+        "Yerçekimi rastgele 2 saatte bir yön değiştiriyor. İnsanlar tavana çarpıyor, yemek yiyemiyor, hayat durdu.",
+        "Düşünceler görünür hale geldi, herkesin kafasında düşündükleri hologram olarak beliriyor ve toplum çöktü.",
+        "Zaman geriye doğru akmaya başladı ama sadece Perşembe günleri. İnsanlar yaşlanıp gençleşiyor, akılları karışıyor."
     ]
 }
 

@@ -10,4 +10,6 @@ urlpatterns = [
     
     # Test pages
     path('test/problem-chain/', views.problem_chain_test, name='problem_chain_test'),
+    path('test/word-bridge/', views.word_bridge_test, name='word_bridge_test'),
+    path('test/memory/', views.memory_test, name='memory_test'),
 ]

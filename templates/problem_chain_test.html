@@ -6,7 +6,14 @@
 
 <section class="max-w-6xl mx-auto px-4 py-12">
     <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold mb-4 tracking-[2px]">Problem Chain Test</h2>
+        <h2 class="text-4xl fon        if (data && data.scores) {
+            if (data.scores.overall !== undefined) {
+                scoreText = `${data.scores.overall}/5 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
+            } else if (data.scores.creativity !== undefined && data.scores.practicality !== undefined) {
+                const overall = (data.scores.creativity || 0 + data.scores.practicality || 0) / 2;
+                scoreText = `${overall}/5 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
+            }
+        }b-4 tracking-[2px]">Problem Chain Test</h2>
         <p class="text-gray-300 text-lg">Basit test arayüzü</p>
     </div>
 
@@ -227,7 +234,19 @@ class ProblemChainTest {
         this.isActive = false;
         this.userArea.disabled = true;
         this.updateUI();
-        this.setStatus(`Session tamamlandı! Skor: ${data.final_score || 'N/A'}`, 'success');
+        
+        // Handle different response structures
+        let scoreText = 'N/A';
+        if (data.scores) {
+            if (data.scores.total !== undefined) {
+                scoreText = `${data.scores.total}/10`;
+            } else if (data.scores.creativity !== undefined && data.scores.practicality !== undefined) {
+                const total = (data.scores.creativity || 0) + (data.scores.practicality || 0);
+                scoreText = `${total}/10 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
+            }
+        }
+        
+        this.setStatus(`Session tamamlandı! Skor: ${scoreText}`, 'success');
     }
     
     resetSession() {

@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SynAppse</title>
+    <title>Kayıt Ol - SynAppse</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,44 +24,178 @@
       }
     </script>
   </head>
-  <body class="h-full text-white font-sans bg-cover bg-center relative" style="background-image: url('loginbgright.png')">
-    <div class="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
-    <div class="w-full h-screen flex items-center justify-center relative z-10">
-      <div class="hidden md:block w-1/2 h-full bg-cover bg-center rounded-r-3xl" style="background-image: url('loginbg.png')"></div>
-      <div class="w-full md:w-1/2 flex items-center justify-center px-6 sm:px-10">
-        <div class="w-full max-w-md p-6">
-          <h1 class="text-4xl font-bold mb-2 text-center">Kayıt Olun</h1>
-          <p class="text-sm text-center text-gray-300 mb-6">Beyninizı keşfe çıkın!</p>
-            <form class="space-y-4">
-            <input
-                type="text"
-                placeholder="İsim - Soyisim"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
-            />
-            <input
-                type="email"
-                placeholder="Email"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
-            />
-            <input
-                type="nickname"
-                placeholder="Kullanıcı Adı"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
-            />
-            <input
-                type="password"
-                placeholder="Şifre"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
-            />
-            <input
-                type="password"
-                placeholder="Şifre Tekrar"
-                class="w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main"
-            />
-            <button type="submit" class="w-full bg-main text-white hover:bg-second py-2 rounded-md font-semibold hover:bg-opacity-90 transition">
-                Kayıt Ol
+  <body class="h-full text-white font-sans bg-black bg-opacity-90 relative">
+    <!-- Background with overlay -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
+    
+    <!-- Main Content -->
+    <div class="w-full min-h-screen flex items-center justify-center relative z-10 px-4 py-8">
+      <div class="flex w-full max-w-6xl bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
+        
+        <!-- Left Side - Brain Visualization -->
+        <div class="hidden md:flex w-1/2 bg-gradient-to-br from-main/20 to-second/30 items-center justify-center relative">
+          <!-- Background Pattern -->
+          <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-main to-transparent animate-pulse"></div>
+          </div>
+          
+          <!-- Brain Illustration -->
+          <div class="relative z-10 text-center">
+            <div class="mb-6">
+              <img src="{% static 'img/temporal-active.svg' %}" alt="Brain" class="w-32 h-32 mx-auto mb-4 animate-pulse">
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4">Beyin Gücünü Keşfet</h3>
+            <p class="text-gray-300 max-w-sm">
+              Binlerce kullanıcıya katıl ve bilişsel yeteneklerini 
+              bilimsel temelli egzersizlerle geliştir.
+            </p>
+            
+            <!-- Stats -->
+            <div class="mt-8 grid grid-cols-2 gap-4 text-center">
+              <div class="bg-black/20 rounded-lg p-4">
+                <div class="text-2xl font-bold text-main">10K+</div>
+                <div class="text-xs text-gray-300">Aktif Kullanıcı</div>
+              </div>
+              <div class="bg-black/20 rounded-lg p-4">
+                <div class="text-2xl font-bold text-main">50K+</div>
+                <div class="text-xs text-gray-300">Tamamlanan Egzersiz</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side - Register Form -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center p-8 md:p-12">
+          <!-- Logo & Brand -->
+          <div class="mb-8 text-center">
+            <img src="{% static 'img/logo.svg' %}" alt="SynAppse" class="w-16 h-16 mx-auto mb-4">
+            <h1 class="text-3xl font-bold text-white mb-2">Hesap Oluştur</h1>
+            <p class="text-gray-400">Beyin egzersizleri yolculuğuna başla</p>
+          </div>
+
+          <!-- Messages -->
+          {% if messages %}
+            {% for message in messages %}
+              <div class="mb-4 p-4 rounded-lg {% if message.tags == 'success' %}bg-green-600 text-white{% elif message.tags == 'error' %}bg-red-600 text-white{% else %}bg-blue-600 text-white{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <!-- Register Form -->
+          <form method="post" class="space-y-4">
+            {% csrf_token %}
+            
+            <!-- Name Fields Row -->
+            <div class="grid grid-cols-2 gap-4">
+              <!-- First Name -->
+              <div>
+                <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+                  Ad
+                </label>
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                  <p class="mt-1 text-sm text-red-400">{{ form.first_name.errors.0 }}</p>
+                {% endif %}
+              </div>
+
+              <!-- Last Name -->
+              <div>
+                <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+                  Soyad
+                </label>
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                  <p class="mt-1 text-sm text-red-400">{{ form.last_name.errors.0 }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- Username Field -->
+            <div>
+              <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+                Kullanıcı Adı
+              </label>
+              {{ form.username }}
+              {% if form.username.errors %}
+                <p class="mt-1 text-sm text-red-400">{{ form.username.errors.0 }}</p>
+              {% endif %}
+            </div>
+
+            <!-- Email Field -->
+            <div>
+              <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+                Email Adresi
+              </label>
+              {{ form.email }}
+              {% if form.email.errors %}
+                <p class="mt-1 text-sm text-red-400">{{ form.email.errors.0 }}</p>
+              {% endif %}
+            </div>
+
+            <!-- Password Fields -->
+            <div class="grid grid-cols-1 gap-4">
+              <!-- Password 1 -->
+              <div>
+                <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+                  Şifre
+                </label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                  <p class="mt-1 text-sm text-red-400">{{ form.password1.errors.0 }}</p>
+                {% endif %}
+              </div>
+
+              <!-- Password 2 -->
+              <div>
+                <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+                  Şifre Tekrar
+                </label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                  <p class="mt-1 text-sm text-red-400">{{ form.password2.errors.0 }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- Form Errors -->
+            {% if form.non_field_errors %}
+              <div class="text-red-400 text-sm">
+                {{ form.non_field_errors.0 }}
+              </div>
+            {% endif %}
+
+            <!-- Terms & Privacy -->
+            <div class="text-xs text-gray-400">
+              Kayıt olarak <a href="#" class="text-main hover:text-main/80">Kullanım Şartları</a> ve 
+              <a href="#" class="text-main hover:text-main/80">Gizlilik Politikası</a>'nı kabul etmiş olursun.
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="w-full bg-main hover:bg-main/90 text-black font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-main focus:ring-offset-2 focus:ring-offset-gray-900"
+            >
+              Hesap Oluştur
             </button>
-            </form>
+          </form>
+
+          <!-- Login Link -->
+          <div class="mt-6 text-center">
+            <p class="text-gray-400">
+              Zaten hesabın var mı? 
+              <a href="{% url 'users:login' %}" class="text-main hover:text-main/80 font-semibold transition-colors">
+                Giriş yap
+              </a>
+            </p>
+          </div>
+
+          <!-- Back to Home -->
+          <div class="mt-4 text-center">
+            <a href="{% url 'ai:index' %}" class="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+              ← Ana sayfaya dön
+            </a>
+          </div>
         </div>
       </div>
     </div>

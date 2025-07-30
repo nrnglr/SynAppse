@@ -12,3 +12,11 @@ def exercise_view(request):
 def problem_chain_test(request):
     """Problem Chain test page"""
     return render(request, 'problem_chain_test.html')
+
+def word_bridge_test(request):
+    """Word Bridge test page"""
+    return render(request, 'word_bridge_test.html')
+
+def memory_test(request):
+    """Memory exercise test page"""
+    return render(request, 'memory_test.html')
