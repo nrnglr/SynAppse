@@ -1,4 +1,4 @@
-﻿"""
+"""
 Memory Exercise AI Prompts
 3 Main AI interactions for memory and synthesis exercise
 """
