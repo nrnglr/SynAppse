@@ -62,12 +62,23 @@ class GeminiService:
                 json_str = response_text[start_idx:end_idx]
                 parsed = json.loads(json_str)
                 
-                # Validate required fields
+                # Validate required fields and ensure they are integers
                 if 'creativity_score' in parsed and 'practicality_score' in parsed and 'feedback' in parsed:
+                    creativity_score = parsed['creativity_score']
+                    practicality_score = parsed['practicality_score']
+                    
+                    # Convert to int and ensure they are in valid range (1-5)
+                    try:
+                        creativity_score = max(1, min(5, int(creativity_score)))
+                        practicality_score = max(1, min(5, int(practicality_score)))
+                    except (ValueError, TypeError):
+                        creativity_score = 3
+                        practicality_score = 3
+                    
                     return {
-                        'creativity_score': int(parsed['creativity_score']),
-                        'practicality_score': int(parsed['practicality_score']),
-                        'feedback': parsed['feedback']
+                        'creativity_score': creativity_score,
+                        'practicality_score': practicality_score,
+                        'feedback': str(parsed['feedback'])
                     }
             
             # Fallback parsing failed

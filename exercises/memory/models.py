@@ -14,6 +14,7 @@ class MemorySession(models.Model):
         ('hard', 'Zor'),
     ]
     
+    # Q&A related choices - no longer needed but keeping for migration compatibility
     SYNTHESIS_TYPE_CHOICES = [
         ('simplify', 'Basitleştirme'),
         ('connect', 'Bağlantı Kurma'),
@@ -37,11 +38,14 @@ class MemorySession(models.Model):
     # User Responses
     user_recall = models.TextField(blank=True)  # What user learned/understood
     user_keywords = models.JSONField(default=list)  # [keyword1, keyword2, keyword3]
-    synthesis_type = models.CharField(max_length=20, choices=SYNTHESIS_TYPE_CHOICES, blank=True)
-    synthesis_text = models.TextField(blank=True)  # User's simplification or connection
     
-    # Performance Metrics
-    scores = models.JSONField(default=dict)  # {recall: 8, keywords: 7, synthesis: 9, overall: 8}
+    # Q&A System - replaces synthesis
+    user_question = models.TextField(blank=True)  # User's question about the text
+    ai_answer = models.TextField(blank=True)  # Gemini's answer to user's question
+    question_is_relevant = models.BooleanField(default=False)  # Gemini validation result
+    
+    # Performance Metrics - synthesis score removed
+    scores = models.JSONField(default=dict)  # {recall: 8, keywords: 7, overall: 8}
     reading_time = models.IntegerField(default=0)  # Seconds spent reading
     
     # AI Analysis
@@ -56,14 +60,13 @@ class MemorySession(models.Model):
         return f"Memory Session {self.session_id} - {self.difficulty} - {self.selected_topic}"
     
     def get_overall_score(self):
-        """Calculate overall score from individual metrics"""
+        """Calculate overall score from individual metrics (no synthesis)"""
         if not self.scores:
             return 0
         
         scores_list = [
             self.scores.get('recall', 0),
-            self.scores.get('keywords', 0), 
-            self.scores.get('synthesis', 0)
+            self.scores.get('keywords', 0)
         ]
         
         return round(sum(scores_list) / len(scores_list), 1) if scores_list else 0
@@ -72,7 +75,7 @@ class MemorySession(models.Model):
         """Return completion progress as percentage"""
         if self.is_completed:
             return 100
-        elif self.synthesis_text:
+        elif self.user_question:
             return 75
         elif self.user_recall:
             return 50

@@ -115,7 +115,8 @@ Değerlendirme Kriterleri (1-10 arası):
 1. Mantıklılık: Her adım önceki/sonrakiyle mantıklı bağlantılı mı?
 2. Yaratıcılık: Beklenmedik ama mantıklı bağlantılar var mı?
 3. Verimlilik: En kısa/etkili yoldan ulaştı mı?
-4. Genel Başarı: Toplam performans
+
+NOT: 'overall' skoru, yukarıdaki üç skorun ortalaması olarak otomatik hesaplanır.
 
 Puanlama:
 - Her kullanılan hint için -0.5 puan kesintisi
@@ -126,8 +127,7 @@ Puanlama:
     "scores": {{
         "logic": 8,
         "creativity": 7,
-        "efficiency": 6,
-        "overall": 7
+        "efficiency": 6
     }},
     "evaluation_text": "Detaylı değerlendirme metni",
     "connection_analysis": [

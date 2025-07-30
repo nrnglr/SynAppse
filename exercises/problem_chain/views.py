@@ -14,10 +14,21 @@ from .prompts import (
     GEMINI_ERROR_FALLBACK
 )
 from services.gemini_service import GeminiService
+from users.activity_utils import create_exercise_activity, complete_exercise_activity
 import logging
 import random
 
 logger = logging.getLogger(__name__)
+
+def parse_request_data(request):
+    """Parse JSON data from DRF or regular Django request"""
+    if hasattr(request, 'data') and request.data:
+        # DRF request
+        return request.data
+    else:
+        # Regular Django request
+        import json
+        return json.loads(request.body.decode('utf-8')) if request.body else {}
 
 def get_client_ip(request):
     """Get client IP address from request"""
@@ -39,7 +50,7 @@ class ProblemChainStartView(APIView):
     def post(self, request):
         try:
             # Get difficulty from request
-            difficulty = request.data.get('difficulty', 'medium')
+            difficulty = parse_request_data(request).get('difficulty', 'medium')
             if difficulty not in ['easy', 'medium', 'hard']:
                 return Response(
                     {"error": "Invalid difficulty. Use 'easy', 'medium', or 'hard'."},
@@ -52,6 +63,15 @@ class ProblemChainStartView(APIView):
                 ip_address=get_client_ip(request),
                 difficulty=difficulty
             )
+            
+            # Create user activity tracking (if user is authenticated)
+            if request.user.is_authenticated:
+                activity = create_exercise_activity(
+                    user=request.user,
+                    exercise_type='problem_chain',
+                    session_id=str(session.session_id),
+                    difficulty=difficulty
+                )
             
             # Generate first problem using Gemini
             gemini_service = GeminiService()
@@ -99,7 +119,7 @@ class ProblemChainNextView(APIView):
             # Get session_id from Django session or request
             session_id = request.session.get('problem_chain_session_id')
             if not session_id:
-                session_id = request.data.get('session_id')
+                session_id = parse_request_data(request).get('session_id')
             
             if not session_id:
                 return Response(
@@ -108,7 +128,7 @@ class ProblemChainNextView(APIView):
                 )
             
             # Get user solution
-            user_solution = request.data.get('solution', '').strip()
+            user_solution = parse_request_data(request).get('solution', '').strip()
             if not user_solution:
                 return Response(
                     {"error": "Solution is required."},
@@ -201,7 +221,7 @@ class ProblemChainCompleteView(APIView):
             # Get session_id
             session_id = request.session.get('problem_chain_session_id')
             if not session_id:
-                session_id = request.data.get('session_id')
+                session_id = parse_request_data(request).get('session_id')
             
             if not session_id:
                 return Response(
@@ -210,7 +230,7 @@ class ProblemChainCompleteView(APIView):
                 )
             
             # Get final solution
-            final_solution = request.data.get('solution', '').strip()
+            final_solution = parse_request_data(request).get('solution', '').strip()
             if not final_solution:
                 return Response(
                     {"error": "Final solution is required."},
@@ -228,13 +248,18 @@ class ProblemChainCompleteView(APIView):
             
             # Check if already completed
             if session.is_completed:
+                # Safely calculate overall score
+                creativity_score = session.creativity_score or 0
+                practicality_score = session.practicality_score or 0
+                overall_score = (creativity_score + practicality_score) / 2
+                
                 return Response({
                     "is_completed": True,
                     "final_feedback": session.final_feedback,
                     "scores": {
-                        "creativity": session.creativity_score,
-                        "practicality": session.practicality_score,
-                        "total": (session.creativity_score or 0) + (session.practicality_score or 0)
+                        "creativity": creativity_score,
+                        "practicality": practicality_score,
+                        "overall": overall_score
                     },
                     "all_problems": session.problems,
                     "all_solutions": session.solutions
@@ -281,6 +306,27 @@ class ProblemChainCompleteView(APIView):
             session.is_completed = True
             session.save()
             
+            # Calculate final scores safely
+            creativity_score = evaluation_data['creativity_score'] or 0
+            practicality_score = evaluation_data['practicality_score'] or 0
+            total_score = creativity_score + practicality_score
+            
+            # Complete user activity tracking (if user is authenticated)
+            if session.user:
+                overall_score = total_score / 2  # Average of both scores
+                scores = {
+                    'creativity': creativity_score,
+                    'practicality': practicality_score,
+                    'overall': overall_score
+                }
+                complete_exercise_activity(
+                    user=session.user,
+                    session_id=str(session.session_id),
+                    scores=scores,
+                    overall_score=overall_score,
+                    exercise_data=evaluation_data
+                )
+            
             # Clear session
             if 'problem_chain_session_id' in request.session:
                 del request.session['problem_chain_session_id']
@@ -289,9 +335,9 @@ class ProblemChainCompleteView(APIView):
                 "is_completed": True,
                 "final_feedback": session.final_feedback,
                 "scores": {
-                    "creativity": session.creativity_score,
-                    "practicality": session.practicality_score,
-                    "total": session.creativity_score + session.practicality_score
+                    "creativity": creativity_score,
+                    "practicality": practicality_score,
+                    "overall": overall_score
                 },
                 "completion_time": completion_time,
                 "all_problems": session.problems,

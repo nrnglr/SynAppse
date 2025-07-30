@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'exercises.word_bridge',
     'exercises.problem_chain',
     'users',
+    'brain_analytics',
 ]
 
 MIDDLEWARE = [
@@ -88,10 +89,8 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',},
+    # MVP için password validation'ları kaldırıldı
+    # Güçlü password zorunluluğu yok
 ]
 
 LANGUAGE_CODE = 'en-us'
@@ -172,3 +171,17 @@ LOGGING = {
         },
     },
 }
+
+# Authentication URLs
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+# Media files for user uploads (avatars)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Session settings
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False

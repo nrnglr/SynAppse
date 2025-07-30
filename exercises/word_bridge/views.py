@@ -18,8 +18,19 @@ from .prompts import (
     WORD_BRIDGE_ALTERNATIVES_PROMPT
 )
 from services.gemini_service import GeminiService
+from users.activity_utils import create_exercise_activity, complete_exercise_activity
 
 logger = logging.getLogger(__name__)
+
+def parse_request_data(request):
+    """Parse JSON data from DRF or regular Django request"""
+    if hasattr(request, 'data') and request.data:
+        # DRF request
+        return request.data
+    else:
+        # Regular Django request
+        import json
+        return json.loads(request.body.decode('utf-8')) if request.body else {}
 
 @method_decorator(csrf_exempt, name='dispatch')
 class WordBridgeStartView(APIView):
@@ -30,7 +41,8 @@ class WordBridgeStartView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            # Parse JSON data from request body
+            data = parse_request_data(request)
             difficulty = data.get('difficulty', 'easy')
             
             # Zorluk seviyesi validasyonu
@@ -54,6 +66,15 @@ class WordBridgeStartView(APIView):
                 start_word_options=word_data['start_options'],
                 time_limit=self._get_time_limit(difficulty)
             )
+            
+            # Create user activity tracking (if user is authenticated)
+            if request.user.is_authenticated:
+                activity = create_exercise_activity(
+                    user=request.user,
+                    exercise_type='word_bridge',
+                    session_id=str(session.session_id),
+                    difficulty=difficulty
+                )
             
             return Response({
                 'session_id': str(session.session_id),
@@ -87,7 +108,7 @@ class WordBridgeSelectStartView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = parse_request_data(request)
             session_id = data.get('session_id')
             selected_word = data.get('selected_word')
             
@@ -164,7 +185,7 @@ class WordBridgeSubmitWordView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = parse_request_data(request)
             session_id = data.get('session_id')
             word = data.get('word', '').strip()
             
@@ -238,7 +259,7 @@ class WordBridgeGetHintView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = parse_request_data(request)
             session_id = data.get('session_id')
             hint_level = data.get('hint_level', 1)  # 1, 2, veya 3
             
@@ -300,7 +321,7 @@ class WordBridgeCompleteView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = parse_request_data(request)
             session_id = data.get('session_id')
             
             if not session_id:
@@ -349,6 +370,12 @@ class WordBridgeCompleteView(APIView):
             evaluation_response = gemini_service.generate_content(evaluation_prompt)
             evaluation_data = gemini_service.parse_json_response(evaluation_response)
             
+            # Add overall score if not present
+            scores = evaluation_data.get('scores', {})
+            if 'overall' not in scores:
+                scores['overall'] = self._calculate_overall_score(scores)
+                evaluation_data['scores'] = scores
+            
             # Alternatif çözümler
             alternatives_prompt = WORD_BRIDGE_ALTERNATIVES_PROMPT.format(
                 start_word=session.selected_start_word,
@@ -359,10 +386,21 @@ class WordBridgeCompleteView(APIView):
             alternatives_data = gemini_service.parse_json_response(alternatives_response)
             
             # Sonuçları kaydet
-            session.final_score = evaluation_data['scores']
+            session.final_score = scores
             session.ai_evaluation = evaluation_data['evaluation_text']
             session.alternative_solutions = alternatives_data['alternatives']
             session.save()
+            
+            # Complete user activity tracking (if user is authenticated)
+            if session.user:
+                overall_score = scores.get('overall', 0)
+                complete_exercise_activity(
+                    user=session.user,
+                    session_id=str(session.session_id),
+                    scores=scores,
+                    overall_score=overall_score,
+                    exercise_data=evaluation_data
+                )
             
             return Response({
                 'message': 'Egzersiz başarıyla tamamlandı!',
@@ -384,6 +422,15 @@ class WordBridgeCompleteView(APIView):
             return Response({
                 'error': 'Egzersiz tamamlanırken hata oluştu'
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    def _calculate_overall_score(self, scores):
+        """Calculate overall score from individual scores"""
+        score_values = [
+            scores.get('logic', 0),
+            scores.get('creativity', 0),
+            scores.get('efficiency', 0)
+        ]
+        return round(sum(score_values) / len(score_values), 1) if score_values else 0
     
     def _get_completion_time(self, session):
         """Tamamlanma süresini hesapla"""

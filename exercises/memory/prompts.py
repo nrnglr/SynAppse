@@ -1,4 +1,4 @@
-﻿"""
+"""
 Memory Exercise AI Prompts
 3 Main AI interactions for memory and synthesis exercise
 """
@@ -98,9 +98,10 @@ ANAHTAR KELIME REQUİREMENTLERİ:
 
 İPUCU: Önemli kelimeleri **kelime** şeklinde kalın yapabilirsin. Emojisiz ve anlaşılır metin yaz."""
 
-def get_evaluation_prompt(original_text, text_keywords, user_recall, user_keywords, synthesis_text, synthesis_type):
+def get_evaluation_prompt(original_text, text_keywords, user_recall, user_keywords, user_question, question_type):
     """
     API Call 3: Evaluate user performance and provide detailed feedback
+    Updated for Q&A system (no synthesis scoring)
     """
     
     return f"""Sen bir hafıza ve öğrenme uzmanısın. Kullanıcının performansını değerlendireceksin.
@@ -115,11 +116,10 @@ KULLANICI CEVAPLARI:
 ---
 Geri Çağırma: "{user_recall}"
 Anahtar Kelimeler: {user_keywords}  
-Sentez Türü: {synthesis_type}
-Sentez Metni: "{synthesis_text}"
+Sorduğu Soru: "{user_question}"
 ---
 
-GÖREV: Aşağıdaki 4 kriterde 1-10 arası puan ver ve detaylı analiz yap.
+GÖREV: Aşağıdaki 3 kriterde 1-10 arası puan ver ve detaylı analiz yap.
 
 DEĞERLENDIRME KRİTERLERİ:
 
@@ -133,31 +133,26 @@ DEĞERLENDIRME KRİTERLERİ:
 - Kelime seçimi ne kadar isabetli?
 - Benzer anlamlı alternatifler kabul et
 
-3. SENTEZ KALİTESİ (1-10):
-- Bilgiyi kişiselleştirdi/dönüştürdü mü?
-- Yeni bağlantılar kurabildi mi?
-- Anlaşılır ve yaratıcı mı?
-
-4. GENEL ÖĞRENME SKORU (1-10):
+3. GENEL ÖĞRENME SKORU (1-10):
 - Metni ne kadar iyi özümsedi?
-- Üst düzey düşünme becerileri
+- Sorusu metnin derinliğini yansıtıyor mu?
 - Genel başarı seviyesi
+
+NOT: 'overall' skoru, 'recall' ve 'keywords' skorlarının ortalaması olarak otomatik hesaplanır.
 
 ÇIKTI FORMATI:
 ```json
 {{
     "scores": {{
         "recall": [1-10 arası sayı],
-        "keywords": [1-10 arası sayı], 
-        "synthesis": [1-10 arası sayı],
-        "overall": [1-10 arası sayı]
+        "keywords": [1-10 arası sayı]
     }},
     "feedback": "[Kullanıcıya özel, motive edici, yapıcı geri bildirim. 2-3 cümle]",
     "alternative_keywords": ["önerilen_kelime1", "önerilen_kelime2", "önerilen_kelime3"],
     "detailed_analysis": {{
         "recall_analysis": "[Geri çağırma detaylı değerlendirme]",
-        "keyword_analysis": "[Anahtar kelime detaylı değerlendirme]", 
-        "synthesis_analysis": "[Sentez kalitesi detaylı değerlendirme]"
+        "keyword_analysis": "[Anahtar kelime detaylı değerlendirme]",
+        "question_analysis": "[Sorunun kalitesi hakkında değerlendirme]"
     }}
 }}
 ```

@@ -1,0 +1,832 @@
+{% load static %}
+{% include 'components/navbar.html' %}
+
+<section class="mx-auto max-w-7xl py-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <!-- Sol kısım -->
+  <div class="lg:col-span-1 flex flex-col gap-8">
+    <!-- Avatar ve isim -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6 flex flex-col items-center relative">
+      <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-main">
+        <img src="{{ profile.get_avatar_url }}" alt="{{ user.get_full_name }}" class="w-full h-full object-cover">
+        
+        <!-- Edit ikon -->
+        <button onclick="toggleEditForm()" class="absolute bottom-2 right-2 bg-main p-2 rounded-full hover:bg-main/80 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-black">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828H9v-2.828z" />
+          </svg>
+        </button>
+      </div>
+      <h2 class="text-4xl font-bold my-8 leading-normal tracking-[0.8px] text-white">{{ user.get_full_name|default:user.username }}</h2>
+      <p class="text-gray-400 text-center">@{{ user.username }}</p>
+      {% if profile.bio %}
+        <p class="text-gray-300 text-center mt-4 font-extralight tracking-[0.8px]">{{ profile.bio }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Rozetler -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <h3 class="text-3xl font-semibold mb-6 leading-normal tracking-[0.8px] text-white text-center">🏆 Rozetler</h3>
+      
+      <!-- Rozet Grid -->
+      <div class="grid grid-cols-3 gap-4">
+        <!-- İlk Egzersiz Rozeti -->
+        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-xl shadow-lg">
+          <div class="text-3xl mb-2">🌟</div>
+          <div class="text-xs font-semibold text-center text-yellow-100">İlk Adım</div>
+          <div class="text-xs text-yellow-200 text-center">İlk egzersizi tamamla</div>
+        </div>
+        
+        <!-- Hafıza Uzmanı Rozeti -->
+        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl shadow-lg">
+          <div class="text-3xl mb-2">🧠</div>
+          <div class="text-xs font-semibold text-center text-blue-100">Hafıza Uzmanı</div>
+          <div class="text-xs text-blue-200 text-center">10 hafıza egzersizi</div>
+        </div>
+        
+        <!-- Kelime Köprüsü Rozeti -->
+        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-green-600 to-green-800 rounded-xl shadow-lg">
+          <div class="text-3xl mb-2">🌉</div>
+          <div class="text-xs font-semibold text-center text-green-100">Köprü Kurucusu</div>
+          <div class="text-xs text-green-200 text-center">5 kelime köprüsü</div>
+        </div>
+        
+        <!-- Problem Çözücü Rozeti -->
+        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl shadow-lg">
+          <div class="text-3xl mb-2">🧩</div>
+          <div class="text-xs font-semibold text-center text-purple-100">Problem Çözücü</div>
+          <div class="text-xs text-purple-200 text-center">Problem zinciri uzmanı</div>
+        </div>
+        
+        <!-- Mükemmeliyetçi Rozeti -->
+        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-red-600 to-red-800 rounded-xl shadow-lg">
+          <div class="text-3xl mb-2">💎</div>
+          <div class="text-xs font-semibold text-center text-red-100">Mükemmeliyetçi</div>
+          <div class="text-xs text-red-200 text-center">Ortalama 9+ puan</div>
+        </div>
+        
+        <!-- Sabırlı Öğrenci Rozeti -->
+        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl shadow-lg opacity-50">
+          <div class="text-3xl mb-2">⏳</div>
+          <div class="text-xs font-semibold text-center text-gray-300">Sabırlı Öğrenci</div>
+          <div class="text-xs text-gray-400 text-center">30 gün üst üste</div>
+        </div>
+      </div>
+      
+      <p class="text-center text-gray-400 text-sm mt-4 font-extralight">
+        Egzersizleri tamamlayarak yeni rozetler kazan! 🎯
+      </p>
+    </div>
+
+    <!-- İstatistikler ve Başarılar -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6 flex flex-col items-center">
+      <h3 class="text-3xl font-semibold mb-4 leading-normal tracking-[0.8px] text-white">Başarılar & İstatistikler</h3>
+      
+      <!-- Ana İstatistikler -->
+      <div class="grid grid-cols-3 gap-4 w-full mb-6">
+        <div class="text-center p-4 bg-gray-800 rounded-lg">
+          <div class="text-2xl font-bold text-main">{{ profile.total_exercises_completed }}</div>
+          <div class="text-xs text-gray-400">Toplam Egzersiz</div>
+        </div>
+        <div class="text-center p-4 bg-gray-800 rounded-lg">
+          <div class="text-2xl font-bold text-main">{{ profile.average_score|floatformat:1 }}</div>
+          <div class="text-xs text-gray-400">Ortalama Puan</div>
+        </div>
+        <div class="text-center p-4 bg-gray-800 rounded-lg">
+          <div class="text-2xl font-bold text-main">{{ profile.best_score|floatformat:1 }}</div>
+          <div class="text-xs text-gray-400">En İyi Puan</div>
+        </div>
+      </div>
+      
+      <p class="font-extralight text-gray-300 text-md tracking-[0.8px] text-center">
+        {% if profile.total_exercises_completed > 0 %}
+          Bugüne kadar {{ profile.total_exercises_completed }} egzersiz tamamladın ve ortalama {{ profile.average_score|floatformat:1 }} puan aldın.
+        {% else %}
+          Henüz hiç egzersiz yapmadın. Hemen başlamak için aşağıdaki egzersizlere göz at!
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <!-- Sağ kısım -->
+  <div class="lg:col-span-2 flex flex-col gap-8">
+    
+    <!-- Messages -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="p-4 rounded-lg {% if message.tags == 'success' %}bg-green-600 text-white{% elif message.tags == 'error' %}bg-red-600 text-white{% else %}bg-blue-600 text-white{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <!-- Kullanıcı bilgileri -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <h3 class="text-3xl font-semibold mb-8 leading-normal tracking-[0.8px] text-white">Kullanıcı Bilgileri</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-extralight text-gray-300 text-md tracking-[0.8px]">
+        <p><span class="font-semibold text-white">Ad Soyad:</span> <span>{{ user.get_full_name|default:"Belirtilmemiş" }}</span></p>
+        <p><span class="font-semibold text-white">Email:</span> <span>{{ user.email }}</span></p>
+        <p><span class="font-semibold text-white">Kullanıcı Adı:</span> <span>{{ user.username }}</span></p>
+        <p><span class="font-semibold text-white">Üyelik Tarihi:</span> <span>{{ user.date_joined|date:"d M Y" }}</span></p>
+      </div>
+      <div class="flex items-end justify-end pt-6 space-x-2">
+        <button onclick="toggleEditForm()" class="bg-black-20 border-main border px-4 py-2 rounded-full hover:bg-main hover:text-black transition">Düzenle</button>
+        <a href="{% url 'users:logout' %}" class="bg-red-600 border-red-600 border px-4 py-2 rounded-full hover:bg-red-700 text-white">Çıkış Yap</a>
+      </div>
+    </div>
+
+    <!-- Egzersiz geçmişi -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <h3 class="text-3xl font-semibold mb-4 leading-normal tracking-[0.8px] text-white">Egzersiz Geçmişi</h3>
+
+      <!-- Tab butonları -->
+      <div class="flex flex-wrap gap-4 my-8">
+        <button data-target="hafiza"
+          class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition active bg-main/20">
+          Hafıza Egzersizleri
+        </button>
+        <button data-target="kelime"
+          class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
+          Kelime Köprüsü
+        </button>
+        <button data-target="problem"
+          class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
+          Problem Zinciri
+        </button>
+      </div>
+
+      <!-- Tab içerikleri -->
+      <div id="hafiza" class="tab-content font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="{% static 'img/frontal-active.svg' %}" alt="Memory" class="w-8 h-8">
+          <div>
+            <p class="mb-2">Toplam <span class="text-white font-semibold">{{ profile.memory_exercises_completed }}</span> hafıza egzersizi tamamladın.</p>
+            <p>Bu egzersizler, kısa süreli belleğini güçlendirdi ve bilgileri hızlı hatırlama yeteneğini artırdı.</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a href="{% url 'ai:memory_test' %}" class="inline-flex items-center text-main hover:text-main/80 font-semibold">
+            Egzersize Git →
+          </a>
+        </div>
+      </div>
+
+      <div id="kelime" class="tab-content hidden font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="{% static 'img/temporal-active.svg' %}" alt="Word Bridge" class="w-8 h-8">
+          <div>
+            <p class="mb-2">Toplam <span class="text-white font-semibold">{{ profile.word_bridge_exercises_completed }}</span> kelime köprüsü egzersizi tamamladın.</p>
+            <p>Farklı kelimeler arasında bağlantı kurarak yaratıcılığını ve dil becerinizi geliştirdin.</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a href="{% url 'ai:word_bridge_test' %}" class="inline-flex items-center text-main hover:text-main/80 font-semibold">
+            Egzersize Git →
+          </a>
+        </div>
+      </div>
+
+      <div id="problem" class="tab-content hidden font-extralight text-gray-300 text-md tracking-[0.8px] text-justify">
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="{% static 'img/parietal-active.svg' %}" alt="Problem Chain" class="w-8 h-8">
+          <div>
+            <p class="mb-2">Toplam <span class="text-white font-semibold">{{ profile.problem_chain_exercises_completed }}</span> problem zinciri egzersizi tamamladın.</p>
+            <p>Karmaşık problemleri adım adım çözerek analitik düşünme becerinizi geliştirdin.</p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <a href="{% url 'ai:problem_chain_test' %}" class="inline-flex items-center text-main hover:text-main/80 font-semibold">
+            Egzersize Git →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beyin Sağlığı Analizi -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-3xl font-semibold leading-normal tracking-[0.8px] text-white">🧠 Beyin Sağlığı Analizi</h3>
+        <div class="flex items-center space-x-3">
+          <button id="infoButton" class="text-gray-400 hover:text-main transition-colors" title="Bu analiz nasıl çalışır?">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+          <button id="refreshAnalysis" class="text-sm bg-main/20 hover:bg-main/30 text-main px-4 py-2 rounded-full transition">
+            Güncelle
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div id="analysisLoading" class="hidden">
+        <div class="flex items-center justify-center py-8">
+          <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-main"></div>
+          <span class="ml-3 text-gray-300">Analiz hesaplanıyor...</span>
+        </div>
+      </div>
+
+      <!-- Main Score Display -->
+      <div id="analysisContent">
+        <div class="text-center mb-8">
+          <div class="relative w-32 h-32 mx-auto">
+            <!-- Progress Circle -->
+            <svg class="transform -rotate-90 w-32 h-32">
+              <circle cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="none" class="text-gray-700" />
+              <circle id="progressCircle" cx="64" cy="64" r="56" stroke="currentColor" stroke-width="8" fill="none" 
+                      class="text-main transition-all duration-500" stroke-linecap="round" 
+                      stroke-dasharray="351.86" stroke-dashoffset="351.86" />
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center">
+                <div id="brainHealthScore" class="text-3xl font-bold text-white">-</div>
+                <div class="text-sm text-gray-400">/ 10</div>
+              </div>
+            </div>
+          </div>
+          <p id="analysisMessage" class="text-gray-300 mt-4 text-center">Analiz hesaplanıyor...</p>
+        </div>
+
+        <!-- Score Breakdown -->
+        <div id="scoreBreakdown" class="grid grid-cols-2 gap-4 mb-6 hidden">
+          <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-300 text-sm">Sıklık</span>
+              <span id="frequencyScore" class="text-main font-semibold">-</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div id="frequencyBar" class="bg-main h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-300 text-sm">Performans</span>
+              <span id="performanceScore" class="text-main font-semibold">-</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div id="performanceBar" class="bg-main h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-300 text-sm">Tutarlılık</span>
+              <span id="consistencyScore" class="text-main font-semibold">-</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div id="consistencyBar" class="bg-main h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-300 text-sm">Gelişim</span>
+              <span id="improvementScore" class="text-main font-semibold">-</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+              <div id="improvementBar" class="bg-main h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exercise Distribution -->
+        <div id="exerciseDistribution" class="hidden">
+          <h4 class="text-lg font-semibold text-white mb-4">Egzersiz Dağılımı</h4>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-gray-300">🧠 Hafıza</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-20 bg-gray-700 rounded-full h-2">
+                  <div id="memoryBar" class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <span id="memoryPercent" class="text-sm text-gray-400 w-8">0%</span>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <span class="text-gray-300">🌉 Kelime</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-20 bg-gray-700 rounded-full h-2">
+                  <div id="wordBridgeBar" class="bg-green-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <span id="wordBridgePercent" class="text-sm text-gray-400 w-8">0%</span>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <span class="text-gray-300">🧩 Problem</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-20 bg-gray-700 rounded-full h-2">
+                  <div id="problemChainBar" class="bg-purple-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <span id="problemChainPercent" class="text-sm text-gray-400 w-8">0%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonuses -->
+        <div id="bonusInfo" class="mt-6 hidden">
+          <h4 class="text-lg font-semibold text-white mb-4">Bonus Skorlar</h4>
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="bg-gray-800 rounded-lg p-3">
+              <div id="varietyBonus" class="text-yellow-400 font-semibold">+0.0</div>
+              <div class="text-xs text-gray-400">Çeşitlilik</div>
+            </div>
+            <div class="bg-gray-800 rounded-lg p-3">
+              <div id="difficultyBonus" class="text-red-400 font-semibold">+0.0</div>
+              <div class="text-xs text-gray-400">Zorluk</div>
+            </div>
+            <div class="bg-gray-800 rounded-lg p-3">
+              <div id="streakBonus" class="text-green-400 font-semibold">+0.0</div>
+              <div class="text-xs text-gray-400">Seri</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Form (Hidden by default) -->
+    <div id="editForm" class="hidden border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <h3 class="text-3xl font-semibold mb-8 leading-normal tracking-[0.8px] text-white">Profil Bilgilerini Düzenle</h3>
+      
+      <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Avatar -->
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Profil Fotoğrafı</label>
+            {{ form.avatar }}
+            {% if form.avatar.errors %}
+              <p class="mt-1 text-sm text-red-400">{{ form.avatar.errors.0 }}</p>
+            {% endif %}
+          </div>
+
+        <!-- Bio -->
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Hakkında</label>
+          {{ form.bio }}
+          {% if form.bio.errors %}
+            <p class="mt-1 text-sm text-red-400">{{ form.bio.errors.0 }}</p>
+          {% endif %}
+        </div>
+
+        <!-- Email Notifications -->
+        <div class="flex items-center space-x-3">
+          {{ form.email_notifications }}
+          <label class="text-sm text-gray-300">Email bildirimleri al</label>
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="flex space-x-4">
+          <button 
+            type="submit" 
+            class="bg-main hover:bg-main/90 text-black font-semibold py-2 px-6 rounded-full transition-colors"
+          >
+            Değişiklikleri Kaydet
+          </button>
+          <button 
+            type="button" 
+            onclick="toggleEditForm()"
+            class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-6 rounded-full transition-colors"
+          >
+            İptal
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Son Aktiviteler -->
+    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+      <h3 class="text-3xl font-semibold mb-6 leading-normal tracking-[0.8px] text-white">Son Aktiviteler</h3>
+      
+      <div class="space-y-4 font-extralight text-gray-300 text-md tracking-[0.8px]">
+        <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+          <div class="w-2 h-2 bg-main rounded-full"></div>
+          <div class="flex-grow">
+            <p class="text-white">Profil oluşturuldu</p>
+            <p class="text-gray-400 text-sm">{{ profile.created_at|date:"d M Y H:i" }}</p>
+          </div>
+        </div>
+        
+        {% if profile.total_exercises_completed > 0 %}
+          <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <div class="flex-grow">
+              <p class="text-white">{{ profile.total_exercises_completed }} egzersiz tamamlandı</p>
+              <p class="text-gray-400 text-sm">Son güncelleme: {{ profile.updated_at|date:"d M Y H:i" }}</p>
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if profile.memory_exercises_completed > 0 %}
+          <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div class="flex-grow">
+              <p class="text-white">{{ profile.memory_exercises_completed }} hafıza egzersizi tamamlandı</p>
+              <p class="text-gray-400 text-sm">Hafıza becerin gelişiyor</p>
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if profile.word_bridge_exercises_completed > 0 %}
+          <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+            <div class="flex-grow">
+              <p class="text-white">{{ profile.word_bridge_exercises_completed }} kelime köprüsü egzersizi tamamlandı</p>
+              <p class="text-gray-400 text-sm">Yaratıcılığın artıyor</p>
+            </div>
+          </div>
+        {% endif %}
+        
+        {% if profile.problem_chain_exercises_completed > 0 %}
+          <div class="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
+            <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+            <div class="flex-grow">
+              <p class="text-white">{{ profile.problem_chain_exercises_completed }} problem zinciri egzersizi tamamlandı</p>
+              <p class="text-gray-400 text-sm">Analitik düşünmen güçleniyor</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Beyin Sağlığı Analizi Açıklama Modal -->
+<div id="analysisModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+  <div class="bg-gray-900 rounded-2xl border border-main max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-bold text-white">🧠 Beyin Sağlığı Analizi Nasıl Hesaplanır?</h3>
+        <button id="closeModal" class="text-gray-400 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="space-y-6 text-gray-300">
+        <!-- Genel Açıklama -->
+        <div>
+          <p class="leading-relaxed">
+            Bu analiz, egzersiz performansınızı bilimsel metriklerle değerlendirerek beyin sağlığınızı <span class="text-main font-semibold">0-10 arası</span> puanlar. 
+            Son <span class="text-main font-semibold">7 günlük</span> aktiviteniz baz alınarak hesaplanır ve <span class="text-main font-semibold">4 saatte bir</span> güncellenir.
+          </p>
+        </div>
+
+        <!-- Puan Bileşenleri -->
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">📊 Puan Bileşenleri</h4>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3 p-3 bg-gray-800 rounded-lg">
+              <div class="text-blue-400 font-bold">30%</div>
+              <div>
+                <div class="font-semibold text-white">📊 Sıklık</div>
+                <div class="text-sm">Günlük egzersiz yapma oranınız. Her gün yaparsanız maksimum puan alırsınız.</div>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3 p-3 bg-gray-800 rounded-lg">
+              <div class="text-green-400 font-bold">40%</div>
+              <div>
+                <div class="font-semibold text-white">🎯 Performans</div>
+                <div class="text-sm">Egzersizlerdeki ortalama skorunuz. En yüksek ağırlığa sahip faktör.</div>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3 p-3 bg-gray-800 rounded-lg">
+              <div class="text-purple-400 font-bold">20%</div>
+              <div>
+                <div class="font-semibold text-white">📈 Tutarlılık</div>
+                <div class="text-sm">Skorlarınızın istikrarlı olması. Sürekli benzer performans göstermeniz değerlidir.</div>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3 p-3 bg-gray-800 rounded-lg">
+              <div class="text-yellow-400 font-bold">10%</div>
+              <div>
+                <div class="font-semibold text-white">🔄 Gelişim</div>
+                <div class="text-sm">Zaman içindeki ilerlemeniz. Skorlarınız artıyorsa bonus puan alırsınız.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonus Sistem -->
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">🎁 Bonus Sistem</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="p-3 bg-gray-800 rounded-lg text-center">
+              <div class="text-2xl mb-2">🎨</div>
+              <div class="font-semibold text-white text-sm">Çeşitlilik</div>
+              <div class="text-xs">Farklı egzersiz türleri yapma</div>
+            </div>
+            
+            <div class="p-3 bg-gray-800 rounded-lg text-center">
+              <div class="text-2xl mb-2">💪</div>
+              <div class="font-semibold text-white text-sm">Zorluk</div>
+              <div class="text-xs">Zor seviye egzersizler tercih etme</div>
+            </div>
+            
+            <div class="p-3 bg-gray-800 rounded-lg text-center">
+              <div class="text-2xl mb-2">🔥</div>
+              <div class="font-semibold text-white text-sm">Seri</div>
+              <div class="text-xs">Ardışık günlerde egzersiz yapma</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skor Anlamları -->
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">🏆 Skor Seviyeleri</h4>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between p-2 bg-green-900/30 rounded-lg border border-green-700">
+              <span class="font-semibold text-green-300">8.5 - 10.0</span>
+              <span class="text-green-100">🎉 Mükemmel! Beyin sağlığın harika durumda</span>
+            </div>
+            
+            <div class="flex items-center justify-between p-2 bg-blue-900/30 rounded-lg border border-blue-700">
+              <span class="font-semibold text-blue-300">7.0 - 8.4</span>
+              <span class="text-blue-100">👏 Harika! Düzenli egzersizlerin meyve veriyor</span>
+            </div>
+            
+            <div class="flex items-center justify-between p-2 bg-yellow-900/30 rounded-lg border border-yellow-700">
+              <span class="font-semibold text-yellow-300">5.5 - 6.9</span>
+              <span class="text-yellow-100">💪 İyi gidiyorsun! Biraz daha düzenli ol</span>
+            </div>
+            
+            <div class="flex items-center justify-between p-2 bg-orange-900/30 rounded-lg border border-orange-700">
+              <span class="font-semibold text-orange-300">0 - 5.4</span>
+              <span class="text-orange-100">🌱 Daha fazla egzersiz yaparak gelişebilirsin</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Önemli Not -->
+        <div class="bg-main/10 border border-main/30 rounded-lg p-4">
+          <div class="flex items-start space-x-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-main mt-0.5 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <div>
+              <div class="font-semibold text-main mb-1">📝 Önemli Not</div>
+              <div class="text-sm">En az <span class="text-main font-semibold">5 egzersiz</span> tamamladıktan sonra analiz görüntülenir. Sistem her 4 saatte bir otomatik güncellenir.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="mt-8 text-center">
+        <button id="closeModalBtn" class="bg-main hover:bg-main/90 text-black font-semibold px-6 py-2 rounded-full transition-colors">
+          Anladım!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tab sistemi
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // aktif butonu değiştir
+      tabs.forEach(t => t.classList.remove('active', 'bg-main/20'));
+      tab.classList.add('active', 'bg-main/20');
+
+      // içerikleri değiştir
+      const target = tab.getAttribute('data-target');
+      contents.forEach(c => {
+        if (c.id === target) {
+          c.classList.remove('hidden');
+        } else {
+          c.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Edit form toggle
+  function toggleEditForm() {
+    const editForm = document.getElementById('editForm');
+    editForm.classList.toggle('hidden');
+    
+    // Scroll to form if opening
+    if (!editForm.classList.contains('hidden')) {
+      editForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Brain Health Analytics
+  class BrainHealthAnalytics {
+    constructor() {
+      this.loadingElement = document.getElementById('analysisLoading');
+      this.contentElement = document.getElementById('analysisContent');
+      this.refreshButton = document.getElementById('refreshAnalysis');
+      
+      this.refreshButton.addEventListener('click', () => this.refreshAnalysis());
+      
+      // Load initial data
+      this.loadAnalytics();
+    }
+
+    async loadAnalytics(forceRefresh = false) {
+      try {
+        this.showLoading();
+        
+        const url = `/brain-analytics/summary/${forceRefresh ? '?refresh=true' : ''}`;
+        const response = await fetch(url, {
+          credentials: 'same-origin',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          }
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+          this.showError(data.message);
+        } else {
+          this.displayAnalytics(data);
+        }
+      } catch (error) {
+        console.error('Analytics loading error:', error);
+        this.showError('Analiz yüklenirken hata oluştu.');
+      } finally {
+        this.hideLoading();
+      }
+    }
+
+    async refreshAnalysis() {
+      this.refreshButton.disabled = true;
+      this.refreshButton.textContent = 'Güncelleniyor...';
+      
+      await this.loadAnalytics(true);
+      
+      this.refreshButton.disabled = false;
+      this.refreshButton.textContent = 'Güncelle';
+    }
+
+    displayAnalytics(data) {
+      if (!data.has_sufficient_data) {
+        this.showInsufficientData();
+        return;
+      }
+
+      // Main score
+      const score = data.brain_health_score;
+      document.getElementById('brainHealthScore').textContent = score.toFixed(1);
+      
+      // Update progress circle
+      this.updateProgressCircle(score);
+      
+      // Score breakdown
+      this.updateScoreBreakdown(data.score_breakdown);
+      
+      // Exercise distribution
+      this.updateExerciseDistribution(data.exercise_distribution);
+      
+      // Bonuses
+      this.updateBonuses(data.bonuses);
+      
+      // Message
+      this.updateMessage(score);
+      
+      // Show all sections
+      document.getElementById('scoreBreakdown').classList.remove('hidden');
+      document.getElementById('exerciseDistribution').classList.remove('hidden');
+      document.getElementById('bonusInfo').classList.remove('hidden');
+    }
+
+    updateProgressCircle(score) {
+      const circle = document.getElementById('progressCircle');
+      const circumference = 351.86; // 2 * π * 56
+      const offset = circumference - (score / 10) * circumference;
+      circle.style.strokeDashoffset = offset;
+    }
+
+    updateScoreBreakdown(breakdown) {
+      const metrics = ['frequency', 'performance', 'consistency', 'improvement'];
+      
+      metrics.forEach(metric => {
+        const score = breakdown[metric] || 0;
+        document.getElementById(`${metric}Score`).textContent = score.toFixed(1);
+        document.getElementById(`${metric}Bar`).style.width = `${(score / 10) * 100}%`;
+      });
+    }
+
+    updateExerciseDistribution(distribution) {
+      // Use percentage values from backend
+      const exercises = [
+        { type: 'memory', element: 'memory' },
+        { type: 'word_bridge', element: 'wordBridge' },
+        { type: 'problem_chain', element: 'problemChain' }
+      ];
+      
+      exercises.forEach(({ type, element }) => {
+        const percentageKey = `${type}_percentage`;
+        const percentage = distribution[percentageKey] || 0;
+        
+        document.getElementById(`${element}Bar`).style.width = `${percentage}%`;
+        document.getElementById(`${element}Percent`).textContent = `${percentage}%`;
+      });
+    }
+
+    updateBonuses(bonuses) {
+      document.getElementById('varietyBonus').textContent = `+${bonuses.variety.toFixed(1)}`;
+      document.getElementById('difficultyBonus').textContent = `+${bonuses.difficulty.toFixed(1)}`;
+      document.getElementById('streakBonus').textContent = `+${bonuses.streak.toFixed(1)}`;
+    }
+
+    updateMessage(score) {
+      let message = '';
+      if (score >= 8.5) {
+        message = '🎉 Mükemmel! Beyin sağlığın çok iyi durumda.';
+      } else if (score >= 7.0) {
+        message = '👏 Harika! Düzenli egzersizlerin meyve veriyor.';
+      } else if (score >= 5.5) {
+        message = '💪 İyi gidiyorsun! Biraz daha düzenli ol.';
+      } else if (score >= 3.0) {
+        message = '📈 Başlangıç iyi! Egzersizleri artırabilirsin.';
+      } else {
+        message = '🌱 Daha fazla egzersiz yaparak gelişebilirsin.';
+      }
+      
+      document.getElementById('analysisMessage').textContent = message;
+    }
+
+    showInsufficientData() {
+      document.getElementById('brainHealthScore').textContent = '-';
+      document.getElementById('analysisMessage').textContent = 'En az 5 egzersiz tamamladıktan sonra analiz görüntülenecek.';
+      
+      // Hide optional sections
+      document.getElementById('scoreBreakdown').classList.add('hidden');
+      document.getElementById('exerciseDistribution').classList.add('hidden');
+      document.getElementById('bonusInfo').classList.add('hidden');
+    }
+
+    showError(message) {
+      document.getElementById('brainHealthScore').textContent = '!';
+      document.getElementById('analysisMessage').textContent = message;
+    }
+
+    showLoading() {
+      this.loadingElement.classList.remove('hidden');
+      this.contentElement.style.opacity = '0.5';
+    }
+
+    hideLoading() {
+      this.loadingElement.classList.add('hidden');
+      this.contentElement.style.opacity = '1';
+    }
+  }
+
+  // Initialize analytics when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    new BrainHealthAnalytics();
+    
+    // Modal functionality
+    const modal = document.getElementById('analysisModal');
+    const infoButton = document.getElementById('infoButton');
+    const closeModal = document.getElementById('closeModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    
+    // Open modal
+    infoButton.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    });
+    
+    // Close modal functions
+    const closeModalHandler = () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto'; // Restore scroll
+    };
+    
+    closeModal.addEventListener('click', closeModalHandler);
+    closeModalBtn.addEventListener('click', closeModalHandler);
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModalHandler();
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalHandler();
+      }
+    });
+  });
+</script>
+
+{% include 'components/footer.html' %}

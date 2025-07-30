@@ -11,6 +11,7 @@ import logging
 from .models import MemorySession
 from .prompts import get_topic_generation_prompt, get_text_generation_prompt, get_evaluation_prompt
 from services.gemini_service import GeminiService
+from users.activity_utils import create_exercise_activity, complete_exercise_activity
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ class MemoryStartView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = request.data
             difficulty = data.get('difficulty')
             
             # Validate difficulty
@@ -37,6 +38,14 @@ class MemoryStartView(APIView):
             
             # Create new memory session
             session = MemorySession.objects.create(difficulty=difficulty)
+            
+            # Create user activity tracking (if user is authenticated)
+            activity = create_exercise_activity(
+                user=request.user if request.user.is_authenticated else None,
+                exercise_type='memory',
+                difficulty=difficulty,
+                session_id=str(session.session_id)
+            )
             
             # Generate topic options via Gemini API
             try:
@@ -166,7 +175,7 @@ class MemoryGenerateView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = request.data
             session_id = data.get('session_id')
             selected_topic_id = data.get('topic_id')  # A, B, or C
             
@@ -348,12 +357,10 @@ class MemorySubmitView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = request.data
             session_id = data.get('session_id')
             user_recall = data.get('user_recall', '')
             user_keywords = data.get('user_keywords', [])
-            synthesis_type = data.get('synthesis_type', 'simplify')
-            synthesis_text = data.get('synthesis_text', '')
             reading_time = data.get('reading_time', 0)
             
             # Validate inputs
@@ -378,12 +385,11 @@ class MemorySubmitView(APIView):
             
             # Clean and validate user inputs
             user_recall = user_recall.strip()
-            synthesis_text = synthesis_text.strip()
             
-            # Ensure we have at least some content
-            if not user_recall and not synthesis_text:
+            # Ensure we have at least recall content
+            if not user_recall:
                 return JsonResponse({
-                    'error': 'At least recall or synthesis must be provided'
+                    'error': 'Recall text must be provided'
                 }, status=400)
             
             # Clean keywords list
@@ -398,8 +404,6 @@ class MemorySubmitView(APIView):
             # Update session with user responses
             session.user_recall = user_recall
             session.user_keywords = user_keywords
-            session.synthesis_type = synthesis_type
-            session.synthesis_text = synthesis_text
             session.reading_time = reading_time
             session.save()
             
@@ -429,7 +433,7 @@ class MemoryCompleteView(APIView):
     
     def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = request.data
             session_id = data.get('session_id')
             
             # Validate input
@@ -460,8 +464,8 @@ class MemoryCompleteView(APIView):
                     session.text_keywords,
                     session.user_recall,
                     session.user_keywords,
-                    session.synthesis_text,
-                    session.synthesis_type
+                    session.user_question or "",  # Use Q&A instead of synthesis
+                    "question"  # Updated type
                 )
                 
                 ai_response = gemini_service.generate_content(prompt)
@@ -469,8 +473,13 @@ class MemoryCompleteView(APIView):
                 # Parse evaluation response
                 evaluation_data = self._parse_evaluation_response(ai_response)
                 
+                # Add overall score to scores if not present
+                scores = evaluation_data.get('scores', {})
+                if 'overall' not in scores:
+                    scores['overall'] = self._calculate_overall_score(scores)
+                
                 # Update session with results
-                session.scores = evaluation_data.get('scores', {})
+                session.scores = scores
                 session.ai_feedback = evaluation_data.get('feedback', '')
                 session.alternative_keywords = evaluation_data.get('alternative_keywords', [])
                 session.is_completed = True
@@ -478,6 +487,22 @@ class MemoryCompleteView(APIView):
                 
                 # Calculate overall score
                 overall_score = session.get_overall_score()
+                
+                # Complete user activity tracking
+                complete_exercise_activity(
+                    user=request.user if request.user.is_authenticated else None,
+                    session_id=str(session.session_id),
+                    scores=session.scores,
+                    overall_score=overall_score,
+                    exercise_data={
+                        'original_text': session.original_text,
+                        'user_recall': session.user_recall,
+                        'user_keywords': session.user_keywords,
+                        'user_question': session.user_question,
+                        'ai_answer': session.ai_answer,
+                        'reading_time': session.reading_time
+                    }
+                )
                 
                 return JsonResponse({
                     'success': True,
@@ -492,7 +517,8 @@ class MemoryCompleteView(APIView):
                             'user_recall': session.user_recall,
                             'original_keywords': session.text_keywords,
                             'user_keywords': session.user_keywords,
-                            'synthesis': session.synthesis_text
+                            'user_question': session.user_question or '',
+                            'ai_answer': session.ai_answer or ''
                         }
                     },
                     'completed': True
@@ -503,11 +529,30 @@ class MemoryCompleteView(APIView):
                 
                 # Fallback evaluation if AI fails
                 fallback_scores = self._get_fallback_evaluation(session)
+                # Add overall score to fallback
+                fallback_scores['overall'] = self._calculate_overall_score(fallback_scores)
                 
                 session.scores = fallback_scores
                 session.ai_feedback = "Değerlendirme tamamlandı. Devam ettiğiniz için teşekkürler!"
                 session.is_completed = True
                 session.save()
+                
+                # Complete user activity tracking (fallback)
+                complete_exercise_activity(
+                    user=request.user if request.user.is_authenticated else None,
+                    session_id=str(session.session_id),
+                    scores=fallback_scores,
+                    overall_score=session.get_overall_score(),
+                    exercise_data={
+                        'original_text': session.original_text,
+                        'user_recall': session.user_recall,
+                        'user_keywords': session.user_keywords,
+                        'user_question': session.user_question,
+                        'ai_answer': session.ai_answer,
+                        'reading_time': session.reading_time,
+                        'fallback': True
+                    }
+                )
                 
                 return JsonResponse({
                     'success': True,
@@ -522,7 +567,8 @@ class MemoryCompleteView(APIView):
                             'user_recall': session.user_recall or '',
                             'original_keywords': session.text_keywords or [],
                             'user_keywords': session.user_keywords or [],
-                            'synthesis': session.synthesis_text or ''
+                            'user_question': session.user_question or '',
+                            'ai_answer': session.ai_answer or ''
                         },
                         'fallback': True
                     },
@@ -562,22 +608,129 @@ class MemoryCompleteView(APIView):
             logger.error(f"Evaluation parsing error: {e}")
             # Return default structure
             return {
-                'scores': {'recall': 7, 'keywords': 6, 'synthesis': 7, 'overall': 7},
+                'scores': {'recall': 7, 'keywords': 6},
                 'feedback': 'Değerlendirme tamamlandı.',
                 'alternative_keywords': []
             }
+    
+    def _calculate_overall_score(self, scores):
+        """Calculate overall score from individual scores"""
+        score_values = [
+            scores.get('recall', 0),
+            scores.get('keywords', 0)
+        ]
+        return round(sum(score_values) / len(score_values), 1) if score_values else 0
     
     def _get_fallback_evaluation(self, session):
         """Fallback evaluation scoring if AI fails"""
         # Simple rule-based scoring
         recall_score = min(10, max(1, len(session.user_recall.split()) // 5))
         keyword_score = min(10, max(1, len(session.user_keywords) * 3))
-        synthesis_score = min(10, max(1, len(session.synthesis_text.split()) // 3))
-        overall_score = round((recall_score + keyword_score + synthesis_score) / 3)
         
         return {
             'recall': recall_score,
-            'keywords': keyword_score,
-            'synthesis': synthesis_score,
-            'overall': overall_score
+            'keywords': keyword_score
         }
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class MemoryQuestionView(APIView):
+    """
+    Handle Q&A for Memory Exercise
+    - Validate if question is relevant to the text
+    - Generate AI answer if question is relevant
+    """
+    permission_classes = [AllowAny]
+    
+    def post(self, request):
+        try:
+            data = request.data
+            session_id = data.get('session_id')
+            user_question = data.get('question', '').strip()
+            
+            # Validate inputs
+            if not session_id or not user_question:
+                return JsonResponse({
+                    'error': 'session_id and question are required'
+                }, status=400)
+            
+            # Find session
+            try:
+                session = MemorySession.objects.get(session_id=session_id)
+            except MemorySession.DoesNotExist:
+                return JsonResponse({
+                    'error': 'Session not found'
+                }, status=404)
+            
+            # Validate that we have text to validate against
+            if not session.original_text:
+                return JsonResponse({
+                    'error': 'No text found for validation'
+                }, status=400)
+            
+            # Use Gemini to validate question relevance and generate answer
+            try:
+                gemini_service = GeminiService()
+                
+                # Validation prompt
+                validation_prompt = f"""
+Metin: "{session.original_text}"
+
+Kullanıcı Sorusu: "{user_question}"
+
+Bu soru yukarıdaki metinle ilgili mi? Sadece "EVET" veya "HAYIR" ile cevapla.
+Eğer EVET ise, soruya metne dayanarak kısa ve net bir cevap ver.
+
+Format:
+İLGİLİ: EVET/HAYIR
+CEVAP: [Eğer ilgili ise kısa cevap]
+"""
+                
+                ai_response = gemini_service.generate_content(validation_prompt)
+                
+                # Parse response
+                is_relevant = False
+                ai_answer = ""
+                
+                lines = ai_response.split('\n')
+                for line in lines:
+                    line = line.strip()
+                    if line.startswith('İLGİLİ:'):
+                        is_relevant = 'EVET' in line.upper()
+                    elif line.startswith('CEVAP:'):
+                        ai_answer = line.replace('CEVAP:', '').strip()
+                
+                # Update session with Q&A
+                session.user_question = user_question
+                session.question_is_relevant = is_relevant
+                session.ai_answer = ai_answer if is_relevant else "Soru metinle ilgili değil."
+                session.save()
+                
+                return JsonResponse({
+                    'success': True,
+                    'question_relevant': is_relevant,
+                    'ai_answer': session.ai_answer,
+                    'message': 'Soru kaydedildi ve cevaplandı' if is_relevant else 'Soru metinle ilgili değil'
+                })
+                
+            except Exception as ai_error:
+                logger.error(f"Q&A processing error: {ai_error}")
+                
+                # Fallback: Save question but mark as error
+                session.user_question = user_question
+                session.question_is_relevant = False
+                session.ai_answer = "Teknik bir hata oluştu, sorunuz kaydedildi."
+                session.save()
+                
+                return JsonResponse({
+                    'success': True,
+                    'question_relevant': False,
+                    'ai_answer': session.ai_answer,
+                    'message': 'Soru kaydedildi ama değerlendirilemedi'
+                })
+                
+        except Exception as e:
+            logger.error(f"Memory Question Error: {e}")
+            return JsonResponse({
+                'error': 'Soru işlenirken hata oluştu'
+            }, status=500)

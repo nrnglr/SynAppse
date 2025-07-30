@@ -26,8 +26,7 @@
                     <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
                         <div class="text-3xl mb-3">🟢</div>
                         <h4 class="text-xl font-semibold text-white mb-2">KOLAY</h4>
-                        <p class="text-gray-400 text-sm mb-3">Ortaokul-Lise seviyesi</p>
-                        <div class="text-main font-semibold">Basit kavramlar</div>
+                        <p class="text-gray-400 text-sm">Ortaokul-Lise seviyesi</p>
                     </div>
                 </div>
                 
@@ -35,8 +34,7 @@
                     <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
                         <div class="text-3xl mb-3">🟡</div>
                         <h4 class="text-xl font-semibold text-white mb-2">ORTA</h4>
-                        <p class="text-gray-400 text-sm mb-3">Üniversite seviyesi</p>
-                        <div class="text-main font-semibold">Akademik terimler</div>
+                        <p class="text-gray-400 text-sm">Üniversite seviyesi</p>
                     </div>
                 </div>
                 
@@ -44,17 +42,12 @@
                     <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
                         <div class="text-3xl mb-3">🔴</div>
                         <h4 class="text-xl font-semibold text-white mb-2">ZOR</h4>
-                        <p class="text-gray-400 text-sm mb-3">Lisansüstü seviyesi</p>
-                        <div class="text-main font-semibold">Karmaşık kavramlar</div>
+                        <p class="text-gray-400 text-sm">Lisansüstü seviyesi</p>
                     </div>
                 </div>
             </div>
             
-            <div class="text-center">
-                <button id="startBtn" disabled class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed">
-                    📚 Konu Seçimine Geç
-                </button>
-            </div>
+            <!-- Auto-advance after difficulty selection -->
         </div>
 
         <!-- Step 2: Topic Selection -->
@@ -129,11 +122,11 @@
             </div>
         </div>
 
-        <!-- Step 4: Recall + Synthesis Phase -->
+        <!-- Step 4: Recall + Q&A Phase -->
         <div id="recallStep" class="step-container hidden">
             <div class="text-center mb-8">
                 <h3 class="text-2xl font-semibold text-main mb-4">💭 Hafızanızdan Geri Çağırın</h3>
-                <p class="text-gray-300">Metin kayboldu! Şimdi hatırladıklarınızı yazın</p>
+                <p class="text-gray-300">Metin kayboldu! Şimdi hatırladıklarınızı yazın ve soru sorun</p>
             </div>
 
             <!-- Recall Section -->
@@ -176,20 +169,40 @@
                 </div>
             </div>
 
-            <!-- Synthesis Section -->
+            <!-- Q&A Section (Replaces Synthesis) -->
             <div class="mb-8">
                 <label class="block text-white font-semibold mb-3">
-                    🧠 Zihinsel Sentez
+                    ❓ Soru Sor
                 </label>
                 <div class="bg-second/20 rounded-lg p-6 border border-second/30">
-                    <h4 class="text-lg font-semibold text-main mb-4">Basitleştirme ve Pekiştirme</h4>
-                    <p class="text-gray-300 mb-4">Okuduğunuz bilgiyi, konuyla ilgili hiçbir bilgisi olmayan birine nasıl açıklardınız?</p>
-                    <textarea 
-                        id="synthesisText" 
-                        placeholder="Konuyu hiç bilmeyen birine nasıl anlatırdınız? Kendi cümlelerinizle basitleştirin..."
-                        class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
-                        rows="4"
-                    ></textarea>
+                    <h4 class="text-lg font-semibold text-main mb-4">Metinle İlgili Soru</h4>
+                    <p class="text-gray-300 mb-4">Okuduğunuz metinle ilgili bir soru sorun. AI sizin sorunuzun metinle ilgili olup olmadığını kontrol edecek ve ilgili ise cevap verecek.</p>
+                    
+                    <div class="mb-4">
+                        <textarea 
+                            id="questionText" 
+                            placeholder="Metinle ilgili sorunuzu yazın..."
+                            class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-main focus:outline-none"
+                            rows="3"
+                        ></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button 
+                            id="askQuestionBtn" 
+                            class="bg-main text-black px-6 py-2 rounded-lg font-semibold hover:bg-second hover:text-white transition"
+                        >
+                            🤔 Soru Sor
+                        </button>
+                    </div>
+                    
+                    <!-- Q&A Result Display -->
+                    <div id="qaResult" class="mt-4" style="display: none;">
+                        <div class="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
+                            <h5 class="text-main font-semibold mb-2">AI Cevabı:</h5>
+                            <div id="aiAnswerDisplay" class="text-white text-sm leading-relaxed"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -215,10 +228,6 @@
                     <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-600/50">
                         <h5 class="text-lg font-semibold text-gray-300 mb-3">Orijinal Metin:</h5>
                         <div id="originalTextDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
-                        <h6 class="text-md font-semibold text-gray-300 mb-2">Anahtar Kelimeler:</h6>
-                        <div id="originalKeywords" class="flex flex-wrap gap-2">
-                            <!-- Dynamic keywords -->
-                        </div>
                     </div>
                     
                     <!-- User Response -->
@@ -229,8 +238,10 @@
                         <div id="userKeywordsDisplay" class="flex flex-wrap gap-2 mb-4">
                             <!-- Dynamic keywords -->
                         </div>
-                        <h6 class="text-md font-semibold text-blue-300 mb-2">Basitleştirme:</h6>
-                        <div id="userSynthesisDisplay" class="text-white text-sm leading-relaxed">-</div>
+                        <h6 class="text-md font-semibold text-blue-300 mb-2">Sorduğunuz Soru:</h6>
+                        <div id="userQuestionDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
+                        <h6 class="text-md font-semibold text-blue-300 mb-2">AI Cevabı:</h6>
+                        <div id="userAnswerDisplay" class="text-white text-sm leading-relaxed">-</div>
                     </div>
                 </div>
             </div>
@@ -238,7 +249,7 @@
             <!-- Scores -->
             <div class="mb-8">
                 <h4 class="text-xl font-semibold text-main mb-4 text-center">📊 Skorlarınız</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
                         <div class="text-3xl font-bold text-main mb-2" id="recallScore">-</div>
                         <div class="text-gray-400 text-sm">Geri Çağırma</div>
@@ -251,13 +262,6 @@
                         <div class="text-gray-400 text-sm">Anahtar Kelime</div>
                         <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
                             <div id="keywordsProgress" class="bg-main h-2 rounded-full transition-all duration-1000" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
-                        <div class="text-3xl font-bold text-main mb-2" id="synthesisScore">-</div>
-                        <div class="text-gray-400 text-sm">Sentez Kalitesi</div>
-                        <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                            <div id="synthesisProgress" class="bg-main h-2 rounded-full transition-all duration-1000" style="width: 0%"></div>
                         </div>
                     </div>
                     <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
@@ -322,9 +326,12 @@
 {% include 'components/footer.html' %}
 
 <script>
+console.log('Script tag loaded!');
+
 // Memory Exercise JavaScript Logic
 class MemoryExercise {
     constructor() {
+        console.log('MemoryExercise constructor called');
         this.sessionId = null;
         this.selectedDifficulty = null;
         this.selectedTopicId = null;
@@ -339,6 +346,7 @@ class MemoryExercise {
         
         // Get CSRF token
         this.csrfToken = this.getCSRFToken();
+        console.log('CSRF Token:', this.csrfToken);
         
         this.initializeEventListeners();
     }
@@ -377,13 +385,18 @@ class MemoryExercise {
     }
 
     initializeEventListeners() {
+        console.log('Initializing event listeners...');
+        
         // Difficulty selection
-        document.querySelectorAll('.difficulty-card').forEach(card => {
-            card.addEventListener('click', () => this.selectDifficulty(card));
+        const difficultyCards = document.querySelectorAll('.difficulty-card');
+        console.log('Found difficulty cards:', difficultyCards.length);
+        difficultyCards.forEach(card => {
+            console.log('Adding click listener to difficulty card:', card.dataset.difficulty);
+            card.addEventListener('click', (e) => {
+                console.log('Difficulty card clicked:', card.dataset.difficulty);
+                this.selectDifficulty(card);
+            });
         });
-
-        // Start button (generate topics)
-        document.getElementById('startBtn').addEventListener('click', () => this.generateTopics());
 
         // Topic selection
         document.querySelectorAll('.topic-card').forEach(card => {
@@ -398,6 +411,12 @@ class MemoryExercise {
 
         // Submit responses
         document.getElementById('submitResponsesBtn').addEventListener('click', () => this.submitResponses());
+        
+        // Ask question button
+        const askQuestionBtn = document.getElementById('askQuestionBtn');
+        if (askQuestionBtn) {
+            askQuestionBtn.addEventListener('click', () => this.askQuestion());
+        }
 
         // New exercise button
         document.getElementById('newExerciseBtn').addEventListener('click', () => this.resetExercise());
@@ -406,9 +425,13 @@ class MemoryExercise {
         document.getElementById('backToMenuBtn').addEventListener('click', () => {
             window.location.href = '/';
         });
+        
+        console.log('Event listeners initialized successfully');
     }
 
     selectDifficulty(selectedCard) {
+        console.log('selectDifficulty called with:', selectedCard.dataset.difficulty);
+        
         // Remove selection from all cards
         document.querySelectorAll('.difficulty-card div').forEach(div => {
             div.classList.remove('border-main', 'bg-main/10');
@@ -416,16 +439,26 @@ class MemoryExercise {
 
         // Add selection to clicked card
         const cardDiv = selectedCard.querySelector('div');
-        cardDiv.classList.add('border-main', 'bg-main/10');
+        if (cardDiv) {
+            cardDiv.classList.add('border-main', 'bg-main/10');
+            console.log('Visual selection added to card');
+        } else {
+            console.error('Could not find card div element');
+        }
 
         // Store selected difficulty
         this.selectedDifficulty = selectedCard.dataset.difficulty;
-        
-        // Enable start button
-        document.getElementById('startBtn').disabled = false;
+        console.log('Selected difficulty stored:', this.selectedDifficulty);
         
         // Update display
-        document.getElementById('difficultyDisplay').textContent = this.getDifficultyText(this.selectedDifficulty);
+        const difficultyDisplay = document.getElementById('difficultyDisplay');
+        if (difficultyDisplay) {
+            difficultyDisplay.textContent = this.getDifficultyText(this.selectedDifficulty);
+            console.log('Difficulty display updated');
+        }
+        
+        // Immediately generate topics and switch to topic selection
+        this.generateTopics();
     }
 
     getDifficultyText(difficulty) {
@@ -618,11 +651,10 @@ class MemoryExercise {
             document.getElementById('keyword2').value.trim(),
             document.getElementById('keyword3').value.trim()
         ].filter(k => k.length > 0);
-        const synthesisText = document.getElementById('synthesisText').value.trim();
 
         // Validate inputs
-        if (!userRecall && !synthesisText) {
-            alert('Lütfen en azından geri çağırma veya sentez bölümünü doldurun');
+        if (!userRecall) {
+            alert('Lütfen geri çağırma bölümünü doldurun');
             return;
         }
 
@@ -640,8 +672,6 @@ class MemoryExercise {
                     session_id: this.sessionId,
                     user_recall: userRecall,
                     user_keywords: userKeywords,
-                    synthesis_type: 'simplify',
-                    synthesis_text: synthesisText,
                     reading_time: this.actualReadingTime
                 })
             });
@@ -699,20 +729,20 @@ class MemoryExercise {
         // Show comparison with fallbacks
         const originalTextEl = document.getElementById('originalTextDisplay');
         const userRecallEl = document.getElementById('userRecallDisplay');
-        const userSynthesisEl = document.getElementById('userSynthesisDisplay');
+        const userQuestionEl = document.getElementById('userQuestionDisplay');
+        const userAnswerEl = document.getElementById('userAnswerDisplay');
         
         if (originalTextEl) originalTextEl.innerHTML = this.formatText(comparison.original_text || 'Metin bulunamadı');
         if (userRecallEl) userRecallEl.textContent = comparison.user_recall || 'Cevap bulunamadı';
-        if (userSynthesisEl) userSynthesisEl.textContent = comparison.synthesis || 'Sentez bulunamadı';
+        if (userQuestionEl) userQuestionEl.textContent = comparison.user_question || 'Soru sorulmadı';
+        if (userAnswerEl) userAnswerEl.textContent = comparison.ai_answer || 'Cevap bulunamadı';
 
         // Show keywords with fallbacks
-        this.displayKeywords('originalKeywords', comparison.original_keywords || [], 'bg-gray-600');
         this.displayKeywords('userKeywordsDisplay', comparison.user_keywords || [], 'bg-blue-600');
 
-        // Show scores with animated progress bars (with fallbacks)
+        // Show scores with animated progress bars (with fallbacks) - no synthesis score
         this.animateScore('recallScore', 'recallProgress', scores.recall || 0);
         this.animateScore('keywordsScore', 'keywordsProgress', scores.keywords || 0);
-        this.animateScore('synthesisScore', 'synthesisProgress', scores.synthesis || 0);
         this.animateScore('overallScore', 'overallProgress', scores.overall || 0);
 
         // Show feedback
@@ -826,7 +856,6 @@ class MemoryExercise {
         });
 
         // Reset buttons
-        document.getElementById('startBtn').disabled = true;
         document.getElementById('generateTextBtn').disabled = true;
 
         // Clear inputs
@@ -834,20 +863,86 @@ class MemoryExercise {
         document.getElementById('keyword1').value = '';
         document.getElementById('keyword2').value = '';
         document.getElementById('keyword3').value = '';
-        document.getElementById('synthesisText').value = '';
+        document.getElementById('questionText').value = '';
 
         // Reset timer display
         document.getElementById('timeRemaining').textContent = '60';
         document.getElementById('readingTimer').classList.remove('text-red-500', 'text-yellow-500');
         document.getElementById('readingTimer').classList.add('text-main');
 
+        // Hide Q&A result
+        document.getElementById('qaResult').style.display = 'none';
+
         // Show first step
         this.showStep('difficultyStep');
+    }
+    
+    async askQuestion() {
+        const questionText = document.getElementById('questionText').value.trim();
+        
+        if (!questionText) {
+            alert('Lütfen bir soru yazın');
+            return;
+        }
+        
+        if (!this.sessionId) {
+            alert('Oturum bulunamadı');
+            return;
+        }
+        
+        try {
+            const askBtn = document.getElementById('askQuestionBtn');
+            askBtn.disabled = true;
+            askBtn.textContent = 'Soru Değerlendiriliyor...';
+            
+            const response = await fetch('/exercises/memory/question/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.csrfToken
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    question: questionText
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Show Q&A result
+                document.getElementById('qaResult').style.display = 'block';
+                document.getElementById('aiAnswerDisplay').textContent = data.ai_answer;
+                
+                // Update button based on relevance
+                if (data.question_relevant) {
+                    askBtn.textContent = '✅ Soru Cevaplandı';
+                    askBtn.classList.remove('bg-main');
+                    askBtn.classList.add('bg-green-600');
+                } else {
+                    askBtn.textContent = '❌ Soru İlgisiz';
+                    askBtn.classList.remove('bg-main');
+                    askBtn.classList.add('bg-red-600');
+                }
+            } else {
+                alert(data.error || 'Soru işlenirken hata oluştu');
+                askBtn.disabled = false;
+                askBtn.textContent = '🤔 Soru Sor';
+            }
+            
+        } catch (error) {
+            console.error('Question error:', error);
+            alert('Soru gönderilirken hata oluştu');
+            const askBtn = document.getElementById('askQuestionBtn');
+            askBtn.disabled = false;
+            askBtn.textContent = '🤔 Soru Sor';
+        }
     }
 }
 
 // Initialize the exercise when page loads
-document.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
+    console.log('Window loaded - initializing MemoryExercise');
     window.memoryExercise = new MemoryExercise();
 });
 </script>

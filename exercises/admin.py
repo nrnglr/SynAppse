@@ -96,7 +96,7 @@ class WordBridgeSessionAdmin(admin.ModelAdmin):
 @admin.register(MemorySession)  
 class MemorySessionAdmin(admin.ModelAdmin):
     list_display = ['session_id', 'difficulty', 'selected_topic', 'is_completed', 'created_at']
-    list_filter = ['difficulty', 'is_completed', 'synthesis_type', 'created_at']
+    list_filter = ['difficulty', 'is_completed', 'question_is_relevant', 'created_at']
     search_fields = ['session_id', 'selected_topic']
     readonly_fields = ['session_id', 'created_at', 'updated_at']
     
@@ -109,7 +109,7 @@ class MemorySessionAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
         ('User Responses', {
-            'fields': ('user_recall', 'user_keywords', 'synthesis_type', 'synthesis_text'),
+            'fields': ('user_recall', 'user_keywords', 'user_question', 'ai_answer', 'question_is_relevant'),
             'classes': ('collapse',),
         }),
         ('Performance', {

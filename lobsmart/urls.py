@@ -18,7 +18,14 @@ urlpatterns = [
     # Exercise modules
     path('exercises/', include('exercises.urls')),
     
+    # Brain Analytics
+    path('brain-analytics/', include('brain_analytics.urls')),
+    
     # User management
     path('users/', include('users.urls')),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Add media files serving in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

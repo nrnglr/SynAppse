@@ -74,3 +74,10 @@ class ProblemChainSession(models.Model):
                 'solution': solution
             })
         return context
+    
+    def get_overall_score(self):
+        """Calculate overall score from individual metrics"""
+        if not self.creativity_score or not self.practicality_score:
+            return 0
+        
+        return round((self.creativity_score + self.practicality_score) / 2, 1)

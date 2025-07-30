@@ -73,6 +73,19 @@ class WordBridgeSession(models.Model):
         """Kullanılan hint sayısına göre puan kesintisi"""
         return len(self.hints_used) * 0.5
     
+    def get_overall_score(self):
+        """Calculate overall score from individual metrics"""
+        if not self.final_score:
+            return 0
+        
+        scores_list = [
+            self.final_score.get('logic', 0),
+            self.final_score.get('creativity', 0),
+            self.final_score.get('efficiency', 0)
+        ]
+        
+        return round(sum(scores_list) / len(scores_list), 1) if scores_list else 0
+    
     def can_submit_more_words(self):
         """Daha fazla kelime submit edilebilir mi?"""
         return len(self.submitted_words) < 6 and self.status == 'active'
