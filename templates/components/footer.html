@@ -1,29 +1,43 @@
 {% load static %}
 
-    <footer class="border-t border-gray-800 py-20">
-      <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-lg text-gray-400">
-        <div>
-          <h4 class="text-white font-semibold mb-4">SynAppse</h4>
-          <p>Beyin gücünü artır, zihinsel potansiyelini keşfet.</p>
-        </div>
-        <div>
-          <h4 class="text-white font-semibold mb-4">Linkler</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-main">Ana Sayfa</a></li>
-            <li><a href="#" class="hover:text-main">Egzersizler</a></li>
-            <li><a href="#" class="hover:text-main">İletişim</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-semibold mb-4">Destek</h4>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-main">SSS</a></li>
-            <li><a href="#" class="hover:text-main">Gizlilik</a></li>
-            <li><a href="#" class="hover:text-main">Kullanım Şartları</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="mt-8 text-center text-md text-gray-500">
-        © 2025 SynAppse. Tüm hakları saklıdır.
-      </div>
-    </footer>
+<footer class="border-t border-gray-800 py-20">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-lg text-gray-400 text-center sm:text-left">
+
+    <!-- logo / açıklama -->
+    <div>
+      <h4 class="text-white font-semibold mb-4">SynAppse</h4>
+      <p>Beyin gücünü artır, zihinsel potansiyelini keşfet.</p>
+    </div>
+
+    <!-- linkler -->
+    <div class="flex flex-col items-center">
+      <h4 class="text-white font-semibold mb-4 sm:mr-24 mr-0">Linkler</h4>
+      <ul class="space-y-2">
+        <li><a href="{% url 'ai:index' %}" class="hover:text-main">Ana Sayfa</a></li>
+        <li><a href="{% url 'ai:whysynappse' %}" class="hover:text-main">Neden SynAppse?</a></li>
+        <li><a href="{% url 'ai:exercise' %}" class="hover:text-main">Egzersizler</a></li>
+        <li><a href="{% url 'ai:brainhealth' %}" class="hover:text-main">Beyin Sağlığı</a></li>
+        <li><a href="{% url 'ai:sss' %}" class="hover:text-main">SSS</a></li>
+      </ul>
+    </div>
+
+    <!-- mesaj formu -->
+    <div>
+      <h4 class="text-white font-semibold mb-4">Bize Mesaj Gönder</h4>
+      <form action="#" method="post" class="space-y-3">
+        <input type="email" name="email" placeholder="Mail adresiniz"
+          class="sm:w-full w-80 px-4 py-2 rounded-xl border border-white/10 bg-white/5 p-8 text-white focus:outline-none focus:border-main">
+        <textarea name="message" placeholder="Mesajınız"
+          class="sm:w-full w-80 px-4 py-2 rounded-xl border border-white/10 bg-white/5 p-8 text-white focus:outline-none focus:border-main h-24"></textarea>
+        <button type="submit"
+          class="px-6 py-2 rounded-md bg-main hover:bg-main/80 transition text-white font-semibold sm:w-full w-80">
+          Gönder
+        </button>
+      </form>
+    </div>
+
+  </div>
+  <div class="mt-8 text-center text-md text-gray-500">
+    © 2025 SynAppse. Tüm hakları saklıdır.
+  </div>
+</footer>

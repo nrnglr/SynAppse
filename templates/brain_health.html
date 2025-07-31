@@ -1,0 +1,101 @@
+{% load static %}
+{% include 'components/navbar.html' %}
+
+<!-- giriş bölümü -->
+<section class="py-10 md:py-20">
+  <div class="max-w-7xl mx-auto items-center px-4">
+    <div>
+      <h2 class="text-5xl font-bold mb-8 tracking-[3px]">Konfor Alanınız, Zihin Hapishaneniz Olmasın.</h2>
+      <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-10 text-justify">
+        "Yapay zekadan endişe duymuyorum... Asıl endişem, insanların bilgisayarlar gibi düşünmesi.” <br>
+        <span class="italic">- Tim Cook</span>
+        <br><br>
+        Yapay zeka (YZ) hayatımızın her yerinde. Ödevlerimizi yaparken, e-postalarımızı yazarken, kodlarken, hatta sanat üretirken... Bize inanılmaz bir hız ve verimlilik katıyor. Peki bu konforun, farkında olmadığımız bir bedeli olabilir mi?
+        <br><br>
+        MIT'nin çığır açan <b>"Your Brain on ChatGPT"</b> araştırması, bu sorunun cevabını net bir şekilde ortaya koyuyor: Evet, bir bedeli var. Yapay zekayı bilinçsizce ve pasif bir şekilde kullandığımızda, beynimizin en değerli yetenekleri yavaş yavaş köreliyor.
+        <br><br>
+        Tıpkı kullanmadığımız bir kasın zamanla zayıflaması gibi...
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class ="flex justify-center items-center py-8">
+    <img src="{% static 'img/arrow.svg' %}" alt="direction" class="w-16 animate-bounce">
+</div>
+
+<section class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h3 class="text-4xl font-bold mb-8"> Zihninizde Neler Oluyor? (Üç Tehlike Sinyali)</h3>
+        <p class="font-extralight text-white text-lg tracking-[0.8px]">Yapay zeka araçlarına giderek daha fazla güvendiğimizde, beynimizdeki bazı kritik sinir ağları daha az aktif hale gelir.
+        Bu durum sadece günlük hayattaki kararlarımızı değil, uzun vadeli öğrenme ve yaratıcılığımızı da etkiler.
+        Farkında olmadan dış kaynaklı çözümlere bağımlı hale gelir, kendi düşünme süreçlerimizi köreltiriz.
+        Özellikle genç yaşta bu alışkanlık oluştuğunda, zihinsel dayanıklılık ve derin düşünme yetisi zamanla zayıflar.
+        Aşağıdaki üç işaret bu sürecin en belirgin göstergeleridir.</p>
+        <div class="grid md:grid-cols-3 gap-8 pt-24">
+            <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
+            <div class="relative z-10">
+                <h4 class="font-semibold mt-8 mb-8 text-center text-2xl tracking-wide">Eleştirel Düşünme ve Problem Çözme</h4>
+                <p class="text-md font-light text-gray-300 leading-relaxed">
+                Hazır çözümlere alıştıkça, karmaşık sorunları analiz etme, farklı açıları değerlendirme ve özgün çıkış yolları
+                 bulma yeteneğimiz zayıflıyor. Beynimizin "problem çözme" kası tembelleşiyor.
+                </p>
+            </div>
+            </div>
+            <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
+            <div class="relative z-10">
+                <h4 class="font-semibold mt-8 mb-8 text-center text-2xl tracking-wide">Hafıza Zayıflığı</h4>
+                <p class="text-md font-light text-gray-300 leading-relaxed">
+                Bilgiyi kendi cümlelerimizle yeniden yapılandırmak, kalıcı öğrenmenin anahtarıdır.
+                Ancak YZ bize hazır bilgi sunduğunda bu süreç atlanır ve bilgiler yüzeysel kalır.
+                </p>
+            </div>
+            </div>
+            <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
+            <div class="relative z-10">
+                <h4 class="font-semibold mt-8 mb-8 text-center text-2xl tracking-wide">Yaratıcılık ve Özgün Düşünce</h4>
+                <p class="text-md font-light text-gray-300 leading-relaxed">
+               Sürekli olarak YZ’nin ürettiği fikirlere maruz kalmak, kendi özgün sesimizi bastırır.
+                Yeni fikirler üretmek yerine mevcut şablonları tekrar ederiz ve yaratıcılık zamanla körelir.
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- synappse bölümü -->
+<section class="py-24 px-4">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- sol görsel -->
+    <div class="flex justify-center">
+      <img src="{% static 'img/logo2.svg' %}" alt="Synappse görseli" class="w-full max-w-[400px] sm:max-w-[500px] shadow-[0_10px_30px_#1ABC9C] rounded-full py-12 animate-pulse">
+    </div>
+    <!-- sağ içerik -->
+    <div>
+      <h2 class="text-4xl font-bold mb-8 tracking-[3px]">Günün Kurtarıcısı: SynAppse</h2>
+      <p class="font-extralight text-white text-lg tracking-[0.8px] mb-8 text-justify">
+        İşte bu noktada Synappse devreye giriyor.
+        Yapay zekanın getirdiği bu zihinsel zorluklara karşı tasarlanmış, bilimsel temellere dayanan bir "zihin spor salonu".
+        Amacımız YZ'yi yasaklamak değil, aksine onu kullanırken zihnimizi keskinleştirecek bir denge kurmak.
+        <br><br>
+        Bunu çok basit bir yöntemle yapıyoruz: <b>Günün Egzersizi</b>.
+        Synappse, dört temel zihinsel beceriyi hedef alan, her gün kişiye özel mikro-egzersizler sunar.
+      </p>
+      <ul class="list-disc pl-5 font-extralight text-white text-lg tracking-[0.8px] space-y-2">
+        <li><b>Eleştirel düşünme</b> kaslarınızı çalıştırır,</li>
+        <li><b>Hafızanızı</b> güçlendirecek egzersizler sunar,</li>
+        <li><b>Yaratıcılığınızı</b> tetikleyen meydan okumalar içerir,</li>
+        <li><b>Karar verme</b> yeteneklerinizi test eder.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+{% include 'components/footer.html' %}
+</body>
+</html>

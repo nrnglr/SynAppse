@@ -22,14 +22,14 @@ class CustomLoginForm(AuthenticationForm):
         
         # Customize username field
         self.fields['username'].widget.attrs.update({
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Kullanıcı adı veya email',
             'autofocus': True
         })
         
         # Customize password field
         self.fields['password'].widget.attrs.update({
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Şifre'
         })
 
@@ -41,7 +41,7 @@ class CustomRegisterForm(UserCreationForm):
     email = forms.EmailField(
         required=True,
         widget=forms.EmailInput(attrs={
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Email adresiniz'
         })
     )
@@ -50,7 +50,7 @@ class CustomRegisterForm(UserCreationForm):
         max_length=30,
         required=True,
         widget=forms.TextInput(attrs={
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Adınız'
         })
     )
@@ -59,7 +59,7 @@ class CustomRegisterForm(UserCreationForm):
         max_length=30,
         required=True,
         widget=forms.TextInput(attrs={
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Soyadınız'
         })
     )
@@ -73,19 +73,19 @@ class CustomRegisterForm(UserCreationForm):
         
         # Customize username field
         self.fields['username'].widget.attrs.update({
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Kullanıcı adı',
             'autofocus': True
         })
         
         # Customize password fields
         self.fields['password1'].widget.attrs.update({
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Şifre'
         })
         
         self.fields['password2'].widget.attrs.update({
-            'class': 'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-main focus:border-transparent text-black',
+            'class': 'w-full bg-transparent border border-gray-400 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-main',
             'placeholder': 'Şifre tekrar'
         })
         

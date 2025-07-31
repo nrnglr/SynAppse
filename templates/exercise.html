@@ -1,119 +1,66 @@
 {% load static %}
 {% include 'components/navbar.html' %}
 
-      <main class="flex-grow flex flex-col items-center max-w-7xl mx-auto px-4 py-12 text-center relative">
-        <h1 class="text-5xl font-bold mb-12 tracking-[3px]">
-          Tembel zihinler değil <br><span class="text-main">güçlü fikirler</span> yarat!
-        </h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mt-8 text-left">
-          <div class="space-y-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-main text-black font-bold flex items-center justify-center text-2xl">1</div>
-              <p class="text-3xl font-semibold">Beyin lobunu seç</p>
-            </div>
-            <p class="text-lg text-gray-300">Geliştirmek istediğiniz <span class="text-main">beyin lobunu</span> aşağıdaki interaktif beyinden seçin.</p>
-            <div id="loblar-container">
-            <div class="flex flex-row">
-                <img src="{% static 'img/frontal-active.svg' %}" alt="Frontal Lob" class="lob w-[260px] rounded-lg cursor-pointer transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-[0_0_6px_#4fc3f7] hover:drop-shadow-[0_0_10px_#ba68c8] hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7] mr-4" />
-                <img src="{% static 'img/parietal.svg' %}" alt="Parietal Lob" class="lob w-[240px] rounded-lg cursor-pointer transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-[0_0_6px_#4fc3f7] hover:drop-shadow-[0_0_10px_#ba68c8] hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7] -ml-16 mt-1" />
-            </div>
-            <div class="flex flex-row">
-                <img src="{% static 'img/temporal.svg' %}" alt="Temporal Lob" class="lob w-[250px] rounded-lg cursor-pointer transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-[0_0_6px_#4fc3f7] hover:drop-shadow-[0_0_10px_#ba68c8] hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7] ml-32 -mt-10" />
-                <img src="{% static 'img/occipital.svg' %}" alt="Oksipital Lob" class="lob w-[135px] rounded-lg cursor-pointer transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-[0_0_6px_#4fc3f7] hover:drop-shadow-[0_0_10px_#ba68c8] hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7] -ml-2 -mt-24" />
-            </div>
-            </div>
-            <div id="lob-bilgi" class="text-md text-gray-400 mt-2">
-            <span class="text-main font-semibold">Frontal lob:</span> planlama, karar verme ve dikkat gibi yürütücü işlevleri sağlar. Aktif kullanımı üst düzey bilişsel kontrol ve öz disiplini geliştirir.
-            </div>
-          </div>
-          <div class="space-y-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-main text-black font-bold flex items-center justify-center text-2xl">2</div>
-              <p class="text-3xl font-semibold">Zorluk seç</p>
-            </div>
-            <p class="text-lg text-gray-300">Egzersiz için kendinize uygun bir <span class="text-main">zorluk seviyesi</span> seçin.</p>
-            <div id="zorluk-container" class="flex flex-col gap-4 items-center mt-4 pt-8 text-lg font-semibold">
-            <button class="zorluk w-32 py-2 border border-main rounded-full hover:bg-second hover:border-opacity-0 hover:text-main transition">KOLAY</button>
-            <button class="zorluk w-32 py-2 border border-main rounded-full hover:bg-second hover:border-opacity-0 hover:text-main transition bg-main text-black font-bold rounded-full">ORTA</button>
-            <button class="zorluk w-32 py-2 border border-main rounded-full hover:bg-second hover:border-opacity-0 hover:text-main transition">ZOR</button>
-            </div>
-            <div class="flex items-center gap-3 pt-10">
-              <div class="w-10 h-10 rounded-full bg-main text-black font-bold flex items-center justify-center text-2xl">3</div>
-              <p class="text-3xl font-semibold">Süre bilgisi</p>
-            </div>
-            <p class="text-lg text-gray-300">Bu egzersiz için yaklaşık <span id="sure-span" class="text-main font-semibold">300 saniye</span> süreniz olacaktır.</p>
-            <div class="flex justify-center">
-            <button class="mt-2 bg-main text-black font-bold px-6 py-2 rounded-full hover:bg-second hover:text-white transition text-xl">Hazırım!</button>
-            </div>
-          </div>
-        </div>
-      </main>
+<section class="max-w-7xl mx-auto px-6 py-20 text-white">
+  <h1 class="sm:text-5xl text-4xl  font-bold mb-12 tracking-[3px] text-center leading-snug">
+    Tembel Zihinler Değil <br>
+    <span class="text-main">Güçlü Fikirler</span> Yarat!
+  </h1>
+
+  <p class="max-w-3xl mx-auto text-center font-light text-lg leading-relaxed mb-16 px-4 text-justify">
+    3 egzersizimizle hafıza, yaratıcılık, eleştirel düşünme ve stratejik düşünme gibi alanları
+    geliştirebilirsin. Aşağıdaki egzersizlerden birini seçerek çalışmaya hemen başlayabilirsin.
+  </p>
+
+<div class="grid gap-16 md:grid-cols-3 px-4">
+  <!-- kutu 1 -->
+  <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:shadow-lg cursor-pointer bg-gradient-to-t from-[#082624] to-[#ffffff]/5">
+    <h4 class="font-semibold mb-6 text-center text-2xl tracking-wide text-main">Problem Zinciri</h4>
+    <p class="text-lg font-light text-gray-300 leading-relaxed mb-6">
+      Problem Zinciri, eleştirel düşünme ve yaratıcı problem çözme becerilerini geliştiren interaktif bir beyin egzersizidir; yapay zekayla 
+      birlikte 5 tur süren problem‑çözüm zincirleri kurarsınız. Süreç şöyle işler: Yapay zeka size ilginç bir problem sunar, siz yaratıcı 
+      bir çözüm önerirsiniz, çözümünüz yeni bir problem doğurur ve bu döngü beş tur boyunca tekrar eder.
+    </p>
+    <a href="{% url 'ai:problem_chain_test' %}" 
+      class="block mx-auto bg-main text-black font-semibold rounded-full px-6 py-2 hover:bg-second hover:text-white transition w-36">
+      Teste Başla
+    </a>
+  </div>
+
+  <!-- kutu 2 -->
+  <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:shadow-lg cursor-pointer bg-gradient-to-t from-[#082624] to-[#ffffff]/5">
+    <h4 class="font-semibold mb-6 text-center text-2xl tracking-wide text-main">Kelime Köprüsü</h4>
+    <p class="text-lg font-light text-gray-300 leading-relaxed mb-6">
+     Kelime Köprüsü, dikkat ve problem çözme becerilerini hedefleyen yaratıcı bir kelime oyunudur; iki alakasız kelime arasında mantıklı 
+     çağrışım zincirleri kurarak beyin bağlantılarınızı güçlendirirsiniz. Süreç şöyle işler: hedef ve başlangıç kelimesi verilir, başlangıç 
+     kelimesini seçersiniz, ara kelimelerle bağlantı kurarsınız ve en fazla altı adımda hedefe ulaşmaya çalışırsınız.
+    </p>
+    <a href="{% url 'ai:word_bridge_test' %}" 
+      class="block mx-auto bg-main text-black font-semibold rounded-full px-6 py-2 hover:bg-second hover:text-white transition w-36">
+      Teste Başla
+    </a>
+  </div>
+
+  <!-- kutu 3 -->
+  <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:shadow-lg cursor-pointer bg-gradient-to-t from-[#082624] to-[#ffffff]/5">
+    <h4 class="font-semibold mb-6 text-center text-2xl tracking-wide text-main">Hafıza ve Sentez</h4>
+    <p class="text-lg font-light text-gray-300 leading-relaxed mb-6">
+      Hafıza ve Sentez, hafıza ile dil becerilerinizi hedefleyen bir öğrenme deneyimidir; metinleri okuyup hatırlamanız ve kendi 
+      cümlelerinizle yeniden ifade etmeniz istenir. Süreç şu şekilde ilerler: seviyeyi belirlersiniz, üç konu arasından seçim yaparsınız, 
+      60 saniye boyunca verilen metni okursunuz, ardından metni kendi cümlelerinizle yazarsınız.
+    </p>
+    <a href="{% url 'ai:memory_test' %}" 
+      class="block mx-auto bg-main text-black font-semibold rounded-full px-6 py-2 hover:bg-second hover:text-white transition w-36">
+      Teste Başla
+    </a>
+  </div>
+</div>
+
+</section>
+
 
     <!-- Footer -->
     {% include 'components/footer.html' %}
-
-<script>
-
-  // lob seçimi
-  const loblar = document.querySelectorAll('.lob')
-  const lobBilgi = document.getElementById('lob-bilgi')
-
-  const lobVeri = {
-    'Frontal Lob': {
-      normal: '{% static "img/frontal.svg" %}',
-      active: '{% static "img/frontal-active.svg" %}',
-      bilgi: '<span class="text-main font-semibold">Frontal lob:</span> planlama, karar verme ve dikkat gibi yürütücü işlevleri sağlar. Aktif kullanımı üst düzey bilişsel kontrol ve öz disiplini geliştirir.'
-    },
-    'Parietal Lob': {
-      normal: '{% static "img/parietal.svg" %}',
-      active: '{% static "img/parietal-active.svg" %}',
-      bilgi: '<span class="text-main font-semibold">Parietal lob:</span> duyusal bilgileri işler, mekansal farkındalık ve beden koordinasyonunda görev alır.'
-    },
-    'Temporal Lob': {
-      normal: '{% static "img/temporal.svg" %}',
-      active: '{% static "img/temporal-active.svg" %}',
-      bilgi: '<span class="text-main font-semibold">Temporal lob:</span> işitsel bilgiler, dil ve hafıza ile ilgilenir.'
-    },
-    'Oksipital Lob': {
-      normal: '{% static "img/occipital.svg" %}',
-      active: '{% static "img/occipital-active.svg" %}',
-      bilgi: '<span class="text-main font-semibold">Oksipital lob:</span> görsel verileri işler, görsel tanıma ve analizde etkilidir.'
-    }
-  }
-
-  loblar.forEach(lob => {
-    lob.addEventListener('click', () => {
-      loblar.forEach(l => {
-        const alt = l.alt
-        l.src = lobVeri[alt].normal
-      })
-      lob.src = lobVeri[lob.alt].active
-      lobBilgi.innerHTML = lobVeri[lob.alt].bilgi
-    })
-  })
-
-  // zorluk seçimi
-  const zorluklar = document.querySelectorAll('.zorluk')
-  const sureYazi = document.getElementById('sure-span')
-
-  const sureler = {
-    'KOLAY': '350 saniye',
-    'ORTA': '300 saniye',
-    'ZOR': '250 saniye'
-  }
-
-  zorluklar.forEach(btn => {
-    btn.addEventListener('click', () => {
-      zorluklar.forEach(b => {
-        b.classList.remove('bg-main', 'text-black', 'font-bold')
-        b.classList.add('text-white')
-      })
-      btn.classList.remove('text-white')
-      btn.classList.add('bg-main', 'text-black', 'font-bold')
-      sureYazi.textContent = sureler[btn.textContent.trim()]
-    })
-  })
-</script>
 
   </body>
 </html>

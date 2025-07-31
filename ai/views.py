@@ -5,6 +5,18 @@ def index(request):
     """Main landing page"""
     return render(request, 'index.html')
 
+def sss(request):
+    """SSS page"""
+    return render(request, 'sss.html')
+
+def whysynappse(request):
+    """Why SynAppse page"""
+    return render(request, 'why_synappse.html')
+
+def brainhealth(request):
+    """Brain health page"""
+    return render(request, 'brain_health.html')
+
 def exercise_view(request):
     """Exercise selection page"""
     return render(request, 'exercise.html')

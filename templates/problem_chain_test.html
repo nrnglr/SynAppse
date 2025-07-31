@@ -4,7 +4,7 @@
 <!-- CSRF Token for JavaScript -->
 {% csrf_token %}
 
-<section class="max-w-6xl mx-auto px-4 py-12">
+<section class="max-w-6xl mx-auto px-4 py-20">
     <div class="text-center mb-8">
         <h2 class="text-4xl fon        if (data && data.scores) {
             if (data.scores.overall !== undefined) {
@@ -21,17 +21,17 @@
     <div class="bg-second/20 rounded-lg p-8 border border-second/30">
         
         <!-- Controls -->
-        <div class="mb-6 flex gap-4 items-center">
+        <div class="flex flex-col sm:flex-row mb-6 flex gap-4 items-center">
             <label class="text-white font-semibold">Zorluk:</label>
             <select id="difficulty" class="bg-second/40 text-white px-4 py-2 rounded-lg border border-second/50 focus:border-main focus:outline-none">
-                <option value="easy">Kolay</option>
-                <option value="medium" selected>Orta</option>
-                <option value="hard">Zor</option>
+                <option class="bg-second/40" value="easy">Kolay</option>
+                <option class="bg-second/40" value="medium" selected>Orta</option>
+                <option class="bg-second/40" value="hard">Zor</option>
             </select>
             <button id="startBtn" class="bg-main text-black px-6 py-2 rounded-lg font-semibold hover:bg-second hover:text-white transition">
                 Başla
             </button>
-            <button id="resetBtn" class="bg-gray-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-700 transition" disabled>
+            <button id="resetBtn" class="bg-second text-white px-6 py-2 rounded-lg font-semibold hover:bg-second/40 transition" disabled>
                 Sıfırla
             </button>
         </div>
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Main Interface - Side by side layout like in the image -->
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-col-1 sm:grid-cols-2 gap-6">
             
             <!-- Left Side - AI Problem -->
             <div class="space-y-4">
@@ -95,16 +95,11 @@
                 </div>
             </div>
         </div>
-
-        <!-- Response Log -->
-        <div class="mt-6">
-            <h4 class="text-lg font-semibold mb-3 text-main">API Yanıtları</h4>
-            <div id="responseLog" class="bg-gray-900/50 rounded-lg p-4 h-32 overflow-y-auto text-sm text-gray-300 font-mono">
-                <div class="text-gray-500">API yanıtları burada görünecek...</div>
-            </div>
-        </div>
     </div>
 </section>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
 
 <script>
 class ProblemChainTest {

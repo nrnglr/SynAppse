@@ -3,22 +3,23 @@
 
     <!-- Hero Section -->
     <section class="max-w-7xl mx-auto px-4 py-12 text-center relative">
-      <h2 class="text-5xl font-bold mb-12 tracking-[3px]">Parlak Geleceğe<br />Güçlü Zihin</h2>
-      <div class="flex justify-center items-center mt-12 mb-12">
+      <h2 class="text-5xl font-bold mb-12 tracking-[3px]">Yapay Zeka Çağında<br />Zihnini Zinde Tut!</h2>
+      <div class="flex justify-center items-center mt-12 mb-16">
         <div>
           <div class="flex flex-row sm:gap-0 gap-6">
             <div class="relative group cursor-pointer mr-4">
               <img src="{% static 'img/frontal.svg' %}" alt="Frontal Lob"
                   class="w-[150px] sm:w-[260px] rounded-lg transition duration-300 ease-in-out group-hover:scale-105 group-hover:drop-shadow-[0_0_6px_#4fc3f7] group-hover:drop-shadow-[0_0_10px_#ba68c8] group-hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7]">
               <div class="sm:block hidden absolute sm:-top-10 sm:right-64 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out pointer-events-none z-10 bg-second/10 text-white border-2 border-second rounded-t-2xl rounded-bl-2xl p-3 text-xl w-full">
-                <span class="text-main">Frontal Lob:</span> Karar verme, planlama, problem çözme.
+                <span class="text-main">Problem Çözme</span> Karmaşık durumlar için etkili çözüm yolları bulma.
               </div>
             </div>
             <div class="relative group cursor-pointer -ml-16 mt-1">
               <img src="{% static 'img/parietal.svg' %}" alt="Parietal Lob"
                   class="w-[140px] sm:w-[240px] rounded-lg transition duration-300 ease-in-out group-hover:scale-105 group-hover:drop-shadow-[0_0_6px_#4fc3f7] group-hover:drop-shadow-[0_0_10px_#ba68c8] group-hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7]">
               <div class="sm:block hidden absolute sm:-top-8 sm:left-60 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out pointer-events-none z-10 bg-second/10 text-white border-2 border-second rounded-t-2xl rounded-br-2xl p-3 text-xl w-full">
-                <span class="text-main">Parietal Lob:</span> Duyusal bilgiler, mekansal farkındalık.
+                <span class="text-main">Yaratıcılık</span> 
+                Düşünmeyi geliştirme ve yeni çözümler üretme.
               </div>
             </div>
           </div>
@@ -27,23 +28,25 @@
               <img src="{% static 'img/temporal.svg' %}" alt="Temporal Lob"
                   class="w-[160px] sm:w-[250px] rounded-lg transition duration-300 ease-in-out group-hover:scale-105 group-hover:drop-shadow-[0_0_6px_#4fc3f7] group-hover:drop-shadow-[0_0_10px_#ba68c8] group-hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7]">
               <div class="sm:block hidden absolute top-20 right-64 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out pointer-events-none z-10 bg-second/10 text-white border-2 border-second rounded-b-2xl rounded-tl-2xl p-3 text-xl w-full">
-                <span class="text-main"> Temporal Lob:</span> İşitsel işlemleme, hafıza.
+                <span class="text-main"> Hafıza</span> 
+                Öğrenilen bilgileri beyne daha iyi işleme eve kalıcı tutma.
               </div>
             </div>
             <div class="relative group cursor-pointer sm:-ml-2 sm:-mt-24 -ml-2 -mt-12">
               <img src="{% static 'img/occipital.svg' %}" alt="Oksipital Lob"
                   class="w-[80px] sm:w-[135px] rounded-lg transition duration-300 ease-in-out group-hover:scale-105 group-hover:drop-shadow-[0_0_6px_#4fc3f7] group-hover:drop-shadow-[0_0_10px_#ba68c8] group-hover:drop-shadow-[0_0_14px_#a7ffeb] drop-shadow-[0_0_4px_#4fc3f7]">
               <div class="sm:block hidden absolute top-32 left-40 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out pointer-events-none z-10 bg-second/10 text-white border-2 border-second rounded-b-2xl rounded-tr-2xl p-3 text-xl w-96">
-                <span class="text-main"> Oksipital Lob:</span> Görsel işlemleme.
+                <span class="text-main"> Eleştirel Düşünme</span> 
+                Verilen bilginin doğruluğunu sorgulama karşı fikir üretme.
               </div>
             </div>
           </div>
         </div>
       </div>
-      <p class="font-extralight text-white text-xl tracking-[0.8px] mb-8">Her lobun hikayesi var, her düşünce bir ışık. <br> Beynini keşfet, sınırlarını zorla, geleceğini şekillendir.</p>
+      <p class="font-extralight text-white text-xl tracking-[0.8px] my-10 mt-4">Her gün yeni bir egzersiz, her egzersiz daha iyileşmiş bir zihin. <br> Yapay zeka kullanımının zihnini yavaşlatmasına izin vermiyoruz.</p>
       <a href="{% url 'ai:exercise' %}">
         <button class="bg-main text-black hover:bg-second hover:text-white px-6 py-3 rounded-full font-semibold">
-            Hemen Test Et
+            Hemen İlk Egzersizini Yap!
         </button>
         </a>
     </section>
@@ -52,7 +55,7 @@
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 text-center">
         <h3 class="text-4xl font-bold mb-8">Nasıl Çalışır?</h3>
-        <p class="font-light text-white text-lg tracking-[0.8px]">Her lobun hikayesi var, her düşünce bir ışık.</p>
+        <p class="font-light text-white text-lg tracking-[0.8px]">Her egzersizin bir amacı var!</p>
         <div class="grid md:grid-cols-3 gap-8 pt-24">
             <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
             <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
@@ -60,9 +63,9 @@
                 1
             </div>
             <div class="relative z-10">
-                <h4 class="font-semibold mt-16 mb-8 text-center text-2xl tracking-wide">Zihinsel Analiz</h4>
+                <h4 class="font-semibold mt-16 mb-8 text-center text-2xl tracking-wide">Günlük Egzersizler</h4>
                 <p class="text-md font-light text-gray-300 leading-relaxed">
-                Kullanıcı testi çözer, beynin hangi bölgesinin daha aktif olduğunu gösteririz. Bu, öğrenme stilini ve güçlü yönlerini anlamanı sağlar.
+                Her gün sadece 10 dakikanızı ayırarak beyninizin farklı fonksiyonlarını hedefleyen yapay zeka tarafından özel olarak hazırlanmış egzersizler yaparsınız.
                 </p>
             </div>
             </div>
@@ -74,7 +77,7 @@
             <div class="relative z-10">
                 <h4 class="font-semibold mt-16 mb-8 text-center text-2xl tracking-wide">Kişiye Özel Sistem</h4>
                 <p class="text-md font-light text-gray-300 leading-relaxed">
-                Elde edilen analiz sonucuna göre sana özel egzersiz önerilir. Böylece sadece ihtiyaç duyduğun alanlara odaklanırsın.
+                Yaptığınız her egzersizin değerlendirmesini yapay zeka özenle yapar ve size özel geri bildirimlerde bulunur.
                 </p>
             </div>
             </div>
@@ -86,7 +89,7 @@
             <div class="relative z-10">
                 <h4 class="font-semibold mt-16 mb-8 text-center text-2xl tracking-wide">Gelişim Takibi</h4>
                 <p class="text-md font-light text-gray-300 leading-relaxed">
-                Uygulama içi ilerlemeni takip eder, gelişim raporları sunarız. Böylece zihin gelişimini somut şekilde görürsün.
+                Uygulama içi ilerlemeni takip eder, profilinden gelişimini takip edebilirsin. Böylece zihin gelişimini somut şekilde görürsün.
                 </p>
             </div>
             </div>
@@ -98,13 +101,12 @@
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 items-center gap-12">
         <div>
-          <h3 class="text-4xl font-bold mb-4 leading-normal tracking-[0.8px]">Beynini Keşfet, Tanı, Geliş<br> <span class="text-transparent bg-gradient-to-r from-second to-main bg-clip-text"> Potansiyelini</span> Açığa Çıkar</h3>
-          <p class="font-extralight text-gray-300 text-md tracking-[0.8px] my-8 sm:w-[420px] w-[380px] text-justify">Zihinsel farkındalığın arttıkça öğrenme hızın ve odaklanma süren de artar. 
-            SynAppse ile beyninin güçlü yönlerini tanır, eksiklerini destekleyen egzersizlerle zihnini keskinleştirirsin.</p>
+          <h3 class="text-4xl font-bold mb-4 leading-normal tracking-[0.8px]">Yapay Zeka'nın Zihnini Köreltmemesi İçin<br> <span class="text-transparent bg-gradient-to-r from-second to-main bg-clip-text"> SynAppse</span> Burda!</h3>
+          <p class="font-extralight text-gray-300 text-lg tracking-[0.8px] my-8 sm:w-[420px] w-[340px] text-justify">Yapay zeka araçları hayatı kolaylaştırsa da, pasif kullanımda eleştirel düşünme, hafıza ve yaratıcılık gibi temel becerilerimizi köreltme riski taşır. SynAppse, bu "zihinsel erozyona" karşı koymak için tasarlanmıştır. Seni pasif bir bilgi tüketicisi olmaktan çıkarıp, zihnini aktif olarak kullanan bir düşünür haline getirmeyi hedefler.</p>
           <ul class="text-lg font-light text-white leading-relaxed space-y-4">
             <li class="flex items-center gap-2">
                 <img src="{% static 'img/list.svg' %}">
-                <span>Bilimsel temelli testlerle beyin lobu analizi</span>
+                <span>Yapay zeka tarafından hazırlanmış egzersizler.</span>
             </li>
             <li class="flex items-center gap-2">
                 <img src="{% static 'img/list.svg' %}">
@@ -112,12 +114,12 @@
             </li>
             <li class="flex items-center gap-2">
                 <img src="{% static 'img/list.svg' %}">
-                <span>Yapay zeka destekli egzersiz önerileri</span>
+                <span>Başarını profilinde sergileme imkanı</span>
             </li>
           </ul>
         </div>
         <div>
-          <img src="{% static 'img/features.png' %}" alt="brain illustration" class="w-[200px] sm:w-[400px] max-w-md mx-auto" />
+          <img src="{% static 'img/analiz.png' %}" alt="brain illustration" class="w-[200px] sm:w-[800px]" />
         </div>
       </div>
       <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-60 h-60 bg-main rounded-full blur-3xl opacity-20 -z-10"></div>
@@ -126,11 +128,14 @@
     <!-- Demo -->
     <section class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-bold mb-4 leading-normal tracking-[3px]">Gerçek Zihinsel Deneyimle Tanış: <br> Kendi Potansiyelini Ölç, Gelişim Yolculuğuna Başla</h2>
-        <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-3xl mx-auto mb-10">Yalnızca birkaç dakikada beyninin nasıl çalıştığını keşfet. 
-          Kendine özel gelişim haritanda ilk adımı at ve SynAppse’in sana özel sunduğu önerilerle zihnini güçlendir.</p>
+        <h2 class="text-4xl font-bold mb-4 leading-normal tracking-[3px]">En Değerli Yatırımını İhmal Etme: <br> Zihnini Güçlendir</h2>
+        <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-5xl mx-auto mb-10">Her gün sadece birkaç dakikanı ayırarak zihinsel zindeliğine yatırım yap. Bu yatırım sana daha iyi kararlar, daha parlak fikirler ve daha güçlü bir hafıza olarak geri dönecek. Kendine verebileceğin en büyük hediye, potansiyelinin tamamını kullanan bir zihindir.</p>
         <div class="flex justify-center">
-          <button class="bg-main text-black hover:bg-second hover:text-white px-6 py-2 rounded-full font-semibold">Kendi Testini Et</button>
+        <a href="{% url 'ai:exercise' %}">
+        <button class="bg-main text-black hover:bg-second hover:text-white px-6 py-3 rounded-full font-semibold">
+            Keşfetmeye Başla
+        </button>
+        </a>
         </div>
         <div class="mt-12">
           <img src="{% static 'img/demo.png' %}" alt="" class="mx-auto w-full max-w-7xl" />

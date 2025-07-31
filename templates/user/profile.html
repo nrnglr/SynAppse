@@ -8,13 +8,6 @@
     <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6 flex flex-col items-center relative">
       <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-main">
         <img src="{{ profile.get_avatar_url }}" alt="{{ user.get_full_name }}" class="w-full h-full object-cover">
-        
-        <!-- Edit ikon -->
-        <button onclick="toggleEditForm()" class="absolute bottom-2 right-2 bg-main p-2 rounded-full hover:bg-main/80 transition">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-black">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828H9v-2.828z" />
-          </svg>
-        </button>
       </div>
       <h2 class="text-4xl font-bold my-8 leading-normal tracking-[0.8px] text-white">{{ user.get_full_name|default:user.username }}</h2>
       <p class="text-gray-400 text-center">@{{ user.username }}</p>
@@ -24,58 +17,74 @@
     </div>
 
     <!-- Rozetler -->
-    <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
-      <h3 class="text-3xl font-semibold mb-6 leading-normal tracking-[0.8px] text-white text-center">🏆 Rozetler</h3>
-      
-      <!-- Rozet Grid -->
-      <div class="grid grid-cols-3 gap-4">
-        <!-- İlk Egzersiz Rozeti -->
-        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-xl shadow-lg">
-          <div class="text-3xl mb-2">🌟</div>
-          <div class="text-xs font-semibold text-center text-yellow-100">İlk Adım</div>
-          <div class="text-xs text-yellow-200 text-center">İlk egzersizi tamamla</div>
-        </div>
-        
-        <!-- Hafıza Uzmanı Rozeti -->
-        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl shadow-lg">
-          <div class="text-3xl mb-2">🧠</div>
-          <div class="text-xs font-semibold text-center text-blue-100">Hafıza Uzmanı</div>
-          <div class="text-xs text-blue-200 text-center">10 hafıza egzersizi</div>
-        </div>
-        
-        <!-- Kelime Köprüsü Rozeti -->
-        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-green-600 to-green-800 rounded-xl shadow-lg">
-          <div class="text-3xl mb-2">🌉</div>
-          <div class="text-xs font-semibold text-center text-green-100">Köprü Kurucusu</div>
-          <div class="text-xs text-green-200 text-center">5 kelime köprüsü</div>
-        </div>
-        
-        <!-- Problem Çözücü Rozeti -->
-        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl shadow-lg">
-          <div class="text-3xl mb-2">🧩</div>
-          <div class="text-xs font-semibold text-center text-purple-100">Problem Çözücü</div>
-          <div class="text-xs text-purple-200 text-center">Problem zinciri uzmanı</div>
-        </div>
-        
-        <!-- Mükemmeliyetçi Rozeti -->
-        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-red-600 to-red-800 rounded-xl shadow-lg">
-          <div class="text-3xl mb-2">💎</div>
-          <div class="text-xs font-semibold text-center text-red-100">Mükemmeliyetçi</div>
-          <div class="text-xs text-red-200 text-center">Ortalama 9+ puan</div>
-        </div>
-        
-        <!-- Sabırlı Öğrenci Rozeti -->
-        <div class="flex flex-col items-center p-4 bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl shadow-lg opacity-50">
-          <div class="text-3xl mb-2">⏳</div>
-          <div class="text-xs font-semibold text-center text-gray-300">Sabırlı Öğrenci</div>
-          <div class="text-xs text-gray-400 text-center">30 gün üst üste</div>
-        </div>
-      </div>
-      
-      <p class="text-center text-gray-400 text-sm mt-4 font-extralight">
-        Egzersizleri tamamlayarak yeni rozetler kazan! 🎯
-      </p>
+<div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
+  <h3 class="text-3xl font-semibold mb-6 leading-normal tracking-[0.8px] text-white text-center">Rozetler</h3>
+
+  <!-- Rozet Grid -->
+  <div class="grid grid-cols-3 gap-4">
+    <!-- İlk Egzersiz Rozeti -->
+    <div class="flex flex-col items-center p-4 bg-second rounded-xl shadow-lg">
+      <!-- icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 17l-4.243 2.243.81-4.716L5 10.757l4.9-.716L12 6l2.1 4.041 4.9.716-3.567 3.77.81 4.716z"/>
+      </svg>
+      <div class="text-xs font-semibold text-center text-white">İlk Adım</div>
+      <div class="text-xs text-gray-200 text-center">İlk egzersizi tamamla</div>
     </div>
+
+    <!-- Hafıza Uzmanı Rozeti -->
+    <div class="flex flex-col items-center p-4 bg-second rounded-xl shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4m6 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <div class="text-xs font-semibold text-center text-white">Hafıza Uzmanı</div>
+      <div class="text-xs text-gray-200 text-center">10 hafıza egzersizi</div>
+    </div>
+
+    <!-- Kelime Köprüsü Rozeti -->
+    <div class="flex flex-col items-center p-4 bg-second rounded-xl shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h4a1 1 0 011 1v8a1 1 0 01-1 1H3m14-10h4a1 1 0 011 1v8a1 1 0 01-1 1h-4M7 12h10"/>
+      </svg>
+      <div class="text-xs font-semibold text-center text-white">Köprü Kurucusu</div>
+      <div class="text-xs text-gray-200 text-center">5 kelime köprüsü</div>
+    </div>
+
+    <!-- Problem Çözücü Rozeti -->
+    <div class="flex flex-col items-center p-4 bg-second rounded-xl shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15M3 14.25h18M9.75 21v-2.25m4.5 2.25v-2.25"/>
+      </svg>
+      <div class="text-xs font-semibold text-center text-white">Problem Çözücü</div>
+      <div class="text-xs text-gray-200 text-center">Problem zinciri uzmanı</div>
+    </div>
+
+    <!-- Mükemmeliyetçi Rozeti -->
+    <div class="flex flex-col items-center p-4 bg-second rounded-xl shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 3l-4 7 10 11 10-11-4-7H6z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2 10h20"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18"/>
+      </svg>
+      <div class="text-xs font-semibold text-center text-white">Mükemmeliyetçi</div>
+      <div class="text-xs text-gray-200 text-center">Ortalama 9+ puan</div>
+    </div>
+
+    <!-- Sabırlı Öğrenci Rozeti -->
+    <div class="flex flex-col items-center p-4 bg-second rounded-xl shadow-lg opacity-50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mb-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <div class="text-xs font-semibold text-center text-white">Sabırlı Öğrenci</div>
+      <div class="text-xs text-gray-200 text-center">30 gün üst üste</div>
+    </div>
+  </div>
+
+  <p class="text-center text-gray-400 text-sm mt-4 font-extralight">
+    Egzersizleri tamamlayarak yeni rozetler kazan!
+  </p>
+</div>
+
 
     <!-- İstatistikler ve Başarılar -->
     <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6 flex flex-col items-center">
@@ -130,7 +139,6 @@
       </div>
       <div class="flex items-end justify-end pt-6 space-x-2">
         <button onclick="toggleEditForm()" class="bg-black-20 border-main border px-4 py-2 rounded-full hover:bg-main hover:text-black transition">Düzenle</button>
-        <a href="{% url 'users:logout' %}" class="bg-red-600 border-red-600 border px-4 py-2 rounded-full hover:bg-red-700 text-white">Çıkış Yap</a>
       </div>
     </div>
 
@@ -204,7 +212,7 @@
     <!-- Beyin Sağlığı Analizi -->
     <div class="border border-main bg-black bg-opacity-20 rounded-2xl p-6">
       <div class="flex items-center justify-between mb-6">
-        <h3 class="text-3xl font-semibold leading-normal tracking-[0.8px] text-white">🧠 Beyin Sağlığı Analizi</h3>
+        <h3 class="text-3xl font-semibold leading-normal tracking-[0.8px] text-white">Beyin Sağlığı Analizi</h3>
         <div class="flex items-center space-x-3">
           <button id="infoButton" class="text-gray-400 hover:text-main transition-colors" title="Bu analiz nasıl çalışır?">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
@@ -294,7 +302,7 @@
           <h4 class="text-lg font-semibold text-white mb-4">Egzersiz Dağılımı</h4>
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="text-gray-300">🧠 Hafıza</span>
+              <span class="text-gray-300">Hafıza</span>
               <div class="flex items-center space-x-2">
                 <div class="w-20 bg-gray-700 rounded-full h-2">
                   <div id="memoryBar" class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -304,7 +312,7 @@
             </div>
             
             <div class="flex items-center justify-between">
-              <span class="text-gray-300">🌉 Kelime</span>
+              <span class="text-gray-300">Kelime</span>
               <div class="flex items-center space-x-2">
                 <div class="w-20 bg-gray-700 rounded-full h-2">
                   <div id="wordBridgeBar" class="bg-green-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -314,7 +322,7 @@
             </div>
             
             <div class="flex items-center justify-between">
-              <span class="text-gray-300">🧩 Problem</span>
+              <span class="text-gray-300">Problem</span>
               <div class="flex items-center space-x-2">
                 <div class="w-20 bg-gray-700 rounded-full h-2">
                   <div id="problemChainBar" class="bg-purple-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
@@ -748,15 +756,15 @@
     updateMessage(score) {
       let message = '';
       if (score >= 8.5) {
-        message = '🎉 Mükemmel! Beyin sağlığın çok iyi durumda.';
+        message = 'Mükemmel! Beyin sağlığın çok iyi durumda.';
       } else if (score >= 7.0) {
-        message = '👏 Harika! Düzenli egzersizlerin meyve veriyor.';
+        message = 'Harika! Düzenli egzersizlerin meyve veriyor.';
       } else if (score >= 5.5) {
-        message = '💪 İyi gidiyorsun! Biraz daha düzenli ol.';
+        message = 'İyi gidiyorsun! Biraz daha düzenli ol.';
       } else if (score >= 3.0) {
-        message = '📈 Başlangıç iyi! Egzersizleri artırabilirsin.';
+        message = 'Başlangıç iyi! Egzersizleri artırabilirsin.';
       } else {
-        message = '🌱 Daha fazla egzersiz yaparak gelişebilirsin.';
+        message = 'Daha fazla egzersiz yaparak gelişebilirsin.';
       }
       
       document.getElementById('analysisMessage').textContent = message;

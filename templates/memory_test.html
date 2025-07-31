@@ -5,14 +5,14 @@
 {% csrf_token %}
 <meta name="csrf-token" content="{{ csrf_token }}">
 
-<section class="max-w-6xl mx-auto px-4 py-12">
+<section class="max-w-6xl mx-auto px-4 py-20">
     <div class="text-center mb-8">
         <h2 class="text-4xl font-bold mb-4 tracking-[2px]">Hafıza ve Sentez</h2>
         <p class="text-gray-300 text-lg">Metni okuyun, hatırlayın ve kendi cümlelerinizle ifade edin</p>
     </div>
 
     <!-- Main Container -->
-    <div class="bg-second/20 rounded-lg p-8 border border-second/30">
+    <div class="bg-second/20 rounded-lg p-8 border border-second/30 py-12">
         
         <!-- Step 1: Difficulty + Topic Selection -->
         <div id="difficultyStep" class="step-container">
@@ -21,9 +21,9 @@
                 <p class="text-gray-300">Size uygun bir zorluk seviyesi seçin</p>
             </div>
             
-            <div class="flex justify-center gap-6 mb-8">
+            <div class="flex flex-col sm:flex-row justify-center gap-8 mb-8">
                 <div class="difficulty-card" data-difficulty="easy">
-                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 cursor-pointer transition-all duration-300 text-center">
                         <div class="text-3xl mb-3">🟢</div>
                         <h4 class="text-xl font-semibold text-white mb-2">KOLAY</h4>
                         <p class="text-gray-400 text-sm">Ortaokul-Lise seviyesi</p>
@@ -31,7 +31,7 @@
                 </div>
                 
                 <div class="difficulty-card" data-difficulty="medium">
-                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 cursor-pointer transition-all duration-300 text-center">
                         <div class="text-3xl mb-3">🟡</div>
                         <h4 class="text-xl font-semibold text-white mb-2">ORTA</h4>
                         <p class="text-gray-400 text-sm">Üniversite seviyesi</p>
@@ -39,7 +39,7 @@
                 </div>
                 
                 <div class="difficulty-card" data-difficulty="hard">
-                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 hover:border-main cursor-pointer transition-all duration-300 text-center">
+                    <div class="bg-second/40 rounded-lg p-6 border border-second/50 cursor-pointer transition-all duration-300 text-center">
                         <div class="text-3xl mb-3">🔴</div>
                         <h4 class="text-xl font-semibold text-white mb-2">ZOR</h4>
                         <p class="text-gray-400 text-sm">Lisansüstü seviyesi</p>
@@ -53,7 +53,7 @@
         <!-- Step 2: Topic Selection -->
         <div id="topicStep" class="step-container hidden">
             <div class="text-center mb-8">
-                <h3 class="text-2xl font-semibold text-main mb-4">🎯 Bugünkü Konular</h3>
+                <h3 class="text-2xl font-semibold text-main mb-4">Bugünkü Konular</h3>
                 <p class="text-gray-300">Hangi alanda öğrenmek istiyorsunuz?</p>
             </div>
             
@@ -82,7 +82,7 @@
             
             <div class="text-center">
                 <button id="generateTextBtn" disabled class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed">
-                    📖 Metni Oluştur
+                    Metni Oluştur
                 </button>
             </div>
         </div>
@@ -90,7 +90,7 @@
         <!-- Step 3: Reading Phase (60 seconds) -->
         <div id="readingStep" class="step-container hidden">
             <div class="text-center mb-8">
-                <h3 class="text-2xl font-semibold text-main mb-4">📖 Okuma Zamanı</h3>
+                <h3 class="text-2xl font-semibold text-main mb-4">Okuma Zamanı</h3>
                 <p class="text-gray-300">Metni dikkatli okuyun. <span class="text-main font-semibold">60 saniye</span> sonra kaybolacak!</p>
             </div>
 
@@ -100,8 +100,8 @@
                     <span id="timeRemaining">60</span>
                 </div>
                 <div class="text-gray-400">saniye kaldı</div>
-                <button id="finishReadingBtn" class="mt-4 bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition">
-                    ⏩ Erken Bitir
+                <button id="finishReadingBtn" class="mt-4 bg-second text-white px-6 py-2 rounded-lg hover:bg-main transition">
+                    Erken Bitir
                 </button>
             </div>
 
@@ -125,14 +125,14 @@
         <!-- Step 4: Recall + Q&A Phase -->
         <div id="recallStep" class="step-container hidden">
             <div class="text-center mb-8">
-                <h3 class="text-2xl font-semibold text-main mb-4">💭 Hafızanızdan Geri Çağırın</h3>
+                <h3 class="text-2xl font-semibold text-main mb-4">Hafızanızdan Geri Çağırın</h3>
                 <p class="text-gray-300">Metin kayboldu! Şimdi hatırladıklarınızı yazın ve soru sorun</p>
             </div>
 
             <!-- Recall Section -->
             <div class="mb-8">
                 <label class="block text-white font-semibold mb-3">
-                    📝 Bu metinden anlayıp öğrendiğiniz şey ne?
+                 Bu metinden anlayıp öğrendiğiniz şey ne?
                 </label>
                 <textarea 
                     id="userRecall" 
@@ -145,7 +145,7 @@
             <!-- Keywords Section -->
             <div class="mb-8">
                 <label class="block text-white font-semibold mb-3">
-                    🔑 3 anahtar kelime:
+                3 anahtar kelime:
                 </label>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input 
@@ -172,7 +172,7 @@
             <!-- Q&A Section (Replaces Synthesis) -->
             <div class="mb-8">
                 <label class="block text-white font-semibold mb-3">
-                    ❓ Soru Sor
+                Soru Sor
                 </label>
                 <div class="bg-second/20 rounded-lg p-6 border border-second/30">
                     <h4 class="text-lg font-semibold text-main mb-4">Metinle İlgili Soru</h4>
@@ -192,7 +192,7 @@
                             id="askQuestionBtn" 
                             class="bg-main text-black px-6 py-2 rounded-lg font-semibold hover:bg-second hover:text-white transition"
                         >
-                            🤔 Soru Sor
+                         Soru Sor
                         </button>
                     </div>
                     
@@ -208,7 +208,7 @@
 
             <div class="text-center">
                 <button id="submitResponsesBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition">
-                    🚀 Cevapları Değerlendir
+                Cevapları Değerlendir
                 </button>
             </div>
         </div>
@@ -216,31 +216,31 @@
         <!-- Step 5: Results -->
         <div id="resultsStep" class="step-container hidden">
             <div class="text-center mb-8">
-                <h3 class="text-3xl font-bold text-main mb-4">🏆 Günlük Performans</h3>
+                <h3 class="text-3xl font-bold text-main mb-4"> Günlük Performans</h3>
                 <div id="completionMessage" class="text-lg text-gray-300 mb-6">Değerlendirme tamamlandı!</div>
             </div>
 
             <!-- Comparison Section -->
             <div class="mb-8">
-                <h4 class="text-xl font-semibold text-main mb-4 text-center">🔍 Karşılaştırma</h4>
+                <h4 class="text-xl font-semibold text-main mb-4 text-center">Karşılaştırma</h4>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <!-- Original Text -->
-                    <div class="bg-gray-800/50 rounded-lg p-6 border border-gray-600/50">
+                    <div class="bg-second/20 rounded-lg p-6 border border-main">
                         <h5 class="text-lg font-semibold text-gray-300 mb-3">Orijinal Metin:</h5>
                         <div id="originalTextDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
                     </div>
                     
                     <!-- User Response -->
-                    <div class="bg-blue-900/30 rounded-lg p-6 border border-blue-600/50">
-                        <h5 class="text-lg font-semibold text-blue-300 mb-3">Sizin Çıkarımınız:</h5>
+                    <div class="bg-second/20 rounded-lg p-6 border border-main">
+                        <h5 class="text-lg font-semibold text-main mb-3">Sizin Çıkarımınız:</h5>
                         <div id="userRecallDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
-                        <h6 class="text-md font-semibold text-blue-300 mb-2">Anahtar Kelimeler:</h6>
+                        <h6 class="text-md font-semibold text-main mb-2">Anahtar Kelimeler:</h6>
                         <div id="userKeywordsDisplay" class="flex flex-wrap gap-2 mb-4">
                             <!-- Dynamic keywords -->
                         </div>
-                        <h6 class="text-md font-semibold text-blue-300 mb-2">Sorduğunuz Soru:</h6>
+                        <h6 class="text-md font-semibold text-main mb-2">Sorduğunuz Soru:</h6>
                         <div id="userQuestionDisplay" class="text-white text-sm leading-relaxed mb-4">-</div>
-                        <h6 class="text-md font-semibold text-blue-300 mb-2">AI Cevabı:</h6>
+                        <h6 class="text-md font-semibold text-main mb-2">AI Cevabı:</h6>
                         <div id="userAnswerDisplay" class="text-white text-sm leading-relaxed">-</div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
 
             <!-- Scores -->
             <div class="mb-8">
-                <h4 class="text-xl font-semibold text-main mb-4 text-center">📊 Skorlarınız</h4>
+                <h4 class="text-xl font-semibold text-main mb-4 text-center">Skorlarınız</h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-second/40 rounded-lg p-4 text-center border border-second/50">
                         <div class="text-3xl font-bold text-main mb-2" id="recallScore">-</div>
@@ -276,13 +276,13 @@
 
             <!-- AI Feedback -->
             <div class="mb-8 p-6 bg-second/20 rounded-lg border border-second/30">
-                <h5 class="text-lg font-semibold text-main mb-3">💡 Geri Bildirim</h5>
+                <h5 class="text-lg font-semibold text-main mb-3">Geri Bildirim</h5>
                 <div id="aiFeedback" class="text-gray-300 leading-relaxed"></div>
             </div>
 
             <!-- Alternative Keywords -->
             <div class="mb-8">
-                <h5 class="text-lg font-semibold text-main mb-4 text-center">🔄 Alternatif Anahtar Kelimeler</h5>
+                <h5 class="text-lg font-semibold text-main mb-4 text-center">Alternatif Anahtar Kelimeler</h5>
                 <div id="alternativeKeywords" class="flex flex-wrap justify-center gap-2">
                     <!-- Dynamic alternatives -->
                 </div>
@@ -291,10 +291,7 @@
             <!-- Action Buttons -->
             <div class="text-center">
                 <button id="newExerciseBtn" class="bg-main text-black px-8 py-3 rounded-lg font-semibold hover:bg-second hover:text-white transition mr-4">
-                    🎮 Tekrar Dene
-                </button>
-                <button id="backToMenuBtn" class="bg-gray-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-700 transition">
-                    📈 Ana Menü
+                    Tekrar Dene
                 </button>
             </div>
         </div>
@@ -738,7 +735,7 @@ class MemoryExercise {
         if (userAnswerEl) userAnswerEl.textContent = comparison.ai_answer || 'Cevap bulunamadı';
 
         // Show keywords with fallbacks
-        this.displayKeywords('userKeywordsDisplay', comparison.user_keywords || [], 'bg-blue-600');
+        this.displayKeywords('userKeywordsDisplay', comparison.user_keywords || [], 'bg-second');
 
         // Show scores with animated progress bars (with fallbacks) - no synthesis score
         this.animateScore('recallScore', 'recallProgress', scores.recall || 0);
@@ -751,7 +748,7 @@ class MemoryExercise {
 
         // Show alternative keywords
         if (evaluation.alternative_keywords && evaluation.alternative_keywords.length > 0) {
-            this.displayKeywords('alternativeKeywords', evaluation.alternative_keywords, 'bg-green-600');
+            this.displayKeywords('alternativeKeywords', evaluation.alternative_keywords, 'bg-second');
         }
 
         // Switch to results step
@@ -916,18 +913,18 @@ class MemoryExercise {
                 
                 // Update button based on relevance
                 if (data.question_relevant) {
-                    askBtn.textContent = '✅ Soru Cevaplandı';
+                    askBtn.textContent = 'Soru Cevaplandı';
                     askBtn.classList.remove('bg-main');
-                    askBtn.classList.add('bg-green-600');
+                    askBtn.classList.add('bg-second');
                 } else {
-                    askBtn.textContent = '❌ Soru İlgisiz';
+                    askBtn.textContent = 'Soru İlgisiz';
                     askBtn.classList.remove('bg-main');
-                    askBtn.classList.add('bg-red-600');
+                    askBtn.classList.add('bg-second');
                 }
             } else {
                 alert(data.error || 'Soru işlenirken hata oluştu');
                 askBtn.disabled = false;
-                askBtn.textContent = '🤔 Soru Sor';
+                askBtn.textContent = ' Soru Sor';
             }
             
         } catch (error) {
@@ -935,7 +932,7 @@ class MemoryExercise {
             alert('Soru gönderilirken hata oluştu');
             const askBtn = document.getElementById('askQuestionBtn');
             askBtn.disabled = false;
-            askBtn.textContent = '🤔 Soru Sor';
+            askBtn.textContent = ' Soru Sor';
         }
     }
 }
