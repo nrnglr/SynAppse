@@ -3,252 +3,99 @@
 
 <!-- giriş bölümü -->
 <section class="py-10 md:py-20">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center px-4">
+  <div class="max-w-7xl mx-auto items-center px-4">
     <div>
-      <h2 class="text-5xl font-bold mb-8 tracking-[3px]">Beyin Sağlığı</h2>
+      <h2 class="text-5xl font-bold mb-8 tracking-[3px]">Konfor Alanınız, Zihin Hapishaneniz Olmasın.</h2>
       <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-10 text-justify">
-        Zihnimiz, tıpkı kaslarımız gibi; kullanıldıkça gelişir, ihmal edildiğinde zayıflar.
-        Modern yaşamın hızı ve dijitalleşmenin getirdiği kolaylıklar, beynimizi giderek daha az düşünmeye, daha az üretmeye iter.
+        "Yapay zekadan endişe duymuyorum... Asıl endişem, insanların bilgisayarlar gibi düşünmesi.” <br>
+        <span class="italic">- Tim Cook</span>
         <br><br>
-        Sürekli bildirimlerle bölünen dikkat, hazıra alışan zihin, yapay zekânın sağladığı otomasyonla birlikte aktif düşünme refleksimizi köreltiyor.
-         <br><br>
-      Yeni bilgiler öğrenmek, problem çözmek, yaratmak ve hatırlamak beyin hücreleri arasında yeni sinaptik bağlantılar kurar.
-      SynAppse bu bağlantıların oluşması ve güçlenmesi için bir egzersiz alanı sağlar. Her gün birkaç dakikalık bilinçli zihinsel çaba, dikkatini keskinleştirir, hafızanı güçlendirir, yaratıcı potansiyelini yeniden canlandırır.
+        Yapay zeka (YZ) hayatımızın her yerinde. Ödevlerimizi yaparken, e-postalarımızı yazarken, kodlarken, hatta sanat üretirken... Bize inanılmaz bir hız ve verimlilik katıyor. Peki bu konforun, farkında olmadığımız bir bedeli olabilir mi?
+        <br><br>
+        MIT'nin çığır açan <a href="https://arxiv.org/pdf/2506.08872" target="_blank" class="text-[#1ABC9C] hover:text-[#16A085] underline font-bold">"Your Brain on ChatGPT"</a> araştırması, bu sorunun cevabını net bir şekilde ortaya koyuyor: Evet, bir bedeli var. Yapay zekayı bilinçsizce ve pasif bir şekilde kullandığımızda, beynimizin en değerli yetenekleri yavaş yavaş köreliyor.
+        <br><br>
+        Tıpkı kullanmadığımız bir kasın zamanla zayıflaması gibi...
       </p>
     </div>
+  </div>
+</section>
+
+<div class ="flex justify-center items-center py-8">
+    <img src="{% static 'img/arrow.svg' %}" alt="direction" class="w-16 animate-bounce">
+</div>
+
+<section class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h3 class="text-4xl font-bold mb-8"> Zihninizde Neler Oluyor? (Üç Tehlike Sinyali)</h3>
+        <p class="font-extralight text-white text-lg tracking-[0.8px]">Yapay zeka araçlarına giderek daha fazla güvendiğimizde, beynimizdeki bazı kritik sinir ağları daha az aktif hale gelir.
+        Bu durum sadece günlük hayattaki kararlarımızı değil, uzun vadeli öğrenme ve yaratıcılığımızı da etkiler.
+        Farkında olmadan dış kaynaklı çözümlere bağımlı hale gelir, kendi düşünme süreçlerimizi köreltiriz.
+        Özellikle genç yaşta bu alışkanlık oluştuğunda, zihinsel dayanıklılık ve derin düşünme yetisi zamanla zayıflar.
+        Aşağıdaki üç işaret bu sürecin en belirgin göstergeleridir.</p>
+        <div class="grid md:grid-cols-3 gap-8 pt-24">
+            <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
+            <div class="relative z-10">
+                <h4 class="font-semibold mt-8 mb-8 text-center text-2xl tracking-wide">Eleştirel Düşünme ve Problem Çözme</h4>
+                <p class="text-md font-light text-gray-300 leading-relaxed">
+                Hazır çözümlere alıştıkça, karmaşık sorunları analiz etme, farklı açıları değerlendirme ve özgün çıkış yolları
+                 bulma yeteneğimiz zayıflıyor. Beynimizin "problem çözme" kası tembelleşiyor.
+                </p>
+            </div>
+            </div>
+            <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
+            <div class="relative z-10">
+                <h4 class="font-semibold mt-8 mb-8 text-center text-2xl tracking-wide">Hafıza Zayıflığı</h4>
+                <p class="text-md font-light text-gray-300 leading-relaxed">
+                Bilgiyi kendi cümlelerimizle yeniden yapılandırmak, kalıcı öğrenmenin anahtarıdır.
+                Ancak YZ bize hazır bilgi sunduğunda bu süreç atlanır ve bilgiler yüzeysel kalır.
+                </p>
+            </div>
+            </div>
+            <div class="relative rounded-3xl border border-white/10 p-8 text-justify transition-transform duration-300 hover:scale-105">
+            <div class="absolute inset-0 bg-[linear-gradient(to_top,_#082624,_#ffffff)] opacity-5 rounded-3xl pointer-events-none z-0"></div>
+            <div class="relative z-10">
+                <h4 class="font-semibold mt-8 mb-8 text-center text-2xl tracking-wide">Yaratıcılık ve Özgün Düşünce</h4>
+                <p class="text-md font-light text-gray-300 leading-relaxed">
+               Sürekli olarak YZ’nin ürettiği fikirlere maruz kalmak, kendi özgün sesimizi bastırır.
+                Yeni fikirler üretmek yerine mevcut şablonları tekrar ederiz ve yaratıcılık zamanla körelir.
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- synappse bölümü -->
+<section class="py-24 px-4">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- sol görsel -->
     <div class="flex justify-center">
-      <div class="relative w-full max-w-[400px] sm:max-w-[500px]">
-        <img src="{% static 'img/brain.png' %}" alt="Beyin görseli" class="w-full animate-pulse">
-      </div>
+      <img src="{% static 'img/logo2.svg' %}" alt="Synappse görseli" class="w-full max-w-[400px] sm:max-w-[500px] shadow-[0_10px_30px_#1ABC9C] rounded-full py-12 animate-pulse">
+    </div>
+    <!-- sağ içerik -->
+    <div>
+      <h2 class="text-4xl font-bold mb-8 tracking-[3px]">Günün Kurtarıcısı: SynAppse</h2>
+      <p class="font-extralight text-white text-lg tracking-[0.8px] mb-8 text-justify">
+        İşte bu noktada Synappse devreye giriyor.
+        Yapay zekanın getirdiği bu zihinsel zorluklara karşı tasarlanmış, bilimsel temellere dayanan bir "zihin spor salonu".
+        Amacımız YZ'yi yasaklamak değil, aksine onu kullanırken zihnimizi keskinleştirecek bir denge kurmak.
+        <br><br>
+        Bunu çok basit bir yöntemle yapıyoruz: <b>Günün Egzersizi</b>.
+        Synappse, dört temel zihinsel beceriyi hedef alan, her gün kişiye özel mikro-egzersizler sunar.
+      </p>
+      <ul class="list-disc pl-5 font-extralight text-white text-lg tracking-[0.8px] space-y-2">
+        <li><b>Eleştirel düşünme</b> kaslarınızı çalıştırır,</li>
+        <li><b>Hafızanızı</b> güçlendirecek egzersizler sunar,</li>
+        <li><b>Yaratıcılığınızı</b> tetikleyen meydan okumalar içerir,</li>
+        <li><b>Karar verme</b> yeteneklerinizi test eder.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- dört yeti bölümü -->
-<section class="py-20 px-4">
-  <div class="max-w-7xl mx-auto text-center">
-
-    <!-- başlık -->
-    <h2 class="text-4xl font-bold mb-8 tracking-[3px]">
-      Üzerinde Çalıştığımız Bölümler
-    </h2>
-    <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-5xl mx-auto mb-12 text-justify">
-      Bu bölümler zihinsel becerilerinin farklı yönlerini güçlendirmek için hazırlandı.  
-      Hangi alanda kendini geliştirmek istiyorsan o sekmeye geçip hakkında daha fazla bilgi alabilirsin.
-    </p>
-    <!-- tab butonları -->
-    <div class="flex flex-wrap justify-center gap-6 md:gap-16 pb-12 text-lg">
-      <button data-target="hafiza"
-        class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition active">
-        Hafıza
-      </button>
-      <button data-target="yaraticilik"
-        class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
-        Yaratıcılık
-      </button>
-      <button data-target="elestirel"
-        class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
-        Eleştirel Düşünme
-      </button>
-      <button data-target="stratejik"
-        class="tab-btn px-6 py-3 rounded-full border border-main text-white hover:bg-main/20 transition">
-        Stratejik Düşünme
-      </button>
-    </div>
-
-    <!-- Hafıza -->
-    <div id="hafiza" class="tab-content transition-all duration-500 opacity-100 scale-100">
-      <h3 class="text-3xl font-bold mb-8 tracking-[3px] text-main">Hafıza</h3>
-      <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-10 text-justify">
-        Hafıza, bilgiyi zihinde kodlama, saklama ve gerektiğinde hatırlama yetisidir; öğrenme ve düşünme kapasitemizin temelini oluşturur.
-        İki ana türü bulunur: Çalışan hafıza, bilgileri kısa süreli olarak tutar ve işler — örneğin, yeni duyduğunuz bir telefon numarasını ezberlemeye çalışırken devreye girer.
-        Uzun süreli hafıza ise bilgilerin kalıcı olarak depolandığı yapıdır; bir yabancı dili hatırlamak, bisiklet sürmek ya da geçmişe dair anıları canlandırmak bu türün örneklerindendir.
-      </p>
-      <div class="flex flex-col md:flex-row max-w-4xl mx-auto mb-8 gap-8 text-left font-extralight text-white text-lg tracking-[0.8px]">
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Zayıflatanlar</h4>
-          <li>Sürekli birden fazla işi aynı anda yürütmek</li>
-          <li>Aşırı görsel/işitsel uyarana maruz kalmak</li>
-          <li>Kopyala-yapıştır alışkanlığı</li>
-          <li>Yetersiz uyku ve stres </li>
-        </ul>
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Güçlendirenler</h4>
-          <li>Kendi cümlelerinle tekrar etmek</li>
-          <li>Çağrışımlar oluşturmak</li>
-          <li>Aralıklı tekrar ve hatırlama pratiği yapmak</li>
-          <li>Sağlıklı yaşam alışkanlıkları</li>
-        </ul>
-      </div>
-      <p class="italic font-extralight text-gray-100 text-md tracking-[0.8px] max-w-5xl mx-auto text-justify">
-        SynAppse, hafızayı geliştirmek için pasif ezber yerine aktif hatırlama, bağ kurma, ve kapsamlı tekrar stratejilerine dayalı dijital egzersizler sunar.
-        Kullanıcılar, yapay zekâ destekli egzersizlerle bilgiyi sadece depolamakla kalmaz; anlamlandırır, ilişkilendirir ve uzun süreli hafızaya kazandırır.
-      </p>
-    </div>
-
-    <!-- Yaratıcılık -->
-    <div id="yaraticilik" class="tab-content hidden transition-all duration-500 opacity-0 scale-95">
-      <h3 class="text-3xl font-bold mb-8 tracking-[3px] text-main">Yaratıcılık</h3>
-      <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-10 text-justify">
-        Yaratıcılık, yeni ve özgün fikirler üretme, kavramları alışılmadık biçimlerde birleştirme ve mevcut kalıpları aşma yetisidir.
-        Sadece sanatsal üretimlerde değil, problem çözme, inovasyon ve günlük yaşamın her alanında kritik bir beceridir.
-        Yaratıcı düşünce, beynin farklı bölgeleri arasında beklenmedik bağlantılar kurma ve alternatif çözümler geliştirme kapasitesine dayanır.
-      </p>
-      <div class="flex flex-col md:flex-row max-w-4xl mx-auto mb-8 gap-8 text-left font-extralight text-white text-lg tracking-[0.8px]">
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Zayıflatanlar</h4>
-          <li>Hazır ve şablonlu düşünme</li>
-          <li>Hata yapma korkusu</li>
-          <li>Dış onaya bağımlılık</li>
-          <li>Aşırı rutinleşme</li>
-        </ul>
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Güçlendirenler</h4>
-          <li>Açık uçlu sorular</li>
-          <li>Farklı bakış açılarıyla düşünmek</li>
-          <li>Hayal kurmak ve sorgulamak</li>
-          <li>Serbest beyin fırtınası</li>
-          <li>Yeni deneyimler kazanmak</li>
-        </ul>
-      </div>
-      <p class="italic font-extralight text-gray-100 text-md tracking-[0.8px] max-w-5xl mx-auto text-justify">
-        SynAppse, zihnin kalıplara hapsolmasını engelleyerek seni farklı düşünmeye zorlar.
-        Açık uçlu egzersizler, yaratıcı problem çözme aktiviteleri ve yapay zekâ destekli yönlendirmelerle, beklenmedik fikirlerin ortaya çıkmasını sağlar.
-        SynAppse, “hazır cevap” mantığı yerine özgün fikirlerin üretildiği bir ortam oluşturur.
-      </p>
-    </div>
-
-    <!-- Eleştirel Düşünme -->
-    <div id="elestirel" class="tab-content hidden transition-all duration-500 opacity-0 scale-95">
-      <h3 class="text-3xl font-bold mb-8 tracking-[3px] text-main">Eleştirel Düşünme</h3>
-      <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-10 text-justify">
-        Eleştirel düşünme, bilgiyi analiz etme, değerlendirme ve doğruluk açısından sorgulama yeteneğidir.
-        Yalnızca bilgi edinmek değil, o bilginin kaynağını, doğruluğunu ve mantığını sorgulamak bu becerinin merkezindedir.
-        Güçlü bir eleştirel düşünme, bireyin hem doğru kararlar almasını sağlar hem de yanlış bilgilere karşı direnç kazandırır.
-        Bu, akademik başarıdan iş hayatına kadar pek çok alanda fark yaratan bir beceridir.
-      </p>
-      <div class="flex flex-col md:flex-row max-w-4xl mx-auto mb-8 gap-8 text-left font-extralight text-white text-lg tracking-[0.8px]">
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Zayıflatanlar</h4>
-          <li>Teyitsiz bilgiye alışmak</li>
-          <li>Otoriteye körü körüne inanmak</li>
-          <li>Sosyal medyada kutuplaşmış içerikler</li>
-          <li>Duygusal tepkilerle düşünmek</li>
-        </ul>
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Güçlendirenler</h4>
-          <li>Argümanların zayıf yönlerini araştırmak</li>
-          <li>Alternatif senaryolar düşünmek</li>
-          <li>“Neden böyle?” sorusunu alışkanlık haline getirmek</li>
-          <li>Kanıt aramak ve doğrulamak</li>
-          <li>Karşıt görüşleri analiz etmek </li>
-        </ul>
-      </div>
-      <p class="italic font-extralight text-gray-100 text-md tracking-[0.8px] max-w-5xl mx-auto text-justify">
-        SynAppse, ezberci bir zihniyetten uzak durarak sorgulama pratiğini güçlendiren egzersizler sunar.
-        Kullanıcıyı “Neden?” ve “Nasıl?” sorularıyla düşünmeye teşvik eder, farklı senaryolar üzerinde düşünmesini sağlar.
-        Böylece kullanıcı, bilgiyi körü körüne kabul etmek yerine anlamlandırarak değerlendirir.
-      </p>
-    </div>
-
-    <!-- Stratejik Düşünme -->
-    <div id="stratejik" class="tab-content hidden transition-all duration-500 opacity-0 scale-95">
-      <h3 class="text-3xl font-bold mb-8 tracking-[3px] text-main">Stratejik Düşünme</h3>
-      <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-10 text-justify">
-        Stratejik düşünme, hedef belirleme, bu hedefe ulaşmak için adım adım planlama yapma ve çok adımlı düşünme yeteneğidir.
-        Kısa vadeli eylemleri uzun vadeli hedeflerle ilişkilendirme, olası riskleri ve fırsatları önceden görme bu becerinin temel taşlarındandır.
-        İş dünyasında, kişisel gelişimde ve problem çözmede stratejik düşünce, hem verimliliği hem de başarı oranını ciddi şekilde artırır.
-      </p>
-      <div class="flex flex-col md:flex-row max-w-4xl mx-auto mb-8 gap-8 text-left font-extralight text-white text-lg tracking-[0.8px]">
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Zayıflatanlar</h4>
-          <li>Anlık karar alışkanlığı</li>
-          <li>Aşırı dikkat dağınıklığı</li>
-          <li>Kararsızlık ve fikir değiştirme</li>
-          <li>Kısa vadeli düşünme</li>
-        </ul>
-        <ul class="list-disc pl-5 flex-1 space-y-4">
-          <h4 class="font-semibold text-main mb-4 text-2xl">Güçlendirenler</h4>
-          <li>Hedefe odaklanıp adım adım ilerlemek</li>
-          <li>Alternatif yollar düşünmek</li>
-          <li>Sebep-sonuç ilişkileri kurmak</li>
-          <li>Zaman yönetimi</li>
-          <li>Uzun vadeli vizyon</li>
-        </ul>
-      </div>
-      <p class="italic font-extralight text-gray-100 text-md tracking-[0.8px] max-w-5xl mx-auto text-justify">
-        SynAppse, planlama ve karar alma becerisini oyunlaştırılmış senaryolar ve çok adımlı egzersizlerle geliştirir.
-        Kullanıcıyı sadece anlık kararlar yerine ileriyi düşünmeye, alternatif yollar üretmeye ve strateji kurmaya teşvik eder.
-        Böylece karar alma süreçleri daha bilinçli, hızlı ve etkili hale gelir.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- kapanış -->
-<section class="py-20 text-xl px-4">
-  <div class="max-w-7xl mx-auto text-center space-y-6">
-    <h3 class="text-4xl font-bold mb-8 tracking-[3px]">Zihinsel Olarak Uyanık Kal</h3>
-    <p class="font-extralight text-white text-lg tracking-[0.8px] max-w-7xl mx-auto mb-8 text-justify">
-      SynAppse egzersizleri ve yöntemleri, bu makalelerdeki bilimsel temellere ve gerçek hayatta kanıtlanmış stratejilere dayanır.
-      Makaleleri okudukça, uygulamalarımızın neden etkili olduğunu ve zihinsel kapasitenizi nasıl güçlendirdiğini daha iyi anlayacaksınız.
-    </p>
-    <div class="flex flex-col justify-center gap-6 max-w-7xl mx-auto">
-      <div class="flex flex-col sm:flex-row items-center sm:justify-between bg-white/10 rounded-full px-6 py-3 w-full sm:w-auto gap-2 sm:gap-0">
-        <span class="text-white text-lg text-center sm:text-left">The role of synaptic plasticity in learning and memory: a neurophysiological perspective</span>
-        <a href="https://www.alliedacademies.org/articles/the-role-of-synaptic-plasticity-in-learning-and-memory-a-neurophysiological-perspective.pdf" target="_blank" rel="noopener noreferrer"
-          class="w-24 ml-0 sm:ml-4 px-4 py-1 rounded-full border border-main text-main hover:bg-main hover:text-white transition text-sm text-center">
-          İncele
-        </a>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center sm:justify-between bg-white/10 rounded-full px-6 py-3 w-full sm:w-auto gap-2 sm:gap-0">
-        <span class="text-white text-lg text-center sm:text-left">Neuroplasticity: How the Brain Changes with Learning (UNESCO)</span>
-        <a href="https://solportal.ibe-unesco.org/articles/neuroplasticity-how-the-brain-changes-with-learning" target="_blank" rel="noopener noreferrer"
-          class="w-24 ml-0 sm:ml-4 px-4 py-1 rounded-full border border-main text-main hover:bg-main hover:text-white transition text-sm text-center">
-          İncele
-        </a>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center sm:justify-between bg-white/10 rounded-full px-6 py-3 w-full sm:w-auto gap-2 sm:gap-0">
-        <span class="text-white text-lg text-center sm:text-left">Dendritic spine - Wikipedia</span>
-        <a href="https://en.wikipedia.org/wiki/Dendritic_spine" target="_blank" rel="noopener noreferrer"
-          class="w-24 ml-0 sm:ml-4 px-4 py-1 rounded-full border border-main text-main hover:bg-main hover:text-white transition text-sm text-center">
-          İncele
-        </a>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center sm:justify-between bg-white/10 rounded-full px-6 py-3 w-full sm:w-auto gap-2 sm:gap-0">
-        <span class="text-white text-lg text-center sm:text-left">Synaptic plasticity and memory: an evaluation of the hypothesis</span>
-        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3689877/" target="_blank" rel="noopener noreferrer"
-          class="w-24 ml-0 sm:ml-4 px-4 py-1 rounded-full border border-main text-main hover:bg-main hover:text-white transition text-sm text-center">
-          İncele
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 {% include 'components/footer.html' %}
-
-<script>
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'bg-main/20'))
-    btn.classList.add('active', 'bg-main/20')
-
-    const target = btn.dataset.target
-    document.querySelectorAll('.tab-content').forEach(c => {
-      c.classList.add('hidden', 'opacity-0', 'scale-95')
-      c.classList.remove('opacity-100', 'scale-100')
-    })
-    const activeTab = document.getElementById(target)
-    activeTab.classList.remove('hidden')
-    setTimeout(() => {
-      activeTab.classList.add('opacity-100', 'scale-100')
-      activeTab.classList.remove('opacity-0', 'scale-95')
-    }, 20)
-  })
-})
-</script>
-
-</body
+</body>
 </html>

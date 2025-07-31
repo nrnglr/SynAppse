@@ -47,15 +47,15 @@
     <div class="hidden md:flex items-center space-x-4">
       {% if user.is_authenticated %}
         <!-- Profile Dropdown -->
-        <div class="relative group">
-          <button class="flex items-center space-x-2 text-gray-300 hover:text-main transition">
+        <div class="relative">
+          <button id="profile-btn" class="flex items-center space-x-2 text-gray-300 hover:text-main transition">
             <img src="{{ user.userprofile.get_avatar_url }}" alt="Avatar" class="w-8 h-8 rounded-full border-2 border-main">
             <span class="hidden sm:block">{{ user.first_name|default:user.username }}</span>
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </button>
-          <div class="absolute right-0 mt-2 w-48 bg-second rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+          <div id="profile-menu" class="absolute right-0 mt-2 w-48 bg-second rounded-lg shadow-lg opacity-0 invisible transition">
             <a href="{% url 'users:profile' %}" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Profilim</a>
             <div class="border-t border-gray-700"></div>
             <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-red-400 hover:bg-gray-700">Çıkış Yap</a>
@@ -97,4 +97,24 @@
 document.getElementById('menu-btn').addEventListener('click', () => {
   document.getElementById('menu').classList.toggle('hidden')
 })
+
+// Profile dropdown functionality
+const profileBtn = document.getElementById('profile-btn')
+const profileMenu = document.getElementById('profile-menu')
+
+if (profileBtn && profileMenu) {
+  profileBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    profileMenu.classList.toggle('opacity-0')
+    profileMenu.classList.toggle('invisible')
+  })
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
+      profileMenu.classList.add('opacity-0')
+      profileMenu.classList.add('invisible')
+    }
+  })
+}
 </script>
