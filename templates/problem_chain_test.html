@@ -6,15 +6,8 @@
 
 <section class="max-w-6xl mx-auto px-4 py-20">
     <div class="text-center mb-8">
-        <h2 class="text-4xl fon        if (data && data.scores) {
-            if (data.scores.overall !== undefined) {
-                scoreText = `${data.scores.overall}/5 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
-            } else if (data.scores.creativity !== undefined && data.scores.practicality !== undefined) {
-                const overall = (data.scores.creativity || 0 + data.scores.practicality || 0) / 2;
-                scoreText = `${overall}/5 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
-            }
-        }b-4 tracking-[2px]">Problem Chain Test</h2>
-        <p class="text-gray-300 text-lg">Basit test arayüzü</p>
+        <h2 class="text-4xl font-bold text-white mb-4 tracking-[2px]">Problem Zinciri</h2>
+        <p class="text-gray-300 text-lg">Yaratıcı çözümler üreterek problemleri zincir halinde çözün</p>
     </div>
 
     <!-- Test Interface -->
@@ -36,6 +29,36 @@
             </button>
         </div>
 
+        <!-- Community Insights Widget -->
+        <div id="communityWidget" class="mb-6 p-4 bg-gradient-to-r from-main/10 to-second/10 border border-main/30 rounded-lg">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-main rounded-full animate-pulse"></div>
+                    <span class="text-main font-semibold">Community Intelligence</span>
+                </div>
+                <div class="text-xs text-gray-400" id="lastUpdated">Yükleniyor...</div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-main" id="sessionsToday">-</div>
+                    <div class="text-xs text-gray-400">Bugün Oturum</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-yellow-400" id="avgRating">-</div>
+                    <div class="text-xs text-gray-400">Ortalama Puan</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-400" id="trendingDifficulty">-</div>
+                    <div class="text-xs text-gray-400">Trend Zorluk</div>
+                </div>
+            </div>
+            
+            <div id="communityMessage" class="mt-3 text-sm text-gray-300 text-center italic">
+                Topluluk verilerine dayalı problemler hazırlanıyor...
+            </div>
+        </div>
+
         <!-- Status -->
         <div id="status" class="mb-6 p-3 rounded-lg bg-gray-700/30 text-center text-gray-300">
             Başlamak için "Başla" butonuna tıklayın
@@ -46,7 +69,14 @@
             
             <!-- Left Side - AI Problem -->
             <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-main">AI</h3>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold text-main">AI</h3>
+                    <div id="problemQuality" class="hidden">
+                        <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded-full text-xs border border-green-600/30">
+                            ✨ Community Favorite
+                        </span>
+                    </div>
+                </div>
                 <div class="border border-second/50 rounded-lg p-1">
                     <textarea 
                         id="aiArea" 
@@ -59,7 +89,14 @@
 
             <!-- Right Side - User Solution -->
             <div class="space-y-4">
-                <h3 class="text-xl font-semibold text-main">Kullanıcı</h3>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold text-main">Kullanıcı</h3>
+                    <div id="learningStyle" class="hidden">
+                        <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded-full text-xs border border-blue-600/30">
+                            🧠 <span id="styleText">Analiz ediliyor...</span>
+                        </span>
+                    </div>
+                </div>
                 <div class="border border-second/50 rounded-lg p-1">
                     <textarea 
                         id="userArea" 
@@ -75,12 +112,24 @@
                         Gönder
                     </button>
                 </div>
+
+                <!-- Problem Rating (hidden by default) -->
+                <div id="problemRating" class="mt-4 p-4 bg-gray-700/30 rounded-lg text-center hidden">
+                    <div class="text-gray-300 mb-3">Bu problemi nasıl buldunuz?</div>
+                    <div class="flex justify-center gap-2">
+                        <button class="rating-btn bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded text-sm" data-rating="1">😞 Kötü</button>
+                        <button class="rating-btn bg-orange-600 hover:bg-orange-500 text-white px-3 py-1 rounded text-sm" data-rating="2">😐 Orta</button>
+                        <button class="rating-btn bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded text-sm" data-rating="3">🙂 İyi</button>
+                        <button class="rating-btn bg-green-600 hover:bg-green-500 text-white px-3 py-1 rounded text-sm" data-rating="4">😊 Güzel</button>
+                        <button class="rating-btn bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-sm" data-rating="5">🤩 Harika</button>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Session Info -->
         <div class="mt-8 p-4 bg-gray-800/30 rounded-lg">
-            <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="grid grid-cols-3 gap-4 text-center mb-4">
                 <div>
                     <div class="text-gray-400">Session ID</div>
                     <div id="sessionId" class="text-main font-mono text-sm">-</div>
@@ -94,6 +143,44 @@
                     <div id="sessionStatus" class="text-main font-semibold">Beklemede</div>
                 </div>
             </div>
+            
+            <!-- Pattern Learning Progress -->
+            <div id="patternProgress" class="border-t border-gray-700 pt-4 hidden">
+                <div class="text-center mb-3">
+                    <div class="text-gray-400 text-sm">Pattern Learning Progress</div>
+                    <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+                        <div id="progressBar" class="bg-gradient-to-r from-main to-blue-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-1">
+                        <span id="progressText">AI öğrenme stilinizi analiz ediyor...</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center">
+                        <div class="text-gray-400 text-xs">Engagement</div>
+                        <div id="engagementLevel" class="text-yellow-400 font-semibold">-</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-gray-400 text-xs">Pattern Confidence</div>
+                        <div id="patternConfidence" class="text-green-400 font-semibold">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Session Rating (shown after completion) -->
+        <div id="sessionRating" class="mt-6 p-4 bg-green-700/20 border border-green-600/30 rounded-lg text-center hidden">
+            <div class="text-green-300 mb-3 font-semibold">Session Tamamlandı! 🎉</div>
+            <div class="text-gray-300 mb-4">Genel deneyiminizi değerlendirir misiniz?</div>
+            <div class="flex justify-center gap-2 mb-3">
+                <button class="session-rating-btn bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded" data-rating="1">⭐</button>
+                <button class="session-rating-btn bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded" data-rating="2">⭐⭐</button>
+                <button class="session-rating-btn bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded" data-rating="3">⭐⭐⭐</button>
+                <button class="session-rating-btn bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded" data-rating="4">⭐⭐⭐⭐</button>
+                <button class="session-rating-btn bg-gray-600 hover:bg-gray-500 text-white px-3 py-2 rounded" data-rating="5">⭐⭐⭐⭐⭐</button>
+            </div>
+            <div class="text-sm text-gray-400">Geri bildiriminiz egzersizlerimizi geliştirmemize yardımcı olur</div>
         </div>
 
         <!-- Response Log -->
@@ -116,9 +203,15 @@ class ProblemChainTest {
         this.currentProblem = null;
         this.isActive = false;
         this.problemCount = 0;
+        this.problemStartTime = null;
+        this.currentProblemRating = null;
+        this.communityInsights = null;
+        this.userLearningStyle = 'balanced';
+        this.patternConfidence = 0;
         
         this.initElements();
         this.bindEvents();
+        this.loadCommunityInsights();
     }
     
     initElements() {
@@ -133,6 +226,25 @@ class ProblemChainTest {
         this.problemCountDisplay = document.getElementById('problemCount');
         this.sessionStatusDisplay = document.getElementById('sessionStatus');
         this.responseLog = document.getElementById('responseLog');
+        this.problemRating = document.getElementById('problemRating');
+        this.sessionRating = document.getElementById('sessionRating');
+        
+        // Community insights elements
+        this.sessionsToday = document.getElementById('sessionsToday');
+        this.avgRating = document.getElementById('avgRating');
+        this.trendingDifficulty = document.getElementById('trendingDifficulty');
+        this.communityMessage = document.getElementById('communityMessage');
+        this.lastUpdated = document.getElementById('lastUpdated');
+        
+        // Learning pattern elements
+        this.problemQuality = document.getElementById('problemQuality');
+        this.learningStyle = document.getElementById('learningStyle');
+        this.styleText = document.getElementById('styleText');
+        this.patternProgress = document.getElementById('patternProgress');
+        this.progressBar = document.getElementById('progressBar');
+        this.progressText = document.getElementById('progressText');
+        this.engagementLevel = document.getElementById('engagementLevel');
+        this.patternConfidence = document.getElementById('patternConfidence');
     }
     
     bindEvents() {
@@ -143,6 +255,24 @@ class ProblemChainTest {
         this.userArea.addEventListener('input', () => {
             this.submitBtn.disabled = !this.userArea.value.trim() || !this.isActive;
         });
+
+        // Problem rating events
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleProblemRating(e.target.dataset.rating));
+        });
+
+        // Session rating events
+        document.querySelectorAll('.session-rating-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleSessionRating(e.target.dataset.rating));
+        });
+
+        // Load community insights on page load
+        this.loadCommunityInsights();
+        
+        // Auto-refresh community insights every 30 seconds
+        setInterval(() => {
+            this.loadCommunityInsights();
+        }, 30000);
     }
     
     async startSession() {
@@ -167,6 +297,7 @@ class ProblemChainTest {
                 this.currentProblem = data.problem;
                 this.isActive = true;
                 this.problemCount = data.round || 1; // Use API round number
+                this.problemStartTime = Date.now(); // Start timing
                 
                 this.updateUI();
                 this.setStatus(`Session başlatıldı! Problem ${this.problemCount} yüklendi.`, 'success');
@@ -207,6 +338,20 @@ class ProblemChainTest {
             this.logResponse(`POST ${endpoint}`, data);
             
             if (response.ok) {
+                // Calculate engagement time
+                const engagementTime = this.problemStartTime ? Math.round((Date.now() - this.problemStartTime) / 1000) : 0;
+                
+                // Send engagement time to backend
+                if (engagementTime > 0) {
+                    this.sendEngagementTime(engagementTime);
+                }
+                
+                // Show rating for this problem (except for last problem)
+                const isLastProblem = this.problemCount >= 5;
+                if (!isLastProblem) {
+                    this.showProblemRating();
+                }
+                
                 if (data.completed || isLastProblem) {
                     this.completeSession(data);
                 } else {
@@ -228,6 +373,8 @@ class ProblemChainTest {
         this.currentProblem = data.problem;
         this.problemCount = data.round || this.problemCount + 1; // Use API round or increment
         this.userArea.value = '';
+        this.problemStartTime = Date.now(); // Reset timer for new problem
+        this.hideProblemRating(); // Hide rating UI
         this.updateUI();
         this.setStatus(`Problem ${this.problemCount} yüklendi!`, 'success');
         this.submitBtn.disabled = false;
@@ -241,15 +388,16 @@ class ProblemChainTest {
         // Handle different response structures
         let scoreText = 'N/A';
         if (data.scores) {
-            if (data.scores.total !== undefined) {
-                scoreText = `${data.scores.total}/10`;
+            if (data.scores.overall !== undefined) {
+                scoreText = `${data.scores.overall}/10 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
             } else if (data.scores.creativity !== undefined && data.scores.practicality !== undefined) {
-                const total = (data.scores.creativity || 0) + (data.scores.practicality || 0);
-                scoreText = `${total}/10 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
+                const average = ((data.scores.creativity || 0) + (data.scores.practicality || 0)) / 2;
+                scoreText = `${average.toFixed(1)}/10 (Yaratıcılık: ${data.scores.creativity || 0}, Pratiklik: ${data.scores.practicality || 0})`;
             }
         }
         
         this.setStatus(`Session tamamlandı! Skor: ${scoreText}`, 'success');
+        this.showSessionRating(); // Show session rating UI
     }
     
     resetSession() {
@@ -257,11 +405,15 @@ class ProblemChainTest {
         this.currentProblem = null;
         this.isActive = false;
         this.problemCount = 0;
+        this.problemStartTime = null;
+        this.currentProblemRating = null;
         
         this.aiArea.value = '';
         this.userArea.value = '';
         this.userArea.disabled = true;
         
+        this.hideProblemRating();
+        this.hideSessionRating();
         this.updateUI();
         this.setStatus('Başlamak için "Başla" butonuna tıklayın', 'info');
         this.responseLog.innerHTML = '<div class="text-gray-500">API yanıtları burada görünecek...</div>';
@@ -281,6 +433,9 @@ class ProblemChainTest {
         this.resetBtn.disabled = !this.sessionId;
         this.userArea.disabled = !this.isActive;
         this.submitBtn.disabled = !this.isActive || !this.userArea.value.trim();
+
+        // Update visual learning indicators
+        this.updateVisualIndicators();
     }
     
     setStatus(message, type = 'info') {
@@ -309,6 +464,270 @@ class ProblemChainTest {
         </div>`;
         
         this.responseLog.scrollTop = this.responseLog.scrollHeight;
+    }
+
+    // Rating System Methods
+    showProblemRating() {
+        this.problemRating.classList.remove('hidden');
+    }
+
+    hideProblemRating() {
+        this.problemRating.classList.add('hidden');
+        // Reset button styles
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.classList.remove('opacity-50');
+        });
+    }
+
+    showSessionRating() {
+        this.sessionRating.classList.remove('hidden');
+    }
+
+    hideSessionRating() {
+        this.sessionRating.classList.add('hidden');
+        // Reset button styles
+        document.querySelectorAll('.session-rating-btn').forEach(btn => {
+            btn.classList.remove('bg-yellow-500');
+            btn.classList.add('bg-gray-600');
+        });
+    }
+
+    handleProblemRating(rating) {
+        this.currentProblemRating = parseInt(rating);
+        
+        // Visual feedback
+        document.querySelectorAll('.rating-btn').forEach(btn => {
+            btn.classList.add('opacity-50');
+        });
+        event.target.classList.remove('opacity-50');
+        
+        // Send to backend
+        this.sendProblemRating(this.currentProblemRating);
+        
+        // Hide after 2 seconds
+        setTimeout(() => {
+            this.hideProblemRating();
+        }, 2000);
+    }
+
+    handleSessionRating(rating) {
+        const sessionRating = parseInt(rating);
+        
+        // Visual feedback
+        document.querySelectorAll('.session-rating-btn').forEach(btn => {
+            btn.classList.remove('bg-yellow-500');
+            btn.classList.add('bg-gray-600');
+        });
+        event.target.classList.remove('bg-gray-600');
+        event.target.classList.add('bg-yellow-500');
+        
+        // Send to backend
+        this.sendSessionRating(sessionRating);
+    }
+
+    async sendProblemRating(rating) {
+        try {
+            const engagementTime = this.problemStartTime ? (Date.now() - this.problemStartTime) / 1000 : 0;
+            
+            const response = await fetch('/exercises/problem-chain/rate-problem/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.getCSRFToken()
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    rating: rating,
+                    problem_text: this.currentProblem,  // Send problem text for community learning
+                    engagement_time: engagementTime    // Send engagement time
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.community_learning_applied) {
+                    console.log('Community learning updated with your feedback!');
+                    // Optionally update UI to show feedback was processed
+                    this.showCommunityFeedbackMessage(rating);
+                }
+            }
+        } catch (error) {
+            console.error('Rating gönderme hatası:', error);
+        }
+    }
+
+    showCommunityFeedbackMessage(rating) {
+        // Show a brief message indicating community learning
+        if (rating >= 4) {
+            this.setStatus('✨ Geri bildiriminiz topluluğun öğrenmesine katkıda bulundu!', 'success');
+            setTimeout(() => {
+                this.setStatus(`Problem ${this.problemCount} yüklendi!`, 'info');
+            }, 2000);
+        }
+    }
+
+    async sendEngagementTime(timeSeconds) {
+        try {
+            await fetch('/exercises/problem-chain/engagement-time/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.getCSRFToken()
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    engagement_time: timeSeconds
+                })
+            });
+        } catch (error) {
+            console.error('Engagement time gönderme hatası:', error);
+        }
+    }
+
+    async sendSessionRating(rating) {
+        try {
+            const response = await fetch('/exercises/problem-chain/rate-session/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': this.getCSRFToken()
+                },
+                body: JSON.stringify({
+                    session_id: this.sessionId,
+                    rating: rating
+                })
+            });
+            
+            if (response.ok) {
+                console.log('Session rating sent successfully');
+                // Update community insights after rating
+                this.loadCommunityInsights();
+            }
+        } catch (error) {
+            console.error('Session rating gönderme hatası:', error);
+        }
+    }
+
+    // Load community insights
+    async loadCommunityInsights() {
+        try {
+            const response = await fetch('/exercises/problem-chain/community-insights/');
+            if (response.ok) {
+                const data = await response.json();
+                this.updateCommunityDisplay(data);
+            } else {
+                console.error('Failed to load community insights:', response.status);
+                // Show error message in UI
+                if (this.lastUpdated) {
+                    this.lastUpdated.textContent = 'Yükleme hatası';
+                }
+            }
+        } catch (error) {
+            console.error('Error loading community insights:', error);
+            // Show error message in UI
+            if (this.lastUpdated) {
+                this.lastUpdated.textContent = 'Bağlantı hatası';
+            }
+        }
+    }
+
+    // Update community insights display
+    updateCommunityDisplay(data) {
+        console.log('Community data received:', data);
+        
+        // Handle live stats
+        const liveStats = data.live_stats || {};
+        
+        if (this.sessionsToday) {
+            this.sessionsToday.textContent = liveStats.daily_sessions || '0';
+        }
+        if (this.avgRating) {
+            this.avgRating.textContent = (liveStats.average_session_score || 0).toFixed(1);
+        }
+        if (this.trendingDifficulty) {
+            this.trendingDifficulty.textContent = data.learning_insights?.has_data ? 'Medium' : 'Easy';
+        }
+        if (this.communityMessage) {
+            this.communityMessage.textContent = data.message || 'Community learning active!';
+        }
+        if (this.lastUpdated) {
+            this.lastUpdated.textContent = new Date().toLocaleTimeString();
+        }
+        
+        // Update community stats
+        const learningStats = data.learning_statistics || {};
+        if (this.totalLearningEntries) {
+            this.totalLearningEntries.textContent = learningStats.total_learning_entries || '0';
+        }
+        if (this.highQualityEntries) {
+            this.highQualityEntries.textContent = learningStats.high_quality_entries || '0';
+        }
+    }
+
+    // Update visual learning indicators
+    updateVisualIndicators() {
+        // Update problem quality indicator
+        if (this.problemQuality && this.currentProblem) {
+            const quality = this.calculateProblemQuality();
+            this.problemQuality.className = `badge badge-${quality.level}`;
+            this.problemQuality.textContent = quality.text;
+        }
+
+        // Update learning style
+        if (this.learningStyle && this.styleText) {
+            const style = this.detectLearningStyle();
+            this.learningStyle.className = `learning-style ${style.class}`;
+            this.styleText.textContent = style.text;
+        }
+
+        // Update pattern progress
+        if (this.patternProgress) {
+            this.updatePatternProgress();
+        }
+    }
+
+    // Calculate problem quality based on community data (now returns empty)
+    calculateProblemQuality() {
+        return { level: '', text: '' };
+    }
+
+    // Detect learning style based on user behavior (now returns empty)
+    detectLearningStyle() {
+        return { class: '', text: '' };
+    }
+
+    // Update pattern progress
+    updatePatternProgress() {
+        if (!this.progressBar || !this.progressText) return;
+        
+        const sessionCount = this.sessionCount || 0;
+        const maxSessions = 10; // Target sessions for pattern recognition
+        const progress = Math.min((sessionCount / maxSessions) * 100, 100);
+        
+        this.progressBar.style.width = `${progress}%`;
+        this.progressText.textContent = `${sessionCount}/${maxSessions} sessions`;
+        
+        // Update engagement and confidence
+        if (this.engagementLevel) {
+            this.engagementLevel.textContent = this.calculateEngagementLevel();
+        }
+        if (this.patternConfidence) {
+            this.patternConfidence.textContent = `${Math.min(progress, 100).toFixed(0)}%`;
+        }
+    }
+
+    // Calculate average response time
+    calculateAverageResponseTime() {
+        // Simple simulation - in real app would track actual times
+        return Math.random() * 60 + 15; // 15-75 seconds
+    }
+
+    // Calculate engagement level
+    calculateEngagementLevel() {
+        const sessionCount = this.sessionCount || 0;
+        if (sessionCount >= 5) return 'High';
+        if (sessionCount >= 3) return 'Medium';
+        return 'Building';
     }
     
     getCSRFToken() {

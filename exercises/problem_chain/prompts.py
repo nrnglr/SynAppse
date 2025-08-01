@@ -1,151 +1,182 @@
-# Problem Chain Gemini prompts
+# Geliştirilmiş Problem Chain Gemini Promptları
 
-# İlk problem üretme prompt'ları
+# İlk problem üretme prompt'ları - ÇOK BOYUTLU ÇÖZÜM ODaklı
 PROBLEM_CHAIN_START_PROMPTS = {
     'easy': """
-Sen bir yaratıcı problem üreticisin. KOLAY seviyede bir problem oluştur.
+Sen bir yaratıcı problem tasarımcısısın. KOLAY seviyede çok boyutlu bir problem oluştur.
+
+PROBLEM TASARIM İLKELERİ:
+✓ Problem birden fazla farklı açıdan çözülebilmeli (teknolojik, sosyal, yaratıcı, pratik)
+✓ İnsanlar farklı yaklaşımlar deneyebilmeli
+✓ Günlük yaşamda karşılaşılabilir ama sıradışı bir durum
+✓ "Bu nasıl çözülür?" sorusu birden fazla cevap üretmeli
+
+ÖRNEK ÇOKLU ÇÖZÜM PROBLEMLERİ:
+- "Mahalledeki 50 kedi aynı anda hamile kaldı ve 2 ay sonra 300+ yavru kedi sokaklarda olacak."
+- "Apartmanın bodrum katında birikmiş yağmur suyu 3 aydır çekilmiyor ve sivrisinek üreme alanı oldu."
+
+ZORUNLU ÇIKTI FORMATI:
+1. Problemi açık şekilde belirt (1-2 cümle)
+2. "Bu durumu nasıl çözersin?" veya benzer teşvik edici soru ile bitir
 
 ZORUNLU KURALLAR:
-- Problem günlük yaşamda karşılaşılabilecek SOMUT bir soruna yol açmalı
-- İnsanlar "Bu sorunu nasıl çözerim?" diye düşünmeli
-- Çözülebilir ve mantıklı olmalı
-- 1-2 cümle uzunluğunda
-- Türkçe olmalı
-- Sadece problemi yaz, açıklama yapma
+- Problem + çözüm sorusu formatında yaz
+- Açıklama yapma, çözüm önerme
+- Maksimum 3 cümle (2 problem + 1 soru)
+- Türkçe
+- En az 4-5 farklı çözüm yaklaşımı mümkün olmalı
 
-PROBLEM YAPISI: [Tuhaf durum] + [Bu durumun yarattığı somut rahatsızlık/zorluk]
-
-DOĞRU ÖRNEKLER:
-- "Apartman asansörü bozuldu ve tamirci 2 hafta sonra geliyor. 8. katta yaşayan yaşlı komşular alışveriş yapamıyor."
-- "Komşunun kedisi her gece balkonunuza gelip opera söylüyor, kimse uyuyamıyor."
-
-YANLIŠ ÖRNEKLER (YAPMA):
-- "Kediler uçmaya başladı" (Ne sorunu var ki?)
-- "Zaman durdu" (Çok fantastik)
-
-Şimdi benzer mantıkta yeni problem üret:
+Şimdi bu kurallara uyarak problem + soru formatında yaz:
 """,
 
     'medium': """
-Sen bir yaratıcı problem üreticisin. ORTA seviyede bir problem oluştur.
+Sen bir yaratıcı problem tasarımcısısın. ORTA seviyede çok boyutlu bir problem oluştur.
+
+PROBLEM TASARIM İLKELERİ:
+✓ Biraz tuhaf ama mantıklı bir durum
+✓ Problem çözmek için yaratıcı düşünce gerekli
+✓ Birden fazla paydaş/grup etkilenmeli
+✓ Farklı disiplinlerden çözüm yaklaşımları denenebilmeli
+✓ Çözüm başka problemlere yol açabilir (bu iyi!)
+
+ÖRNEK ÇOKLU ÇÖZÜM PROBLEMLERİ:
+- "Şehrin ortasındaki otopark günde 3 saat kendiliğinden 30 cm yükseliyor sonra geri iniyor, arabalar mahsur kalıyor."
+- "Okuldaki tüm öğrenciler aynı rüyayı görmeye başladı ve derslerde sürekli rüyalarını tartışıyor."
+
+ZORUNLU ÇIKTI FORMATI:
+1. Problemi açık şekilde belirt (1-2 cümle)
+2. "Bu problemi nasıl çözersin?" veya benzer teşvik edici soru ile bitir
 
 ZORUNLU KURALLAR:
-- Durum biraz absürd olabilir AMA mutlaka SOMUT bir soruna yol açmalı
-- İnsanlar gerçekten rahatsız olmalı ve çözüm aramalı
-- Yaratıcı düşünce gerektirmeli ama mantıklı çözümü olmalı
-- 1-2 cümle uzunluğunda
-- Türkçe olmalı
-- Sadece problemi yaz, açıklama yapma
+- Problem + çözüm sorusu formatında yaz
+- Açıklama yapma, çözüm önerme
+- Maksimum 3 cümle (2 problem + 1 soru)
+- Türkçe
+- En az 5-6 farklı yaklaşımla çözülebilir olmalı
+- Biraz absürd ama mantık çerçevesinde
 
-PROBLEM YAPISI: [Absürd ama mümkün durum] + [Bu durumun yarattığı ciddi rahatsızlık]
-
-DOĞRU ÖRNEKLER:
-- "Şehirdeki tüm köpekler sadece gece 2-5 saatleri arasında havlıyor. Her gece aynı saatte başlıyor, kimse uyuyamıyor."
-- "Köpekler konuşmaya başladı ama sürekli sahiplerini eleştiriyor, insanlar evlerinde rahat edemiyor."
-
-YANLIŞ ÖRNEKLER (YAPMA):
-- "Köpekler konuşuyor" (Sorun ne?)
-- "Herkes mavi rengi unuttu" (Çok absürd, somut sorun yok)
-
-Şimdi benzer mantıkta yeni problem üret:
+Şimdi bu kurallara uyarak problem + soru formatında yaz:
 """,
 
     'hard': """
-Sen bir yaratıcı problem üreticisin. ZOR seviyede bir problem oluştur.
+Sen bir yaratıcı problem tasarımcısısın. ZOR seviyede çok katmanlı bir problem oluştur.
+
+PROBLEM TASARIM İLKELERİ:
+✓ Karmaşık, çok boyutlu durum
+✓ Birden fazla grup/sistem etkilenmeli
+✓ Çözüm için disiplinler arası işbirliği gerekli
+✓ Her çözüm yaklaşımının kendine özgü yan etkileri olmalı
+✓ Yaratıcı ve sistematik düşünce gerektirmeli
+
+ÖRNEK ÇOKLU ÇÖZÜM PROBLEMLERİ:
+- "Şehirdeki 15-25 yaş arası herkes sadece 3 saatlik dilimlerle hatırlayabiliyor, 3 saatten eski hiçbir şeyi anımsamıyor."
+- "Şehrin elektriği sadece insanlar dans ederken çalışıyor, durduklarında kesiliyor ve sürekli dans etmek zorundalar."
+
+ZORUNLU ÇIKTI FORMATI:
+1. Problemi açık şekilde belirt (2-3 cümle)
+2. "Bu karmaşık durumu nasıl çözersin?" veya benzer teşvik edici soru ile bitir
 
 ZORUNLU KURALLAR:
-- Çok absürd ve karmaşık durum OLUR ama MUTLAKA ciddi, somut sorunlara yol açmalı
-- İnsanların hayatını ciddi şekilde zorlaştırmalı
-- Çözümü başka problemlere yol açabilecek kadar karmaşık olmalı
-- 2-3 cümle uzunluğunda olabilir
-- Türkçe olmalı
-- Sadece problemi yaz, açıklama yapma
+- Problem + çözüm sorusu formatında yaz
+- Açıklama yapma, çözüm önerme
+- Maksimum 4 cümle (3 problem + 1 soru)
+- Türkçe
+- En az 7-8 farklı çözüm disiplini gerektirebilir
+- Karmaşık ama çözülebilir
 
-PROBLEM YAPISI: [Çok tuhaf/karmaşık durum] + [Bu durumun yarattığı çoklu ciddi sorunlar]
-
-DOĞRU ÖRNEKLER:
-- "Dünyadaki tüm saatler rastgele hızlarda işlemeye başladı. Kimse randevularına yetişemiyor, uçaklar kaçırılıyor, toplum düzeni bozuluyor."
-- "Tüm insanlar günde sadece 3 saat uyuyor ama 21 saat uyanık kalmak zorunda. İş saatleri, sosyal hayat, ekonomi tamamen altüst oldu."
-
-YANLIŞ ÖRNEKLER (YAPMA):
-- "Uzaylılar geldi" (Çok fantastik)
-- "Büyü var artık" (Mantıksız)
-
-Şimdi benzer mantıkta yeni problem üret:
+Şimdi bu kurallara uyarak problem + soru formatında yaz:
 """
 }
 
-# Sonraki problem üretme prompt'ı
+# Sonraki problem üretme prompt'ı - GELİŞTİRİLMİŞ ÇOK BOYUTLU
 PROBLEM_CHAIN_NEXT_PROMPT = """
-Sen bir yaratıcı problem zinciri uzmanısın. Kullanıcının çözümünden doğan YENİ bir problem yaratacaksın.
+Sen bir yaratıcı problem zinciri uzmanısın. Kullanıcının çözümünden mantıklı bir şekilde doğan YENİ çok boyutlu problem yaratacaksın.
 
 Önceki Durum:
 Problem: "{previous_problem}"
 Kullanıcının Çözümü: "{user_solution}"
 
-Görevin:
-Bu çözümün yan etkisi, beklenmedik sonucu veya yol açtığı yeni sorunu yaz.
+YARATILACAK YENİ PROBLEMİN ÖZELLİKLERİ:
+✓ Önceki çözümün mantıklı bir sonucu/yan etkisi olmalı
+✓ YENİ problem de birden fazla şekilde çözülebilir olmalı
+✓ Sadece "olumsuz" değil, "beklenmedik" sonuç da olabilir
+✓ İnsanlar yine yaratıcı düşünmek zorunda kalmalı
+
+ÖRNEK ZINCIR MANTIK:
+Problem: "50 kedi hamile, 300 yavru geliyor"
+Çözüm: "Büyük kedi barınağı kuralım"
+Yeni Problem: "Barınak kuruldu ama şimdi tüm şehirden sahipsiz kediler buraya geliyor, kapasite 10 kat aştı ve barınak kedi metropolü haline geldi."
 
 ZORUNLU KURALLAR:
-- Önceki çözümle MANTIKLI bağlantısı olmalı
-- Yeni çözüm gerektiren SOMUT bir sorun yaratmalı
-- "Ama şimdi..." veya "Ancak..." diye başlayabilirsin
-- 1-2 cümle uzunluğunda
-- Türkçe olmalı
-- Sadece yeni problemi yaz, başka hiçbir şey ekleme
+- SADECE YENİ PROBLEMİ YAZ, BAŞKA HİÇBİR ŞEY YAZMA
+- Açıklama yapma, yorum ekleme
+- 1-2 cümle maksimum
+- Türkçe
+- "Ancak şimdi..." / "Ama bu sefer..." ile başlayabilir
+- Yeni problem de çok çözümlü olmalı
 
-MANTIK ÖRNEĞİ:
-Problem: "Köpekler havlıyor, kimse uyuyamıyor"
-Çözüm: "Köpeklere uyku ilacı veririz"
-Yeni Problem: "Ama şimdi köpekler gündüz de uyuyor, hırsızlık olayları arttı çünkü köpekler evleri koruyamıyor"
-
-Şimdi verilen çözümden mantıklı yeni problem üret:
+Şimdi verilen çözümden mantıklı, çok boyutlu yeni problem üret:
 """
 
-# Final değerlendirme prompt'ı
+# Final değerlendirme prompt'ı - İYİLEŞTİRİLMİŞ SKORLAMA SİSTEMİ
 PROBLEM_CHAIN_EVALUATION_PROMPT = """
 Sen bir yaratıcı problem çözme uzmanısın. Kullanıcının 5 turda gösterdiği performansı değerlendir.
 
 Problem-Çözüm Zinciri:
 {problem_solution_history}
 
-DEĞERLENDİRME KRİTERLERİ:
-1. YARATICILIK (1-5): Çözümler ne kadar özgün ve beklenmedik?
-2. PRATİKLİK (1-5): Çözümler gerçek hayatta uygulanabilir mi?
-3. TUTARLILIK: Çözümler problemi gerçekten çözüyor mu?
+DEĞERLENDİRME KRİTERLERİ (1-10 PUAN):
+
+1. YARATICILIK (1-10): 
+   - Çözümler ne kadar özgün ve beklenmedik?
+   - Farklı perspektiflerden yaklaşım var mı?
+   - Sıradışı bağlantılar kurulmuş mu?
+   - CÖMERT PUANLA: Çaba gösterilmişse 6+, ortalama çözümler 7-8, gerçek yaratıcılık 9-10
+
+2. PRATİKLİK (1-10):
+   - Çözümler gerçek hayatta uygulanabilir mi?
+   - Mantıklı ve makul yaklaşımlar mı?
+   - Kaynak ve zaman açısından realistic mi?
+   - CÖMERT PUANLA: Uygulanabilirse 6+, iyi planlanmışsa 7-8, mükemmel detay 9-10
+
+PUANLAMA İLKELERİ:
+✓ Metin uzunluğuna değil, fikrin kalitesine odaklan
+✓ Çaba gösterilmişse minimum 6 puan ver
+✓ Yaratıcılık + mantık kombinasyonu bonus puan hak eder
+✓ Her türde çözüm denemesi değerlidir (teknolojik, sosyal, bireysel)
 
 ZORUNLU ÇIKTI FORMATI (kesinlikle bu format, başka hiçbir şey yazma):
 {{
-    "creativity_score": 4,
-    "practicality_score": 3,
-    "feedback": "5 turda güzel yaratıcılık gösterdin! 3. turda önerdiğin çözüm çok özgündü. Pratiklik açısından biraz daha gerçekçi yaklaşımlar deneyebilirsin. Genel olarak problemlerin mantığını iyi kavradın."
+    "creativity_score": 8,
+    "practicality_score": 7,
+    "feedback": "Harika yaratıcılık! 3. turda önerdiğin çözüm hem pratik hem özgündü. Genel olarak problemleri farklı açılardan değerlendirme becerin mükemmel gelişiyor."
 }}
 
 Şimdi bu formatta değerlendir:
 """
 
-# Fallback problemler (Gemini başarısız olursa)
+# Geliştirilmiş Fallback problemler (Gemini başarısız olursa) - ÇOK BOYUTLU ÇÖZÜMLER
 FALLBACK_PROBLEMS = {
     'easy': [
-        "Apartman asansörü sürekli yanlış kata çıkıyor ve bina yöneticisi durumu çözemedi. Sakinler geç kalıyor ve yoruluyor.",
-        "Komşunun papağanı her sabah 5'te haber spikeri taklidi yaparak tüm mahalleyi uyandırıyor.",
-        "Otobüs durağında her gün aynı saatte gizemli bir adam dans ediyor ve insanlar durağı kullanmaya çekiniyor.",
-        "Ofisteki kahve makinesi bozuldu ve sadece çay yapıyor, çalışanlar kafein eksikliğinden verimli çalışamıyor.",
-        "Parkta beslenmeye gelen kediler sadece lüks mamayı yiyor, besleyen yaşlıların bütçesi tükendi."
+        "Mahallenizdeki 20 yaşlı aynı anda bahçıvanlık hobisi edindiği için tüm marketlerdeki tohum ve gübre tükendi, gençler evlerini süsleyemiyor. Bu durumu nasıl çözersin?",
+        "Apartmanın çatısında 50 güvercin yuva kurdu ve sürekli çatırdayan sesler çıkarıyor, kimse üst katlarda rahat edemiyor. Bu problemi nasıl halledebilirsin?",
+        "Okul servisindeki 15 çocuk aynı anda farklı okullara gitmeye karar verdi ama hâlâ aynı servisi kullanmak istiyor. Bu duruma nasıl bir çözüm bulursun?",
+        "Kahvehanedeki 30 yaşlı amca satranç oynamayı bırakıp hep birlikte TikTok çekmeye başladı, gençler kahvehaneye giremez oldu. Bu sorunu nasıl çözersin?",
+        "Apartmandaki tüm komşular aynı hafta ev boyamaya karar verdi ama sadece bir tane boyacı var şehirde. Bu problemi nasıl halledebilirsin?"
     ],
     'medium': [
-        "Şehirdeki tüm semaforer aynı anda sürekli kırmızı yanıp sönmeye başladı ve trafik tamamen durdu.",
-        "İnsanlar birden sadece geriye doğru yürüyebilir hale geldi, ileri yürüyemiyorlar ve işe gidemiyorlar.",
-        "Telefon konuşmaları sadece şarkı söyleyerek yapılabiliyor, acil durumlar ve iş görüşmeleri imkansız hale geldi.",
-        "Tüm kediler köpek gibi havlamaya, köpekler miyavlamaya başladı ve sahipleri evcil hayvanlarını tanıyamıyor.",
-        "Şehirdeki tüm saatler farklı hızlarda çalışıyor, kimse randevularına yetişemiyor ve kaos var."
+        "Şehirdeki tüm köpekler sadece klasik müzik dinlerken sakin kalıyor, diğer zamanlarda sürekli stresli ve hiperaktifler. Bu tuhaf durumu nasıl çözersin?",
+        "Otobüsler sadece tam 27 kişi bindiğinde hareket ediyor, az ya da çok olunca durmuyor ve ulaşım sistemi çöktü. Bu problemi nasıl halledebilirsin?",
+        "İnsanlar telefonda konuşurken sadece soru sorabiliyorlar, cevap veremiyorlar ve iletişim tek yönlü hale geldi. Bu garip duruma nasıl çözüm bulursun?",
+        "Şehrin ortasındaki meydan her gün 2 metre büyüyor ve artık çevredeki dükkanları kaplayacak boyuta ulaştı. Bu problemi nasıl çözersin?",
+        "Trafikte sadece yeşil arabalar kırmızı ışıkta geçebiliyor, diğer renkler sürekli beklemek zorunda ve trafik felç oldu. Bu durumu nasıl düzeltebilirsin?"
     ],
     'hard': [
-        "Dünyada sadece Salı günü var oldu, diğer günler kayboldu ve zaman döngüsü bozuldu. İnsanlar aynı günü tekrar yaşamaya mahkum.",
-        "İnsanlar uyurken düşüncelerini yüksek sesle konuşur hale geldi. Gizlilik kalmadı, evlilikler ve arkadaşlıklar çöküyor.",
-        "Yerçekimi rastgele 2 saatte bir yön değiştiriyor. İnsanlar tavana çarpıyor, yemek yiyemiyor, hayat durdu.",
-        "Düşünceler görünür hale geldi, herkesin kafasında düşündükleri hologram olarak beliriyor ve toplum çöktü.",
-        "Zaman geriye doğru akmaya başladı ama sadece Perşembe günleri. İnsanlar yaşlanıp gençleşiyor, akılları karışıyor."
+        "Şehirdeki 18-30 yaş arası herkesin vücut saati 26 saatlik döngüye geçti, geri kalan nüfus 24 saatte yaşıyor ve toplumsal senkronizasyon kayboldu. Bu karmaşık durumu nasıl çözersin?",
+        "İnsanlar sadece grup halinde (en az 5 kişi) karar verebiliyor, bireysel karar alma yetisi kayboldu ve her küçük şey için komite kurulması gerekiyor. Bu sistematik problemi nasıl halledebilirsin?",
+        "Şehrin yarısında yerçekimi %20 azaldı, yarısında normal kaldı ve iki bölge arasında geçiş yapan insanlar sürekli adaptasyon sorunu yaşıyor. Bu fiziksel durumu nasıl çözersin?",
+        "Her bina sakinlerinin duygusal durumuna göre renk değiştiriyor, mahremiyyet kayboldu ve şehir sürekli değişen bir duygusal harita haline geldi. Bu karmaşık problemi nasıl halledebilirsin?",
+        "Zamanın akışı her mahallede farklı hızda, merkez hızlı, kenar mahalleler yavaş işliyor ve şehir içi koordinasyon imkansız hale geldi. Bu temporal sorunu nasıl çözersin?"
     ]
 }
 
