@@ -56,9 +56,9 @@
             </svg>
           </button>
           <div id="profile-menu" class="absolute right-0 mt-2 w-48 bg-second rounded-lg shadow-lg opacity-0 invisible transition">
-            <a href="{% url 'users:profile' %}" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Profilim</a>
+            <a href="{% url 'users:profile' %}" class="block px-4 py-2 text-gray-300 hover:bg-main/30 hover:rounded-t-lg">Profilim</a>
             <div class="border-t border-gray-700"></div>
-            <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-red-400 hover:bg-gray-700">Çıkış Yap</a>
+            <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-red-400 hover:bg-main/30 hover:rounded-b-lg">Çıkış Yap</a>
           </div>
         </div>
       {% else %}

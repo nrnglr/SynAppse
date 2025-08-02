@@ -19,7 +19,7 @@ class GeminiService:
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel(model_name="gemini-2.5-flash-lite")
 
-    def generate_content(self, prompt: str, temperature: float = 0.9, max_retries: int = 3) -> str:
+    def generate_content(self, prompt: str, temperature: float = 0.9, max_retries: int = 2) -> str:
         """
         Generate content using Gemini API with retry mechanism
         """
@@ -29,7 +29,7 @@ class GeminiService:
                     prompt,
                     generation_config=genai.types.GenerationConfig(
                         temperature=temperature,
-                        max_output_tokens=1000
+                        max_output_tokens=200  # Reduced for faster response
                     )
                 )
                 
@@ -48,6 +48,25 @@ class GeminiService:
         Generate problem chain content with specific settings
         """
         return self.generate_content(prompt, temperature=1.0, max_retries=3)
+    
+    def generate_daily_brain_tip(self) -> str:
+        """
+        Generate daily brain health tip focused on protecting against AI overuse
+        """
+        prompt = """
+Kısa bir beyin sağlığı tavsiyesi ver. Sadece tavsiyenin kendisi olsun, açıklama yapma.
+
+Örnek:
+"Bugün bir problem çözerken ilk 10 dakika hiç araştırma yapmadan sadece kendi aklınla düşün."
+
+Kurallar:
+- Başlık kullanma 
+- 1 cümle maksimum
+- Yapay zeka bağımlılığından korunmaya odaklan
+- Türkçe ve samimi dil
+"""
+        
+        return self.generate_content(prompt, temperature=0.7, max_retries=2)
     
     def parse_evaluation_response(self, response_text: str) -> dict:
         """

@@ -34,7 +34,7 @@
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2">
                     <div class="w-2 h-2 bg-main rounded-full animate-pulse"></div>
-                    <span class="text-main font-semibold">Community Intelligence</span>
+                    <span class="text-main font-semibold">Topluluk Zekası</span>
                 </div>
                 <div class="text-xs text-gray-400" id="lastUpdated">Yükleniyor...</div>
             </div>
@@ -45,11 +45,11 @@
                     <div class="text-xs text-gray-400">Bugün Oturum</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold text-yellow-400" id="avgRating">-</div>
+                    <div class="text-2xl font-bold text-main" id="avgRating">-</div>
                     <div class="text-xs text-gray-400">Ortalama Puan</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-400" id="trendingDifficulty">-</div>
+                    <div class="text-2xl font-bold text-main" id="trendingDifficulty">-</div>
                     <div class="text-xs text-gray-400">Trend Zorluk</div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     <h3 class="text-xl font-semibold text-main">AI</h3>
                     <div id="problemQuality" class="hidden">
                         <span class="bg-green-600/20 text-green-400 px-2 py-1 rounded-full text-xs border border-green-600/30">
-                            ✨ Community Favorite
+                             Community Favorite
                         </span>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     <h3 class="text-xl font-semibold text-main">Kullanıcı</h3>
                     <div id="learningStyle" class="hidden">
                         <span class="bg-blue-600/20 text-blue-400 px-2 py-1 rounded-full text-xs border border-blue-600/30">
-                            🧠 <span id="styleText">Analiz ediliyor...</span>
+                             <span id="styleText">Analiz ediliyor...</span>
                         </span>
                     </div>
                 </div>
@@ -645,7 +645,7 @@ class ProblemChainTest {
             this.avgRating.textContent = (liveStats.average_session_score || 0).toFixed(1);
         }
         if (this.trendingDifficulty) {
-            this.trendingDifficulty.textContent = data.learning_insights?.has_data ? 'Medium' : 'Easy';
+            this.trendingDifficulty.textContent = data.learning_insights?.has_data ? 'Orta' : 'Kolay';
         }
         if (this.communityMessage) {
             this.communityMessage.textContent = data.message || 'Community learning active!';
