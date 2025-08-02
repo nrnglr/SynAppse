@@ -22,23 +22,22 @@ Brain Team 6
 
 # Uygulama Açıklaması
 
-SynAppse, kullanıcıların beyin lobları üzerinde bilinçli seçimler yaparak zihinsel egzersizler gerçekleştirdiği, yapay zekâ destekli etkileşimli bir web uygulamasıdır. Uygulama, her bir beyin lobuna özel olarak tasarlanmış bilişsel görevlerle kullanıcıya odaklı bir deneyim sunar.
+**SynAppse**, yapay zeka destekli, etkileşimli bir web uygulamasıdır. Kullanıcıların "yapay zekalaşan" dünyanın sebep olduğu bilişsel yükü hafifletmeleri ve bilinçsiz büyük dil modeli (LLM) etkileşimlerinin zihinsel beceriler üzerindeki olumsuz etkilerine karşı zihinlerini formda tutabilmeleri için geliştirilmiştir. Modern yapay zekâ araçlarının bilinçsiz kullanımının sebep olabileceği eleştirel düşünme, hafıza, yaratıcılık ve bağımsız karar verme gibi alanlardaki olası zayıflamalara karşı, günlük egzersizler ve kişiselleştirilmiş geri bildirimler sunar.
 
-Her lob (frontal, parietal, temporal, oksipital) belirli bir bilişsel yetiyle ilişkilendirilir:
+**Synappse**'ın ortaya çıkma motivasyonu MIT tarafından hazırlanan ve 10 Temmuz 2025 tarihinde yayınlanan [**Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task**](https://arxiv.org/pdf/2506.08872) başlıklı bilimsel araştırmadır.
 
-- Frontal lob için eleştirel düşünme ve karar verme,
+**Synappse**'deki her egzersiz bu bilimsel araştırmada bilinçsiz büyük dil modeli kullanımı sonucunda ortaya çıkan **eleştirel düşünme**, **hafıza**, **yaratıcılık** becerilerindeki gerilemeyi hedef alır. **Kullanıcıdan beklenti**, günlük üç egzersize de toplam 15 dakika gibi kısa bir süre ayırması ve zihnini diri tutmasıdır. Çünkü biz Yapay Zeka'nın insanlar gibi düşünmesinden çok, insanların yapay zeka gibi düşünmesinden endişeleniyoruz.
 
-- Parietal lob için dikkat ve problem çözme,
+## Synappse Egzersizleri
 
-- Temporal lob için hafıza ve dil,
+### Problem Zinciri
+Kullanıcıya Yapay Zeka tarafından hazırlanmış açık uçlu, absürt bir problem verilir ve kullanıcıdan bu probleme bir çözüm üretmesi istenir. Yapay Zeka kullanıcının ürettiği sonucu aldıktan sonra bu çözümün yol açtığı başka bir problemi kullanıcıya iletir ve kullanıcıdan oluşan bu yeni probleme de çözüm bulması istenir. Bu döngü 5 tur devam eder ve en sonda kullanıcıya Yapay Zeka tarafından bir skorlama yapılır. Kullanıcı ayrıca "Topluluk Zekası" kısmından o gün Problem Zinciri yapanların ortalama skorunu görebilir. Kullanıcı verilen problemi egzersiz sonunda değerlendirir ve Yapay Zeka gelecek egzersizlerde kullanıcıların değerlendirme skorunu da göze alarak gelecek problemlerini iyileştirir. Ayrıca Yapay Zeka değerlendirmelerde yüksek skor almış kullanıcı cevaplarını da işleyerek kendi problem üretme mekanizmasını geliştirir.
 
-- Oksipital lob için görsel analiz görevleri sunulur.
+### Kelime Zinciri
+Kullanıcıya Yapay Zeka tarafından belirlenmiş ikisi birbirinden alakasız bir **hedef kelime** ve üç **başlangıç kelimesi** verilir. Kullanıcı üç başlangıç kelimesinden istediğini seçer ve yaratıcılığını kullanarak hedef kelimeye en fazla 6 adımda başlangıç kelimesinden itibaren çağrışım yapacak kelimelerle ulaşmasıdır. Kullanıcıya egzersiz sonunda Yapay Zeka tarafından skorlama ve değerlendirme verilir. Alternatif cevaplar gösterilir.
 
-Yapay zekâ, her gün kullanıcıya özel görevler ve senaryolar üretir; içerikler sabit promptlara değil, sürekli öğrenen bir sisteme dayanır. Böylece kullanıcı, kendi bilişsel kapasitesini keşfederken aynı zamanda onu bilinçli biçimde geliştirme fırsatı bulur.
-
-SynAppse, zihinsel performansı artırmayı hedefleyen bilim temelli, kişiselleştirilmiş bir egzersiz platformudur.
-Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsızlığını koruyan ve güçlendiren bir numaralı dijital zihin sağlığı platformu olmak.
-
+### Hafıza ve Sentez
+Yapay Zeka kullanıcıya üç farklı konu gösterir ve birini seçmesini bekler. Seçilen konuda bilgilendirici kısa bir metin üretilir ve bu kullanıcıya verilir. Kullanıcıdan bu metni 60 saniye içinde okuması beklenir ve sonrasında kullanıcı bu metinden ne öğrendiğini, ne anladığını kısaca yazar. Kullanıcıdan metni iyice beynine işleyebilmesi için metinden 3 anahtar kelime istenir ve bir de metin ile ilgili soru sorması beklenir (kullanıcının sorusu metin ile alakalı her hangi bir soru olabilir ve tekrar yapay zeka tarafından cevaplanır). Egzersiz sonunda kullanıcıya skorlama ve değerlendirme verilir.
 
 # Vizyon ve Misyon
 
@@ -46,56 +45,66 @@ Vizyon: Yapay zeka çağında, insan bilişselliğini ve entelektüel bağımsı
   <summary><strong>Detayları Görüntüle</strong></summary>
 
 ### Vizyon  
-Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin gelişim platformu olmak.
+Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bunu günlük bir alışkanlık haline getiren, bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin sağlığı platformu olmak.
 
 
 ### Misyon
-Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve yüksek etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
+Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
 
 </details>
 
 
-##  Hedef Kitle
+##  Hedef Personalar
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-###  Öğrenciler  
-- **Amacı:** Dikkat, hafıza, analitik düşünme ve karar verme becerilerini güçlendirmek.  
-- **İhtiyacı:** Odaklanmayı artıracak, kısa sürede uygulanabilir ve akademik başarıyı destekleyecek bilişsel egzersizler.  
-- **Neden SynAppse?**  
-  Yapay zekâ destekli günlük egzersizlerle kişiye özel zihinsel gelişim sağlar. Eğitim yoğunluğuna rağmen sürdürülebilir kullanım sunar.
+
+###  Dijital Çağın Çocukları (Örn: İlkokul/Ortaokul Çağı)
+
+**Meslek/Durum**: İlkokul veya ortaokul öğrencileri.
+
+**Motivasyon**: Öğrenmeyi eğlenceli hale getirmek, okul derslerinde daha başarılı olmak ve dijital araçları bilinçli kullanma alışkanlığı edinmek. Ebeveynleri, çocuklarının teknoloji bağımlılığının zihinsel becerilerini olumsuz etkilemesinden endişe duyuyor olabilir.
+
+**Acı Noktaları**: Kolay bilgiye ulaşımın getirdiği ezbercilik, okuduğunu anlama ve yorumlamada zorlanma, dikkat dağınıklığı, yaratıcı oyun ve düşünme süreçlerinde azalma. Okul ödevlerinde veya günlük hayatta kendi başlarına çözüm üretmek yerine hemen internete veya yapay zekaya yönelme eğilimi.
+
+**Synappse'den Beklentisi**: Eğlenceli ve oyunlaştırılmış mini egzersizler aracılığıyla problem çözme, hafıza ve yaratıcılık becerilerini geliştirmek. Günlük rutinlerine kolayca entegre edilebilecek, kısa ve dikkat çekici aktivitelerle zihinsel çevikliklerini artırmak. Ebeveynler için ise çocuklarının zihinsel gelişimini destekleyen, güvenli ve eğitici bir alternatif sunması. Kolay modun varlığı sayesinde, çocukların sıkılmadan ve zorlanmadan katılabilecekleri bir deneyim.
+
+### Yaratıcı Profesyonel (Örn: Dijital Pazarlamacı, Yazılımcı vb.)
+
+**Meslek**: İçerik üreticisi, pazarlama uzmanı, yazılımcı, tasarımcı, araştırmacı.
+
+**Motivasyon**: İşlerinde özgün ve taze fikirler üretme yeteneğini korumak. YZ'nin sunduğu hazır çözümlerin kendi yaratıcı kıvılcımlarını sönümlemesinden endişe duyuyorlar. Günlük yoğun tempoda zihinlerini aktif tutacak pratik yollar arıyorlar.
+
+**Acı Noktaları**: Yaratıcılık tıkanıklığı, rutin işlerde zihinsel yorgunluk, yeni fikirler üretmekte hissedilen pasiflik. YZ'ye olan bağımlılığın uzun vadede kendi özgün düşünce süreçlerini köreltebileceği endişesi.
+
+**Synappse'den Beklentisi**: Güne başlarken veya gün içinde kısa molalarda zihinlerini canlandıracak, yaratıcı düşünme modunu tetikleyecek mini egzersizler. Küçük zorluklarla beyinlerini zinde tutarak, yaratıcı esnekliklerini sürdürme ve ani fikirler üretme kapasitelerini destekleme.
 
 
-###  Eğitimciler  
-- **Amacı:** Öğrencilerin bilişsel kapasitesini artırmak ve sınıf içinde aktif düşünme alışkanlığı kazandırmak.  
-- **İhtiyacı:** Eleştirel düşünme ve problem çözme becerilerini teşvik eden dijital araçlar.  
-- **Neden SynAppse?**  
-  Pedagojik uyumlu içeriklerle eğitsel entegrasyona uygundur. Öğrenci ilerlemesini izlemeye olanak tanıyacak geri bildirim sistemleri planlanmaktadır.
+###  Odaklanma Arayan Öğrenci (Örn: Üniversite Öğrencisi, Uzaktan Eğitim Alan)  
+
+**Meslek**: Üniversite öğrencisi, uzaktan eğitim öğrencisi, sınavlara hazırlanan.
+
+**Motivasyon**: Bilgiyi daha iyi akılda tutmak, okuduklarını ve öğrendiklerini derinlemesine anlamak. YZ'nin özet çıkarma gibi kolaylıklarının, aslında bilgiyi işleme ve hatırlama süreçlerini yüzeyselleştirdiğini fark etmiş olabilirler. Odaklanma sorunları ve bilgiye yüzeysel yaklaşım konusunda endişeliler.
+
+**Acı Noktaları**: Uzun süreli odaklanma zorluğu, okuduklarını kısa sürede unutma, bilgiyi kendi cümleleriyle yorumlamakta veya sentezlemekte zorlanma. Sınavlar ve projelerde YZ'ye aşırı güvenme sonucu kendi öğrenme kaslarının zayıfladığını hissetme.
+
+**Synappse'den Beklentisi**: Hafızayı güçlendirmeye yönelik kısa, etkileşimli alıştırmalar. Bilgiyi daha iyi içselleştirmelerine yardımcı olacak, eleştirel okuma ve analiz becerilerini nazikçe geliştirecek günlük görevler. Öğrenme süreçlerindeki küçük aksaklıkları gidermek için pratik bir destek.
 
 
-###  Psikologlar ve Psikiyatristler  
-- **Amacı:** Mental rehabilitasyonu desteklemek, bilişsel performansı gözlemlemek.  
-- **İhtiyacı:** Bilimsel tabanlı, güvenilir, düzenli ve veriye dayalı zihinsel egzersizler.  
-- **Neden SynAppse?**  
-  Klinik uygulamaya uygun, veri takibi yapılabilen ve literatürle uyumlu bir zihinsel gelişim aracıdır.
 
 
-###  Oyunlaştırılmış Öğrenme Ortamı Arayanlar  
-- **Amacı:** Eğlenerek öğrenmek ve zihinsel becerilerini motive edici biçimde geliştirmek.  
-- **İhtiyacı:** Sıkıcılıktan uzak, interaktif ve ilerlemesi takip edilebilen bir deneyim.  
-- **Neden SynAppse?**  
-  Puanlama, geri bildirim ve gelişim paneliyle zenginleştirilmiş görev tabanlı oyunlaştırma sistemi içerir.
+###  Bilinçli Teknoloji Kullanıcısı (Örn: Farkediyorum, Gelişiyorum)
 
+**Meslek**: Çeşitli (yönetici, ebeveyn, serbest çalışan)
 
-###  Bireysel Kullanıcılar (Zihinsel Egzersiz Yapmak İsteyenler)  
-- **Amacı:** Zihinsel canlılığı korumak, bilişsel yaşlanmayı yavaşlatmak, günlük formda kalmak.  
-- **İhtiyacı:** Pratik, erişilebilir ve yönlendirici beyin egzersizleri.  
-- **Neden SynAppse?**  
-  Mobil ve web erişimiyle günlük rutine kolayca entegre olur. Kişiselleştirilmiş egzersizlerle sürdürülebilir bilişsel gelişim sunar.
+**Motivasyon**: Dijital araçların ve YZ'nin getirdiği kolaylıkların kendi bağımsız düşünme ve karar verme süreçlerini nasıl etkilediğini merak eden, bu konuda bilinçli adımlar atmak isteyen kişiler. Zihinsel keskinliklerini korumak ve "dijital beynimi tembelleştiriyor mu?" sorusuna yanıt arıyorlar.
+
+**Acı Noktaları**: Günlük kararlarda dahi YZ'ye veya internete başvurma alışkanlığı, kendi başına çözüm üretme cesaretinde azalma hissi. Zihinsel "otomatik pilot" modundan çıkma ihtiyacı. Odaklanma süresinin kısalması.
+
+**Synappse'den Beklentisi**: Günlük rutinlerine kolayca entegre edebilecekleri, zihinsel çevikliklerini artıracak ve bağımsız karar verme kaslarını nazikçe çalıştıracak kısa egzersizler. YZ'nin olası olumsuz etkilerine karşı küçük bir zihinsel antrenman niteliğinde bir uygulama.
 
 </details>
-
 
 
 #  Nasıl Çalışır?
