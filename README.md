@@ -432,7 +432,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ### Sprint Review Görselleri
 
 <p align="center">
-  <img src="project_management/sprint3_documents/Sprint3_Board.jpg" width="644" height="650"/>  
+  <img src="project_management/sprint3_documents/sprint3_board.jpg" width="644" height="650"/>  
   <br><strong>Sprint Board 1 </strong>
 </p>
 
@@ -472,22 +472,22 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 **Sprint 3 Günlük İş Takibi**
 
-| Gün | Tarih       | Yapılan İşler                                                   | Tamamlanan Görev(ler)                                               | Puan |
+| Gün | Tarih       | Yapılan İşler                                                    | Tamamlanan Görev(ler)                                                | Puan |
 |-----|-------------|------------------------------------------------------------------|----------------------------------------------------------------------|------|
-| 1   | 21.07.2025  | Sosyal medya hesapları açıldı, geri bildirim formu hazırlandı   | Görev 1-2 | 20   |
-| 2   | 22.07.2025  | Egzersiz sistemi güncellemesi başlatıldı                        | Görev 3 (başlangıç) | 10  |
-| 3   | 23.07.2025  | Egzersiz sistemi UI tasarımı ve frontend tasarımı başlatıldı    | Görev 5-6 (başlangıç) | 30   |
-| 4   | 24.07.2025  | Egzersiz sistemleri tamamlandı                                  | Görev 4 | 50   |
-| 5   | 25.07.2025  | Egzersiz UI tasarımı tamamlandı, frontend tasarımı ilerletildi  | Görev 5-6 (devam) | 20   |
-| 6   | 26.07.2025  | Backend ve frontend bağlantısı başlatıldı, commit yapıldı       | Görev 7-8 | 30   |
-| 7   | 27.07.2025  | Profil sayfası UI tasarımına başlandı                           | Görev 9 (başlangıç) | 10   |
-| 8   | 28.08.2025  | Profil sayfası frontend kodlaması başlatıldı, commit yapıldı    | Görev 10 | 15   |
-| 9   | 29.08.2025  | Profil sayfası ek özellikleri (rozet sistemi) tasarlandı        | Görev 11 (başlangıç) | 10   |
-| 10  | 30.08.2025  | Auth sistemi kuruldu, rozet sistemi tamamlandı                  | Görev 11-12 | 30   |
-| 11  | 31.08.2025  | Fine tuning sorunları üzerinde çalışıldı                        | Görev 13 (başlangıç) | 5   |
-| 12  | 01.08.2025  | Fine tuning sorunları tamamlandı, son testler yapıldı           | Görev 13 bitiş | 15   |
-| 13  | 02.08.2025  | Sprint dokümantasyonu hazırlandı                                | Sprint 3 kapanış | 10   |
-| 14  | 03.08.2025  | Final kontrol ve rapor sunumu yapıldı                           | Kalan işler kapandı | 10    |
+| 1   | 21.07.2025  | Sosyal medya hesapları açıldı, geri bildirim formu hazırlandı    | Görev 1-2                   | 10   |
+| 2   | 22.07.2025  | Egzersiz sistemi güncellemesi başlatıldı                         | Görev 3 (başlangıç)         | 10   |
+| 3   | 23.07.2025  | Egzersiz sistemi UI tasarımı ve frontend tasarımı başlatıldı     | Görev 5-6 (başlangıç)       | 30   |
+| 4   | 24.07.2025  | Egzersiz sistemleri tamamlandı                                   | Görev 4                     | 50   |
+| 5   | 25.07.2025  | Egzersiz UI tasarımı tamamlandı, frontend tasarımı ilerletildi   | Görev 5-6 (devam)           | 50   |
+| 6   | 26.07.2025  | Backend ve frontend bağlantısı başlatıldı, commit yapıldı        | Görev 7-8                   | 40   |
+| 7   | 27.07.2025  | Profil sayfası UI tasarımına başlandı                            | Görev 9 (başlangıç)         | 35   |
+| 8   | 28.08.2025  | Profil sayfası frontend kodlaması başlatıldı, commit yapıldı     | Görev 10                    | 15   |
+| 9   | 29.08.2025  | Profil sayfası ek özellikleri (rozet sistemi) tasarlandı         | Görev 11 (başlangıç)        | 25   |
+| 10  | 30.08.2025  | Auth sistemi kuruldu, rozet sistemi tamamlandı                   | Görev 11-12                 | 30   |
+| 11  | 31.08.2025  | Fine tuning sorunları üzerinde çalışıldı                         | Görev 13 (başlangıç)        | 40   |
+| 12  | 01.08.2025  | Fine tuning sorunları tamamlandı, son testler yapıldı            | Görev 13 bitiş              | 30   |
+| 13  | 02.08.2025  | Sprint dokümantasyonu hazırlandı                                 | Sprint 3 kapanış            | 10   |
+| 14  | 03.08.2025  | Final kontrol ve rapor sunumu yapıldı                            | Kalan işler kapandı         | 10   |
 
 **Toplam Puan:** 385
 
@@ -498,25 +498,34 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 **Neler iyi gitti?**
 
 • Burndown grafiği neredeyse planlanan ideal eğriyle aynı ilerledi, sprint boyunca büyük gecikme yaşanmadı.
+
 • Takım iletişimi güçlüydü; görev dağılımları net yapıldı, herkes kendi sorumluluğunu zamanında yerine getirdi.  
+
 • Frontend ve backend tamamen entegre edildi; proje ana işlevleriyle kullanılabilir hale geldi.
+
 • Önceki sprintlerde öğrenilen teknolojiler (Django, AI entegrasyonu, UI tasarımı) bu sprintte çok daha verimli kullanıldı.
+
 
 **Neler Geliştirilmeli?**
 
 • Fine tuning süreci beklenenden uzun sürdü; AI yanıtlarını optimize etmek için daha erken başlanmalıydı.
+
 • Tasarım ve frontend aynı anda ilerlerken merge çatışmaları yaşandı; sonraki projelerde bu süreçler sıraya konmalı.
+
 • Profil sayfası ek özellikleri (rozet, AI feedback) planın sonuna bırakıldığı için aceleyle tamamlandı, daha iyi önceliklendirilebilirdi.
 
 **Sonuç / Genel Değerlendirme**
 
 • Sprint hedefleri başarıyla tamamlandı ve proje bitiş kriterleri karşılandı.
+
 • Ana modüller (egzersiz sistemi, kullanıcı yönetimi, profil özellikleri, AI entegrasyonu) çalışır durumda.
+
 • Projenin teslimi için son kontroller ve dokümantasyon tamamlandı.
 
 **Öneriler (Gelecek Kullanım ve Bakım için)**
 
 • AI modelinin çıktıları düzenli aralıklarla test edilmeli, prompt ayarlamaları periyodik yapılmalı.
+
 • Kullanıcı geri bildirim formlarından gelen veriler analiz edilerek sonraki versiyonlar planlanmalı.
 
 </details>
