@@ -3,11 +3,9 @@
  <img src="project_management/general/headers/logo.png" width="682" height="161"/> 
 </p>
 
-
 # Takım İsmi 
 
 Brain Team 6
-
 
 # Katkıda Bulunanlar
 
@@ -18,7 +16,6 @@ Brain Team 6
 | <img src="project_management/general/devpics/eyup.png" width="80" height="80"/> | Eyüp KURT | Developer | https://github.com/Eeyupkurtt | https://www.linkedin.com/in/eyupkurt/ |
 | <img src="project_management/general/devpics/ozge.png" width="80" height="80"/> | Özge YILMAZ | Developer | https://github.com/ozgeylmash | https://www.linkedin.com/in/ozge-yillmaz/ |
 | <img src="project_management/general/devpics/zeynep.png" width="80" height="80"/> | Zeynep İkbal KOÇAN | Developer | https://github.com/ZiynepP | https://www.linkedin.com/in/zeynep-ikbal-ko%C3%A7an-849b4a199/ |
-
 
 # Uygulama Açıklaması
 
@@ -47,18 +44,15 @@ Yapay Zeka kullanıcıya üç farklı konu gösterir ve birini seçmesini bekler
 ### Vizyon  
 Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp aktif bir üreticiye dönüştüren; bunu günlük bir alışkanlık haline getiren, bilişsel yetileri koruyan, geliştiren ve bireyin entelektüel bağımsızlığını sürdürülebilir kılan birinci öncelikli dijital zihin sağlığı platformu olmak.
 
-
 ### Misyon
 Üretken yapay zekanın günlük yaşamdaki yaygın kullanımıyla ortaya çıkan “bilişsel borçlanma” riskine karşı, bilimsel temellere dayanan, hedef odaklı ve etkileşimli zihinsel egzersizlerle mücadele etmek. Kullanıcının eleştirel düşünme, hafıza, yaratıcılık ve karar verme gibi temel bilişsel yetilerini her gün küçük adımlarla, ama kalıcı biçimde güçlendirmek.
 
 </details>
 
-
 ##  Hedef Personalar
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
-
 
 ###  Dijital Çağın Çocukları (Örn: İlkokul/Ortaokul Çağı)
 
@@ -80,7 +74,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 
 **Synappse'den Beklentisi**: Güne başlarken veya gün içinde kısa molalarda zihinlerini canlandıracak, yaratıcı düşünme modunu tetikleyecek mini egzersizler. Küçük zorluklarla beyinlerini zinde tutarak, yaratıcı esnekliklerini sürdürme ve ani fikirler üretme kapasitelerini destekleme.
 
-
 ###  Odaklanma Arayan Öğrenci (Örn: Üniversite Öğrencisi, Uzaktan Eğitim Alan)  
 
 **Meslek**: Üniversite öğrencisi, uzaktan eğitim öğrencisi, sınavlara hazırlanan.
@@ -90,7 +83,6 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 **Acı Noktaları**: Uzun süreli odaklanma zorluğu, okuduklarını kısa sürede unutma, bilgiyi kendi cümleleriyle yorumlamakta veya sentezlemekte zorlanma. Sınavlar ve projelerde YZ'ye aşırı güvenme sonucu kendi öğrenme kaslarının zayıfladığını hissetme.
 
 **Synappse'den Beklentisi**: Hafızayı güçlendirmeye yönelik kısa, etkileşimli alıştırmalar. Bilgiyi daha iyi içselleştirmelerine yardımcı olacak, eleştirel okuma ve analiz becerilerini nazikçe geliştirecek günlük görevler. Öğrenme süreçlerindeki küçük aksaklıkları gidermek için pratik bir destek.
-
 
 
 
@@ -106,70 +98,55 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 
 </details>
 
-
 #  Nasıl Çalışır?
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
 
-1. **Etkileşimli Arayüz**  
-   Kullanıcı uygulamaya girdiğinde, zihinsel yetileri temsil eden loblara ayrılmış **interaktif bir beyin haritası** ile karşılaşır. Her lob belirli bir bilişsel alanı temsil eder. Kullanıcı bu harita üzerinden kendi zihinsel yolculuğunu özgürce başlatır.
+1. **Giriş / Kayıt**  
+   Kullanıcı e-posta veya sosyal giriş ile kayıt olur ya da giriş yapar.
 
-2. **Lob Seçimi**  
-   Kullanıcı aşağıdaki seçeneklerden bir lob belirleyerek o güne özel egzersizlere başlar:  
-   - **Frontal Lob:** Eleştirel düşünme ve karar verme  
-   - **Parietal Lob:** Dikkat ve problem çözme  
-   - **Temporal Lob:** Hafıza ve dil  
-   - **Oksipital Lob:** Görsel analiz görevleri  
+2. **Egzersiz Seçimi**  
+   Kullanıcı aşağıdaki egzersizlerden birni seçer ve beynini geliştirmee başlar:  
 
-3. **Yapay Zekâ Destekli Egzersiz**  
-   Seçilen lob doğrultusunda, üretken yapay zekâ tarafından **dinamik olarak üretilmiş görevler** sunulur. Bu görevler aşağıdaki bilişsel alanları hedefler:  
-   - Hafıza  
-   - Mantık  
-   - Dikkat  
-   - Görsel/işitsel işlemleme  
-   - Eleştirel düşünme  
-   Yapay zekâ burada cevap üreten değil, **bilişsel görev tasarlayan** bir araç olarak görev yapar.
+   - **Problem Zinciri:**  
+    - Yapay Zeka absürt ve açık uçlu bir problem sunar.
+    - Kullanıcı çözüm üretir → yeni bir problem doğar → tekrar çözüm üretir. (Toplam 5 tur)
+    - Yapay Zeka, üretkenlik, tutarlılık ve özgünlük gibi ölçütlere göre skor verir.
+    - Kullanıcı egzersizi değerlendirir (1-5 yıldız + yorum opsiyonu).
+    -  “Topluluk Zekası” ekranında kendi skorunu ortalamayla karşılaştırır.
 
-4. **Zaman Takibi ve Odak Ölçümü**  
-   Her görevde aşağıdaki veriler izlenir:  
-   - Tepki süresi  
-   - Dikkat süresi  
-   - Yanıt kalitesi  
-   Bu veriler kullanılarak kullanıcının anlık bilişsel performansı analiz edilir ve gelişimi takip edilir.
+   - **Kelime Zinciri:**  
+    -  Kullanıcıya 3 başlangıç kelimesi + 1 hedef kelime verilir.
+    -  Başlangıç kelimesini seçer → 6 adıma kadar çağrışım zinciri kurar.
+    -  Her adımda önceki kelimeye çağrışımsal olarak bağlı yeni kelime girilir.
+    -  Egzersiz sonunda Yapay Zeka:
+        1. Zincirin mantıksal akışını analiz eder.
+        2. Yaratıcılık ve çağrışım puanı verir.
+        3. Alternatif çözümler ve örnek zincirler gösterir.
+        
+   - **Hafıza ve Sentez:**  
+    -  Kullanıcıya 3 konu başlığı sunulur (örneğin: “Yapay Zeka Tarihi”, “Bilinç ve Beyin”, “Eleştirel Düşünme Teorileri”).
+    -  Seçilen konuda 1 dakikalık okunabilir bir metin verilir.
+    -  60 saniye sayaç başlar.
+    -  Süre dolunca:
+      1. “Ne anladın?” kutucuğu çıkar → kısa özet yazılır.
+      2. 3 anahtar kelime seçmesi istenir.
+      3. Metne dair bir soru üretmesi istenir.
+    -  Yapay Zeka:
+      1. Cevapları analiz eder, skorlama yapar.
+      2. Sorulan soruya yanıt verir.
 
-5. **Nöro-Bilgilendirme**  
-   Görev başlamadan önce, seçilen lobun işlevi hakkında kısa bir bilimsel açıklama sunulur.  
-   > Örneğin: “Frontal lob, planlama ve karar verme süreçlerini yönetir. Bugünkü egzersiziniz bu becerileri hedef alacak.”  
-   Bu yaklaşım, kullanıcıyı yalnızca egzersize değil, **beyniyle olan ilişkisine** de bilinçli şekilde dahil eder.
-
-6. **Geribildirim ve Değerlendirme**  
-   Görev sonunda yapay zekâ şu analizleri sağlar:  
-   - Performans puanı  
-   - Güçlü ve gelişime açık alanlar  
-   - Kişiselleştirilmiş egzersiz önerileri  
-   Kullanıcı, hangi alanda ne kadar geliştiğini doğrudan görebilir.
-
-7. **Gelişim Takibi Paneli**  
-   Kullanıcıya özel panelde, **lob bazlı bilişsel performans** zaman içinde grafiklerle görselleştirilir.  
-   > Örneğin: “Parietal lob performansında %18 artış gözlemlendi.”  
-   Böylece kullanıcı kendi bilişsel haritasını adım adım inşa eder.
-
-8. **Günlük Görev & Lob Döngüsü**  
-   Uygulama her gün farklı bir lobu hedef alacak şekilde görev önerir:  
-   - Pazartesi → Frontal  
-   - Salı → Temporal  
-   - Çarşamba → Oksipital  
-   Bu sistem, **nöroplastisiteyi destekleyen dengeli bir zihinsel antrenman** yapısı oluşturur.
-
-9. **Yapay Zekâ Destekli Tavsiyeler**  
-   AI, geçmiş görev verilerini analiz ederek kullanıcıya özel öneriler sunar:  
-   > “Bu hafta Parietal lob performansınızda düşüş gözlemlendi. Dikkat egzersizlerine ağırlık vermenizi öneriyoruz.”
+3. **Günlük Özet & Gelişim**  
+    - 3 egzersiz de tamamlanınca:
+      1. “Bugünlük görev tamamlandı!” ekranı gösterilir.
+      2. Günlük streak güncellenir (örnek: “8 gündür aralıksız egzersiz yapıyorsun!”).
+      3. Kullanıcının tüm egzersizlerden aldığı skorlar özetlenir.
+      4. Gelişim analizi sunulur (örnek: “Yaratıcılık puanın bu hafta %18 arttı”).
 
 Bu yapı sayesinde **Synappse**, yalnızca bir beyin egzersizi aracı değil; **kişisel, bilimsel ve sürdürülebilir bir zihinsel gelişim platformudur.**
 
 </details>
-
 
 # İlham Kaynağı
 
@@ -196,11 +173,9 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 </details>
 
-
 <p align="center">
  <img src="project_management/general/headers/github_sprints.png" width="830" height="285"/> 
 </p>
-
 
 # Sprint 1
 <details>
@@ -210,7 +185,7 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 - Sprint Başlangıç Tarihi: 24.06.2025  
 - Sprint Bitiş Tarihi: 06.07.2025  
 - Sprint Süresi: 13 Gün 
-- Takım: AI Grup 6  
+- Takım: Brain Team 6  
 
 ---
 
@@ -226,7 +201,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 - **1. Sprint**: Fikir üretimi, planlama ve tasarım odaklı olduğu için **135 puan** hedeflendi ve tamamlandı.  
 - **2. Sprint**: Kodlama, API entegrasyonu ve temel işlevlerin geliştirilmesi için **480 puan** hedeflenmektedir.  
 - **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
-
 
 ### Sprint Review Görselleri
 
@@ -289,7 +263,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
   <br><strong>WhatsApp Chat</strong>
 </p>
 
-
 - UI tasarımlarında Figma kullanılmasına karar verildi.
 - Proje yönetim aracı olarak Miro kullanılmasına karar verildi.
 - Günlük scrum toplantıları, takımın müsaitlik durumuna göre WhatsApp ve Google Meets üzerinden gerçekleştirildi.
@@ -320,7 +293,6 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 • Kullanıcı geri bildirim sistemi entegre edilecek.
 
 </details>
-
 
 # Sprint 2
 
@@ -435,30 +407,126 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 • Backend ve Frontend birleştirilecek.
 
 
-
 </details>
-
 
 # Sprint 3
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
  
-Geliştirme ilerledikçe güncellenecektir.
+### Sprint Bilgileri
+- Sprint Başlangıç Tarihi: 20.07.2025  
+- Sprint Bitiş Tarihi: 03.08.2025  
+- Sprint Süresi: 14 Gün 
+- Takım: Brain Team 6  
+
+---
+
+### Sprint Review
+
+**Sprint İçindeki Beklenen Puan Tamamlanması:**
+
+- **Hedeflenen Puan:** *385 Puan*
+- **3. Sprint**: Entegrasyon, test ve son düzeltmeler için **385 puanlık** bir hedef öngörülmektedir.
+
+### Sprint Review Görselleri
+
+<p align="center">
+  <img src="project_management/sprint3_documents/Sprint3_Board.jpg" width="644" height="650"/>  
+  <br><strong>Sprint Board 1 </strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint3_documents/burndown_chart.jpg" width="644" height="650"/> 
+  <br><strong>Burndown Chart</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint3_documents/giris_yap.png" width="644" height="650"/>  
+  <br><strong>Giriş Yap Ekranı</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint3_documents/kayıt_ol.png" width="644" height="650"/>  
+  <br><strong>Kayıt Ol Ekranı</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint3_documents/problem_zinciri.png" width="644" height="650"/>  
+  <br><strong>Problem Zinciri Egzersiz Sayfası</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint3_documents/kelime_koprusu.png" width="644" height="650"/>  
+  <br><strong>Kelime Köprüsü Egzersiz Sayfası</strong>
+</p>
+
+<p align="center">
+  <img src="project_management/sprint3_documents/hafiza_sentez.png" width="644" height="650"/>  
+  <br><strong>Hafıza ve Sentez Egzersiz Sayfası</strong>
+</p>
+
+---
+
+### Daily Scrum
+
+**Sprint 3 Günlük İş Takibi**
+
+| Gün | Tarih       | Yapılan İşler                                                   | Tamamlanan Görev(ler)                                               | Puan |
+|-----|-------------|------------------------------------------------------------------|----------------------------------------------------------------------|------|
+| 1   | 21.07.2025  | Sosyal medya hesapları açıldı, geri bildirim formu hazırlandı   | Görev 1-2 | 20   |
+| 2   | 22.07.2025  | Egzersiz sistemi güncellemesi başlatıldı                        | Görev 3 (başlangıç) | 10  |
+| 3   | 23.07.2025  | Egzersiz sistemi UI tasarımı ve frontend tasarımı başlatıldı    | Görev 5-6 (başlangıç) | 30   |
+| 4   | 24.07.2025  | Egzersiz sistemleri tamamlandı                                  | Görev 4 | 50   |
+| 5   | 25.07.2025  | Egzersiz UI tasarımı tamamlandı, frontend tasarımı ilerletildi  | Görev 5-6 (devam) | 20   |
+| 6   | 26.07.2025  | Backend ve frontend bağlantısı başlatıldı, commit yapıldı       | Görev 7-8 | 30   |
+| 7   | 27.07.2025  | Profil sayfası UI tasarımına başlandı                           | Görev 9 (başlangıç) | 10   |
+| 8   | 28.08.2025  | Profil sayfası frontend kodlaması başlatıldı, commit yapıldı    | Görev 10 | 15   |
+| 9   | 29.08.2025  | Profil sayfası ek özellikleri (rozet sistemi) tasarlandı        | Görev 11 (başlangıç) | 10   |
+| 10  | 30.08.2025  | Auth sistemi kuruldu, rozet sistemi tamamlandı                  | Görev 11-12 | 30   |
+| 11  | 31.08.2025  | Fine tuning sorunları üzerinde çalışıldı                        | Görev 13 (başlangıç) | 5   |
+| 12  | 01.08.2025  | Fine tuning sorunları tamamlandı, son testler yapıldı           | Görev 13 bitiş | 15   |
+| 13  | 02.08.2025  | Sprint dokümantasyonu hazırlandı                                | Sprint 3 kapanış | 10   |
+| 14  | 03.08.2025  | Final kontrol ve rapor sunumu yapıldı                           | Kalan işler kapandı | 10    |
+
+**Toplam Puan:** 385
+
+---
+
+### Sprint Retrospektive
+
+**Neler iyi gitti?**
+
+• Burndown grafiği neredeyse planlanan ideal eğriyle aynı ilerledi, sprint boyunca büyük gecikme yaşanmadı.
+• Takım iletişimi güçlüydü; görev dağılımları net yapıldı, herkes kendi sorumluluğunu zamanında yerine getirdi.  
+• Frontend ve backend tamamen entegre edildi; proje ana işlevleriyle kullanılabilir hale geldi.
+• Önceki sprintlerde öğrenilen teknolojiler (Django, AI entegrasyonu, UI tasarımı) bu sprintte çok daha verimli kullanıldı.
+
+**Neler Geliştirilmeli?**
+
+• Fine tuning süreci beklenenden uzun sürdü; AI yanıtlarını optimize etmek için daha erken başlanmalıydı.
+• Tasarım ve frontend aynı anda ilerlerken merge çatışmaları yaşandı; sonraki projelerde bu süreçler sıraya konmalı.
+• Profil sayfası ek özellikleri (rozet, AI feedback) planın sonuna bırakıldığı için aceleyle tamamlandı, daha iyi önceliklendirilebilirdi.
+
+**Sonuç / Genel Değerlendirme**
+
+• Sprint hedefleri başarıyla tamamlandı ve proje bitiş kriterleri karşılandı.
+• Ana modüller (egzersiz sistemi, kullanıcı yönetimi, profil özellikleri, AI entegrasyonu) çalışır durumda.
+• Projenin teslimi için son kontroller ve dokümantasyon tamamlandı.
+
+**Öneriler (Gelecek Kullanım ve Bakım için)**
+
+• AI modelinin çıktıları düzenli aralıklarla test edilmeli, prompt ayarlamaları periyodik yapılmalı.
+• Kullanıcı geri bildirim formlarından gelen veriler analiz edilerek sonraki versiyonlar planlanmalı.
 
 </details>
-
 
 <p align="center">
  <img src="project_management/general/headers/github_footer.png" width="830" height="285"/> 
 </p>
 
-
 # Proje Tanıtım Videosu  
 Video ve demo bağlantıları proje tamamlandığında burada paylaşılacaktır.
-
-# Proje Linki  
-Projenin canlı adresi veya kaynak kodu bağlantısı tamamlandığında burada yer alacaktır.
 
 # Kullanılan Teknolojiler  
 <details>
@@ -466,11 +534,9 @@ Projenin canlı adresi veya kaynak kodu bağlantısı tamamlandığında burada 
 
 | **Katman**        | **Teknoloji**                               |
 |-------------------|--------------------------------------------|
-| **Frontend**      |  |
-| **Backend**       |  |
-| **API / Yapay Zekâ** |  |
-| **Veritabanı**    |  |
-
-> **Not:** Proje tamamlandığında kullanılan tüm teknolojiler bu bölümde güncellenerek detaylı şekilde listelenecektir.
+| **Frontend**      | HTML, Tailwind CSS, |
+| **Backend**       | Python, Django  |
+| **API / Yapay Zekâ** | Gemini API |
+| **Veritabanı**    | SQLite, Supabase |
 
 </details>
