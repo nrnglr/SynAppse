@@ -29,7 +29,7 @@ class GeminiService:
                     prompt,
                     generation_config=genai.types.GenerationConfig(
                         temperature=temperature,
-                        max_output_tokens=200  # Reduced for faster response
+                        max_output_tokens=1024  # Increased for longer responses
                     )
                 )
                 
@@ -121,8 +121,17 @@ Kurallar:
         Parse Gemini JSON response for Word Bridge exercise
         """
         try:
+            if not response_text:
+                return {'error': 'Empty response'}
+            
             # Clean the response text
             clean_text = response_text.strip()
+            
+            # Remove ```json blocks if present
+            if clean_text.startswith('```json'):
+                clean_text = clean_text.replace('```json', '').replace('```', '')
+            elif clean_text.startswith('```'):
+                clean_text = clean_text.replace('```', '')
             
             # Try to find JSON in the response
             start_idx = clean_text.find('{')
@@ -130,17 +139,58 @@ Kurallar:
             
             if start_idx != -1 and end_idx > start_idx:
                 json_str = clean_text[start_idx:end_idx]
+                
+                # Try to repair broken JSON
+                json_str = self._repair_broken_json(json_str)
+                
                 return json.loads(json_str)
             
             # If no JSON found, try parsing the whole response
-            return json.loads(clean_text)
+            cleaned = self._repair_broken_json(clean_text)
+            return json.loads(cleaned)
             
         except (json.JSONDecodeError, ValueError) as e:
             logger.error(f"Error parsing JSON response: {e}")
             logger.error(f"Response text: {response_text}")
             
-            # Return a default structure based on common Word Bridge responses
+            # Return a safe fallback structure
             return {
                 'error': 'JSON parsing failed',
-                'raw_response': response_text
+                'message': 'Gemini yanıtı işlenirken hata oluştu',
+                'raw_response': response_text[:200] + '...' if len(response_text) > 200 else response_text
             }
+    
+    def _repair_broken_json(self, json_str: str) -> str:
+        """Attempt to repair common JSON formatting issues"""
+        try:
+            # Common fixes
+            json_str = json_str.strip()
+            
+            # Fix line breaks in strings
+            json_str = json_str.replace('",\n    "', '", "')
+            json_str = json_str.replace('"\n}', '"}')
+            json_str = json_str.replace('",\n}', '"}')
+            
+            # Fix missing closing braces
+            open_braces = json_str.count('{')
+            close_braces = json_str.count('}')
+            
+            if open_braces > close_braces:
+                json_str += '}' * (open_braces - close_braces)
+            
+            # Fix missing closing brackets
+            open_brackets = json_str.count('[')
+            close_brackets = json_str.count(']')
+            
+            if open_brackets > close_brackets:
+                json_str += ']' * (open_brackets - close_brackets)
+            
+            # Fix unmatched quotes (basic attempt)
+            quote_count = json_str.count('"')
+            if quote_count % 2 != 0:
+                json_str += '"'
+            
+            return json_str
+            
+        except Exception:
+            return json_str

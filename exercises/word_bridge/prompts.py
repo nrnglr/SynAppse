@@ -12,7 +12,7 @@ Zorluk seviyelerine göre kelime kategorileri:
 
 GÖREV: 1 hedef kelime ve 3 farklı başlangıç kelimesi seçeneği üret.
 
-⚠️ ÖNEMLİ: Başlangıç kelimeleri ile hedef kelime arasında DİREKT/AÇIK bağlantı OLMAMALI!
+ ÖNEMLİ: Başlangıç kelimeleri ile hedef kelime arasında DİREKT/AÇIK bağlantı OLMAMALI! İlk bakışta dolaylı yoldan da olsa birbirlerini çağrıştırmamalı.
 
 Çıktı formatı (JSON):
 {{
@@ -29,11 +29,11 @@ GÖREV: 1 hedef kelime ve 3 farklı başlangıç kelimesi seçeneği üret.
 6. Uygunsuz/rahatsız edici kelimeler kullanma
 
 ÖRNEKLER:
-❌ Yanlış: hedef="köpek", başlangıç=["kedi", "kemik", "tasma"] (çok benzer/ilgili)
-✅ Doğru: hedef="köpek", başlangıç=["matematik", "bulut", "aşk"] (tamamen farklı kategoriler)
+ Yanlış: hedef="köpek", başlangıç=["kedi", "kemik", "tasma"] (çok benzer/ilgili)
+ Doğru: hedef="köpek", başlangıç=["matematik", "bulut", "aşk"] (tamamen farklı kategoriler)
 
-❌ Yanlış: hedef="masa", başlangıç=["sandalye", "ahşap", "mobilya"] (aynı kategori)
-✅ Doğru: hedef="masa", başlangıç=["rüzgar", "sevinç", "parmak"] (alakasız kategoriler)
+ Yanlış: hedef="masa", başlangıç=["sandalye", "ahşap", "mobilya"] (aynı kategori)
+ Doğru: hedef="masa", başlangıç=["rüzgar", "sevinç", "parmak"] (alakasız kategoriler)
 """
 
 WORD_BRIDGE_SOLUTION_GENERATION_PROMPT = """
@@ -43,7 +43,7 @@ Başlangıç Kelimesi: {start_word}
 Hedef Kelime: {target_word}
 Zorluk Seviyesi: {difficulty}
 
-GÖREV: Bu başlangıç kelimesinden hedef kelimeye ulaşan mantıklı bir kelime zinciri oluştur.
+GÖREV: Bu başlangıç kelimesinden hedef kelimeye ulaşan aralarında mantıklı ve çok dolaylı olmayan bir kelime zinciri oluştur.
 
 Kurallar:
 1. Her ara kelime, bir önceki ve sonraki kelimeyle anlamlı bağlantı kurmalı
@@ -72,9 +72,9 @@ Hedef Kelime: {target_word}
 GÖREV: 3 seviyeli hint sistemi oluştur (En az bilgiden en çok bilgiye doğru)
 
 Hint Seviyeleri:
-1. Genel Kategori İpucu: Çok genel bir yönlendirme
-2. Orta Seviye İpucu: Bir ara kelime kategorisi veya tema
-3. Spesifik İpucu: Doğrudan bir ara kelimeye yakın ipucu (ama kelimeyi vermeyen)
+1. Genel Kategori İpucu: Çok genel bir yönlendirme, ara kelimeler için ipuçları
+2. Orta Seviye İpucu: Bir ara kelime kategorisi veya tema, ara kelimeler için ipuçları
+3. Spesifik İpucu: Doğrudan bir ara kelimeye yakın ipucu (ama kelimeyi vermeyen), ara kelimeler için ipuçları
 
 Çıktı formatı (JSON):
 {{
@@ -114,13 +114,13 @@ GÖREV: Kullanıcının çözümünü analiz et ve puanla.
 Değerlendirme Kriterleri (1-10 arası):
 1. Mantıklılık: Her adım önceki/sonrakiyle mantıklı bağlantılı mı?
 2. Yaratıcılık: Beklenmedik ama mantıklı bağlantılar var mı?
-3. Verimlilik: En kısa/etkili yoldan ulaştı mı?
+3. Verimlilik: En etkili ve mantıklı yoldan ulaştı mı?
 
 NOT: 'overall' skoru, yukarıdaki üç skorun ortalaması olarak otomatik hesaplanır.
 
 Puanlama:
 - Her kullanılan hint için -0.5 puan kesintisi
-- Hedef kelimeye ulaşamadıysa maksimum 5 puan
+- Hedef kelimeye mantıklı ulaşamadıysa maksimum 5 puan
 
 Çıktı formatı (JSON):
 {{
@@ -129,7 +129,7 @@ Puanlama:
         "creativity": 7,
         "efficiency": 6
     }},
-    "evaluation_text": "Detaylı değerlendirme metni",
+    "evaluation_text": "Kullanıcının yaptığı her kelime bağlantısı için detaylı değerlendirme metni",
     "connection_analysis": [
         "kelime1 → kelime2 bağlantısının analizi",
         "kelime2 → kelime3 bağlantısının analizi"

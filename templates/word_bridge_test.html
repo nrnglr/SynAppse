@@ -256,38 +256,64 @@ class WordBridge {
     }
 
     initializeEventListeners() {
-        // Difficulty selection
-        document.querySelectorAll('.difficulty-card').forEach(card => {
-            card.addEventListener('click', () => this.selectDifficulty(card));
-        });
+        try {
+            // Difficulty selection
+            document.querySelectorAll('.difficulty-card').forEach(card => {
+                card.addEventListener('click', () => this.selectDifficulty(card));
+            });
 
-        // Start button
-        document.getElementById('startBtn').addEventListener('click', () => this.startExercise());
+            // Start button
+            const startBtn = document.getElementById('startBtn');
+            if (startBtn) {
+                startBtn.addEventListener('click', () => this.startExercise());
+            }
 
-        // Start word options
-        document.querySelectorAll('.start-option').forEach(option => {
-            option.addEventListener('click', () => this.selectStartWord(option));
-        });
+            // Start word options
+            document.querySelectorAll('.start-option').forEach(option => {
+                option.addEventListener('click', () => this.selectStartWord(option));
+            });
 
-        // Word submission
-        document.getElementById('submitWordBtn').addEventListener('click', () => this.submitWord());
-        document.getElementById('wordInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.submitWord();
-        });
+            // Word submission
+            const submitWordBtn = document.getElementById('submitWordBtn');
+            if (submitWordBtn) {
+                submitWordBtn.addEventListener('click', () => this.submitWord());
+            }
+            
+            const wordInput = document.getElementById('wordInput');
+            if (wordInput) {
+                wordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.submitWord();
+                });
+            }
 
-        // Hint button
-        document.getElementById('hintBtn').addEventListener('click', () => this.requestHint());
+            // Hint button
+            const hintBtn = document.getElementById('hintBtn');
+            if (hintBtn) {
+                hintBtn.addEventListener('click', () => this.requestHint());
+            }
 
-        // Finish button
-        document.getElementById('finishBtn').addEventListener('click', () => this.finishExercise());
+            // Finish button
+            const finishBtn = document.getElementById('finishBtn');
+            if (finishBtn) {
+                finishBtn.addEventListener('click', () => this.finishExercise());
+            }
 
-        // New game button
-        document.getElementById('newGameBtn').addEventListener('click', () => this.resetGame());
+            // New game button
+            const newGameBtn = document.getElementById('newGameBtn');
+            if (newGameBtn) {
+                newGameBtn.addEventListener('click', () => this.resetGame());
+            }
 
-        // Back to menu button
-        document.getElementById('backToMenuBtn').addEventListener('click', () => {
-            window.location.href = '/';
-        });
+            // Back to menu button
+            const backToMenuBtn = document.getElementById('backToMenuBtn');
+            if (backToMenuBtn) {
+                backToMenuBtn.addEventListener('click', () => {
+                    window.location.href = '/';
+                });
+            }
+        } catch (error) {
+            console.error('Error initializing event listeners:', error);
+        }
     }
 
     selectDifficulty(selectedCard) {
@@ -570,6 +596,8 @@ class WordBridge {
 
             const data = await response.json();
             
+            console.log('Complete response data:', data); // Debug log
+            
             if (response.ok) {
                 this.showResults(data, isTimeout);
             } else {
@@ -582,31 +610,68 @@ class WordBridge {
     }
 
     showResults(data, isTimeout = false) {
-        // Update completion message
-        const message = isTimeout ? 
-            'Süre doldu! Egzersiz otomatik olarak tamamlandı.' : 
-            'Egzersiz başarıyla tamamlandı!';
-        document.getElementById('completionMessage').textContent = message;
+        try {
+            console.log('showResults called with data:', data); // Debug log
+            
+            // Update completion message
+            const message = isTimeout ? 
+                'Süre doldu! Egzersiz otomatik olarak tamamlandı.' : 
+                'Egzersiz başarıyla tamamlandı!';
+            
+            const completionElement = document.getElementById('completionMessage');
+            if (completionElement) {
+                completionElement.textContent = message;
+            }
 
-        // Show user solution
-        this.displayUserSolution(data.user_solution);
+            // Show user solution
+            if (data.user_solution) {
+                this.displayUserSolution(data.user_solution);
+            }
 
-        // Show scores
-        const scores = data.scores;
-        document.getElementById('logicScore').textContent = scores.logic + '/10';
-        document.getElementById('creativityScore').textContent = scores.creativity + '/10';
-        document.getElementById('efficiencyScore').textContent = scores.efficiency + '/10';
-        document.getElementById('overallScore').textContent = scores.overall + '/10';
+            // Show scores - güvenli erişim
+            const scores = data.scores || { logic: 0, creativity: 0, efficiency: 0, overall: 0 };
+            console.log('Scores:', scores); // Debug log
+            
+            const logicElement = document.getElementById('logicScore');
+            const creativityElement = document.getElementById('creativityScore');
+            const efficiencyElement = document.getElementById('efficiencyScore');
+            const overallElement = document.getElementById('overallScore');
+            
+            if (logicElement) logicElement.textContent = (scores.logic || 0) + '/10';
+            if (creativityElement) creativityElement.textContent = (scores.creativity || 0) + '/10';
+            if (efficiencyElement) efficiencyElement.textContent = (scores.efficiency || 0) + '/10';
+            if (overallElement) overallElement.textContent = (scores.overall || 0) + '/10';
 
-        // Show AI evaluation
-        document.getElementById('aiEvaluation').textContent = data.evaluation;
+            // Show AI evaluation
+            const evaluationElement = document.getElementById('aiEvaluation');
+            console.log('Evaluation text:', data.evaluation); // Debug log
+            console.log('Evaluation element:', evaluationElement); // Debug log
+            
+            if (evaluationElement) {
+                const evaluationText = data.evaluation || 'Değerlendirme yapılıyor...';
+                evaluationElement.textContent = evaluationText;
+                console.log('AI evaluation set to:', evaluationText); // Debug log
+            } else {
+                console.error('aiEvaluation element not found!'); // Debug log
+            }
 
-        // Show alternative solutions
-        this.displayAlternativeSolutions(data.alternative_solutions);
+            // Show alternative solutions
+            if (data.alternative_solutions) {
+                this.displayAlternativeSolutions(data.alternative_solutions);
+            }
 
-        // Switch to results step
-        this.showStep('resultsStep');
-        document.getElementById('statusDisplay').textContent = 'Tamamlandı';
+            // Switch to results step
+            this.showStep('resultsStep');
+            
+            const statusElement = document.getElementById('statusDisplay');
+            if (statusElement) {
+                statusElement.textContent = 'Tamamlandı';
+            }
+            
+        } catch (error) {
+            console.error('Error showing results:', error);
+            alert('Sonuçlar gösterilirken hata oluştu, ancak egzersiz tamamlandı.');
+        }
     }
 
     displayUserSolution(solution) {
