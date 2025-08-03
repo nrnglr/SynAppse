@@ -19,7 +19,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-temporary-key-for-developm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True").lower() in ["true", "1", "yes"]
 
-ALLOWED_HOSTS = ['.onrender.com', '.supabase.co', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",") if not DEBUG else []
 
 # External API Keys
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -103,6 +103,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
