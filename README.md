@@ -109,14 +109,14 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 2. **Egzersiz Seçimi**  
    Kullanıcı aşağıdaki egzersizlerden birni seçer ve beynini geliştirmee başlar:  
 
-   - **Problem Zinciri:**  
+    **Problem Zinciri:**  
     - Yapay Zeka absürt ve açık uçlu bir problem sunar.
     - Kullanıcı çözüm üretir → yeni bir problem doğar → tekrar çözüm üretir. (Toplam 5 tur)
     - Yapay Zeka, üretkenlik, tutarlılık ve özgünlük gibi ölçütlere göre skor verir.
     - Kullanıcı egzersizi değerlendirir (1-5 yıldız + yorum opsiyonu).
-    -  “Topluluk Zekası” ekranında kendi skorunu ortalamayla karşılaştırır.
+    - “Topluluk Zekası” ekranında kendi skorunu ortalamayla karşılaştırır.
 
-   - **Kelime Zinciri:**  
+    **Kelime Zinciri:**  
     -  Kullanıcıya 3 başlangıç kelimesi + 1 hedef kelime verilir.
     -  Başlangıç kelimesini seçer → 6 adıma kadar çağrışım zinciri kurar.
     -  Her adımda önceki kelimeye çağrışımsal olarak bağlı yeni kelime girilir.
@@ -125,24 +125,24 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
         2. Yaratıcılık ve çağrışım puanı verir.
         3. Alternatif çözümler ve örnek zincirler gösterir.
         
-   - **Hafıza ve Sentez:**  
+    **Hafıza ve Sentez:**  
     -  Kullanıcıya 3 konu başlığı sunulur (örneğin: “Yapay Zeka Tarihi”, “Bilinç ve Beyin”, “Eleştirel Düşünme Teorileri”).
     -  Seçilen konuda 1 dakikalık okunabilir bir metin verilir.
     -  60 saniye sayaç başlar.
     -  Süre dolunca:
-      1. “Ne anladın?” kutucuğu çıkar → kısa özet yazılır.
-      2. 3 anahtar kelime seçmesi istenir.
-      3. Metne dair bir soru üretmesi istenir.
+        1. “Ne anladın?” kutucuğu çıkar → kısa özet yazılır.
+        2. 3 anahtar kelime seçmesi istenir.
+        3. Metne dair bir soru üretmesi istenir.
     -  Yapay Zeka:
-      1. Cevapları analiz eder, skorlama yapar.
-      2. Sorulan soruya yanıt verir.
+        1. Cevapları analiz eder, skorlama yapar.
+        2. Sorulan soruya yanıt verir.
 
 3. **Günlük Özet & Gelişim**  
     - 3 egzersiz de tamamlanınca:
-      1. “Bugünlük görev tamamlandı!” ekranı gösterilir.
-      2. Günlük streak güncellenir (örnek: “8 gündür aralıksız egzersiz yapıyorsun!”).
-      3. Kullanıcının tüm egzersizlerden aldığı skorlar özetlenir.
-      4. Gelişim analizi sunulur (örnek: “Yaratıcılık puanın bu hafta %18 arttı”).
+       1. “Bugünlük görev tamamlandı!” ekranı gösterilir.
+       2. Günlük streak güncellenir (örnek: “8 gündür aralıksız egzersiz yapıyorsun!”).
+       3. Kullanıcının tüm egzersizlerden aldığı skorlar özetlenir.
+       4. Gelişim analizi sunulur (örnek: “Yaratıcılık puanın bu hafta %18 arttı”).
 
 Bu yapı sayesinde **Synappse**, yalnızca bir beyin egzersizi aracı değil; **kişisel, bilimsel ve sürdürülebilir bir zihinsel gelişim platformudur.**
 
