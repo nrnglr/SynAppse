@@ -49,7 +49,7 @@ Yapay zeka çağında insan zihnini pasif bir kullanıcı olmaktan çıkarıp ak
 
 </details>
 
-##  Hedef Personalar
+#  Hedef Personalar
 
 <details>
   <summary><strong>Detayları Görüntüle</strong></summary>
@@ -170,6 +170,85 @@ Bilgiyi araştırma, anlama ve kendi kelimelerimizle yeniden yapılandırma sür
 Beynin planlama, organizasyon, izleme ve karar verme gibi yürütücü işlevlerle (executive functions) ilgili bölgeleri, YZ kullanımıyla daha az aktif hale gelir. Bu durum, gelecekte YZ olmadan bir görevi baştan sona planlama ve yönetme konusunda zorluklar yaşanmasına neden olabilir.
 
 Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://arxiv.org/pdf/2506.08872v1)
+
+</details>
+
+# Gelir Modeli
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
+
+SynAppse, bireysel ve kurumsal kullanıcılar için sürdürülebilir bir gelir modeli sunar. Model; freemium yapı, kurumsal lisanslama ve topluluk destekli bağış sistemlerinden oluşur.
+
+## Freemium Modeli (Bireysel Kullanıcılar)
+
+Bireysel kullanıcılar için temel egzersizler ücretsiz sunulurken, gelişmiş özellikler premium sürümle birlikte gelir.
+
+### Ücretsiz Sürüm:
+- Günlük 3 egzersize erişim (Problem Zinciri, Kelime Zinciri, Hafıza & Sentez)
+- Temel skor ve değerlendirme
+- Topluluk ortalaması ile karşılaştırma
+
+### Premium Sürüm:
+- Kişisel gelişim grafikleri (günlük/haftalık/aylık ilerleme)
+- Geçmiş skor analizleri
+- Egzersiz öneri motoru (kişiselleştirilmiş zorluk seviyesi)
+- Alternatif örnek cevaplar ve yaratıcılık galerisi
+- Ekstra Avatar ve arayüz kişiselleştirme (rozetler, renk temaları)
+- İstatistiklerle destekli geri bildirimler
+
+**Fiyatlandırma:**
+- Aylık: 49₺
+- Yıllık: 399₺ (2 ay bedava)
+
+---
+
+## Kurumsal Lisanslama ve Eğitim Paketleri
+
+Eğitim kurumları ve şirketler için toplu lisans modeliyle zihinsel beceri gelişimi desteklenir.
+
+### Eğitim Kurumları için:
+- Sınıf bazlı egzersiz planlama
+- Öğretmen / yönetici paneli (performans takibi, grup içi analizler)
+- Ebeveyn modu (isteğe bağlı)
+- Yaşa uygun egzersiz setleri
+
+### Şirketler için:
+- Kurumsal dashboard ile bilişsel beceri izleme
+- Eğitim ve workshop destekli kurumsal entegrasyon
+- Çalışan gelişimi raporları
+
+**Fiyatlandırma (öneri):**
+- 50 kullanıcıya kadar: Aylık 999₺
+- 200 kullanıcıya kadar: Aylık 2999₺
+- 500+ kullanıcı: Özel teklif
+
+---
+
+## Topluluk Destekli Model
+
+Açık kaynak odaklı gelişim sürecini desteklemek için topluluk katkıları ve bağış mekanizmaları sunulur.
+
+- Bağış karşılığı rozetler ve isim listesi
+- “Topluluğa Destek Verenler” sayfası
+- Sürdürülebilirlik raporu (bağışlar nereye harcanıyor?)
+
+---
+
+## Basit Finansal Modelleme (Yıllık Tahmin)
+
+| Gelir Kalemi                  | Tahmini Kullanıcı | Fiyat (yıllık) | Tahmini Gelir |
+|------------------------------|-------------------|----------------|----------------|
+| Bireysel Premium Abonelik    | 3.000             | 399₺           | 1.197.000₺     |
+| Kurumsal Lisans (10 okul)    | 10                | 6.000₺         | 60.000₺        |
+| Kurumsal Lisans (5 şirket)   | 5                 | 15.000₺        | 75.000₺        |
+| Topluluk Bağışları (yıllık)  | -                 | -              | 15.000₺        |
+| **Toplam Yıllık Gelir**      |                   |                | **1.347.000₺** |
+
+> Bu model ilk yıl için minimum senaryoya dayalıdır. Yalnızca %2-5 dönüşüm oranları varsayılmıştır. Kullanıcı sayısı ve bilinirlik arttıkça gelir potansiyeli ciddi şekilde artacaktır.
+
+---
+
+**Not:** Bu gelir modeli, SynAppse'ın sosyal etkisini önceliklendiren yaklaşımıyla çelişmeden, sürdürülebilirliği hedeflemektedir. Elde edilen gelirler; egzersiz çeşitliliğinin artırılması, gelişmiş yapay zeka destekli analizler ve akademik iş birlikleri için kullanılacaktır.
 
 </details>
 
@@ -432,8 +511,8 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 ### Sprint Review Görselleri
 
 <p align="center">
-  <img src="project_management/sprint3_documents/Sprint3_Board.jpg" width="644" height="650"/>  
-  <br><strong>Sprint Board 1 </strong>
+  <img src="project_management/sprint3_documents/sprint3_board.jpg" width="644" height="650"/>  
+  <br><strong>Sprint Board</strong>
 </p>
 
 <p align="center">
@@ -491,6 +570,11 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 
 **Toplam Puan:** 385
 
+- Egzersizlerde önemli değişikliklere gidildi.(Lob'dan egzersize değil de egzersizlerden lob'lara bir yol izlendi)
+- Egzersiz sayısı 3'e düşürüldü, görsel üretme modelin kullanımından ve tutarsızlıklardan dolayı vazgeçildi.
+- Egzersiz, Giriş ve Kayıt ol sayfalarında önemli tasarımsal değişikliklere gidildi.
+- Gerçekleştirmeyi planladığımız bazı fikirlerden vazgeçildi.
+
 ---
 
 ### Sprint Retrospektive
@@ -526,7 +610,21 @@ Kaynak: [Your Brain on ChatGPT: Accumulation of Cognitive Debt | MIT](https://ar
 </p>
 
 # Proje Tanıtım Videosu  
-Video ve demo bağlantıları proje tamamlandığında burada paylaşılacaktır.
+Video Linki: https://youtu.be/HGj9RZunzDo
+
+# Sosyal Medya Hesaplarımız
+<details>
+  <summary><strong>Detayları Görüntüle</strong></summary>
+
+[Instagram](https://www.instagram.com/synappseweb)
+
+[TikTok](https://www.tiktok.com/@synappseweb)
+
+[Linkedin](https://www.linkedin.com/company/synappseweb)
+
+[YouTube](https://www.youtube.com/channel/UCowqPSQxeJjx99lM42pPAWQ)
+
+</details>
 
 # Kullanılan Teknolojiler  
 <details>
@@ -537,6 +635,6 @@ Video ve demo bağlantıları proje tamamlandığında burada paylaşılacaktır
 | **Frontend**      | HTML, Tailwind CSS, |
 | **Backend**       | Python, Django  |
 | **API / Yapay Zekâ** | Gemini API |
-| **Veritabanı**    | SQLite, Supabase |
+| **Veritabanı**    | SQLite |
 
 </details>
